@@ -1,4 +1,7 @@
-
+/* 
+ * 	Core Owl Carousel CSS File
+ *	v1.3.3
+ */
 
 /* clearfix */
 .owl-carousel .owl-wrapper:after {
@@ -33,7 +36,7 @@
 	-o-transition: height 500ms ease-in-out;
 	transition: height 500ms ease-in-out;
 }
-
+	
 .owl-carousel .owl-item{
 	float: left;
 }
@@ -51,8 +54,8 @@
 }
 
 /* mouse grab icon */
-.grabbing {
-    cursor:url(../../../assets/css/plugins/grabbing.png) 8 8, move;
+.grabbing { 
+    cursor:url(grabbing.png) 8 8, move;
 }
 
 /* fix */
@@ -65,3 +68,4 @@
   -moz-transform: translate3d(0,0,0);
   -ms-transform: translate3d(0,0,0);
 }
+

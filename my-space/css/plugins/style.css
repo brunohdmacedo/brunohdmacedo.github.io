@@ -347,7 +347,7 @@ h1:hover > a, h2:hover > a, h3:hover > a {
   left: -40px;
   height: 50px;
   width: 50px;
-  background: url("../../../assets/css/img/link.svg") no-repeat;
+  background: url("../img/link.svg") no-repeat;
   overflow: hidden;
   text-indent: -999em; }
 
@@ -1705,7 +1705,7 @@ input.faq-search:focus::-moz-input-placeholder {
   background-size: 60%;
   background-position: center center;
   background-repeat: no-repeat;
-  background-image: url(../../../assets/css/img/check.svg); }
+  background-image: url(../img/check.svg); }
 .filter-group .btn.active:before, .filter-group .btn.active:after {
   opacity: 1; }
 
