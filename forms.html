@@ -5,14 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Membros</title>
+
     <style>
-        /* Estilos CSS permanecem os mesmos */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <h2>Cadastro de Membros</h2>
+        <?php if (isset($_GET['erro']) && $_GET['erro'] == 'url'): ?>
+            <p style="color: red;">URL do currículo inválida. Por favor, insira uma URL válida.</p>
+        <?php endif; ?>
         <form action="processar.php" method="post">
             <div class="form-group">
                 <label for="nome">Nome:</label>
