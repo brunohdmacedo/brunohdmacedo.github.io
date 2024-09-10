@@ -12,7 +12,7 @@
 </p>
 
 
-![snake animation](https://github.com/brunhdmacedo.github.io/brunhdmacedo.github.io/blob/output/github-contribution-grid-snake2.svg)
+![snake animation](https://github.com/brunhdmacedo/brunhdmacedo/blob/output/github-contribution-grid-snake2.svg)
 
 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 20px;">
     <!-- Left Column: Metrics -->
