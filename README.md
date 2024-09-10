@@ -21,7 +21,7 @@
     </div>
 
 
-  <div style="flex: 1; max-width: 45%; text-align: left; margin-left: 20px;">
+<!--  <div style="flex: 1; max-width: 45%; text-align: left; margin-left: 20px;">
         <h3>🌐 Let's Connect and Grow Together!</h3>
         <p>
             <a href="https://www.linkedin.com/in/mrbondarenko/" target="_blank" style="text-decoration: none;">
