@@ -10,10 +10,6 @@
     <img src="https://skillicons.dev/icons?i=arduino,cs,c,cpp,css,electron,gcp,gitlab,androidstudio,html,java,git,github,js,linux,php,anaconda,py" alt="Skills and tools"/>
   </a>
 </p>
-
-
-![snake animation](https://github.com/brunhdmacedo/brunhdmacedo/blob/output/github-contribution-grid-snake2.svg)
-
 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 20px;">
     <!-- Left Column: Metrics -->
     <div style="flex: 1; max-width: 45%;">
