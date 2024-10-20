@@ -116,7 +116,7 @@
 							<li><a href="https://portal.unila.edu.br/eventos/siepe-2023/ANAISEICTI2023alterado1.pdf">EICTI 2023</a></li>
 						</ul>
 					</li>
-					<!-- <li class="current-menu-item"><a href="#">project<i><b></b></i></a></li> -->
+					<li class="current-menu-item"><a href="#">project<i><b></b></i></a></li>
 					<!-- <li><a href="blog.html">BLOG<i><b></b></i></a></li> -->
 					<li><a href="#">project<i><b></b></i></a>
 						<ul>
@@ -175,12 +175,12 @@
 </p>
     <p><strong>Macedo, B. H. D.</strong> - Graduating in Engineering Physics - Latin American Institute of Life and Nature Sciences (ILACVN) - Federal University of Latin American Integration - UNILA, North Region, Foz do Iguaçu - PR, Paraná, Brazil, Email: <a href="mailto:brunohdmacedo@gmail.com">brunohdmacedo@gmail.com</a></p>
     <p><strong>Zalewski, W.</strong> - PhD in Computer Science - Latin American Institute of Technology, Infrastructure and Territory (ILATIT) - Federal University of Latin American Integration - UNILA, PTI, Bloco 6, Espaço 1, Foz do Iguaçu, Paraná, Brazil, Email: <a href="mailto:willian.zalewski@unila.edu.br">willian.zalewski@unila.edu.br</a></p>
- 
+ 	<img src="https://didatico.igc.usp.br/wp-content/uploads/2017/09/colagem.png" alt="Material" style="width: 655px;">
 	<h2>Abstract</h2>
     <p>In recent years, materials development has been essential for technological advances in areas such as electronics, aerospace, and automotive. Discoveries such as semiconductors and light and resistant alloys have driven innovations (Schleder & Fazzio, 2021). However, traditional discovery methods, based on empirical experimentation, are slow and expensive. Advances in computational capacity and the creation of large databases have opened up new opportunities for materials science (G1, 2024). The integration of simulations and experimental data with Machine Learning techniques has revolutionized the field, enabling the analysis of large volumes of data, identification of patterns, and prediction of properties (Schleder et al., 2019; Wang et al., 2020). This, combined with high-precision simulations and laboratory experiments, has enabled significant optimizations in areas such as energy and biomaterials (Ramprasad et al., 2017). Repositories such as the American Mineralogist Crystal Structure Database, Crystallography Open Database, ICSD, and RRUFF are essential for crystalline data, while the CCDC is used for non-crystalline materials (Pagliarini, 2022)[1]. This research aims to evaluate the use of Machine Learning algorithms on data from the RRUFF dataset, which contains 1704 classes and 8950 spectra, divided into two sets: Dataset_1 with 192 classes and 5292 spectra, and Dataset_2 with 1332 classes and 8578 spectra. In the work of (SANG et al., 2021), a 1D CNN was developed for mineral classification from Raman spectra, with superior performance to classical models such as KNN, Decision Tree, Random Forest, and SVM. Comparing the results, the CNN obtained 98.43% accuracy, surpassing KNN (k=1~96.76% and k=5~93.76%), Decision Tree (77.76%), Random Forest (74.60%) and PCA+SVM (linear~97.72% and rbf~86.67%). Initially, we downloaded and preprocessed the data using the python programming language to construct dataset_1 and the baseline as proposed by Dourado Macedo, B. H., & Zalewski, W. (2024)[3]. The BayesSearchCV function from the scikitoptimize library was applied to explore the best combination of parameters. The models were evaluated using the train_test_split strategy. To do this, we used a for loop with range(30) to divide the data into 4 partitions X_train, X_test, y_test and y_train for each loop excursion. Thus, in each repetition, different data are selected for each partition, thus minimizing possible bias in the data. The parameters used for this evaluation were: X_train, X_test, y_train, y_test = train_test_split(X_, y, train_size=0.7, test_size=0.3, random_state=i, shuffle=True, stratify=y) and cv_inner = StratifiedKFold(n_splits=2, shuffle=True, random_state=1) to optimize the parameters in each repetition.</p>
 
     <h2>Keywords</h2>
-    <p>astronomy, exoplanet, machine learning, light curve.</p>
+    <p>Ciência dos Materiais, Machine Learning, Aprendizado de Máquina, Raman.</p>
 
 <h3>Como Citar</h3>
 <h4>Harvard</h4>
@@ -193,7 +193,8 @@ B. H. Dourado Macedo e W. Zalewski, “STUDY OF MACHINE LEARNING ALGORITHMS TO A
 <h4>Download BibTex</h4>
 <p><a href="#" >Endnote/Zotero/Mendeley (RIS)</a>
 </p>						
-	<img src="https://didatico.igc.usp.br/wp-content/uploads/2017/09/colagem.png" alt="Material" style="width: 655px;">
+	<img src="https://raw.githubusercontent.com/brunohdmacedo/IC-2024-SIEPE/refs/heads/main/Tabela%20de%20Resultados.png" alt="Material" style="width: 655px;">
+	<img src="https://raw.githubusercontent.com/brunohdmacedo/IC-2024-SIEPE/refs/heads/main/Gr%C3%A1fico%20de%20Resultados.png" alt="Material" style="width: 655px;">
 						
 	        		</div>
 	        		<!-- ENDS project content -->
@@ -202,7 +203,7 @@ B. H. Dourado Macedo e W. Zalewski, “STUDY OF MACHINE LEARNING ALGORITHMS TO A
 					<div class="project-info">
 						<p><strong>Autor</strong>Macedo, B. H. D.
 						Zalewski, W.</p>
-						<p><strong>Date</strong>Jun 20, 2023</p>
+						<p><strong>Date</strong>Out 28, 2024</p>
 						<p><a href="https://github.com/brunohdmacedo/IC-2024-SIEPE" >Download Code</a></p>
 					</div>
 					<!-- ENDS project info -->	
