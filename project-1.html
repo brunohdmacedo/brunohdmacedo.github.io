@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria Interativa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding-top: 20px;
+    }
+
+    .photo-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .photo-container:hover {
+      transform: scale(1.05);
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .photo-container:hover .overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="photo-container">
+    <img src="https://via.placeholder.com/200" alt="Person 1">
+    <div class="overlay">Nome da Pessoa 1</div>
+  </div>
+
+  <div class="photo-container">
+    <img src="https://via.placeholder.com/200" alt="Person 2">
+    <div class="overlay">Nome da Pessoa 2</div>
+  </div>
+
+  <div class="photo-container">
+    <img src="https://via.placeholder.com/200" alt="Person 3">
+    <div class="overlay">Nome da Pessoa 3</div>
+  </div>
+
+</body>
+</html>
