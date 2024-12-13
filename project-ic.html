@@ -193,7 +193,129 @@
 	<!DOCTYPE html>
 <html lang="en">
 	
-    <h1>Code Classics Model</h1>
+<h3>Load Spectrum</h3>
+<pre><code>
+def load_spectrum_file(dir_path, max_subfolders=None, max_files_per_subdir=None, max_rows=None):
+    """Carrega arquivos de espectro e associa rótulos numéricos às subpastas."""
+    data, labels = [], []
+    subfolder_labels = {}
+    label_encoder = LabelEncoder()
+
+    # Contadores para controlar a quantidade de subpastas e arquivos lidos
+    subfolder_count = 0
+
+    for root, dirs, files in os.walk(dir_path):
+        # Limitar a quantidade de subpastas
+        if max_subfolders is not None and subfolder_count >= max_subfolders:
+            break
+
+        for dir_name in dirs:
+            subfolder_path = os.path.join(root, dir_name)
+            subfolder_labels[subfolder_path] = dir_name
+            subfolder_count += 1
+
+            # Limitar a quantidade de subpastas
+            if max_subfolders is not None and subfolder_count > max_subfolders:
+                break
+
+            file_count = 0
+            for filename in os.listdir(subfolder_path):
+                if filename.endswith('.csv'):
+                    if max_files_per_subdir is not None and file_count >= max_files_per_subdir:
+                        break
+                    file_path = os.path.join(subfolder_path, filename)
+                    try:
+                        df = pd.read_csv(file_path, delimiter=',', nrows=max_rows)
+                        y = df.iloc[:, 1].values  # Pega os valores da segunda coluna
+
+                        # Adiciona o rótulo da subpasta à lista de labels
+                        labels.append(subfolder_labels[subfolder_path])
+                        data.append(y)
+                        file_count += 1
+                    except Exception as e:
+                        print(f"Error reading file {file_path}: {e}")
+
+    # Transforma os rótulos das subpastas em números
+    labels = label_encoder.fit_transform(labels)
+    return np.array(data), np.array(labels), label_encoder.classes_
+
+# Exemplo de uso
+print("Loading data...")
+data, labels, class_names = load_spectrum_file(
+    'Data_csv/',
+    max_subfolders=None,
+    max_files_per_subdir=None,
+    max_rows=None
+)
+print("                                   ")
+print("-----------------------------------")
+print("                                   ")
+print(f"Data shape: {data.shape}")
+print(f"Labels shape: {labels.shape}")
+print(f"Class names: {class_names}")
+print("                                   ")
+print("-----------------------------------")
+print("                                   ")
+
+X_=data
+#print(X_)
+y=labels
+#X_ = np.nan_to_num(data)  # Substitui NaN e inf por zero
+
+#print(X_)
+	
+</code></pre>
+	
+	
+<h3>Experiment</h3>
+	 <pre><code>
+# Definição do experimento
+def experiment(model_name, model, params, X_train, X_test, y_train, y_test, repet):
+    
+    # Caminho da pasta para salvar o arquivo (cria uma pasta para cada modelo)
+    model_dir = os.path.join('Results/', model_name)
+
+    # Verifica se o diretório existe, se não, cria o diretório
+    if not os.path.exists(model_dir):
+        os.makedirs(model_dir)
+
+    # Nome do arquivo para salvar os resultados
+    results_file = os.path.join(model_dir, f'{model_name}_repetição_{repet}.csv')
+    
+    # configure the cross-validation procedure
+    cv_inner = StratifiedKFold(n_splits=2, shuffle=True, random_state=1)
+    
+    # define search
+    search = BayesSearchCV(model, params, scoring='accuracy', cv=cv_inner, n_iter=3, refit=True, random_state=1, n_jobs=1)
+
+    # execute search
+    result = search.fit(X_train, y_train)
+
+    # get the best performing model fit on the whole training set
+    best_model = result.best_estimator_
+
+    # evaluate model on the hold out dataset
+    yhat = best_model.predict(X_test)
+
+    # evaluate the model
+    acc = accuracy_score(y_test, yhat)
+    prec = precision_score(y_test, yhat, average='weighted', zero_division=1)
+    rec = recall_score(y_test, yhat, average='weighted')
+    f1 = f1_score(y_test, yhat, average='weighted')
+    mcc = matthews_corrcoef(y_test, yhat)
+
+    # store the result
+    results = [[model_name, acc, rec, prec, f1, result.best_score_, result.best_params_]]
+
+    # report progress
+    print(f"Repetição {repet}: {model_name} > acc={acc:.3f}, est={result.best_score_:.3f}, cfg={result.best_params_}")
+
+    # save results to CSV, each repetition in a new file
+    df = pd.DataFrame(results, columns=['model', 'acc', 'rec', 'prec', 'f1', 'best_score', 'best_params'])
+    df.to_csv(results_file, index=False)
+		 
+	</code></pre>
+    <h3>Code Classics Model</h3>
     <pre><code>
 model_params = {
            
