@@ -92,7 +92,19 @@
 			</div>
 		</div><!-- ENDS header wrapper -->
 		
-		
+		    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            font-family: Consolas, "Courier New", monospace;
+        }
+        code {
+            color: #d14;
+        }
+    </style>
 		
 		<!-- nav -->
 		<nav class="cf">
@@ -178,7 +190,168 @@
  	<img src="https://didatico.igc.usp.br/wp-content/uploads/2017/09/colagem.png" alt="Material" style="width: 655px;">
 	<h2>Abstract</h2>
     <p>In recent years, materials development has been essential for technological advances in areas such as electronics, aerospace, and automotive. Discoveries such as semiconductors and light and resistant alloys have driven innovations (Schleder & Fazzio, 2021). However, traditional discovery methods, based on empirical experimentation, are slow and expensive. Advances in computational capacity and the creation of large databases have opened up new opportunities for materials science (G1, 2024). The integration of simulations and experimental data with Machine Learning techniques has revolutionized the field, enabling the analysis of large volumes of data, identification of patterns, and prediction of properties (Schleder et al., 2019; Wang et al., 2020). This, combined with high-precision simulations and laboratory experiments, has enabled significant optimizations in areas such as energy and biomaterials (Ramprasad et al., 2017). Repositories such as the American Mineralogist Crystal Structure Database, Crystallography Open Database, ICSD, and RRUFF are essential for crystalline data, while the CCDC is used for non-crystalline materials (Pagliarini, 2022)[1]. This research aims to evaluate the use of Machine Learning algorithms on data from the RRUFF dataset, which contains 1704 classes and 8950 spectra, divided into two sets: Dataset_1 with 192 classes and 5292 spectra, and Dataset_2 with 1332 classes and 8578 spectra. In the work of (SANG et al., 2021), a 1D CNN was developed for mineral classification from Raman spectra, with superior performance to classical models such as KNN, Decision Tree, Random Forest, and SVM. Comparing the results, the CNN obtained 98.43% accuracy, surpassing KNN (k=1~96.76% and k=5~93.76%), Decision Tree (77.76%), Random Forest (74.60%) and PCA+SVM (linear~97.72% and rbf~86.67%). Initially, we downloaded and preprocessed the data using the python programming language to construct dataset_1 and the baseline as proposed by Dourado Macedo, B. H., & Zalewski, W. (2024)[3]. The BayesSearchCV function from the scikitoptimize library was applied to explore the best combination of parameters. The models were evaluated using the train_test_split strategy. To do this, we used a for loop with range(30) to divide the data into 4 partitions X_train, X_test, y_test and y_train for each loop excursion. Thus, in each repetition, different data are selected for each partition, thus minimizing possible bias in the data. The parameters used for this evaluation were: X_train, X_test, y_train, y_test = train_test_split(X_, y, train_size=0.7, test_size=0.3, random_state=i, shuffle=True, stratify=y) and cv_inner = StratifiedKFold(n_splits=2, shuffle=True, random_state=1) to optimize the parameters in each repetition.</p>
+	<!DOCTYPE html>
+<html lang="en">
+	
+    <h1>Code Classics Model</h1>
+    <pre><code>
+model_params = {
+           
+    #00 Logistic Regression
+          'lr': {'model': LogisticRegression(),
+                'params': {
+                            'C': Real(1e-4, 1e4, prior='log-uniform'),
+                            'fit_intercept': Categorical([True, False]),
+                            'solver': Categorical(['newton-cg', 'lbfgs', 'liblinear', 'sag', 'saga']),
+                            'max_iter': [500],
+                            'random_state': [1],
+                            'n_jobs': [1]  # Limita para 1 thread
+                         }},
+            
+    #01 K-Nearest Neighbors
+          'knn': {'model': KNeighborsClassifier(),
+                  'params': {
+                            'n_neighbors': Integer(1, 50),
+                            'weights': Categorical(['uniform', 'distance']),
+                            'algorithm': Categorical(['auto', 'ball_tree', 'kd_tree', 'brute']),
+                            'p': Integer(1, 5),
+                            'n_jobs': [1]  # Limita para 1 thread
+                         }},
+    
+    #02 Gaussian Naive Bayes
+          'nb': {'model': GaussianNB(),
+                'params': {
+                         'var_smoothing': Real(1e-10, 1e-1, prior='log-uniform')}},
+    
+    #03 Decision Tree
+          'dt': {'model': DecisionTreeClassifier(),
+                'params': {
+                            'criterion': Categorical(['gini', 'entropy']),
+                            'splitter': Categorical(['best', 'random']),
+                            'max_depth': Integer(3, 30),
+                            'min_samples_split': Integer(2, 10),
+                            'min_samples_leaf': Integer(1, 10),
+                            'max_features': Real(0.1, 1.0, prior='uniform'),
+                            'random_state': [1]}},
 
+    #04 Support Vector Machine
+          'svm': {'model': SVC(),
+                  'params': {
+                            'C': Real(2**-5, 2**5, prior='log-uniform'),
+                            'kernel': Categorical(['linear', 'poly', 'rbf', 'sigmoid']),
+                            'degree': Integer(2, 5),  # Relevante para o kernel 'poly'
+                            'coef0': Real(0, 1),      # Relevante para os kernels 'poly' e 'sigmoid'
+                            'gamma': Real(2**-9, 2**1, prior='log-uniform'),
+                            'random_state': [1]}},
+            
+    ##05 Gaussian Process Classifier
+          'gpc': {'model': GaussianProcessClassifier(),
+                  'params': {
+                            'optimizer': Categorical(['fmin_l_bfgs_b', None]),
+                            'n_restarts_optimizer': Integer(0, 10),
+                            'max_iter_predict': [500],
+                            'random_state': [1]}},
+            
+    ##06 Multi-Layer Perceptron
+          'mlp': {'model': MLPClassifier(),
+                  'params': {
+                            'hidden_layer_sizes': Integer(10,100),
+                            'activation': Categorical(['logistic', 'tanh', 'relu']),
+                            'solver': Categorical(['sgd', 'adam']),
+                            'max_iter': [5000],
+                            'random_state': [1]}},
+            
+    #07 Ridge Classifier
+          'ridge': {'model': RidgeClassifier(),
+                    'params': {
+                                'alpha': Real(1e-4, 1e4, prior='log-uniform'),
+                                'fit_intercept': Categorical([True, False]),
+                                'solver': Categorical(['auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga']),
+                                'random_state': [1],
+                                'n_jobs': [1]  # Limita para 1 thread
+                              }},
+            
+    #08 Random Forest
+          'rf': {'model': RandomForestClassifier(),
+                'params': {
+                          'n_estimators': Integer(10, 500),
+                          'criterion': Categorical(['gini', 'entropy']),
+                          'max_depth': Integer(3, 30),
+                          'random_state': [1],
+                          'n_jobs': [1]  # Limita para 1 thread
+                         }},
+            
+    ##09 Quadratic Discriminant Analysis
+          'qda': {'model': QuadraticDiscriminantAnalysis(),
+                  'params': {
+                            'reg_param': Real(0, 1, prior='uniform'),
+                            'store_covariance': Categorical([True, False]),
+                            'tol': Real(1e-5, 1e-1, prior='log-uniform')}},
+            
+    #10 AdaBoost
+          'ada': {'model': AdaBoostClassifier(),
+                  'params': {
+                            'n_estimators': Integer(10, 500),
+                            'learning_rate': Real(1e-3, 1, prior='log-uniform'),
+                            'algorithm': Categorical(['SAMME']),
+                            'random_state': [1]}},
+            
+    ##11 Linear Discriminant Analysis
+         'lda': {'model': LinearDiscriminantAnalysis(),
+                 'params': {
+                        'solver': Categorical(['lsqr', 'eigen', 'auto']),
+                        'shrinkage': Real(0, 1, prior='uniform'),
+                        'tol': Real(1e-6, 1e-4, prior='log-uniform')}},
+            
+    #12 Extra Trees Classifier
+          'et': {'model': ExtraTreesClassifier(),
+                 'params': {
+                         'n_estimators': Integer(10, 500),
+                         'criterion': Categorical(['gini', 'entropy']),
+                         'max_depth': Integer(3, 30),
+                         'n_jobs': [1]  # Limita para 1 thread
+                       }},
+            
+    #13 XGBoost
+          'xgboost': {'model': XGBClassifier(),
+                      'params': {
+                                'learning_rate': Real(0.01, 0.3, prior='uniform'),
+                                'n_estimators': Integer(50, 500),
+                                'max_depth': Integer(3, 10),
+                                'gamma': Real(0, 1, prior='uniform'),
+                                'n_jobs': [1]  # Limita para 1 thread
+                              }},
+           
+    #14 LightGBM
+          'lightgbm': {'model': LGBMClassifier(verbose=-1),
+                      'params': {
+                                'learning_rate': Real(1e-3, 1, prior='log-uniform'),
+                                'n_estimators': Integer(10, 500),
+                                'num_leaves': Integer(2, 100),
+                                'max_depth': Integer(3, 10),
+                                'n_jobs': [1]  # Limita para 1 thread
+                               }},
+           
+    #15 CatBoost
+          'catboost': {'model': CatBoostClassifier(verbose=0),
+                     'params': {
+                               'learning_rate': Real(1e-3, 1, prior='log-uniform'),
+                               'iterations': Integer(10, 500),
+                               'depth': Integer(3, 10),
+                               'l2_leaf_reg': Real(1, 10, prior='uniform'),
+                               'border_count': Integer(1, 255),
+                               'bagging_temperature': Real(0, 1, prior='uniform'),
+                               'random_strength': Real(1e-9, 10, prior='log-uniform'),
+                               'thread_count': [1]  # Limita para 1 thread
+                             }}
+}
+    </code></pre>
+
+	<img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo.github.io/refs/heads/main/img/tabela1.png" alt="Material" style="width: 655px;">
+	<img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo.github.io/refs/heads/main/img/gr%C3%A1fico%201.png" alt="Material" style="width: 655px;">
+	<img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo.github.io/refs/heads/main/img/tabela2.png" alt="Material" style="width: 655px;">
+	<img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo.github.io/refs/heads/main/img/gr%C3%A1fico%202.png" alt="Material" style="width: 655px;">
+					
     <h2>Keywords</h2>
     <p>Ciência dos Materiais, Machine Learning, Aprendizado de Máquina, Raman.</p>
 
@@ -192,12 +365,7 @@ B. H. Dourado Macedo e W. Zalewski, “STUDY OF MACHINE LEARNING ALGORITHMS TO A
 
 <!--<h4>Download BibTex</h4>
 <p><a href="#" >Endnote/Zotero/Mendeley (RIS)</a> -->
-</p>						
-	<img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo.github.io/refs/heads/main/img/tabela1.png" alt="Material" style="width: 655px;">
-	<img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo.github.io/refs/heads/main/img/gr%C3%A1fico%201.png" alt="Material" style="width: 655px;">
-	<img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo.github.io/refs/heads/main/img/tabela2.png" alt="Material" style="width: 655px;">
-	<img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo.github.io/refs/heads/main/img/gr%C3%A1fico%202.png" alt="Material" style="width: 655px;">
-						
+</p>												
 	        		</div>
 	        		<!-- ENDS project content -->
 	        		
