@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Bruno Macedo - Blog Pessoal e Currículo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		  <!-- Font Awesome para os ícones -->
+  <!-- Ícones do Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* Container flutuante */
+    .social-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    /* Botão principal */
+    .social-main {
+      background: #333;
+      color: white;
+      font-size: 28px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .social-main:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Ícones ocultos inicialmente */
+    .social-links {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Cores personalizadas */
+    .youtube { background: #FF0000; }
+    .instagram { background: #E1306C; }
+    .linkedin { background: #0077B5; }
+    .github { background: #24292e; }
+    .lattes { background: #004080; }
+
+    /* Efeito hover nos ícones */
+    .social-links a:hover {
+      transform: scale(1.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+  </style>
+	</head>
+	<body class="homepage is-preload">
+		<div id="page-wrapper">
+
+			<!-- Cabeçalho -->
+			<section id="header">
+				<div class="container">
+
+					<!-- Logo -->
+					<h1 id="logo"><a href="index.html">Bruno Macedo</a></h1>
+					<p>| Engenheiro Físico | Pesquisador em Materiais Sustentáveis e Hidrogênio | Machine Learning | DFT |</p>
+
+					<!-- Navegação -->
+					<nav id="nav">
+						<ul>
+							<li><a class="icon solid fa-home" href="index.html"><span>Início</span></a></li>
+							<li>
+								<a class="icon fa-user"><span>Sobre</span></a>
+								<ul>
+									<li><a href="https://bit.ly/3UHhBi0">Formação Acadêmica</a></li>
+									<li><a href="http://bit.ly/3VlPBAE">Experiência</a></li>
+									<li><a href="https://bit.ly/47dlUt0">Projetos</a></li>
+								</ul>
+							</li>
+							<li><a class="icon solid fa-video" href="https://bit.ly/3HGUTDW"><span>Youtube</span></a></li>
+							<li><a class="icon solid fa-file-alt" href="http://bit.ly/45y4FBn"><span>Cálculadora de IRA</span></a></li>
+							<li><a class="icon brands fa-dribbble" href="http://bit.ly/4mw4TPk"><span>Acadêmico</span></a></li>
+							<li><a class="icon solid fa-envelope" href="http://bit.ly/4oWyZgI"><span>+ Redes sociais</span></a></li>
+						</ul>
+					</nav>
+
+				</div>
+			</section>
+
+			<!-- Seção de Destaques -->
+			<section id="features">
+				<div class="container">
+					<header>
+						<h2>Bem-vindo ao meu espaço pessoal!</h2>
+					</header>
+					<div class="row aln-center">
+						<div class="col-4 col-6-medium col-12-small">
+
+							<!-- Destaque -->
+							<section>
+								<a href="#" class="image featured"><img src="images/pic01.png" alt="Foto de Bruno" /></a>
+								<header>
+									<h3>Quem sou eu?</h3>
+								</header>
+								<p style="text-align: justify;">
+									Meu nome é <strong>Bruno Macedo</strong>, estudante de Engenharia Física na UNILA e pesquisador em materiais sustentáveis e inteligência artificial. Tenho experiência em programação, projetos web e simulações científicas, com foco em aprendizado de máquina aplicado à previsão de novos materiais e estudos de armazenamento de hidrogênio via DFT. Atualmente, faço parte do grupo de pesquisa GANEL, dedicado ao estudo de hidrogênio em materiais. De 2020 a 2024, participei do grupo LACA/UNILA, contribuindo em projetos de <i>Machine Learning</i> para séries temporais.
+								</p>
+							</section>
+
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+
+							<!-- Destaque -->
+							<section>
+								<a href="#" class="image featured"><img src="images/pic02.jpg" alt="Pesquisas em laboratório" /></a>
+								<header>
+									<h3>Minhas Pesquisas</h3>
+								</header>
+							<p style="text-align: justify;">
+								Pesquiso materiais usando cálculos de DFT (<i>Teoria do Funcional da Densidade</i>), Influência de Defeitos Substitucionais nas Propriedades Estruturais, Eletrônicas, Termodinâmicas e de Armazenamento Do Hidreto MgH2. Também aplico Machine Learning para identificar exoplanetas com dados da <strong>NASA</strong> e prever novos materiais a partir de espectros Raman e DRX do <strong>RRUF</strong>. Este espaço compartilha meus resultados e insights científicos.
+							</p>	
+							</section>
+
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+
+							<!-- Destaque -->
+							<section>
+								<a href="#" class="image featured"><img src="images/pic03.png" alt="Código e programação" /></a>
+								<header>
+									<h3>Meu Conhecimento</h3>
+								</header>
+								<p style="text-align: justify;">
+									Tenho formação e cursos complementares em áreas como Computação, Programação, Materiais Avançados e Física Teórica. Entre eles, destaco Density Functional Theory (<strong>École Polytechnique, França</strong>), Machine Learning Foundations (<strong>University of Washington, EUA</strong>), cursos de Python, Java, C e PHP, além de especializações em materiais funcionais, teoria de cordas e estrutura cristalográfica. Também possuo experiência prática em computação gráfica, desenvolvimento web e uso de VANTs, acumulando mais de 1.500 horas em treinamentos e cursos técnicos.
+								</p>
+								</section>
+
+						</div>
+						<div class="col-12">
+							<ul class="actions">
+								<li><a href="http://bit.ly/3UHhBi0" class="button icon solid fa-file">Saiba Mais</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Banner -->
+			<section id="banner">
+				<div class="container">
+					<p>Tudo sobre ciência, programação e desenvolvimento pessoal.</p>
+				</div>
+			</section>
+
+			<!-- Conteúdo Principal -->
+			<section id="main">
+				<div class="container">
+					<div class="row">
+
+						<!-- Posts do Blog -->
+						<div id="content" class="col-8 col-12-medium">
+
+							<article class="box post">
+								<header>
+									<h2><a href="https://bit.ly/3UFRpo5">Teoria do Funcional da Densidade</a></h2>
+								</header>
+								<a href="https://bit.ly/3UFRpo5" class="image featured"><img src="images/dft.png" alt="" /></a>
+								<p>Recentemente, estou investigando dopagens metálicas no hidreto de magnésio usando DFT para melhorar a eficiência de armazenamento de hidrogênio. Neste post compartilho gráficos, análises e códigos utilizados.</p>
+								<ul class="actions">
+									<li><a href="https://bit.ly/3UFRpo5" class="button icon solid fa-file">Continuar Lendo</a></li>
+								</ul>
+							</article>
+
+							<article class="box post">
+								<header>
+									<h2><a href="https://bit.ly/3HPQ8I3"> AI - Machine Learning para Exoplanetas</a></h2>
+								</header>
+								<a href="https://bit.ly/3HPQ8I3" class="image featured"><img src="images/ml.png" alt="" /></a>
+								<p>Abordagens baseadas em técnicas de aprendizado de máquina têm sido propostas na literatura para auxiliar a detecção de exoplanetas por meio do processamento automatizado de curvas de luz. Apesar dos avanços, algoritmos de aprendizado de máquina considerados tradicionais ainda não foram completamente estudados para essa tarefa. Portanto, neste trabalho, define-se um baseline por meio de uma ampla avaliação experimental a respeito de 16 algoritmos em diferentes ajustes de parâmetros. Para atingir esse objetivo, utilizaram-se dados provenientes do telescópio Kepler, totalizando 5302 curvas de luz; cada uma com 60000 registros. Como principal resultado  da  avaliação  experimental,  o  algoritmo  LightGBM  apresentou  o  melhor  desempenho,  com  taxa  de 82,92%, em termos de acurácia.</p>
+								<ul class="actions">
+									<li><a href="https://bit.ly/3HPQ8I3" class="button icon solid fa-file">Continuar Lendo</a></li>
+								</ul>
+							</article>
+							<article class="box post">
+								<header>
+									<h2><a href="#">um resumo de Quem sou eu?</a></h2>
+								</header>
+									<a href="http://bit.ly/3HGUTDW" class="image left"><img src="images/pic01.png" alt="Bruno Macedo" /></a>
+									<p>Estudante de Engenharia Física na UNILA, destaco meu interesse em disciplinas interdisciplinares e aquisição de habilidades diversas. Participei de cursos nos EUA e Brasil, com habilidades em C, PHP e Java, e experiência em projetos web. Minha paixão por pesquisa reflete-se em projetos como "Identificação de Exoplanetas com Aprendizado de Máquina", "Algoritmos De Machine Learning Para Auxiliar Na Predição De Novos Materiais." e "Avaliação de Algoritmos de Machine Learning para Auxiliar na Predição de novos Materiais". Atuei como monitor em disciplinas de Cálculo, Matemática Básica e Física Geral. Recebi prêmio de Melhor Projeto de Extensão em 2023. Atualmente, trabalho no desenvolvimento de IA para detecção de novos materiais. Sou membro do grupo de pesquisa "Mineração de Dados em Séries Temporais" do Laboratório de Computação Aplicada (LACA) na UNILA, participando de projetos relevantes. Meu compromisso é expandir horizontes e contribuir para ciência e tecnologia. Exerci cargos de liderança no Centro Acadêmico de Engenharia Física.</p>
+								</article>
+						</div>
+
+						<!-- Barra Lateral -->
+						<div id="sidebar" class="col-4 col-12-medium">
+
+							<section>
+								<h3>Posts Recentes</h3>
+								<ul class="divided">
+									<li>
+										<article class="box excerpt">
+											<header>
+												<span class="date">04 Agosto 2025</span>
+												<h3><a href="http://bit.ly/3UFRpo5">Trabalho de Conclusão de Curso</a></h3>
+											</header>
+												<center>
+												<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DNYUKt6M-Di/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DNYUKt6M-Di/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver essa foto no Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DNYUKt6M-Di/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Uma publicação compartilhada por Bruno Macedo (@brunohdmacedo)</a></p></div></blockquote>
+											<script async src="//www.instagram.com/embed.js"></script>
+										</center>
+										</article>
+									</li>
+									<li>
+										<article class="box excerpt">
+										<header>
+											<span class="date">04 Agosto 2025</span>
+											<h3><a href="http://bit.ly/41pciYq">A melhor biblioteca da America Latina | BIUNILA</a></h3>
+										</header>
+											<center>
+											<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DGDdd84ugQ6/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DGDdd84ugQ6/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver essa foto no Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DGDdd84ugQ6/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Uma publicação compartilhada por Bruno Macedo (@brunohdmacedo)</a></p></div></blockquote>
+										<script async src="//www.instagram.com/embed.js"></script>
+									</center></article>
+									</li>
+									<li>
+										<article class="box excerpt">
+											<header>
+												<span class="date">05 Abril 2024</span>
+												<h3><a href="http://bit.ly/3HPQ8I3">Processamento automático de curvas de luz | RBIC</a></h3>
+											</header>
+											<center>
+											<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C2Xg8_9uvvA/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/C2Xg8_9uvvA/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver essa foto no Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/C2Xg8_9uvvA/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Uma publicação compartilhada por Bruno Macedo (@brunohdmacedo)</a></p></div></blockquote>
+											</center>
+												<script async src="//www.instagram.com/embed.js"></script>
+										</article>
+									</li>
+								</ul>
+							</section>
+
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<!-- Rodapé -->
+			<section id="footer">
+				<div class="container">
+					<header>
+						<h2>Fale comigo</h2>
+					</header>
+					<div class="row">
+						<div class="col-6 col-12-medium">
+							<section>
+								<form method="post" action="#">
+									<div class="row gtr-50">
+										<div class="col-6 col-12-small">
+											<input name="name" placeholder="Nome" type="text" />
+										</div>
+										<div class="col-6 col-12-small">
+											<input name="email" placeholder="Email" type="text" />
+										</div>
+										<div class="col-12">
+											<textarea name="message" placeholder="Mensagem"></textarea>
+										</div>
+										<div class="col-12">
+											<a href="https://bit.ly/4oRkjzl" class="form-button-submit button icon solid fa-envelope">Enviar Mensagem</a>
+										</div>
+									</div>
+								</form>
+							</section>
+						</div>
+						<div class="col-6 col-12-medium">
+							<section>
+								<p>Entre em contato para colaborações, dúvidas ou parcerias científicas. Estou disponível via email ou redes sociais.</p>
+								<div class="row">
+									<div class="col-6 col-12-small">
+										<ul class="icons">
+											<li class="icon solid fa-home">
+												Rua Exemplo, 123<br />
+												Foz do Iguaçu, PR<br />
+												Brasil
+											</li>
+											<li class="icon solid fa-phone">
+												+55 45 99999-9999
+											</li>
+											<li class="icon solid fa-envelope">
+												<a href="mailto:brunohdmacedo@gmail.com">brunohdmacedo@gmail.com</a>
+											</li>
+										</ul>
+									</div>
+									<div class="col-6 col-12-small">
+										<ul class="icons">
+											<li class="icon solid fa-video">
+												<a href="https://bit.ly/3HGUTDW">Youtube</a>
+											</li>
+											<li class="icon brands fa-instagram">
+												<a href="https://bit.ly/465SETR">Instagram</a>
+											</li>
+											<li class="icon brands fa-linkedin">
+												<a href="https://bit.ly/3VlPBAE">Linkedin</a>
+											</li>
+											<li class="icon brands fa-github">
+												<a href="https://bit.ly/47dlUt0">Github</a>
+											</li>
+											<li class="icon solid fa-file">
+												<a href="https://bit.ly/3UHhBi0">Lattes</a>
+											</li> 
+										</ul>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+				<div id="copyright" class="container">
+					<ul class="links">
+						<li>&copy; 2025 Bruno Macedo. Todos os direitos reservados.</li>
+						<li>Versão: 2.0</li>
+						<li>Versão: <a href="http://bit.ly/45NwFQ9">1.0</a></li>
+						<li>Design: <a href="http://bit.ly/47dlUt0"> EVGA_Designer</a></li>
+					</ul>
+				</div>
+			</section>
+
+		</div>
+
+		  <!-- Botão flutuante -->
+  <div class="social-container">
+    <div class="social-links" id="socialLinks">
+      <a href="https://bit.ly/3HGUTDW" target="_blank" class="youtube">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://bit.ly/465SETR" target="_blank" class="instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://bit.ly/3VlPBAE" target="_blank" class="linkedin">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://bit.ly/47dlUt0" target="_blank" class="github">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://bit.ly/3UHhBi0" target="_blank" class="lattes">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </div>
+    <div class="social-main" onclick="toggleSocial()">
+      <i class="fas fa-share-alt"></i>
+    </div>
+  </div>
+
+  <script>
+    function toggleSocial() {
+      const links = document.getElementById("socialLinks");
+      links.style.display = (links.style.display === "flex") ? "none" : "flex";
+    }
+  </script>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
