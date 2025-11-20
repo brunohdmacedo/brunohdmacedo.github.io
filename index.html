@@ -84,6 +84,7 @@
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1109241900554702"
      crossorigin="anonymous"></script>
 		<meta name="google-adsense-account" content="ca-pub-1109241900554702">
+  
   <style>
     /* Container flutuante */
     .social-container {
@@ -149,7 +150,202 @@
       transform: scale(1.15);
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-  </style>
+
+	/* --- CONTAINER DO SLIDER --- */
+.slider-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px; /* cantos arredondados */
+    box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+}
+
+/* Borda e tema */
+.theme-home .nivoSlider {
+    background: #000;
+    position: relative;
+}
+
+/* --- IMAGENS DO SLIDER --- */
+.nivoSlider img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* --- SETAS DE NAVEGAÇÃO --- */
+.nivo-directionNav a {
+    font-size: 28px;
+    color: #fff;
+    text-decoration: none;
+    position: absolute;
+    top: 45%;
+    z-index: 10;
+    opacity: 0.8;
+    padding: 12px 16px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+.nivo-directionNav a:hover {
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+}
+
+.nivo-prevNav {
+    left: 15px;
+}
+
+.nivo-nextNav {
+    right: 15px;
+}
+
+/* --- BOLINHAS DE PAGINAÇÃO (BULLETS) --- */
+.nivo-controlNav {
+    text-align: center;
+    padding: 12px 0;
+}
+
+.nivo-controlNav a {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #ccc;
+    margin: 0 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.nivo-controlNav a.active,
+.nivo-controlNav a:hover {
+    background: #0066ff;
+}
+
+/* --- LEGENDAS --- */
+.nivo-caption {
+    font-size: 1rem;
+    padding: 12px 18px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    border-radius: 8px;
+    bottom: 20px;
+    left: 20px;
+    right: auto;
+    width: auto;
+    max-width: 70%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nivo-caption {
+        font-size: 0.9rem;
+        bottom: 10px;
+        left: 10px;
+        max-width: 90%;
+    }
+
+    .nivo-directionNav a {
+        font-size: 20px;
+        padding: 8px 10px;
+    }
+}
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -241,7 +437,127 @@
 					</div>
 				</div>
 			</section>
+		<!-- SLIDER -->
+				<!-- Slideshow container -->
+				<div class="slideshow-container">
 
+				<!-- Full-width images with number and caption text -->
+				<div class="mySlides fade">
+					<div class="numbertext">1 / 12</div>
+					<img src="img/dummies/slides/34290888610_145f9bf714_k.jpg" style="width:100%">
+					<div class="text">Caption Text</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">2 / 12</div>
+					<img src="img/dummies/slides/52444235001_8b46be11a8_k.jpg" style="width:100%">
+					<div class="text">Caption Two</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">3 / 12</div>
+					<img src="https://live.staticflickr.com/65535/52444509824_b74891e553_h.jpg?s=eyJpIjo1MjQ0NDUwOTgyNCwiZSI6MTc2MzY3NDI5NCwicyI6IjRjNjliYWE4N2VkYWEzZTFhZjRiN2RmY2RlNGVmMGUxYjQyMWRhNTAiLCJ2IjoxfQ" style="width:100%">
+					<div class="text">Caption Two</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">4 / 12</div>
+					<img src="https://live.staticflickr.com/65535/52444667255_c735e05dd3_h.jpg?s=eyJpIjo1MjQ0NDY2NzI1NSwiZSI6MTc2MzY3NDI3NiwicyI6IjIzMWM3NWZjNzhjYjRjNTY0MzM0MjYzM2FmMzY0NTJjZjAwNTYzNjYiLCJ2IjoxfQ" style="width:100%">
+					<div class="text">Caption Two</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">5 / 12</div>
+					<img src="img/dummies/slides/52444756263_79f410c238_k.jpg" style="width:100%">
+					<div class="text">Caption Three</div>
+				</div>
+								<div class="mySlides fade">
+					<div class="numbertext">6 / 12</div>
+					<img src="https://live.staticflickr.com/65535/54930795623_8de425b5ca_h.jpg?s=eyJpIjo1NDkzMDc5NTYyMywiZSI6MTc2MzY2NzA2NCwicyI6ImI0M2Y5ZjNkZjNkOWJjMDE3MmQwZDg1NGMwNDJjNThmMjIzMWQyMzAiLCJ2IjoxfQ" style="width:100%">
+					<div class="text">Caption Three</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">7 / 12</div>
+					<img src="https://live.staticflickr.com/65535/52437863106_c5d69885e7_h.jpg?s=eyJpIjo1MjQzNzg2MzEwNiwiZSI6MTc2MzY2Njc2OCwicyI6IjY2YmI0ZjgyZmVhZWY2YjBlMWM2NzA2YjI4M2YyODg1MmFiYmZlMmMiLCJ2IjoxfQ" style="width:100%">
+					<div class="text">Caption Two</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">8 / 12</div>
+					<img src="https://live.staticflickr.com/65535/54920492206_7c25f8b368_h.jpg?s=eyJpIjo1NDkyMDQ5MjIwNiwiZSI6MTc2MzY2Njk5NywicyI6IjFiOTAyN2UzNjIyNWY0ZGZkMTgzN2FmZDIzMjRmYTI3NDQwYTYxZmUiLCJ2IjoxfQ" style="width:100%">
+					<div class="text">Caption Three</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">9 / 12</div>
+					<img src="https://live.staticflickr.com/65535/53212033032_d086a3bbba_h.jpg?s=eyJpIjo1MzIxMjAzMzAzMiwiZSI6MTc2MzY2Njc5NCwicyI6Ijk3OTMzYTdhYWViZTE5MGY3ZjZjMjYwYjUyOGJjMDI5MjZjYTk5MjciLCJ2IjoxfQ" style="width:100%">
+					<div class="text">Caption Three</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">10 / 12</div>
+					<img src="https://live.staticflickr.com/65535/54919619517_c5cd1abc38_h.jpg?s=eyJpIjo1NDkxOTYxOTUxNywiZSI6MTc2MzY2NzA0OSwicyI6ImFhODk5NDk1OWE0N2MxYzU3MDg5YzIzZTgyMDhjMTRlZTFkMzU4YWEiLCJ2IjoxfQ" style="width:100%">
+					<div class="text">Caption Three</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">11 / 12</div>
+					<img src="img/dummies/slides/tcc.png" style="width:100%">
+					<div class="text">Caption Three</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">12 / 12</div>
+					<img src="https://live.staticflickr.com/65535/54919619517_c5cd1abc38_h.jpg?s=eyJpIjo1NDkxOTYxOTUxNywiZSI6MTc2MzY2NzA0OSwicyI6ImFhODk5NDk1OWE0N2MxYzU3MDg5YzIzZTgyMDhjMTRlZTFkMzU4YWEiLCJ2IjoxfQ" style="width:100%">
+					<div class="text">Caption Three</div>
+				</div>
+
+				<!-- Next and previous buttons -->
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				</div>
+				<br>
+
+				<!-- The dots/circles -->
+				<div style="text-align:center">
+				<span class="dot" onclick="currentSlide(1)"></span>
+				<span class="dot" onclick="currentSlide(2)"></span>
+				<span class="dot" onclick="currentSlide(4)"></span>
+				<span class="dot" onclick="currentSlide(5)"></span>
+				<span class="dot" onclick="currentSlide(6)"></span>
+				<span class="dot" onclick="currentSlide(7)"></span>
+				<span class="dot" onclick="currentSlide(8)"></span>
+				</div>
+				<script>
+				let slideIndex = 1;
+				showSlides(slideIndex);
+
+				function plusSlides(n) {
+				showSlides(slideIndex += n);
+				}
+
+				function currentSlide(n) {
+				showSlides(slideIndex = n);
+				}
+
+				function showSlides(n) {
+				let i;
+				let slides = document.getElementsByClassName("mySlides");
+				let dots = document.getElementsByClassName("dot");
+				if (n > slides.length) {slideIndex = 1}    
+				if (n < 1) {slideIndex = slides.length}
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";  
+				}
+				for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex-1].style.display = "block";  
+				dots[slideIndex-1].className += " active";
+				}
+				</script>
+			<!-- ENDS SLIDER -->
 			<!-- Banner -->
 			<section id="banner">
 				<div class="container">
@@ -487,7 +803,3 @@
 
 	</body>
 </html>
-
-
-
-
