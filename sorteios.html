@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sorteio M4A1-S | Terror Noturno</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://png.pngtree.com/png-vector/20230213/ourmid/pngtree-capybara-mascot-png-image_6598924.png">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
@@ -18,280 +18,120 @@ body {
 
 /* HEADER */
 .header {
-    padding: 40px;
+    padding: 40px 20px;
     background: radial-gradient(circle, #1f1f1f, #0a0a0a);
+    box-shadow: 0 0 30px rgba(255,0,0,0.2);
 }
 
 .header h1 {
-    color: red;
+    font-size: 2.5rem;
+    color: #ff2e2e;
 }
 
-/* SKIN */
+/* SKIN IMAGE */
+.skin-container {
+    margin: 40px auto;
+    max-width: 900px;
+}
+
 .skin-container img {
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
     border-radius: 15px;
-    box-shadow: 0 0 40px red;
+    box-shadow: 0 0 40px rgba(255,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.skin-container img:hover {
+    transform: scale(1.03);
 }
 
 /* INFO */
 .info {
     margin: 30px auto;
-    max-width: 700px;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 15px;
 }
 
-/* BOTÃO */
-.btn {
+.info h2 {
+    color: #ff4d4d;
+}
+
+/* BONUS */
+.bonus {
     margin-top: 20px;
-    padding: 15px 25px;
-    background: red;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-}
-
-/* PARTICIPANTES */
-#participants {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.participant {
-    background: #111;
-    margin: 15px;
     padding: 15px;
-    border-radius: 10px;
-    width: 250px;
-}
-
-.participant img {
-    width: 80px;
-    border-radius: 50%;
-}
-
-.prints img {
-    width: 100px;
-    margin: 5px;
-    border-radius: 8px;
-}
-
-/* MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
-}
-
-.modal-content {
     background: #111;
-    margin: 10% auto;
-    padding: 20px;
-    width: 300px;
+    border: 1px solid #ff2e2e;
     border-radius: 10px;
 }
 
-    .btn-upload {
-    margin-top: 30px;
-    padding: 15px 25px;
-    background: linear-gradient(45deg, red, #ff4d4d);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(255,0,0,0.6);
+.bonus strong {
+    color: #00ffae;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
+/* GLEAM */
+.gleam-container {
+    margin: 40px auto;
 }
 
-.modal-content {
-    background: #111;
-    margin: 10% auto;
+/* FOOTER */
+.footer {
+    margin-top: 50px;
     padding: 20px;
-    width: 320px;
-    border-radius: 12px;
-    color: white;
+    font-size: 0.8rem;
+    opacity: 0.6;
 }
 
-.close {
-    float: right;
-    cursor: pointer;
-    font-size: 20px;
+/* ANIMAÇÃO */
+@keyframes glow {
+    0% { box-shadow: 0 0 10px red; }
+    50% { box-shadow: 0 0 30px red; }
+    100% { box-shadow: 0 0 10px red; }
+}
+
+.skin-container img {
+    animation: glow 3s infinite;
 }
 </style>
+
 </head>
 
 <body>
-<!-- BOTÃO -->
-<button class="btn-upload" onclick="openModal()">
-📸 Enviar prints do cupom + recarga
-</button>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">✖</span>
-
-    <h2>Enviar Comprovantes</h2>
-
-    <form id="uploadForm" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="Seu nome" required>
-      <input type="text" name="photo" placeholder="URL foto Steam" required>
-      <input type="text" name="trade" placeholder="Link de Trade Steam" required>
-
-      <label>Print do Cupom:</label>
-      <input type="file" name="coupon" required>
-
-      <label>Print da Recarga:</label>
-      <input type="file" name="deposit" required>
-
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
-</div>
 
 <div class="header">
-<h1>🔥 Sorteio M4A1-S | Terror Noturno 🔥</h1>
+    <h1>🔥 SORTEIO EXCLUSIVO 🔥</h1>
+    <p>M4A1-S | Terror Noturno</p>
 </div>
 
 <div class="skin-container">
-<img src="images/m4a1-terror.png">
+    <img src="/mnt/data/skin-screenshot.png" alt="M4A1-S Terror Noturno">
 </div>
 
 <div class="info">
-<p>Use o cupom <b>BHSKING</b> e envie os comprovantes para ganhar mais chances!</p>
+    <h2>🎯 Como participar</h2>
+    <p>Entre no sorteio abaixo e complete as ações.</p>
 
-<!-- BOTÃO -->
-<button class="btn" onclick="openModal()">📸 Enviar prints</button>
+    <div class="bonus">
+        💎 <strong>BÔNUS:</strong> Use o cupom <strong>BHS</strong> no KeyDrop e ganhe MAIS CHANCES!
+    </div>
 </div>
 
-<!-- GLEAM -->
-<a class="e-widget no-button" href="https://gleam.io/fUvxq/sorteio-1-de-m4a1-s-terror-noturno"></a>
+<div class="gleam-container">
 
-<!-- PARTICIPANTES -->
-<h2>👥 Participantes</h2>
-<div id="participants"></div>
+    <!-- GLEAM -->
+    <a class="e-widget no-button" href="https://gleam.io/fUvxq/sorteio-1-de-m4a1-s-terror-noturno" rel="nofollow">
+      Sorteio 1 de M4A1-S | Terror Noturno
+    </a>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-<div class="modal-content">
-<h3>Enviar Provas</h3>
-
-<form id="form">
-<input type="text" id="name" placeholder="Nome" required>
-<input type="text" id="photo" placeholder="URL foto Steam" required>
-<input type="text" id="trade" placeholder="Trade Link" required>
-
-<p>Print Cupom:</p>
-<input type="file" id="coupon" required>
-
-<p>Print Recarga:</p>
-<input type="file" id="deposit" required>
-
-<button type="submit">Enviar</button>
-</form>
-
-<button onclick="closeModal()">Fechar</button>
-</div>
 </div>
 
-<script src="https://widget.gleamjs.io/e.js" async></script>
+<div class="footer">
+    © 2026 Canal do BHS - Todos os direitos reservados
+</div>
 
-<script>
-// MODAL
-function openModal(){ document.getElementById("modal").style.display="block"; }
-function closeModal(){ document.getElementById("modal").style.display="none"; }
+<script type="text/javascript" src="https://widget.gleamjs.io/e.js" async="true"></script>
 
-// CARREGAR PARTICIPANTES
-let participants = JSON.parse(localStorage.getItem("participants")) || [];
-
-function render(){
-    const container = document.getElementById("participants");
-    container.innerHTML = "";
-
-    participants.forEach(p => {
-        const div = document.createElement("div");
-        div.className = "participant";
-
-        div.innerHTML = `
-            <img src="${p.photo}">
-            <h3>${p.name}</h3>
-            <a href="${p.trade}" target="_blank">Trade</a>
-
-            <div class="prints">
-                <img src="${p.coupon}">
-                <img src="${p.deposit}">
-            </div>
-        `;
-        container.appendChild(div);
-    });
-}
-
-// FORM
-document.getElementById("form").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const photo = document.getElementById("photo").value;
-    const trade = document.getElementById("trade").value;
-
-    const coupon = URL.createObjectURL(document.getElementById("coupon").files[0]);
-    const deposit = URL.createObjectURL(document.getElementById("deposit").files[0]);
-
-    participants.push({ name, photo, trade, coupon, deposit });
-
-    localStorage.setItem("participants", JSON.stringify(participants));
-
-    render();
-    closeModal();
-});
-
-// INIT
-render();
-</script>
-<script>
-function openModal(){
-    document.getElementById("modal").style.display = "block";
-}
-
-function closeModal(){
-    document.getElementById("modal").style.display = "none";
-}
-
-document.getElementById("uploadForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-
-    try {
-        const res = await fetch("http://localhost:3000/upload", {
-            method: "POST",
-            body: formData
-        });
-
-        if(res.ok){
-            alert("✅ Prints enviados com sucesso!");
-            closeModal();
-        } else {
-            alert("❌ Erro ao enviar");
-        }
-
-    } catch(err){
-        alert("⚠️ Backend não conectado");
-    }
-});
-</script>
-    
 </body>
 </html>
