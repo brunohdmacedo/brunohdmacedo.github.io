@@ -93,10 +93,73 @@ body {
     width: 300px;
     border-radius: 10px;
 }
+
+    .btn-upload {
+    margin-top: 30px;
+    padding: 15px 25px;
+    background: linear-gradient(45deg, red, #ff4d4d);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255,0,0,0.6);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+}
+
+.modal-content {
+    background: #111;
+    margin: 10% auto;
+    padding: 20px;
+    width: 320px;
+    border-radius: 12px;
+    color: white;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
 </style>
 </head>
 
 <body>
+<!-- BOTÃO -->
+<button class="btn-upload" onclick="openModal()">
+📸 Enviar prints do cupom + recarga
+</button>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">✖</span>
+
+    <h2>Enviar Comprovantes</h2>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Seu nome" required>
+      <input type="text" name="photo" placeholder="URL foto Steam" required>
+      <input type="text" name="trade" placeholder="Link de Trade Steam" required>
+
+      <label>Print do Cupom:</label>
+      <input type="file" name="coupon" required>
+
+      <label>Print da Recarga:</label>
+      <input type="file" name="deposit" required>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
 
 <div class="header">
 <h1>🔥 Sorteio M4A1-S | Terror Noturno 🔥</h1>
@@ -197,6 +260,38 @@ document.getElementById("form").addEventListener("submit", function(e){
 // INIT
 render();
 </script>
+<script>
+function openModal(){
+    document.getElementById("modal").style.display = "block";
+}
 
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    try {
+        const res = await fetch("http://localhost:3000/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        if(res.ok){
+            alert("✅ Prints enviados com sucesso!");
+            closeModal();
+        } else {
+            alert("❌ Erro ao enviar");
+        }
+
+    } catch(err){
+        alert("⚠️ Backend não conectado");
+    }
+});
+</script>
+    
 </body>
 </html>
