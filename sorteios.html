@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sorteio M4A1-S | Terror Noturno</title>
+
 <link rel="icon" type="image/png" href="https://png.pngtree.com/png-vector/20230213/ourmid/pngtree-capybara-mascot-png-image_6598924.png">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
@@ -28,7 +29,7 @@ body {
     color: #ff2e2e;
 }
 
-/* SKIN IMAGE */
+/* SKIN */
 .skin-container {
     margin: 40px auto;
     max-width: 900px;
@@ -38,15 +39,11 @@ body {
     width: 100%;
     border-radius: 15px;
     box-shadow: 0 0 40px rgba(255,0,0,0.4);
-    transition: transform 0.3s ease;
-}
-
-.skin-container img:hover {
-    transform: scale(1.03);
+    animation: glow 3s infinite;
 }
 
 /* INFO */
-.info {
+.info, .steps {
     margin: 30px auto;
     max-width: 800px;
     padding: 20px;
@@ -54,8 +51,22 @@ body {
     border-radius: 15px;
 }
 
-.info h2 {
+.info h2, .steps h2 {
     color: #ff4d4d;
+}
+
+/* PASSOS */
+.step {
+    text-align: left;
+    margin-top: 15px;
+    padding: 15px;
+    background: #111;
+    border-radius: 10px;
+    border-left: 4px solid red;
+}
+
+.step strong {
+    color: #00ffae;
 }
 
 /* BONUS */
@@ -67,34 +78,7 @@ body {
     border-radius: 10px;
 }
 
-.bonus strong {
-    color: #00ffae;
-}
-
-/* GLEAM */
-.gleam-container {
-    margin: 40px auto;
-}
-
-/* FOOTER */
-.footer {
-    margin-top: 50px;
-    padding: 20px;
-    font-size: 0.8rem;
-    opacity: 0.6;
-}
-
-/* ANIMAÇÃO */
-@keyframes glow {
-    0% { box-shadow: 0 0 10px red; }
-    50% { box-shadow: 0 0 30px red; }
-    100% { box-shadow: 0 0 10px red; }
-}
-
-.skin-container img {
-    animation: glow 3s infinite;
-}
-
+/* BOTÃO */
 .btn-proof {
     display: inline-block;
     margin-top: 30px;
@@ -110,6 +94,21 @@ body {
 
 .btn-proof:hover {
     transform: scale(1.05);
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* ANIMAÇÃO */
+@keyframes glow {
+    0% { box-shadow: 0 0 10px red; }
+    50% { box-shadow: 0 0 30px red; }
+    100% { box-shadow: 0 0 10px red; }
 }
 </style>
 
@@ -131,8 +130,46 @@ body {
     <p>Entre no sorteio abaixo e complete as ações.</p>
 
     <div class="bonus">
-        💎 <strong>BÔNUS:</strong> Use o cupom <strong>BHSKING</strong> no KeyDrop e no <strong>BHS</strong> no CSGO-Skins e ganhe MAIS CHANCES!
+        💎 <strong>BÔNUS:</strong> Use o cupom <strong>BHSKING</strong> no KeyDrop e <strong>BHS</strong> no CSGO-Skins e ganhe MAIS CHANCES!
     </div>
+</div>
+
+<!-- PASSO A PASSO -->
+<div class="steps">
+    <h2>📋 Passo a Passo</h2>
+
+    <div class="step">
+        <strong>1️⃣ Participar do sorteio:</strong><br>
+        Acesse o sorteio abaixo e complete todas as ações obrigatórias na plataforma.
+    </div>
+
+    <div class="step">
+        <strong>2️⃣ Utilizar o cupom:</strong><br>
+        Use o cupom <strong>BHSKING</strong> no KeyDrop e <strong>BHS</strong> no CSGO-Skins para ganhar chances extras.
+    </div>
+
+    <div class="step">
+        <strong>3️⃣ Realizar recarga:</strong><br>
+        Faça uma recarga no site utilizando o cupom para validar sua participação bônus.
+    </div>
+
+    <div class="step">
+        <strong>4️⃣ Tirar os prints:</strong><br>
+        Capture duas imagens:<br>
+        📸 Print do uso do cupom<br>
+        💰 Print da recarga realizada
+    </div>
+
+    <div class="step">
+        <strong>5️⃣ Enviar os comprovantes:</strong><br>
+        Clique no botão abaixo e envie os prints através do formulário.
+    </div>
+
+    <div class="step">
+        <strong>6️⃣ Validação:</strong><br>
+        Após análise, suas chances extras serão liberadas. Prints inválidos ou editados serão desconsiderados.
+    </div>
+
 </div>
 
 <div class="gleam-container">
@@ -141,16 +178,18 @@ body {
     <a class="e-widget no-button" href="https://gleam.io/fUvxq/sorteio-1-de-m4a1-s-terror-noturno" rel="nofollow">
       Sorteio 1 de M4A1-S | Terror Noturno
     </a>
+
     <a href="https://forms.gle/328byhwAtieXve5v8" target="_blank" class="btn-proof">
     📸 Enviar comprovantes (Cupom + Recarga)
     </a>
+
 </div>
 
 <div class="footer">
     © 2026 Canal do BHS - Todos os direitos reservados
 </div>
 
-<script type="text/javascript" src="https://widget.gleamjs.io/e.js" async="true"></script>
+<script src="https://widget.gleamjs.io/e.js" async></script>
 
 </body>
 </html>
