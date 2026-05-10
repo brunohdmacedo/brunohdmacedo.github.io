@@ -18,120 +18,185 @@ body {
 
 /* HEADER */
 .header {
-    padding: 40px 20px;
+    padding: 40px;
     background: radial-gradient(circle, #1f1f1f, #0a0a0a);
-    box-shadow: 0 0 30px rgba(255,0,0,0.2);
 }
 
 .header h1 {
-    font-size: 2.5rem;
-    color: #ff2e2e;
+    color: red;
 }
 
-/* SKIN IMAGE */
-.skin-container {
-    margin: 40px auto;
-    max-width: 900px;
-}
-
+/* SKIN */
 .skin-container img {
-    width: 100%;
+    width: 80%;
+    max-width: 800px;
     border-radius: 15px;
-    box-shadow: 0 0 40px rgba(255,0,0,0.4);
-    transition: transform 0.3s ease;
-}
-
-.skin-container img:hover {
-    transform: scale(1.03);
+    box-shadow: 0 0 40px red;
 }
 
 /* INFO */
 .info {
     margin: 30px auto;
-    max-width: 800px;
-    padding: 20px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 15px;
+    max-width: 700px;
 }
 
-.info h2 {
-    color: #ff4d4d;
-}
-
-/* BONUS */
-.bonus {
+/* BOTÃO */
+.btn {
     margin-top: 20px;
-    padding: 15px;
+    padding: 15px 25px;
+    background: red;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+/* PARTICIPANTES */
+#participants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.participant {
     background: #111;
-    border: 1px solid #ff2e2e;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+}
+
+.participant img {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.prints img {
+    width: 100px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    background: #111;
+    margin: 10% auto;
+    padding: 20px;
+    width: 300px;
     border-radius: 10px;
 }
-
-.bonus strong {
-    color: #00ffae;
-}
-
-/* GLEAM */
-.gleam-container {
-    margin: 40px auto;
-}
-
-/* FOOTER */
-.footer {
-    margin-top: 50px;
-    padding: 20px;
-    font-size: 0.8rem;
-    opacity: 0.6;
-}
-
-/* ANIMAÇÃO */
-@keyframes glow {
-    0% { box-shadow: 0 0 10px red; }
-    50% { box-shadow: 0 0 30px red; }
-    100% { box-shadow: 0 0 10px red; }
-}
-
-.skin-container img {
-    animation: glow 3s infinite;
-}
 </style>
-
 </head>
 
 <body>
 
 <div class="header">
-    <h1>🔥 SORTEIO EXCLUSIVO 🔥</h1>
-    <p>M4A1-S | Terror Noturno</p>
+<h1>🔥 Sorteio M4A1-S | Terror Noturno 🔥</h1>
 </div>
 
 <div class="skin-container">
-    <img src="/images/m4a1-terror.png" alt="M4A1-S Terror Noturno">
+<img src="images/m4a1-terror.png">
 </div>
 
 <div class="info">
-    <h2>🎯 Como participar</h2>
-    <p>Entre no sorteio abaixo e complete as ações.</p>
+<p>Use o cupom <b>BHSKING</b> e envie os comprovantes para ganhar mais chances!</p>
 
-    <div class="bonus">
-        💎 <strong>BÔNUS:</strong> Use o cupom <strong>BHSKING</strong> no KeyDrop e <strong>BHS</strong> no CSGO-Skins e ganhe MAIS CHANCES!
-    </div>
+<!-- BOTÃO -->
+<button class="btn" onclick="openModal()">📸 Enviar prints</button>
 </div>
 
-<div class="gleam-container">
+<!-- GLEAM -->
+<a class="e-widget no-button" href="https://gleam.io/fUvxq/sorteio-1-de-m4a1-s-terror-noturno"></a>
 
-    <!-- GLEAM -->
-    <a class="e-widget no-button" href="https://gleam.io/fUvxq/sorteio-1-de-m4a1-s-terror-noturno" rel="nofollow">
-      Sorteio 1 de M4A1-S | Terror Noturno
-    </a>
+<!-- PARTICIPANTES -->
+<h2>👥 Participantes</h2>
+<div id="participants"></div>
 
+<!-- MODAL -->
+<div id="modal" class="modal">
+<div class="modal-content">
+<h3>Enviar Provas</h3>
+
+<form id="form">
+<input type="text" id="name" placeholder="Nome" required>
+<input type="text" id="photo" placeholder="URL foto Steam" required>
+<input type="text" id="trade" placeholder="Trade Link" required>
+
+<p>Print Cupom:</p>
+<input type="file" id="coupon" required>
+
+<p>Print Recarga:</p>
+<input type="file" id="deposit" required>
+
+<button type="submit">Enviar</button>
+</form>
+
+<button onclick="closeModal()">Fechar</button>
+</div>
 </div>
 
-<div class="footer">
-    © 2026 Canal do BHS - Todos os direitos reservados
-</div>
+<script src="https://widget.gleamjs.io/e.js" async></script>
 
-<script type="text/javascript" src="https://widget.gleamjs.io/e.js" async="true"></script>
+<script>
+// MODAL
+function openModal(){ document.getElementById("modal").style.display="block"; }
+function closeModal(){ document.getElementById("modal").style.display="none"; }
+
+// CARREGAR PARTICIPANTES
+let participants = JSON.parse(localStorage.getItem("participants")) || [];
+
+function render(){
+    const container = document.getElementById("participants");
+    container.innerHTML = "";
+
+    participants.forEach(p => {
+        const div = document.createElement("div");
+        div.className = "participant";
+
+        div.innerHTML = `
+            <img src="${p.photo}">
+            <h3>${p.name}</h3>
+            <a href="${p.trade}" target="_blank">Trade</a>
+
+            <div class="prints">
+                <img src="${p.coupon}">
+                <img src="${p.deposit}">
+            </div>
+        `;
+        container.appendChild(div);
+    });
+}
+
+// FORM
+document.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const photo = document.getElementById("photo").value;
+    const trade = document.getElementById("trade").value;
+
+    const coupon = URL.createObjectURL(document.getElementById("coupon").files[0]);
+    const deposit = URL.createObjectURL(document.getElementById("deposit").files[0]);
+
+    participants.push({ name, photo, trade, coupon, deposit });
+
+    localStorage.setItem("participants", JSON.stringify(participants));
+
+    render();
+    closeModal();
+});
+
+// INIT
+render();
+</script>
 
 </body>
 </html>
