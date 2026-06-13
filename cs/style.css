@@ -450,6 +450,7 @@ header {
 }
 .twitch-btn { background: #6441a5; border-bottom: 3px solid #4b2c85; }
 .kick-btn { background: #53fc18; color: #000; border-bottom: 3px solid #3ca310; }
+.youtube-btn { background: #e1306c; border-bottom: 3px solid #b02355; color: #fff; }
 .platform-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
 .btn-assistir {
