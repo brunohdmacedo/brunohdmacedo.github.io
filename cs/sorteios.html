@@ -68,7 +68,8 @@
                 <ul>
                     <li><a href="index.html#inicio">INÍCIO</a></li>
                     <li><a href="index.html#parceiros">PARCEIROS</a></li>
-                    <li><a href="sorteios.html" class="active">SORTEIOS</a></li>
+                    <li><a href="sorteios.html" class="active"><i class="fa-solid fa-gift" style="color: var(--orange-tr); margin-right: 5px;"></i> SORTEIOS</a></li>
+                    <li><a href="index.html#ao-vivo">LIVES</a></li>
                     <li><a href="index.html#redes-sociais">REDES SOCIAIS</a></li>
                     <li><a href="index.html#videos">CONTEÚDO</a></li>
                 </ul>
@@ -80,54 +81,46 @@
     </header>
 
     <section id="inicio" class="hero">
-            <canvas id="particles-canvas"></canvas>
+        <canvas id="particles-canvas"></canvas>
+        
+        <div class="energy-glow-left"></div>
+        <div class="energy-glow-right"></div>
+
+        <div class="hero-content">
+            <a href="#" class="hero-banner-link">
+                <img src="img/sorteio.png" alt="Sorteio Oficial BHS" class="hero-featured-banner">
+            </a>
             
-            <div class="energy-glow-left"></div>
-            <div class="energy-glow-right"></div>
-
-            <!-- <img src="img/ct-tr.png" alt="Agente CT CS2" class="hero-agent ct-agent"> -->
-
-            <div class="hero-content">
-                <a href="#" class="hero-banner-link">
-                    <img src="img/sorteio.png" alt="Sorteio Oficial BHS" class="hero-featured-banner">
-                </a>
-                
-                <h1>DICAS, GAMEPLAY E TUTORIAIS</h1>
-                <p>TUDO SOBRE <span class="text-blue">COUNTER</span>-<span class="text-orange">STRIKE 2</span></p>
-                
-                <a href="#parceiros" class="btn-hero-action">
-                    PARTICIPE DA <span class="orange-text">TROPA!</span>
-                </a>
-            </div>
-
-        </section>
+            <h1>DICAS, GAMEPLAY E TUTORIAIS</h1>
+            <p>TUDO SOBRE <span class="text-blue">COUNTER</span>-<span class="text-orange">STRIKE 2</span></p>
+            
+            <a href="#parceiros" class="btn-hero-action">
+                PARTICIPE DA <span class="orange-text">TROPA!</span>
+            </a>
+        </div>
+    </section>
 
     <main class="content-wrapper">
 
-        <!-- NOVA SEÇÃO: ESCADA DE METAS DE INSCRITOS (POSICIONADA ACIMA DOS SORTEIOS) -->
         <section class="block-section">
             <div class="section-divider"><span>🎯 JORNADA DE MARCOS (METAS DE INSCRITOS)</span></div>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                <!-- Meta 1 -->
                 <div class="partner-card card-glow-orange" style="background: rgba(14,14,14,0.6); border: 1px solid rgba(255,140,0,0.3); padding: 25px; border-radius: 12px; text-align: center;">
                     <div style="font-family: var(--font-cyber); font-size: 1.5rem; font-weight: 800; color: #ff8c00; margin-bottom: 5px;">1.000 INSCRITOS</div>
                     <div style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 15px;">AWP | Fever Dream</div>
                     <span style="background: rgba(0,255,102,0.15); color: #00ff66; border: 1px solid #00ff66; font-size: 0.8rem; font-family: var(--font-cyber); padding: 4px 12px; border-radius: 4px; font-weight: 800;">ATIVADO</span>
                 </div>
-                <!-- Meta 2 -->
                 <div class="partner-card" style="background: rgba(14,14,14,0.6); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; text-align: center;">
                     <div style="font-family: var(--font-cyber); font-size: 1.5rem; font-weight: 800; color: #64748b; margin-bottom: 5px;">2.500 INSCRITOS</div>
                     <div style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 15px;">AK-47 | Recompensa</div>
                     <span style="background: rgba(255,255,255,0.05); color: #64748b; border: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; font-family: var(--font-cyber); padding: 4px 12px; border-radius: 4px; font-weight: 800;">BLOQUEADO</span>
                 </div>
-                <!-- Meta 3 -->
                 <div class="partner-card" style="background: rgba(14,14,14,0.6); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; text-align: center;">
                     <div style="font-family: var(--font-cyber); font-size: 1.5rem; font-weight: 800; color: #64748b; margin-bottom: 5px;">5.000 INSCRITOS</div>
                     <div style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 15px;">Luva | Recompensa Premium</div>
                     <span style="background: rgba(255,255,255,0.05); color: #64748b; border: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; font-family: var(--font-cyber); padding: 4px 12px; border-radius: 4px; font-weight: 800;">BLOQUEADO</span>
                 </div>
-                <!-- Meta 4 -->
                 <div class="partner-card" style="background: rgba(14,14,14,0.6); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; text-align: center;">
                     <div style="font-family: var(--font-cyber); font-size: 1.5rem; font-weight: 800; color: #e11d48; margin-bottom: 5px;">10.000 INSCRITOS</div>
                     <div style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 15px;">Faca | Recompensa Relíquia</div>
@@ -136,12 +129,10 @@
             </div>
         </section>
 
-        <!-- SEÇÃO DE CARROSREIS E FOTOS DE SKINS -->
         <section class="block-section">
             <div class="section-divider"><span>SORTEIOS ATIVOS (PARTICIPE AGORA)</span></div>
             
             <div class="sorteios-split-grid">
-                
                 <div class="sorteios-column active-box">
                     <h3><i class="fa-solid fa-robot" style="color: var(--orange-tr);"></i> ATIVOS AUTOMÁTICOS</h3>
                     <p class="column-subtitle">Sorteios rolando direto nos sistemas das plataformas</p>
@@ -152,19 +143,14 @@
 
                                 <div class="carousel-item" style="padding: 20px;">
                                     <div class="hero-badge" style="background: var(--orange-tr); margin-bottom: 10px;">CSGO-SKINS</div>
-                                    
                                     <div style="width: 100%; max-width: 320px; aspect-ratio: 16 / 9; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;">
                                         <a href="https://3d.cs.money/item/51897365851/" target="_blank" title="Visualizar em 3D" style="display: block; width: 100%; height: 100%;">
-                                            <img src="https://cs.money/assets/images/dpr:2/rs:fit:0:0:0/q:90/f:webp/t:0:FF00FF:1:1/plain/https://screenshots.cs.money/csmoney2/50a1b34ae058252d013909ec5db00c6a_large_preview.png" 
-                                                 alt="AWP - Fever Dream (Minimal Wear)" 
-                                                 style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease;">
+                                            <img src="https://cs.money/assets/images/dpr:2/rs:fit:0:0:0/q:90/f:webp/t:0:FF00FF:1:1/plain/https://screenshots.cs.money/csmoney2/50a1b34ae058252d013909ec5db00c6a_large_preview.png" alt="AWP - Fever Dream" style="width: 100%; height: 100%; object-fit: contain;">
                                         </a>
                                     </div>
-                                    
                                     <h4 style="font-family: var(--font-cyber); font-size: 1.2rem; color: #fff; text-align: center; margin-bottom: 5px;">M4A1-S | Night Terror (MW)</h4>
-                                    
                                     <p style="text-align: center; margin-bottom: 15px;">
-                                        <a href="https://3d.cs.money/item/51742282229/" target="_blank" style="color: #00d1ff; text-decoration: none; font-size: 0.9rem; font-family: sans-serif; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00d1ff'">
+                                        <a href="https://3d.cs.money/item/51742282229/" target="_blank" style="color: #00d1ff; text-decoration: none; font-size: 0.9rem;">
                                             <i class="fa-solid fa-cube"></i> Visualizar em 3D
                                         </a>
                                     </p>
@@ -173,40 +159,14 @@
 
                                 <div class="carousel-item" style="padding: 20px;">
                                     <div class="hero-badge" style="background: var(--orange-tr); margin-bottom: 10px;">CSGO-SKINS</div>
-                                    
                                     <div style="width: 100%; max-width: 320px; aspect-ratio: 16 / 9; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;">
                                         <a href="https://3d.cs.money/item/51890003443/" target="_blank" title="Visualizar em 3D" style="display: block; width: 100%; height: 100%;">
-                                            <img src="https://cs.money/assets/images/dpr:2/rs:fit:0:0:0/q:90/f:webp/t:0:FF00FF:1:1/plain/https://screenshots.cs.money/csmoney2/614fa37f2dd59f28831192b6be3e6506_large_preview.png" 
-                                                 alt="AK-47 | Aphrodite (Field-Tested)" 
-                                                 style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease;">
+                                            <img src="https://cs.money/assets/images/dpr:2/rs:fit:0:0:0/q:90/f:webp/t:0:FF00FF:1:1/plain/https://screenshots.cs.money/csmoney2/614fa37f2dd59f28831192b6be3e6506_large_preview.png" alt="AK-47 | Aphrodite" style="width: 100%; height: 100%; object-fit: contain;">
                                         </a>
                                     </div>
-                                    
                                     <h4 style="font-family: var(--font-cyber); font-size: 1.2rem; color: #fff; text-align: center; margin-bottom: 5px;">AK-47 | Aphrodite (FT)</h4>
-                                    
                                     <p style="text-align: center; margin-bottom: 15px;">
-                                        <a href="https://3d.cs.money/item/51890003443/" target="_blank" style="color: #00d1ff; text-decoration: none; font-size: 0.9rem; font-family: sans-serif; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00d1ff'">
-                                            <i class="fa-solid fa-cube"></i> Visualizar em 3D
-                                        </a>
-                                    </p>
-                                    <p class="partner-sub" style="margin-bottom: 0; text-align: center;">Use o Cupom <a href="https://csgo-skins.com/?ref=BHS" target="_blank" class="platform-btn twitch-btn"><b>BHS</b></a> para pontuar!</p>
-                                </div>
-
-                                <div class="carousel-item" style="padding: 20px;">
-                                    <div class="hero-badge" style="background: var(--orange-tr); margin-bottom: 10px;">CSGO-SKINS</div>
-                                    
-                                    <div style="width: 100%; max-width: 320px; aspect-ratio: 16 / 9; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;">
-                                        <a href="https://3d.cs.money/item/51864621376/" target="_blank" title="Visualizar em 3D" style="display: block; width: 100%; height: 100%;">
-                                            <img src="https://cs.money/assets/images/dpr:2/rs:fit:0:0:0/q:90/f:webp/t:0:FF00FF:1:1/plain/https://screenshots.cs.money/csmoney2/10c35605657c9e1e88dee61b09930304_large_preview.png" 
-                                                 alt="Galil AR | Chromatic Aberration (Minimal Wear)" 
-                                                 style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease;">
-                                        </a>
-                                    </div>
-                                    
-                                    <h4 style="font-family: var(--font-cyber); font-size: 1.2rem; color: #fff; text-align: center; margin-bottom: 5px;">Galil AR | Chromatic Aberration (MW)</h4>
-                                    
-                                    <p style="text-align: center; margin-bottom: 15px;">
-                                        <a href="https://3d.cs.money/item/51864621376/" target="_blank" style="color: #00d1ff; text-decoration: none; font-size: 0.9rem; font-family: sans-serif; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00d1ff'">
+                                        <a href="https://3d.cs.money/item/51890003443/" target="_blank" style="color: #00d1ff; text-decoration: none; font-size: 0.9rem;">
                                             <i class="fa-solid fa-cube"></i> Visualizar em 3D
                                         </a>
                                     </p>
@@ -229,28 +189,21 @@
                     <div class="past-giveaways-carousel">
                         <div class="carousel-viewport" style="background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px solid var(--border-rgba);">
                             <div class="carousel-track" id="carouselTrackAtivosManual">
-
                                 <div class="carousel-item" style="padding: 20px;">
                                     <div class="hero-badge" style="background: var(--orange-tr); margin-bottom: 10px;">PELO GLEAM</div>
-                                    
                                     <div style="width: 100%; max-width: 320px; aspect-ratio: 16 / 9; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;">
                                         <a href="https://3d.cs.money/item/51742282229/" target="_blank" title="Visualizar em 3D" style="display: block; width: 100%; height: 100%;">
-                                            <img src="https://cs.money/assets/images/dpr:1/rs:fit:0:0:0/q:90/f:webp/t:0:FF00FF:1:1/plain/https://screenshots.cs.money/csmoney2/e285e574d8ba66cd60a20200a2d907a3_large_preview.png" 
-                                                 alt="M4A1" 
-                                                 style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease;">
+                                            <img src="https://cs.money/assets/images/dpr:1/rs:fit:0:0:0/q:90/f:webp/t:0:FF00FF:1:1/plain/https://screenshots.cs.money/csmoney2/e285e574d8ba66cd60a20200a2d907a3_large_preview.png" alt="M4A1" style="width: 100%; height: 100%; object-fit: contain;">
                                         </a>
                                     </div>
-                                    
                                     <h4 style="font-family: var(--font-cyber); font-size: 1.2rem; color: #fff; text-align: center; margin-bottom: 5px;">M4A1-S | Night Terror (MW)</h4>
-                                    
                                     <p style="text-align: center; margin-bottom: 5px;">
-                                        <a href="https://3d.cs.money/item/51742282229/" target="_blank" style="color: #00d1ff; text-decoration: none; font-size: 0.9rem; font-family: sans-serif; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00d1ff'">
+                                        <a href="https://3d.cs.money/item/51742282229/" target="_blank" style="color: #00d1ff; text-decoration: none; font-size: 0.9rem;">
                                             <i class="fa-solid fa-cube"></i> Visualizar em 3D
                                         </a>
                                     </p>
                                     <p class="partner-sub" style="margin-bottom: 0; text-align: center;">Inscreva-se pelo <a href="sorteios.html#gleam" target="_blank" class="platform-btn kick-btn"><b>GLEAM</b></a> para pontuar!</p>
                                 </div>
-
                             </div>
                         </div>
                         <div class="carousel-controls">
@@ -259,14 +212,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
         
         <section class="block-section">
             <div class="section-divider"><span>📋 PASSO A PASSO</span></div>
             <div class="partners-grid step-giveaway-grid">
-                
                 <div class="partner-card">
                     <div class="partner-header">
                         <i class="fa-solid fa-right-to-bracket p-icon icon-blue"></i>
@@ -274,7 +225,6 @@
                     </div>
                     <p class="partner-desc">Conecte sua conta (Google, E-mail ou Redes Sociais) nos widgets do Gleam abaixo para começar.</p>
                 </div>
-
                 <div class="partner-card">
                     <div class="partner-header">
                         <i class="fa-solid fa-list-check p-icon icon-orange"></i>
@@ -282,7 +232,6 @@
                     </div>
                     <p class="partner-desc">Siga o canal no YouTube, Twitch e X (Twitter) para acumular suas primeiras entradas e liberar bônus.</p>
                 </div>
-
                 <div class="partner-card">
                     <div class="partner-header">
                         <i class="fa-solid fa-ticket p-icon icon-blue"></i>
@@ -290,108 +239,92 @@
                     </div>
                     <p class="partner-desc">Acesse o CSGO-Skins pela tarefa indicada, use o cupom <b>BHS</b> e garanta +50 entradas extras de uma vez!</p>
                 </div>
-
             </div>
         </section>
 
-        <!-- SEÇÃO DOS 2 SORTEIOS DO GLEAM LADO A LADO -->
         <section id="gleam" class="block-section">
             <div class="section-divider"><span>SISTEMA DE INSCRIÇÃO (WIDGETS ATIVOS)</span></div>
             <div class="sorteios-split-grid">
-                
-                <!-- SORTEIO 1: M4A1-S TERROR NOTURNO -->
                 <div class="sorteios-column active-box" style="padding: 20px; background: rgba(10,10,10,0.6); border-radius: 16px;">
                     <h3 style="font-family: var(--font-cyber); font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
                         <i class="fa-solid fa-circle-check text-blue"></i> SORTEIO 1: M4A1-S | TERROR NOTURNO
                     </h3>
                     <div class="gleam-embed-container" style="width: 100%; display: flex; justify-content: center; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 10px;">
-                        <iframe src="https://gleam.io/fUvxq/sorteio-1-de-m4a1-s-terror-noturno" 
-                                height="700" 
-                                width="100%" 
-                                frameborder="0" 
-                                allowfullscreen
-                                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation"
-                                style="min-width: 320px; max-width: 540px; border: 1px solid var(--border-rgba); border-radius: 8px; background: transparent;">
-                        </iframe>
+                        <iframe src="https://gleam.io/fUvxq/sorteio-1-de-m4a1-s-terror-noturno" height="700" width="100%" frameborder="0" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation" style="min-width: 320px; max-width: 540px; border: 1px solid var(--border-rgba); border-radius: 8px; background: transparent;"></iframe>
                     </div>
                 </div>
-
-                <!-- SORTEIO 2: AWP FEVER DREAM -->
                 <div class="sorteios-column active-box" style="padding: 20px; background: rgba(10,10,10,0.6); border-radius: 16px;">
                     <h3 style="font-family: var(--font-cyber); font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
                         <i class="fa-solid fa-circle-check text-blue"></i> SORTEIO 2: AWP | FEVER DREAM
                     </h3>
                     <div class="gleam-embed-container" style="width: 100%; display: flex; justify-content: center; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 10px;">
-                        <iframe src="https://gleam.io/UTv6R/embed?amp" 
-                                height="700" 
-                                width="100%" 
-                                frameborder="0" 
-                                allowfullscreen
-                                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation"
-                                style="min-width: 320px; max-width: 540px; border: 1px solid var(--border-rgba); border-radius: 8px; background: transparent;">
-                        </iframe>
+                        <iframe src="https://gleam.io/UTv6R/embed?amp" height="700" width="100%" frameborder="0" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation" style="min-width: 320px; max-width: 540px; border: 1px solid var(--border-rgba); border-radius: 8px; background: transparent;"></iframe>
                     </div>
                 </div>
-
             </div>
+        </section>
 
-           <!-- <div class="center-btn-box" style="text-align: center; margin-top:35px;">
-                <a href="https://forms.gle/328byhwAtieXve5v8" target="_blank" class="btn-assistir" style="display:inline-block; padding:15px 40px; text-decoration:none;">
-                    <i class="fa-solid fa-camera"></i> 📸 Enviar comprovantes (Cupom + Recarga)
-                </a>
-            </div> -->
+        <section id="parceiros" class="block-section">
+            <div class="section-divider"><span>PARCEIROS OFICIAIS</span></div>
+            
+            <div class="partners-grid">
+                <div class="partner-card card-glow-blue">
+                    <a href="https://csgo-skins.com/stream-banner/new.html" target="_blank" class="video-container">
+                        <video autoplay loop muted playsinline class="partner-img-banner">
+                            <source src="img/stream-banner.webm" type="video/webm">
+                        </video>
+                    </a>
+                    <div class="partner-header">
+                        <i class="fa-solid fa-layer-group p-icon icon-blue"></i>
+                        <h3>CSGO-SKINS</h3>
+                    </div>
+                    <p class="partner-desc">USE O CÓDIGO: <span class="highlight-blue">BHS</span></p>
+                    <p class="partner-sub">GANHE R$3 GRÁTIS + 10% BÔNUS</p>
+                    <a href="https://csgo-skins.com/?ref=BHS" target="_blank" class="btn-partner blue-bg">CUPOM BHS</a>
+                </div>
+
+                <div class="partner-card card-glow-orange">
+                    <a href="https://kd.link/?code=BHSKING" target="_blank" class="video-container">
+                        <video autoplay loop muted playsinline class="partner-img-banner">
+                            <source src="img/chasing-cluck.mp4" type="video/mp4">
+                        </video>
+                    </a>
+                    <div class="partner-header">
+                        <i class="fa-solid fa-key p-icon icon-orange"></i>
+                        <h3>KEY-DROP</h3>
+                    </div>
+                    <p class="partner-desc">USE O CÓDIGO: <span class="highlight-orange">BHSKING</span></p>
+                    <p class="partner-sub">REIVINDIQUE SEU SALDO E CAIXAS</p>
+                    <a href="https://key-drop.com?code=BHSKING" target="_blank" class="btn-partner orange-bg">CUPOM BHSKING</a>
+                </div>
+
+                <div class="partner-card card-glow-yellow">
+                    <a href="https://pirateswap.com/?ref=bhs" target="_blank" class="video-container">
+                        <video autoplay loop muted playsinline class="partner-img-banner">
+                            <source src="img/baner_on_stream.webm" type="video/webm">
+                        </video>
+                    </a>
+                    <div class="partner-header">
+                        <i class="fa-solid fa-skull p-icon icon-yellow"></i>
+                        <h3>PIRATESWAP</h3>
+                    </div>
+                    <p class="partner-desc">USE O CÓDIGO: <span class="highlight-yellow">BHS</span></p>
+                    <p class="partner-sub">GANHE 30% DE BONUS E AS MELHORES TROCAS DE SKINS</p>
+                    <a href="https://pirateswap.com/?ref=bhs" target="_blank" class="btn-partner yellow-bg">ACESSAR PIRATE</a>
+                </div>
+            </div>
         </section>
 
         <section class="block-section">
             <div class="section-divider"><span>ÚLTIMOS GANHADORES</span></div>
-            
             <div class="sorteios-split-grid">
-                
                 <div class="sorteios-column active-box">
                     <h3><i class="fa-solid fa-robot" style="color: var(--orange-tr);"></i> FINALIZADOS AUTOMÁTICOS</h3>
                     <p class="column-subtitle">Histórico de prêmios gerados no sistema dos parceiros</p>
-                    
                     <div class="past-giveaways-carousel">
                         <div class="carousel-viewport" style="background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px solid var(--border-rgba);">
                             <div class="carousel-track" id="carouselTrackFinalizadosAuto">
-                                 <!-- 
-                                <div class="carousel-item" style="padding: 20px;">
-                                    <div style="display: flex; align-items: center; gap: 15px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; text-align: left;">
-                                        <img src="https://avatars.steamstatic.com/c5d565e34252a16d82d1c667a4216954a6ec7d57_full.jpg" alt="Avatar Ganhador" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--orange-tr);">
-                                        <div>
-                                            <h4 style="color:#fff; font-size:1.1rem; font-family: var(--font-base);">@FallenFilho</h4>
-                                            <small style="color:var(--orange-tr); font-weight:700;"><i class="fa-solid fa-shield-halved"></i> CSGO-Skins</small>
-                                        </div>
-                                    </div>
-                                    <img src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0whJzfOQ_GLbInBHd36fSL_I68g5E11SRE3vSuH7ks_CBxo6K1VSuL-sFAZu7P3dJzxz4N26gY6Hl_Kla7mFwz9XupAn2LuXo92m2wXm_kVrNW3wI9CcJgA3NwuB_gK_lO6-h5C56ZrJyHA2uXRzs3btgCOgSgbeA-lYULvSGAuC" alt="Glock" style="height: 85px; object-fit:contain; margin: 10px 0;">
-                                    <span style="font-weight:700; color:#fff; font-size:1rem;">Glock-18 | Bullet Queen</span>
                                 </div>
-
-                                <div class="carousel-item" style="padding: 20px;">
-                                    <div style="display: flex; align-items: center; gap: 15px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; text-align: left;">
-                                        <img src="https://avatars.steamstatic.com/f9d784a34db24dfa6ee7a5a3a7f8a3abfc1c19b6_full.jpg" alt="Avatar Ganhador" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--orange-tr);">
-                                        <div>
-                                            <h4 style="color:#fff; font-size:1.1rem; font-family: var(--font-base);">@TropaBHS_1</h4>
-                                            <small style="color:var(--orange-tr); font-weight:700;"><i class="fa-solid fa-shield-halved"></i> CSGO-Skins</small>
-                                        </div>
-                                    </div>
-                                    <img src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0whJzfOQ_GLbInBHd36fSL_I68g5E11SRE3vSuH7ks_CBxo6K1VSuL-sFAZu7P3dJzxz4N26gY6Hl_Kla7mFwz9XupAn2LuXo92m2wXm_kVrNW3wI9CcJgA3NwuB_gK_lO6-h5C56ZrJyHA2uXRzs3fvBSV0BgbbvstgCOgSgbeA_n6fXv6" alt="USP" style="height: 85px; object-fit:contain; margin: 10px 0;">
-                                    <span style="font-weight:700; color:#fff; font-size:1rem;">USP-S | Cyrex (MW)</span>
-                                </div>
-
-                                <div class="carousel-item" style="padding: 20px;">
-                                    <div style="display: flex; align-items: center; gap: 15px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; text-align: left;">
-                                        <img src="https://avatars.steamstatic.com/83af13038a8e1697dbb856c8028799a6cf716260_full.jpg" alt="Avatar Ganhador" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--orange-tr);">
-                                        <div>
-                                            <h4 style="color:#fff; font-size:1.1rem; font-family: var(--font-base);">@CapivaraKing</h4>
-                                            <small style="color:var(--orange-tr); font-weight:700;"><i class="fa-solid fa-shield-halved"></i> Key-Drop</small>
-                                        </div>
-                                    </div>
-                                    <img src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0whJzfOQ_GLbInBHd36fSL_I68g5E11SRE3vSuH7ks_CBxo6K1VSuL-sFAZu7P3dJzxz4N26gY6Hl_Kla7mFwz9XupAn2LuXo92m2wXm_kVrNW3wI9CcJgA3NwuB_gK_lO6-h5C56ZrJyHA2uXRzs3fvBSV0BgbbLfv6" alt="AK-47" style="height: 85px; object-fit:contain; margin: 10px 0;">
-                                    <span style="font-weight:700; color:#fff; font-size:1rem;">AK-47 | Redline (FT)</span>
-                                </div>
-                            -->
-                            </div>
                         </div>
                         <div class="carousel-controls">
                             <button class="carousel-btn prev" onclick="moveCarrosselFinalizadosAuto(-1)"><i class="fa-solid fa-chevron-left"></i></button>
@@ -403,48 +336,10 @@
                 <div class="sorteios-column finished-box">
                     <h3><i class="fa-solid fa-clipboard-list" style="color: var(--blue-ct);"></i> FINALIZADOS MANUAIS</h3>
                     <p class="column-subtitle">Ganhadores oficiais dos sorteios da comunidade BHS</p>
-                    
                     <div class="past-giveaways-carousel">
                         <div class="carousel-viewport" style="background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px solid var(--border-rgba);">
                             <div class="carousel-track" id="carouselTrackFinalizadosManual">
-                               <!--
-                                <div class="carousel-item" style="padding: 20px;">
-                                    <div style="display: flex; align-items: center; gap: 15px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; text-align: left;">
-                                        <img src="https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cd3df_full.jpg" alt="Avatar Ganhador" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--blue-ct);">
-                                        <div>
-                                            <h4 style="color:#fff; font-size:1.1rem; font-family: var(--font-base);">@MumuDoCS2</h4>
-                                            <small style="color:var(--blue-ct); font-weight:700;"><i class="fa-solid fa-trophy"></i> Sorteio do Canal</small>
-                                        </div>
-                                    </div>
-                                    <img src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0whJzfOQ_GLbInBHd36fSL_I68g5E11SRE3vSuH7ks_CBxo6K1VSuL-sFAZu7P3dJyh97Nm6xoTYkaOmY-KGlm0JvZMj3byR8In02Ayn-kZqNDv2coSccwY8MFiC8wS_xLq-hpC9vsnMnHA26XF3u3zfyxep10wTbuZt16OfSgbeAxlXQv0DnwY" alt="AWP" style="height: 85px; object-fit:contain; margin: 10px 0;">
-                                    <span style="font-weight:700; color:#fff; font-size:1rem;">AWP | Asiimov (FT)</span>
                                 </div>
-
-                                <div class="carousel-item" style="padding: 20px;">
-                                    <div style="display: flex; align-items: center; gap: 15px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; text-align: left;">
-                                        <img src="https://avatars.steamstatic.com/a9394622f67ff754ef9281efef9ec35efea01a1a_full.jpg" alt="Avatar Ganhador" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--blue-ct);">
-                                        <div>
-                                            <h4 style="color:#fff; font-size:1.1rem; font-family: var(--font-base);">@ZeraSkins</h4>
-                                            <small style="color:var(--blue-ct); font-weight:700;"><i class="fa-solid fa-trophy"></i> Sorteio do Canal</small>
-                                        </div>
-                                    </div>
-                                    <img src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0whJzfOQ_GLbInBHd36fSL_I68g5E11SRE3vSuH7ks_CBxo6K1VSuL-sFAZu7P3dJzxz4N26gY6Hl_Kla7mFwz9XupAn2LuXo92m2wXm_kVrNW3wI9CcJgA3NwuB_gK_lO6-h5C56ZrJyHA2uXRzs3fvBSV0BgbbvstgCOgSgbeA_mscVvo" alt="M4A1" style="height: 85px; object-fit:contain; margin: 10px 0;">
-                                    <span style="font-weight:700; color:#fff; font-size:1rem;">M4A1-S | Night Terror</span>
-                                </div>
-
-                                <div class="carousel-item" style="padding: 20px;">
-                                    <div style="display: flex; align-items: center; gap: 15px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; text-align: left;">
-                                        <img src="https://avatars.steamstatic.com/e2e505ba476127e77b3104fc8196c82ffc161cd0_full.jpg" alt="Avatar Ganhador" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--blue-ct);">
-                                        <div>
-                                            <h4 style="color:#fff; font-size:1.1rem; font-family: var(--font-base);">@IgorOBrabo</h4>
-                                            <small style="color:var(--blue-ct); font-weight:700;"><i class="fa-solid fa-trophy"></i> Sorteio do Canal</small>
-                                        </div>
-                                    </div>
-                                    <img src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0whJzfOQ_GLbInBHd36fSL_I68g5E11SRE3vSuH7ks_CBxo6K1VSuL-sFAZu7P3dJzxz4N26gY6Hl_Kla7mFwz9XupAn2LuXo92m2wXm_kVrNW3wI9CcJgA3NwuB_gK_lO6-h5C56ZrJyHA2uXRzs3fvBSV0BgbbvstgCOgSgbeA_nb4XvQ" alt="Deagle" style="height: 85px; object-fit:contain; margin: 10px 0;">
-                                    <span style="font-weight:700; color:#fff; font-size:1rem;">Desert Eagle | Mecha Ind.</span>
-                                </div> -->
-
-                            </div>
                         </div>
                         <div class="carousel-controls">
                             <button class="carousel-btn prev" onclick="moveCarrosselFinalizadosManual(-1)"><i class="fa-solid fa-chevron-left"></i></button>
@@ -452,18 +347,15 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
         <section id="ao-vivo" class="block-section live-section">
             <div class="live-container">
-                
                 <div class="live-info">
                     <div class="live-badge-status"><span class="pulse-dot"></span> AO VIVO AGORA</div>
                     <h3>LIVE ON!</h3>
                     <p>Vem trocar uma ideia e jogar com a tropa! Acompanhe a gameplay em alto nível e abertura de caixas nas plataformas:</p>
-                    
                     <div class="live-platforms-btns">
                         <a href="https://www.twitch.tv/bhsga" target="_blank" class="platform-btn twitch-btn">
                             <i class="fa-brands fa-twitch"></i> TWITCH
@@ -477,11 +369,9 @@
                     </div>
                     <a href="https://www.youtube.com/@CanalDoBHS" target="_blank" class="btn-assistir">ASSISTIR AGORA</a>
                 </div>
-                
                 <div class="live-banner-preview">
                     <img src="img/lives.png" alt="Preview da Live do BHS" onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&width=600'">
                 </div>
-
             </div>
         </section>
 
@@ -515,13 +405,12 @@
             </div>
         </section>
 
-
     </main>
 
     <footer>
         <div class="footer-content">
             <p>&copy; 2026 BHS CS2 &mdash; Todos os direitos reservados.</p>
-            <small>Este site não possui afiliação direta com a Valve Corporation.</small>
+            <small>Este site não possui afiliação direta com a Valve Corporation. Marcas registradas pertencem aos seus respectivos donos.</small>
         </div>
     </footer>
 
@@ -541,49 +430,48 @@
     <script src="main.js"></script>
     <script src="particles.js"></script>
 
-<script>
+    <script>
         let idxAtivosAuto = 0;
         let idxAtivosManual = 0;
         let idxFinalizadosAuto = 0;
         let idxFinalizadosManual = 0;
 
-        // 1. CARROSSEL: ATIVOS AUTOMÁTICOS
         function moveCarrosselAtivosAuto(dir) {
             const track = document.getElementById("carouselTrackAtivosAuto");
             if(!track) return;
             const items = track.querySelectorAll(".carousel-item");
+            if(items.length === 0) return;
             idxAtivosAuto = (idxAtivosAuto + dir + items.length) % items.length;
             track.style.transform = `translateX(${-idxAtivosAuto * 100}%)`;
         }
 
-        // 2. CARROSSEL: ATIVOS MANUAIS (BHS)
         function moveCarrosselAtivosManual(dir) {
             const track = document.getElementById("carouselTrackAtivosManual");
             if(!track) return;
             const items = track.querySelectorAll(".carousel-item");
+            if(items.length === 0) return;
             idxAtivosManual = (idxAtivosManual + dir + items.length) % items.length;
             track.style.transform = `translateX(${-idxAtivosManual * 100}%)`;
         }
 
-        // 3. CARROSSEL: FINALIZADOS AUTOMÁTICOS
         function moveCarrosselFinalizadosAuto(dir) {
             const track = document.getElementById("carouselTrackFinalizadosAuto");
             if(!track) return;
             const items = track.querySelectorAll(".carousel-item");
+            if(items.length === 0) return;
             idxFinalizadosAuto = (idxFinalizadosAuto + dir + items.length) % items.length;
             track.style.transform = `translateX(${-idxFinalizadosAuto * 100}%)`;
         }
 
-        // 4. CARROSSEL: FINALIZADOS MANUAIS (BHS)
         function moveCarrosselFinalizadosManual(dir) {
             const track = document.getElementById("carouselTrackFinalizadosManual");
             if(!track) return;
             const items = track.querySelectorAll(".carousel-item");
+            if(items.length === 0) return;
             idxFinalizadosManual = (idxFinalizadosManual + dir + items.length) % items.length;
             track.style.transform = `translateX(${-idxFinalizadosManual * 100}%)`;
         }
 
-        // Timers Individuais de Rotação Contínua Automatizada (Muda a cada 4 a 6 segundos para não sincronizar tudo junto)
         setInterval(() => moveCarrosselAtivosAuto(1), 6000);
         setInterval(() => moveCarrosselAtivosManual(1), 8000);
         setInterval(() => moveCarrosselFinalizadosAuto(1), 6500);
