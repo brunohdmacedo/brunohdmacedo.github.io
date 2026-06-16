@@ -23,3 +23,22 @@ window.addEventListener("scroll",()=>{
      translateY(${scroll*0.05}px)`;
 
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const mobileMenuBtn = document.getElementById("mobile-menu");
+    const mainMenu = document.querySelector(".main-menu");
+
+    if (mobileMenuBtn && mainMenu) {
+        mobileMenuBtn.addEventListener("click", function() {
+            mainMenu.classList.toggle("active");
+            
+            // Alterna o ícone entre barras e "X" fechar
+            const icon = mobileMenuBtn.querySelector("i");
+            if (mainMenu.classList.contains("active")) {
+                icon.className = "fa-solid fa-xmark";
+            } else {
+                icon.className = "fa-solid fa-bars";
+            }
+        });
+    }
+});
