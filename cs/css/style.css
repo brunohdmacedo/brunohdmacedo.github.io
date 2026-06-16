@@ -1017,3 +1017,280 @@ border-top:1px solid #222;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Organiza os 3 shorts lado a lado automaticamente */
     gap: 20px;
 }
+
+/* ==========================================================================
+   1. REGRAS GERAIS E FLUIDEZ (Base para qualquer tela)
+   ========================================================================== */
+:root {
+    --orange-tr: #ff8c00;
+    --blue-ct: #00a2ff;
+    /* Usar rem facilita o escalonamento em TVs */
+    font-size: 16px; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+    background-color: #0b0c10;
+    color: #fff;
+}
+
+/* Imagens, Vídeos e Iframes fluidos */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ajuste específico para os containers de vídeos do YouTube/Twitch mantendo proporção 16:9 */
+.thumb-box, .short-viewport, .popup-video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Proporção 16:9 */
+}
+
+.thumb-box iframe, .short-viewport iframe, .popup-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Otimização para Shorts (Proporção vertical 9:16) */
+.short-viewport {
+    padding-top: 177.77%; 
+}
+
+/* Containers principais com margens seguras nas laterais */
+.content-wrapper, .nav-container, .sorteios-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* Ocultar o botão de menu por padrão no PC/TV */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+
+/* ==========================================================================
+   2. MEDIA QUERY: DISPOSITIVOS MÓVEIS (Telas até 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    
+    /* Menu de Navegação Vertical no Mobile */
+    .nav-container {
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o botão hamburguer */
+    }
+
+    .main-menu {
+        display: none; /* Oculta o menu padrão. Você pode alternar para 'flex' via JavaScript (classe .active) */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(11, 12, 16, 0.95);
+        flex-direction: column;
+        padding: 20px 0;
+        border-bottom: 2px solid var(--orange-tr);
+    }
+
+    .main-menu.active {
+        display: flex;
+    }
+
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .nav-actions {
+        display: none; /* Esconde o botão de cupom do topo para poupar espaço (pode mantê-lo apenas no CTA do final) */
+    }
+
+    /* Hero Section (Início) */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 100px;
+        min-height: auto;
+    }
+
+    /* Esconder ou diminuir os Agentes do CS2 no mobile para não cobrirem o texto */
+    .hero-agent {
+        display: none; 
+    }
+
+    .hero-logo {
+        max-width: 150px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Grids transformados em coluna única (Sorteios, Parceiros, Redes, Vídeos) */
+    .sorteios-split-grid,
+    .partners-grid,
+    .quick-access-grid,
+    .social-links-bar-grid,
+    .media-mega-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Ajuste da seção Ao Vivo */
+    .live-container {
+        display: flex;
+        flex-direction: column-reverse; /* Banner em cima, texto e botões embaixo */
+        gap: 20px;
+    }
+
+    .live-platforms-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .platform-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Ajuste dos botões de copiar cupom */
+    .cta-actions-btns, .instruction-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .btn-copy-action, .btn-copy-instruction, .btn-access-platform {
+        width: 100%;
+    }
+    
+    /* Pop-up flutuante menor no Mobile */
+    #live-popup-stream {
+        width: 90vw;
+        bottom: 10px;
+        right: 5%;
+    }
+}
+
+
+/* ==========================================================================
+   3. MEDIA QUERY: TABLETS E NOTEBOOKS (Telas entre 769px e 1200px)
+   ========================================================================== */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    .main-menu ul {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    .hero-agent {
+        max-height: 70vh; /* Reduz o tamanho dos bonecos para não espremer o texto */
+    }
+
+    .partners-grid, .quick-access-grid {
+        grid-template-columns: repeat(2, 1fr); /* Transforma grids de 3 colunas em 2 colunas */
+    }
+
+    .media-mega-grid {
+        grid-template-columns: repeat(2, 1fr); /* Agrupa colunas de mídia de forma equilibrada */
+    }
+}
+
+
+/* ==========================================================================
+   4. MEDIA QUERY: COMPUTADORES / DESKTOP PADRÃO (Telas de 1201px até 1920px)
+   ========================================================================== */
+@media screen and (min-width: 1201px) {
+    /* Definição de layouts em Grid nativo para alta performance */
+    .sorteios-split-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+    }
+
+    .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .quick-access-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .media-mega-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .live-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 50px;
+    }
+}
+
+
+/* ==========================================================================
+   5. MEDIA QUERY: SMART TVS E TELAS 4K ULTRA-WIDE (Acima de 1921px)
+   ========================================================================== */
+@media screen and (min-width: 1921px) {
+    :root {
+        /* A mágica para Smart TVs: Aumentando a base do Rem, tudo escalona proporcionalmente de forma nítida */
+        font-size: 24px; 
+    }
+
+    .content-wrapper, .nav-container, .sorteios-container {
+        max-width: 2200px; /* Expande o limite do conteúdo em telas gigantes */
+    }
+
+    header {
+        padding: 25px 0;
+    }
+
+    /* Adiciona espaçamentos generosos adequados para navegação à distância (sofá) */
+    .block-section {
+        padding: 100px 0;
+    }
+
+    /* Melhora a legibilidade e contraste de elementos brilhantes (Glow) comuns em TVs */
+    .card-glow-blue, .card-glow-orange, .card-glow-yellow {
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Garante que os vídeos fiquem gigantes e bem distribuídos na TV */
+    .media-mega-grid {
+        gap: 40px;
+    }
+}
