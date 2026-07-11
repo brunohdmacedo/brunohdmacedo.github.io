@@ -2037,3 +2037,83 @@ img, video, iframe {
         grid-template-columns:1fr;
     }
 }
+
+.finished-giveaway{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:15px;
+}
+
+.finished-skin{
+    width:100%;
+    max-width:260px;
+    object-fit:contain;
+}
+
+.winner-card{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.winner-avatar{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid var(--blue-ct);
+}
+
+.winner-info{
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.winner-label{
+
+    display:inline-block;
+
+    padding:4px 10px;
+
+    margin-bottom:6px;
+
+    border-radius:20px;
+
+    background:rgba(0,162,255,.15);
+
+    color:var(--blue-ct);
+
+    font-size:.8rem;
+
+    font-weight:700;
+}
+
+.winner-info strong{
+
+    color:#fff;
+}
+
+.winner-info small{
+
+    color:#bdbdbd;
+}
