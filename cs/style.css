@@ -2166,8 +2166,6 @@ img, video, iframe {
 
 }
 
-
-
 .partner-img-banner{
 
     width:100%;
@@ -2179,5 +2177,98 @@ img, video, iframe {
     display:block;
 
     border-radius:12px;
+
+}
+
+/* ===========================
+   GANHADORES AUTOMÁTICOS
+=========================== */
+
+.winner-card-auto{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    width:100%;
+    padding:20px;
+}
+
+.finished-skin{
+    width:100%;
+    max-width:260px;
+    height:auto;
+    object-fit:contain;
+    margin:0 auto 18px;
+    display:block;
+}
+
+.winner-card-auto h4{
+    margin:0 0 18px;
+    text-align:center;
+    color:#fff;
+}
+
+.winner-card{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+
+    width:100%;
+    max-width:340px;
+
+    margin:0 auto;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.winner-avatar{
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+    object-fit:cover;
+
+    border:2px solid var(--blue-ct);
+}
+
+.winner-info{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+}
+
+.winner-label{
+    display:inline-block;
+    margin-bottom:6px;
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    background:rgba(0,162,255,.15);
+    color:var(--blue-ct);
+
+    font-size:.85rem;
+    font-weight:700;
+}
+
+@media (max-width:768px){
+
+    .winner-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .winner-info{
+        align-items:center;
+    }
 
 }
