@@ -1789,3 +1789,251 @@ img, video, iframe {
         align-items:center;
     }
 }
+
+/* =======================================================
+   CTA CUPOM
+======================================================= */
+
+.cta-wrapper{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 15px;
+}
+
+.cta-inner-card{
+
+    width:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:35px;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#121826,#1b2535);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 10px 35px rgba(0,0,0,.30);
+
+    overflow:hidden;
+}
+
+.star-badge{
+
+    width:80px;
+    height:80px;
+
+    min-width:80px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#ff9800,#ff6b00);
+
+    font-size:34px;
+
+    color:#fff;
+
+    box-shadow:0 0 25px rgba(255,140,0,.45);
+}
+
+.cta-info{
+
+    flex:1;
+}
+
+.cta-mini-title{
+
+    color:#5fb9ff;
+
+    font-size:.85rem;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+}
+
+.cta-info h2{
+
+    margin:8px 0 12px;
+
+    font-size:2rem;
+}
+
+.cta-info p{
+
+    color:#d2d2d2;
+
+    line-height:1.7;
+
+    max-width:650px;
+}
+
+.cta-actions-btns{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    justify-content:flex-end;
+}
+
+.btn-copy-action{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:185px;
+
+    height:72px;
+
+    padding:0 18px;
+
+    border-radius:14px;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.btn-copy-action div{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+}
+
+.btn-copy-action strong{
+
+    font-size:1rem;
+}
+
+.btn-copy-action small{
+
+    font-size:.75rem;
+
+    opacity:.8;
+}
+
+.btn-copy-action i{
+
+    font-size:20px;
+}
+
+.btn-copy-action:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+/* ===========================
+      Notebook
+=========================== */
+
+@media (max-width:1200px){
+
+    .cta-inner-card{
+
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+    .cta-info p{
+
+        max-width:100%;
+    }
+
+    .cta-actions-btns{
+
+        justify-content:center;
+    }
+
+}
+
+/* ===========================
+      Celular
+=========================== */
+
+@media (max-width:768px){
+
+    .cta-inner-card{
+
+        padding:25px 18px;
+    }
+
+    .cta-info h2{
+
+        font-size:1.5rem;
+    }
+
+    .cta-actions-btns{
+
+        width:100%;
+
+        flex-direction:column;
+    }
+
+    .btn-copy-action{
+
+        width:100%;
+    }
+
+}
+
+/* ===========================
+   VÍDEOS / SHORTS / LIVES
+=========================== */
+
+.media-mega-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:25px;
+    align-items:start;
+}
+
+.media-column{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:20px;
+    height:100%;
+}
+
+.media-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    flex:1;
+}
+
+.btn-media-more{
+    margin-top:auto;
+}
+
+@media(max-width:992px){
+    .media-mega-grid{
+        grid-template-columns:1fr;
+    }
+}
