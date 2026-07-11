@@ -2117,3 +2117,35 @@ img, video, iframe {
 
     color:#bdbdbd;
 }
+
+.sorteios-split-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:25px;
+    align-items:stretch;
+}
+
+.sorteios-column{
+    display:flex;
+    flex-direction:column;
+}
+
+.winner-card-auto{
+    margin-top:20px;
+    flex:1;
+}
+
+.carousel-viewport{
+    background:rgba(0,0,0,.4);
+    border-radius:12px;
+    border:1px solid var(--border-rgba);
+    flex:1;
+}
+
+@media (max-width:900px){
+
+    .sorteios-split-grid{
+        grid-template-columns:1fr;
+    }
+
+}
