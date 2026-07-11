@@ -1706,3 +1706,86 @@ img, video, iframe {
         gap: 40px;
     }
 }
+
+.finished-item-card{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.finished-item-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(0,162,255,.45);
+    box-shadow:0 0 18px rgba(0,162,255,.18);
+}
+
+.winner-avatar{
+    flex-shrink:0;
+}
+
+.winner-avatar img{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--blue-ct);
+    box-shadow:0 0 12px rgba(0,162,255,.45);
+}
+
+.finished-info{
+    flex:1;
+}
+
+.finished-info h4{
+    margin-bottom:10px;
+}
+
+.winner-details{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.winner-tag{
+    display:inline-flex;
+    align-items:center;
+    width:fit-content;
+    padding:5px 12px;
+    border-radius:50px;
+    background:rgba(0,162,255,.15);
+    color:var(--blue-ct);
+    font-weight:700;
+    font-size:.9rem;
+}
+
+.winner-name,
+.winner-site{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#d8d8d8;
+    font-size:.95rem;
+}
+
+.winner-name i,
+.winner-site i{
+    color:var(--orange-tr);
+    width:18px;
+}
+
+@media (max-width:600px){
+
+    .finished-item-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .winner-details{
+        align-items:center;
+    }
+}
