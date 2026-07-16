@@ -138,6 +138,7 @@
             <div class="section-divider"><span>SORTEIOS ATIVOS (PARTICIPE AGORA)</span></div>
             
             <div class="sorteios-split-grid">
+                <!-- CARROSSEL 1: ATIVOS AUTOMÁTICOS -->
                 <div class="sorteios-column active-box">
                     <h3><i class="fa-solid fa-robot" style="color: var(--orange-tr);"></i> ATIVOS AUTOMÁTICOS</h3>
                     <p class="column-subtitle">Sorteios rolando direto nos sistemas das plataformas</p>
@@ -203,13 +204,15 @@
                     </div>
                 </div>
 
+                <!-- CARROSSEL 2: ATIVOS MANUAIS (CORRIGIDO) -->
                 <div class="sorteios-column finished-box">
                     <h3><i class="fa-solid fa-clipboard-list" style="color: var(--blue-ct);"></i> ATIVOS MANUAIS (BHS)</h3>
                     <p class="column-subtitle">Sorteios gerenciados pelo canal através do Gleam</p>
 
                     <div class="past-giveaways-carousel">
                         <div class="carousel-viewport" style="background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px solid var(--border-rgba);">
-                            <div class="carousel-track" id="carouselTrackAtivosAuto">
+                            <!-- Corrigido id para carouselTrackAtivosManual -->
+                            <div class="carousel-track" id="carouselTrackAtivosManual">
 
                                 <div class="carousel-item" style="padding: 20px;">
                                     <div class="hero-badge" style="background: var(--orange-tr); margin-bottom: 10px;">PELO GLEAM</div>
@@ -246,8 +249,9 @@
                             </div>
                         </div>
                         <div class="carousel-controls">
-                            <button class="carousel-btn prev" onclick="moveCarrosselAtivosAuto(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                            <button class="carousel-btn next" onclick="moveCarrosselAtivosAuto(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                            <!-- Corrigidos os eventos de clique para usar a função moveCarrosselAtivosManual -->
+                            <button class="carousel-btn prev" onclick="moveCarrosselAtivosManual(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="carousel-btn next" onclick="moveCarrosselAtivosManual(1)"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -281,7 +285,7 @@
             </div>
         </section>
 
-    <section id="gleam" class="block-section">
+        <section id="gleam" class="block-section">
             <div class="section-divider"><span>SISTEMA DE INSCRIÇÃO (WIDGETS ATIVOS)</span></div>
             <div class="sorteios-split-grid">
                 
@@ -320,161 +324,212 @@
             </div>
         </section>
 
-            <section id="parceiros" class="block-section">
-                <div class="section-divider"><span>PARCEIROS OFICIAIS</span></div>
+        <section id="parceiros" class="block-section">
+            <div class="section-divider"><span>PARCEIROS OFICIAIS</span></div>
+            
+            <div class="partners-grid">
+                <div class="partner-card card-glow-blue">
+
+                    <a href="https://csgo-skins.com/?ref=BHS" target="_blank" class="video-container">
+                    
+                        <video autoplay muted loop playsinline class="partner-img-banner">
+                            <source src="https://csgo-skins.com/resources/events/roadtrip/marketing/en/stream-banner.webm" type="video/webm">
+                        </video>
+                    
+                    </a>
+                    
+                    <div class="partner-header">
+                        <i class="fa-solid fa-layer-group p-icon icon-blue"></i>
+                        <h3>CSGO-SKINS</h3>
+                    </div>
+                    
+                    <p class="partner-desc">
+                        USE O CÓDIGO:
+                        <span class="highlight-blue">BHS</span>
+                    </p>
+                    
+                    <p class="partner-sub">
+                        GANHE R$3 GRÁTIS + 10% BÔNUS
+                    </p>
+                    
+                    <a href="https://csgo-skins.com/?ref=BHS"
+                       target="_blank"
+                       class="btn-partner blue-bg">
+                         CUPOM BHS
+                    </a>
+                    
+                </div>
                 
-                <div class="partners-grid">
-                    <div class="partner-card card-glow-blue">
+                <div class="partner-card card-glow-orange">
+                    <a href="https://pirateswap.com/?ref=bhs" target="_blank" class="video-container">
+                    
+                        <video autoplay muted loop playsinline class="partner-img-banner">
+                            <source src="https://pirateswap.com/video/stream_video/baner_on_stream.webm"
+                                    type="video/webm">
+                        </video>
+                    
+                    </a>
+                    
+                    <div class="partner-header">
+                        <i class="fa-solid fa-skull p-icon icon-orange"></i>
+                        <h3>PIRATESWAP</h3>
+                    </div>
+                    
+                    <p class="partner-desc">
+                        USE O CÓDIGO:
+                        <span class="highlight-orange">BHS</span>
+                    </p>
+                    
+                    <p class="partner-sub">
+                        GANHE 35% EXTRA DE BÔNUS
+                    </p>
+                    
+                    <a href="https://pirateswap.com/?ref=bhs"
+                       target="_blank"
+                       class="btn-partner orange-bg">
+                         ACESSAR PIRATE
+                    </a>
+                </div>
+                
+                <div class="partner-card card-glow-yellow">
+                
+                    <a href="https://cliente.in/aff.php?aff=571"
+                       target="_blank"
+                       class="video-container">
+                    
+                        <img
+                            src="https://brunohdmacedo.github.io/cs/img/Gif-720x247---TS3Host.gif"
+                            alt="TS3HOST - Parceria BHS"
+                            class="partner-img-banner gif-banner"
+                            loading="lazy">
+                    
+                    </a>
+                    
+                    <div class="partner-header">
+                        <i class="fa-solid fa-headphones p-icon icon-yellow"></i>
+                        <h3>TS3HOST</h3>
+                    </div>
+                    
+                    <p class="partner-desc">
+                        GANHE <span class="highlight-yellow">3 DIAS GRÁTIS</span>
+                    </p>
+                    
+                    <p class="partner-sub">
+                        E DESCONTO EXTRA EM TODO O SITE
+                    </p>
+                    
+                    <a href="https://cliente.in/aff.php?aff=571"
+                       target="_blank"
+                       class="btn-partner yellow-bg">
+                         ACESSAR TS3HOST
+                    </a>
 
-                        <a href="https://csgo-skins.com/?ref=BHS" target="_blank" class="video-container">
-                    
-                            <video autoplay muted loop playsinline class="partner-img-banner">
-                                <source src="https://csgo-skins.com/resources/events/roadtrip/marketing/en/stream-banner.webm" type="video/webm">
-                            </video>
-                    
-                        </a>
-                    
-                        <div class="partner-header">
-                            <i class="fa-solid fa-layer-group p-icon icon-blue"></i>
-                            <h3>CSGO-SKINS</h3>
+                </div>
+                
+            </div>
+
+            <div class="center-btn-box">
+                <a href="#cta-cupom" class="btn-outline-glow">VER TODOS PARCEIROS</a>
+            </div>
+        </section>
+
+        <section class="block-section">
+
+            <div class="section-divider">
+                <span>ÚLTIMOS GANHADORES</span>
+            </div>
+
+            <div class="sorteios-split-grid">
+
+                <!-- =================== AUTOMÁTICOS =================== -->
+                <div class="sorteios-column active-box">
+
+                    <h3>
+                        <i class="fa-solid fa-robot" style="color: var(--orange-tr);"></i>
+                        FINALIZADOS AUTOMÁTICOS
+                    </h3>
+
+                    <p class="column-subtitle">
+                        Histórico de prêmios gerados automaticamente pela plataforma parceira.
+                    </p>
+
+                    <div class="winner-card-auto">
+
+                        <img class="finished-skin"
+                             src="https://items.csgo-skins.com/images/48d6627a95e71ef7013c2e2593cd8132d4b53dffe42f360c7ded68b58ac306f7.webp"
+                             alt="Galil AR | Chromatic Aberration">
+
+                        <h4>★ Galil AR | Chromatic Aberration (MW)</h4>
+
+                        <div class="winner-card">
+
+                            <img class="winner-avatar"
+                                 src="https://avatars.akamai.steamstatic.com/20971b50a02d8d21254e7b65ae0b3b5754607a58_full.jpg"
+                                 alt="MrB1SK3L4">
+
+                            <div class="winner-info">
+
+                                <span class="winner-label">
+                                    🏆 Ganhador
+                                </span>
+
+                                <strong>MrB1SK3L4</strong>
+
+                                <small>
+                                    <i class="fa-solid fa-globe"></i>
+                                    csgo-skins.com
+                                </small>
+
+                            </div>
+
                         </div>
-                    
-                        <p class="partner-desc">
-                            USE O CÓDIGO:
-                            <span class="highlight-blue">BHS</span>
-                        </p>
-                    
-                        <p class="partner-sub">
-                            GANHE R$3 GRÁTIS + 10% BÔNUS
-                        </p>
-                    
-                        <a href="https://csgo-skins.com/?ref=BHS"
-                           target="_blank"
-                           class="btn-partner blue-bg">
-                            CUPOM BHS
-                        </a>
-                    
-                    </div>
-                    
-                    <div class="partner-card card-glow-orange">
-                        <a href="https://pirateswap.com/?ref=bhs" target="_blank" class="video-container">
-                    
-                            <video autoplay muted loop playsinline class="partner-img-banner">
-                                <source src="https://pirateswap.com/video/stream_video/baner_on_stream.webm"
-                                        type="video/webm">
-                            </video>
-                    
-                        </a>
-                    
-                        <div class="partner-header">
-                            <i class="fa-solid fa-skull p-icon icon-orange"></i>
-                            <h3>PIRATESWAP</h3>
-                        </div>
-                    
-                        <p class="partner-desc">
-                            USE O CÓDIGO:
-                            <span class="highlight-orange">BHS</span>
-                        </p>
-                    
-                        <p class="partner-sub">
-                            GANHE 35% EXTRA DE BÔNUS
-                        </p>
-                    
-                        <a href="https://pirateswap.com/?ref=bhs"
-                           target="_blank"
-                           class="btn-partner orange-bg">
-                            ACESSAR PIRATE
-                        </a>
-                    </div>
-                    
-                    <div class="partner-card card-glow-yellow">
-                    
-                        <a href="https://cliente.in/aff.php?aff=571"
-                           target="_blank"
-                           class="video-container">
-                    
-                            <img
-                                src="https://brunohdmacedo.github.io/cs/img/Gif-720x247---TS3Host.gif"
-                                alt="TS3HOST - Parceria BHS"
-                                class="partner-img-banner gif-banner"
-                                loading="lazy">
-                    
-                        </a>
-                    
-                        <div class="partner-header">
-                            <i class="fa-solid fa-headphones p-icon icon-yellow"></i>
-                            <h3>TS3HOST</h3>
-                        </div>
-                    
-                        <p class="partner-desc">
-                            GANHE <span class="highlight-yellow">3 DIAS GRÁTIS</span>
-                        </p>
-                    
-                        <p class="partner-sub">
-                            E DESCONTO EXTRA EM TODO O SITE
-                        </p>
-                    
-                        <a href="https://cliente.in/aff.php?aff=571"
-                           target="_blank"
-                           class="btn-partner yellow-bg">
-                            ACESSAR TS3HOST
-                        </a>
 
                     </div>
-                    
+
                 </div>
 
-                <div class="center-btn-box">
-                    <a href="#cta-cupom" class="btn-outline-glow">VER TODOS PARCEIROS</a>
-                </div>
-            </section>
+                <!-- =================== GLEAM =================== -->
+                <div class="sorteios-column finished-box">
 
-<section class="block-section">
+                    <h3>
+                        <i class="fa-solid fa-clipboard-list" style="color: var(--blue-ct);"></i>
+                        FINALIZADOS MANUAIS
+                    </h3>
 
-    <div class="section-divider">
-        <span>ÚLTIMOS GANHADORES</span>
-    </div>
+                    <p class="column-subtitle">
+                        Ganhadores oficiais dos sorteios realizados pela comunidade BHS através do Gleam.
+                    </p>
 
-    <div class="sorteios-split-grid">
+                    <div class="winner-card-auto">
 
-        <!-- =================== AUTOMÁTICOS =================== -->
-        <div class="sorteios-column active-box">
+                        <img class="finished-skin"
+                             src="https://ss.bleikstore.com/35288133795%2F2.webp"
+                             alt="★ M4A1-S | Terror Noturno (MW)">
 
-            <h3>
-                <i class="fa-solid fa-robot" style="color: var(--orange-tr);"></i>
-                FINALIZADOS AUTOMÁTICOS
-            </h3>
+                        <h4>★ M4A1-S | Terror Noturno (MW)</h4>
 
-            <p class="column-subtitle">
-                Histórico de prêmios gerados automaticamente pela plataforma parceira.
-            </p>
+                        <div class="winner-card">
 
-            <div class="winner-card-auto">
+                            <img class="winner-avatar"
+                                 src="https://avatars.fastly.steamstatic.com/934c88c0fe24b78e82ebbe7a94705b3bc315945b_full.jpg"
+                                 alt="nordeste_12">
 
-                <img class="finished-skin"
-                     src="https://items.csgo-skins.com/images/48d6627a95e71ef7013c2e2593cd8132d4b53dffe42f360c7ded68b58ac306f7.webp"
-                     alt="Galil AR | Chromatic Aberration">
+                            <div class="winner-info">
 
-                <h4>★ Galil AR | Chromatic Aberration (MW)</h4>
+                                <span class="winner-label">
+                                    🏆 Ganhador
+                                </span>
 
-                <div class="winner-card">
+                                <strong>nordeste_12</strong>
 
-                    <img class="winner-avatar"
-                         src="https://avatars.akamai.steamstatic.com/20971b50a02d8d21254e7b65ae0b3b5754607a58_full.jpg"
-                         alt="MrB1SK3L4">
+                                <small>
+                                    <i class="fa-solid fa-globe"></i>
+                                    Site do BHS via Gleam
+                                </small>
 
-                    <div class="winner-info">
+                            </div>
 
-                        <span class="winner-label">
-                            🏆 Ganhador
-                        </span>
-
-                        <strong>MrB1SK3L4</strong>
-
-                        <small>
-                            <i class="fa-solid fa-globe"></i>
-                            csgo-skins.com
-                        </small>
+                        </div>
 
                     </div>
 
@@ -482,56 +537,7 @@
 
             </div>
 
-        </div>
-
-        <!-- =================== GLEAM =================== -->
-        <div class="sorteios-column finished-box">
-
-            <h3>
-                <i class="fa-solid fa-clipboard-list" style="color: var(--blue-ct);"></i>
-                FINALIZADOS MANUAIS
-            </h3>
-
-            <p class="column-subtitle">
-                Ganhadores oficiais dos sorteios realizados pela comunidade BHS através do Gleam.
-            </p>
-
-        <div class="winner-card-auto">
-
-                <img class="finished-skin"
-                     src="https://ss.bleikstore.com/35288133795%2F2.webp"
-                     alt="★ M4A1-S | Terror Noturno (MW)">
-
-                <h4>★ M4A1-S | Terror Noturno (MW)</h4>
-
-                <div class="winner-card">
-
-                    <img class="winner-avatar"
-                         src="https://avatars.fastly.steamstatic.com/934c88c0fe24b78e82ebbe7a94705b3bc315945b_full.jpg"
-                         alt="nordeste_12">
-
-                    <div class="winner-info">
-
-                        <span class="winner-label">
-                            🏆 Ganhador
-                        </span>
-
-                        <strong>nordeste_12</strong>
-
-                        <small>
-                            <i class="fa-solid fa-globe"></i>
-                            Site do BHS via Gleam
-                        </small>
-
-                    </div>
-
-                </div>
-
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
         <section id="ao-vivo" class="block-section live-section">
             <div class="live-container">
