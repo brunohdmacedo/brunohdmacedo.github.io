@@ -2272,3 +2272,47 @@ img, video, iframe {
     }
 
 }
+
+.sorteio-banner {
+    width: 100%;
+    margin: 25px 0 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sorteio-banner a {
+    width: 100%;
+    display: block;
+    text-decoration: none;
+}
+
+.sorteio-banner img {
+    width: 100%;
+    max-width: 1400px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 14px;
+    border: 2px solid rgba(255, 140, 0, .35);
+    box-shadow:
+        0 0 25px rgba(0, 140, 255, .18),
+        0 0 40px rgba(255, 140, 0, .18);
+    transition: .3s ease;
+}
+
+.sorteio-banner img:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow:
+        0 0 35px rgba(0, 140, 255, .28),
+        0 0 50px rgba(255, 140, 0, .28);
+}
+
+@media (max-width: 768px) {
+    .sorteio-banner {
+        margin: 18px 0 25px;
+    }
+
+    .sorteio-banner img {
+        border-radius: 10px;
+    }
+}
