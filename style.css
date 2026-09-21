@@ -764,3 +764,36 @@ footer { border-top: 1px solid var(--line); padding: 30px 0; }
 .lang-text {
   text-transform: uppercase;
 }
+
+/* ==========================================================================
+   BOTÃO DE IDIOMA (I18N)
+   ========================================================================== */
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12.5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.lang-toggle:hover {
+  background: var(--paper-2);
+  border-color: var(--teal);
+}
+
+.lang-flag {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.lang-text {
+  text-transform: uppercase;
+}
