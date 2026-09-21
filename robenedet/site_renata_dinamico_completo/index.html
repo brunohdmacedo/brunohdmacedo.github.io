@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renata Olmedo Benedet | Física Médica & Instrumentação</title>
+  <meta name="description" content="Portfólio científico e acadêmico de Renata Olmedo Benedet. Mestranda em Física Aplicada (UNILA/CAPES), Engenharia Física, fendas cônicas por impressão 3D, espalhamento de raios X e cristalografia." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Canvas Dinâmico de Espalhamento de Raios X e Anéis de Difração -->
+  <canvas id="xrayCanvas"></canvas>
+
+  <!-- Notificação Toast para Citações -->
+  <div id="toast" class="toast">Citação copiada com sucesso!</div>
+
+  <!-- Barra Superior -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="brand-link">
+        <div class="brand-emblem-mini">
+          <svg viewBox="0 0 100 100" class="brand-svg">
+            <defs>
+              <linearGradient id="navGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f472b6" />
+                <stop offset="100%" stop-color="#c084fc" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="46" fill="none" stroke="url(#navGrad)" stroke-width="3" />
+            <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(244, 114, 182, 0.4)" stroke-width="1.5" stroke-dasharray="3 3" />
+            <ellipse cx="50" cy="50" rx="30" ry="11" fill="none" stroke="rgba(216, 180, 254, 0.7)" stroke-width="1.5" transform="rotate(30 50 50)" />
+            <ellipse cx="50" cy="50" rx="30" ry="11" fill="none" stroke="rgba(216, 180, 254, 0.7)" stroke-width="1.5" transform="rotate(-30 50 50)" />
+            <polygon points="50,18 40,65 60,65" fill="#fdf2f8" stroke="#d946ef" stroke-width="1.5" />
+            <polygon points="50,18 50,65 60,65" fill="#e9d5ff" />
+            <polygon points="35,67 65,67 59,73 41,73" fill="#f472b6" />
+            <polygon points="30,75 70,75 64,81 36,81" fill="#c084fc" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">R. O. BENEDET</span>
+          <span class="brand-tag" data-i18n="brand_sub">FÍSICA MÉDICA • P&amp;D</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-item" data-i18n="nav_about">Sobre</a></li>
+        <li><a href="#simulator" class="nav-item nav-highlight" data-i18n="nav_sim"><i class="fa-solid fa-atom"></i> Simulador CS-XSI</a></li>
+        <li><a href="#pillars" class="nav-item" data-i18n="nav_pillars">Especialidades</a></li>
+        <li><a href="#publications" class="nav-item" data-i18n="nav_pubs">Publicações</a></li>
+        <li><a href="#trajectory" class="nav-item" data-i18n="nav_timeline">Trajetória</a></li>
+        <li>
+          <div class="lang-switch">
+            <button class="lang-btn active" id="langPt">PT</button>
+            <span class="lang-divider">|</span>
+            <button class="lang-btn" id="langEn">EN</button>
+          </div>
+        </li>
+      </ul>
+
+      <button class="mobile-toggle" id="menuToggle" aria-label="Abrir Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Seção Hero -->
+    <section class="hero-section" id="about">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="badge-pill">
+            <span class="pulse-dot"></span>
+            <span data-i18n="hero_badge">Mestranda em Física Aplicada • Bolsista CAPES</span>
+          </div>
+
+          <h1 class="hero-title">
+            Renata Olmedo <span class="text-gradient">Benedet</span>
+          </h1>
+
+          <p class="hero-subtitle" data-i18n="hero_sub">
+            Engenharia Física aplicada à <strong>Física Médica</strong>, <strong>Instrumentação de Raios X</strong> e <strong>Prototipagem 3D</strong>.
+          </p>
+
+          <p class="hero-desc" data-i18n="hero_desc">
+            Pesquisadora especializada no design, simulação e fabricação aditiva de fendas cônicas para espectrometria e espalhamento de raios X (CS-XSI), visando a detecção e diferenciação não invasiva de microcalcificações de oxalato de cálcio em tecidos biológicos.
+          </p>
+
+          <!-- Métricas Rápidas -->
+          <div class="stats-row">
+            <div class="stat-card">
+              <span class="stat-num" data-target="3">0</span>
+              <span class="stat-lbl" data-i18n="stat_articles">Artigos em Periódicos</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" data-target="5">0</span>
+              <span class="stat-lbl" data-i18n="stat_confs">Trabalhos em Anais</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" data-target="5">0</span>
+              <span class="stat-lbl" data-i18n="stat_pres">Apresentações</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" data-target="200">0</span><span class="stat-plus">+</span>
+              <span class="stat-lbl" data-i18n="stat_hours">Horas de Extensão</span>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#simulator" class="btn btn-primary">
+              <i class="fa-solid fa-microchip"></i> <span data-i18n="btn_sim">Testar Simulador de Feixe</span>
+            </a>
+            <a href="#publications" class="btn btn-secondary">
+              <i class="fa-solid fa-book-bookmark"></i> <span data-i18n="btn_pubs">Ver Publicações</span>
+            </a>
+            <a href="http://lattes.cnpq.br/" target="_blank" rel="noopener" class="btn btn-secondary">
+              <i class="fa-solid fa-graduation-cap"></i> <span>Lattes</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card Holográfico com o Emblema 3D Interativo -->
+        <div class="hero-visual">
+          <div class="hologram-card" id="tiltCard">
+            <div class="hologram-glare"></div>
+            <div class="emblem-container">
+              <svg viewBox="0 0 320 320" class="emblem-svg">
+                <defs>
+                  <radialGradient id="holoGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#f472b6" stop-opacity="0.4" />
+                    <stop offset="60%" stop-color="#c084fc" stop-opacity="0.15" />
+                    <stop offset="100%" stop-color="#fdf4ff" stop-opacity="0" />
+                  </radialGradient>
+                  <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#f472b6" />
+                    <stop offset="100%" stop-color="#c084fc" />
+                  </linearGradient>
+                  <linearGradient id="coneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="60%" stop-color="#fae8ff" />
+                    <stop offset="100%" stop-color="#d8b4fe" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Aura Fluida -->
+                <circle cx="160" cy="160" r="148" fill="url(#holoGlow)" />
+
+                <!-- Anéis Concêntricos (Difração / Bragg) -->
+                <circle cx="160" cy="160" r="145" fill="none" stroke="url(#ringGrad)" stroke-width="3" />
+                <circle cx="160" cy="160" r="137" fill="none" stroke="#fbcfe8" stroke-width="1.2" stroke-dasharray="4 4" class="rotating-ring-cw" />
+                <circle cx="160" cy="160" r="118" fill="none" stroke="#e9d5ff" stroke-width="1" class="rotating-ring-ccw" />
+
+                <!-- Textos em Arco -->
+                <path id="pathTop" fill="none" d="M 40,160 A 120,120 0 0,1 280,160" />
+                <path id="pathBottom" fill="none" d="M 280,160 A 120,120 0 0,1 40,160" />
+
+                <text class="emblem-text-top">
+                  <textPath href="#pathTop" startOffset="50%" text-anchor="middle">
+                    RENATA OLMEDO BENEDET
+                  </textPath>
+                </text>
+                <text class="emblem-text-bot">
+                  <textPath href="#pathBottom" startOffset="50%" text-anchor="middle">
+                    APPLIED PHYSICS • 3D PRINTING • X-RAY
+                  </textPath>
+                </text>
+
+                <!-- Feixes de Raios X Radiantes -->
+                <g stroke="#f472b6" stroke-width="1.2" opacity="0.5">
+                  <line x1="160" y1="160" x2="160" y2="40" stroke-dasharray="3 3" />
+                  <line x1="160" y1="160" x2="245" y2="75" stroke-dasharray="3 3" />
+                  <line x1="160" y1="160" x2="75" y2="75" stroke-dasharray="3 3" />
+                  <line x1="160" y1="160" x2="275" y2="160" stroke-dasharray="3 3" />
+                  <line x1="160" y1="160" x2="45" y2="160" stroke-dasharray="3 3" />
+                </g>
+
+                <!-- Orbitais de Cristalografia -->
+                <ellipse cx="160" cy="160" rx="90" ry="32" fill="none" stroke="#d946ef" stroke-width="2" opacity="0.75" transform="rotate(35 160 160)" />
+                <ellipse cx="160" cy="160" rx="90" ry="32" fill="none" stroke="#c084fc" stroke-width="2" opacity="0.75" transform="rotate(-35 160 160)" />
+                <circle cx="215" cy="115" r="5" fill="#f43f5e" />
+                <circle cx="105" cy="205" r="4.5" fill="#a855f7" />
+
+                <!-- Monólito da Fenda Cônica (CS-XSI) -->
+                <polygon points="160,65 130,205 190,205" fill="url(#coneGrad)" stroke="#c084fc" stroke-width="2" />
+                <polygon points="160,65 160,205 190,205" fill="#e9d5ff" opacity="0.8" />
+                <ellipse cx="160" cy="65" rx="5" ry="2" fill="#d946ef" />
+
+                <!-- Camadas de Manufatura Aditiva 3D -->
+                <polygon points="115,210 205,210 188,226 132,226" fill="#f472b6" />
+                <polygon points="102,229 218,229 201,245 119,245" fill="#c084fc" />
+                <polygon points="90,248 230,248 213,264 107,264" fill="#a855f7" />
+              </svg>
+            </div>
+            <div class="hologram-footer">
+              <span class="live-beacon"><i class="fa-solid fa-wave-square"></i> <span data-i18n="badge_geo">Geometria Óptica Cônica Ativa</span></span>
+              <p data-i18n="badge_desc">Detecção Não Invasiva de Oxalato de Cálcio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LABORATÓRIO VIRTUAL / SIMULADOR CS-XSI -->
+    <section class="section-padding bg-lab" id="simulator">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-badge"><i class="fa-solid fa-microscope"></i> <span data-i18n="sim_tag">Ambiente Interativo de Pesquisa</span></span>
+          <h2 class="section-heading" data-i18n="sim_title">Simulador de Fenda Cônica (CS-XSI)</h2>
+          <p class="section-lead" data-i18n="sim_lead">
+            Explore interativamente como os parâmetros ópticos, a energia do feixe de raios X e o tipo de material influenciam a dispersão e a relação sinal-ruído (SNR) no plano do detector.
+          </p>
+        </div>
+
+        <div class="sim-workbench">
+          <!-- Controles do Feixe -->
+          <div class="sim-controls-panel">
+            <div class="panel-header">
+              <i class="fa-solid fa-sliders"></i> <span data-i18n="sim_params">Parâmetros do Feixe &amp; Fenda</span>
+            </div>
+
+            <!-- Material Fantoma -->
+            <div class="ctrl-group">
+              <label><span data-i18n="sim_mat">Material do Fantoma:</span></label>
+              <select id="phantomSelect" class="sim-select">
+                <option value="caox">Oxalato de Cálcio (Microcalcificação Patológica)</option>
+                <option value="ha">Hidroxiapatita (Calcificação Benigna)</option>
+                <option value="glandular">Tecido Glandular Mamário (Referência)</option>
+                <option value="adipose">Tecido Adiposo (Matriz Tecido-Equivalente)</option>
+              </select>
+            </div>
+
+            <!-- Energia do Raio X -->
+            <div class="ctrl-group">
+              <div class="ctrl-label-wrap">
+                <span data-i18n="sim_energy">Energia do Feixe (E):</span>
+                <span id="energyVal" class="val-display">22.5 keV</span>
+              </div>
+              <input type="range" id="energyRange" min="15" max="35" step="0.5" value="22.5" class="sim-slider">
+            </div>
+
+            <!-- Abertura da Fenda Cônica -->
+            <div class="ctrl-group">
+              <div class="ctrl-label-wrap">
+                <span data-i18n="sim_slit">Abertura da Fenda Cônica (W):</span>
+                <span id="slitVal" class="val-display">1.2 mm</span>
+              </div>
+              <input type="range" id="slitRange" min="0.4" max="3.0" step="0.1" value="1.2" class="sim-slider">
+            </div>
+
+            <!-- Semi-ângulo Cônico -->
+            <div class="ctrl-group">
+              <div class="ctrl-label-wrap">
+                <span data-i18n="sim_angle">Ângulo de Espalhamento (2θ):</span>
+                <span id="angleVal" class="val-display">8.4°</span>
+              </div>
+              <input type="range" id="angleRange" min="4.0" max="16.0" step="0.2" value="8.4" class="sim-slider">
+            </div>
+
+            <!-- Diagnóstico em Tempo Real -->
+            <div class="calc-results">
+              <div class="calc-item">
+                <span class="calc-label" data-i18n="sim_snr">SNR Estimado:</span>
+                <span id="snrDisplay" class="calc-val accent-pink">14.8 dB</span>
+              </div>
+              <div class="calc-item">
+                <span class="calc-label" data-i18n="sim_q">Vetor de Espalhamento (q):</span>
+                <span id="qDisplay" class="calc-val">0.74 Å⁻¹</span>
+              </div>
+              <div class="calc-item">
+                <span class="calc-label" data-i18n="sim_contrast">Contraste Diferencial:</span>
+                <span id="contrastDisplay" class="calc-val accent-lavender">Excelente (Forte)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visualização do Detector (Canvas) -->
+          <div class="sim-display-panel">
+            <div class="display-header">
+              <div class="display-title">
+                <i class="fa-solid fa-satellite-dish"></i> <span data-i18n="sim_detector">Padrão 2D no Detector Circular (Difração Debye-Scherrer)</span>
+              </div>
+              <span class="detector-live-badge"><span class="blink-dot"></span> LIVE ACQUISITION</span>
+            </div>
+            
+            <div class="canvas-wrap">
+              <canvas id="detectorCanvas" width="460" height="460"></canvas>
+            </div>
+
+            <div class="display-footer">
+              <div class="legend-chip"><span class="legend-color caox-color"></span> <span data-i18n="leg_scatter">Pico de Espalhamento Coerente</span></div>
+              <div class="legend-chip"><span class="legend-color halo-color"></span> <span data-i18n="leg_back">Fundo Compton (Incoerente)</span></div>
+              <div class="legend-chip"><span class="legend-color slit-color"></span> <span data-i18n="leg_collim">Anel de Fenda 3D</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pilares de Pesquisa -->
+    <section class="section-padding" id="pillars">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-badge" data-i18n="pillars_tag">Competências Científicas</span>
+          <h2 class="section-heading" data-i18n="pillars_title">Especialidades &amp; Áreas de Atuação</h2>
+          <p class="section-lead" data-i18n="pillars_lead">
+            Abordagem integrada combinando formulação teórica de óptica radiológica, engenharia de prototipagem rápida e caracterização biocristalográfica.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-box">
+            <div class="pillar-icon"><i class="fa-solid fa-radiation"></i></div>
+            <h3 data-i18n="pil_1_t">Física Médica &amp; Espalhamento de Raios X</h3>
+            <p data-i18n="pil_1_d">
+              Desenvolvimento de técnicas analíticas de espalhamento de raios X (*X-ray scattering*) aplicadas à diferenciação precoce e não invasiva de microcalcificações associadas a lesões neoplásicas de mama.
+            </p>
+            <div class="tag-row">
+              <span>CS-XSI</span><span>SNR Tuning</span><span>Tecidos Equivalentes</span>
+            </div>
+          </div>
+
+          <div class="pillar-box">
+            <div class="pillar-icon"><i class="fa-solid fa-cube"></i></div>
+            <h3 data-i18n="pil_2_t">Prototipagem por Impressão 3D</h3>
+            <p data-i18n="pil_2_d">
+              Modelagem computacional e manufatura aditiva de alta precisão para colimadores cônicos, suportes de fantomas e fendas ópticas dedicadas a montagens experimentais com feixes colimados.
+            </p>
+            <div class="tag-row">
+              <span>CAD Avançado</span><span>FDM &amp; Resina</span><span>Colimação Óptica</span>
+            </div>
+          </div>
+
+          <div class="pillar-box">
+            <div class="pillar-icon"><i class="fa-solid fa-gem"></i></div>
+            <h3 data-i18n="pil_3_t">Cristalografia &amp; Difração</h3>
+            <p data-i18n="pil_3_d">
+              Investigação de perfis de difração de oxalato de cálcio mono e di-hidratado. Formação em microscopia crioeletrônica de partícula única (*Cryo-EM*) pela Associação Brasileira de Cristalografia (ABCR).
+            </p>
+            <div class="tag-row">
+              <span>Debye-Scherrer</span><span>Cryo-EM</span><span>Bio-minerais</span>
+            </div>
+          </div>
+
+          <div class="pillar-box">
+            <div class="pillar-icon"><i class="fa-solid fa-flask-vial"></i></div>
+            <h3 data-i18n="pil_4_t">Extensão &amp; Eletroquímica Aplicada</h3>
+            <p data-i18n="pil_4_d">
+              Coordenação e execução de projetos de divulgação científica e extensão educacional em escolas públicas, além de gestão estudantil ativa junto ao Centro Acadêmico de Engenharia Física (CAENFIS).
+            </p>
+            <div class="tag-row">
+              <span>Ensino de Ciências</span><span>CAENFIS</span><span>CREA-PR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publicações & Produção Científica -->
+    <section class="section-padding bg-alt" id="publications">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-badge" data-i18n="pub_tag">Produção Intelectual</span>
+          <h2 class="section-heading" data-i18n="pub_title">Artigos &amp; Comunicações Científicas</h2>
+          <p class="section-lead" data-i18n="pub_lead">
+            Filtragem interativa por categoria, com exportação de citação em ABNT e BibTeX com um clique.
+          </p>
+        </div>
+
+        <div class="pub-toolbar">
+          <div class="search-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="pubSearch" placeholder="Buscar por título, coautor ou periódico..." data-i18n-placeholder="pub_search_ph" />
+          </div>
+
+          <div class="filter-pills">
+            <button class="pill-btn active" data-filter="all" data-i18n="flt_all">Todas (8)</button>
+            <button class="pill-btn" data-filter="journal" data-i18n="flt_jour">Periódicos (3)</button>
+            <button class="pill-btn" data-filter="conf" data-i18n="flt_conf">Congressos &amp; Anais (5)</button>
+          </div>
+        </div>
+
+        <!-- Cards de Artigos -->
+        <div class="pub-container" id="pubList">
+
+          <!-- Artigo 1 -->
+          <article class="pub-card" data-cat="journal">
+            <div class="pub-top">
+              <span class="pub-tag journal-tag"><i class="fa-solid fa-book"></i> Periódico Internacional</span>
+              <span class="pub-year">2027</span>
+            </div>
+            <h3 class="pub-title">
+              Enhancing microcalcification characterization using conical slit X-ray scattering imaging (CS-XSI): a simulation and experimental study
+            </h3>
+            <p class="pub-authors">
+              Moravec de Viana Borges, C.; <strong class="author-me">Olmedo Benedet, R.</strong>; Gonçalves Hönnicke, M.; Poletti, M. E.
+            </p>
+            <div class="pub-journal-name">
+              <i class="fa-solid fa-circle-check"></i> Radiation Physics and Chemistry, v. 250, p. 114341.
+            </div>
+            <div class="pub-actions">
+              <button class="cite-btn copy-abnt" data-cite="BORGES, C. M. V.; BENEDET, R. O.; HÖNNICKE, M. G.; POLETTI, M. E. Enhancing microcalcification characterization using conical slit X-ray scattering imaging (CS-XSI): a simulation and experimental study. Radiation Physics and Chemistry, v. 250, p. 114341, 2027.">
+                <i class="fa-solid fa-quote-left"></i> Copiar ABNT
+              </button>
+              <button class="cite-btn copy-bib" data-bib="@article{borges2027enhancing,
+  title={Enhancing microcalcification characterization using conical slit X-ray scattering imaging (CS-XSI)},
+  author={Borges, Carolina Moravec de Viana and Benedet, Renata Olmedo and H{"o}nnicke, Marcelo Gon{\c{c}}alves and Poletti, Martin Eduardo},
+  journal={Radiation Physics and Chemistry},
+  volume={250},
+  pages={114341},
+  year={2027}
+}">
+                <i class="fa-solid fa-code"></i> BibTeX
+              </button>
+            </div>
+          </article>
+
+          <!-- Artigo 2 -->
+          <article class="pub-card" data-cat="journal">
+            <div class="pub-top">
+              <span class="pub-tag journal-tag"><i class="fa-solid fa-book"></i> Periódico Internacional</span>
+              <span class="pub-year">2025</span>
+            </div>
+            <h3 class="pub-title">
+              3D Printed Conical Slits for Seeking Calcium Spots Among Different Tissue-Equivalent Materials
+            </h3>
+            <p class="pub-authors">
+              <strong class="author-me">Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Hönnicke, M. G.
+            </p>
+            <div class="pub-journal-name">
+              <i class="fa-solid fa-circle-check"></i> X-Ray Spectrometry (Online), v. 54, p. 765. (Citações: 1)
+            </div>
+            <div class="pub-actions">
+              <button class="cite-btn copy-abnt" data-cite="BENEDET, R. O.; SANTOS, P. R.; CUSATIS, C.; POLETTI, M. E.; HONNICKE, M. G. 3D Printed Conical Slits for Seeking Calcium Spots Among Different Tissue-Equivalent Materials. X-Ray Spectrometry, v. 54, p. 765, 2025.">
+                <i class="fa-solid fa-quote-left"></i> Copiar ABNT
+              </button>
+              <button class="cite-btn copy-bib" data-bib="@article{benedet20253d,
+  title={3D Printed Conical Slits for Seeking Calcium Spots Among Different Tissue-Equivalent Materials},
+  author={Benedet, R. O. and Santos, P. R. and Cusatis, C. and Poletti, M. E. and H{"o}nnicke, M. G.},
+  journal={X-Ray Spectrometry},
+  volume={54},
+  pages={765},
+  year={2025}
+}">
+                <i class="fa-solid fa-code"></i> BibTeX
+              </button>
+            </div>
+          </article>
+
+          <!-- Artigo 3 -->
+          <article class="pub-card" data-cat="journal">
+            <div class="pub-top">
+              <span class="pub-tag tech-tag"><i class="fa-solid fa-newspaper"></i> Revista Técnico-Científica</span>
+              <span class="pub-year">2023</span>
+            </div>
+            <h3 class="pub-title">
+              A Eletroquímica ao Alcance da Sociedade
+            </h3>
+            <p class="pub-authors">
+              Macedo, B. H. D.; <strong class="author-me">Benedet, R. O.</strong>; Salgado, J. R. C.
+            </p>
+            <div class="pub-journal-name">
+              <i class="fa-solid fa-circle-check"></i> Revista Técnico Científica do CREA-PR, v. 1, p. 146.
+            </div>
+            <div class="pub-actions">
+              <button class="cite-btn copy-abnt" data-cite="MACEDO, B. H. D.; BENEDET, R. O.; SALGADO, J. R. C. A Eletroquímica ao Alcance da Sociedade. Revista Técnico Científica do CREA-PR, v. 1, p. 146, 2023.">
+                <i class="fa-solid fa-quote-left"></i> Copiar ABNT
+              </button>
+              <button class="cite-btn copy-bib" data-bib="@article{macedo2023eletroquimica,
+  title={A Eletroqu{'\i}mica ao Alcance da Sociedade},
+  author={Macedo, B. H. D. and Benedet, R. O. and Salgado, J. R. C.},
+  journal={Revista T{'e}cnico Cient{'\i}fica do CREA-PR},
+  volume={1},
+  pages={146},
+  year={2023}
+}">
+                <i class="fa-solid fa-code"></i> BibTeX
+              </button>
+            </div>
+          </article>
+
+          <!-- Congresso 1 -->
+          <article class="pub-card" data-cat="conf">
+            <div class="pub-top">
+              <span class="pub-tag conf-tag"><i class="fa-solid fa-globe"></i> Seminário Internacional (SARX)</span>
+              <span class="pub-year">2024</span>
+            </div>
+            <h3 class="pub-title">
+              Seeking calcium spots with 3D Printed Conical Slits: SNR evaluation in samples models with different tissue equivalent materials
+            </h3>
+            <p class="pub-authors">
+              <strong class="author-me">Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Hönnicke, M. G.
+            </p>
+            <div class="pub-journal-name">
+              <i class="fa-solid fa-location-dot"></i> XVII Latin American Seminar of Analysis by X-Ray Techniques (SARX 2024), Rio de Janeiro - RJ.
+            </div>
+            <div class="pub-actions">
+              <button class="cite-btn copy-abnt" data-cite="BENEDET, R. O. et al. Seeking calcium spots with 3D Printed Conical Slits: SNR evaluation. In: SARX 2024, Rio de Janeiro.">
+                <i class="fa-solid fa-quote-left"></i> Copiar ABNT
+              </button>
+            </div>
+          </article>
+
+          <!-- Congresso 2 -->
+          <article class="pub-card" data-cat="conf">
+            <div class="pub-top">
+              <span class="pub-tag conf-tag"><i class="fa-solid fa-microchip"></i> Congresso Tecnológico (MEC3F)</span>
+              <span class="pub-year">2024</span>
+            </div>
+            <h3 class="pub-title">
+              Procurando Traços de Cálcio Com Fendas Cônicas Prototipadas Por Impressão 3D: Caracterização da Relação Sinal Ruído Utilizando Fantomas de Materiais Tecido-Equivalentes
+            </h3>
+            <p class="pub-authors">
+              <strong class="author-me">Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Hönnicke, M. G.
+            </p>
+            <div class="pub-journal-name">
+              <i class="fa-solid fa-location-dot"></i> 5° Congresso de Engenharia e Ciências Aplicadas das Três Fronteiras (MEC3F), Foz do Iguaçu - PR.
+            </div>
+            <div class="pub-actions">
+              <button class="cite-btn copy-abnt" data-cite="BENEDET, R. O. et al. Procurando Traços de Cálcio Com Fendas Cônicas Prototipadas Por Impressão 3D. In: 5° MEC3F, 2024.">
+                <i class="fa-solid fa-quote-left"></i> Copiar ABNT
+              </button>
+            </div>
+          </article>
+
+          <!-- Congresso 3 -->
+          <article class="pub-card" data-cat="conf">
+            <div class="pub-top">
+              <span class="pub-tag conf-tag"><i class="fa-solid fa-gem"></i> Cristalografia Nacional (ABCR)</span>
+              <span class="pub-year">2023</span>
+            </div>
+            <h3 class="pub-title">
+              Prototipagem em impressão 3D de uma fenda cônica para detecção do padrão de difração do oxalato de cálcio duplamente hidratado
+            </h3>
+            <p class="pub-authors">
+              <strong class="author-me">Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Hönnicke, M. G.
+            </p>
+            <div class="pub-journal-name">
+              <i class="fa-solid fa-location-dot"></i> 26ª Reunião da Associação Brasileira de Cristalografia (ABCR), Ribeirão Preto - SP.
+            </div>
+            <div class="pub-actions">
+              <button class="cite-btn copy-abnt" data-cite="BENEDET, R. O. et al. Prototipagem em impressão 3D de uma fenda cônica para detecção do oxalato de cálcio. In: 26ª Reunião da ABCR, 2023.">
+                <i class="fa-solid fa-quote-left"></i> Copiar ABNT
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Trajetória Acadêmica -->
+    <section class="section-padding" id="trajectory">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-badge" data-i18n="traj_tag">Formação &amp; Marcos</span>
+          <h2 class="section-heading" data-i18n="traj_title">Trajetória Acadêmica</h2>
+        </div>
+
+        <div class="timeline-tree">
+          <div class="timeline-step">
+            <div class="node-marker"></div>
+            <div class="step-meta">
+              <span class="step-year">2025 – Presente</span>
+              <span class="step-badge">Pós-Graduação Stricto Sensu</span>
+            </div>
+            <h3 class="step-title" data-i18n="traj_msc_title">Mestrado em Física Aplicada</h3>
+            <div class="step-inst">Universidade Federal da Integração Latino-Americana (UNILA)</div>
+            <p class="step-desc" data-i18n="traj_msc_desc">
+              Pesquisa voltada à instrumentação com raios X, modelagem óptica de colimadores e identificação não invasiva de biominerais em tecidos mamários. Financiado pela bolsa de mestrado CAPES.
+            </p>
+            <div class="advisor-chip">
+              <i class="fa-solid fa-user-tie"></i> <span data-i18n="traj_adv">Orientador:</span> <strong>Prof. Dr. Marcelo Gonçalves Hönnicke</strong>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="node-marker"></div>
+            <div class="step-meta">
+              <span class="step-year">2020 – 2025</span>
+              <span class="step-badge">Graduação</span>
+            </div>
+            <h3 class="step-title" data-i18n="traj_bsc_title">Graduação em Engenharia Física</h3>
+            <div class="step-inst">Universidade Federal da Integração Latino-Americana (UNILA)</div>
+            <p class="step-desc">
+              <strong>TCC:</strong> <em>"PROTOTIPAGEM DE FENDA CÔNICA IMPRESSA EM 3D PARA IDENTIFICAÇÃO DE OXALATO DE CÁLCIO: POSSÍVEL APLICAÇÃO PARA DIAGNÓSTICO NÃO INVASIVO DE MICROCALCIFICAÇÕES MAMÁRIAS."</em>
+            </p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="node-marker"></div>
+            <div class="step-meta">
+              <span class="step-year">Cursos &amp; Extensão</span>
+              <span class="step-badge">Aperfeiçoamento</span>
+            </div>
+            <h3 class="step-title" data-i18n="traj_cert_title">Formação Complementar</h3>
+            <div class="step-inst">ABCR &bull; CAENFIS &bull; Idiomas sem Fronteiras</div>
+            <ul class="cert-chips">
+              <li><i class="fa-solid fa-certificate"></i> Cryo-EM: Single Particle Cryo-Electron Microscopy (ABCR, 2023 - 6h)</li>
+              <li><i class="fa-solid fa-users-gear"></i> Diretoria do Centro Acadêmico de Engenharia Física - CAENFIS (2022–2023 - 30h)</li>
+              <li><i class="fa-solid fa-language"></i> Idiomas sem Fronteiras: Espanhol e Português para Estrangeiros (96h) e Inglês Básico (68h)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="section-padding bg-alt" id="contact">
+      <div class="container contact-wrapper">
+        <div class="contact-glass-box">
+          <span class="sub-badge" data-i18n="cont_tag">Conexão Acadêmica</span>
+          <h2 class="contact-title" data-i18n="cont_title">Pronta para Novos Desafios em P&amp;D</h2>
+          <p class="contact-desc" data-i18n="cont_desc">
+            Aberta a contatos de grupos de pesquisa, programas de doutorado e instituições de diagnóstico e instrumentação médica.
+          </p>
+
+          <div class="contact-actions-grid">
+            <a href="mailto:renata.benedet@unila.edu.br" class="btn btn-primary">
+              <i class="fa-solid fa-envelope"></i> <span data-i18n="btn_email">Enviar E-mail Acadêmico</span>
+            </a>
+            <a href="http://lattes.cnpq.br/" target="_blank" rel="noopener" class="btn btn-secondary">
+              <i class="fa-solid fa-graduation-cap"></i> <span>Currículo Lattes</span>
+            </a>
+            <a href="https://orcid.org" target="_blank" rel="noopener" class="btn btn-secondary">
+              <i class="fa-brands fa-orcid"></i> <span>ORCID</span>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-secondary">
+              <i class="fa-brands fa-linkedin"></i> <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span class="foot-brand">Renata Olmedo Benedet</span>
+        <span class="foot-sub">Física Médica &bull; Instrumentação Biomédica &bull; Raios X &bull; Impressão 3D</span>
+      </div>
+      <div class="footer-right">
+        <span>Foz do Iguaçu - PR &bull; Brasil</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

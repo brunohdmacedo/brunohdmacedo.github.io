@@ -1,0 +1,2278 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renata Olmedo Benedet | Física Médica, Raios-X & Impressão 3D</title>
+  <meta name="description" content="Website acadêmico e portfólio de pesquisa de Renata Olmedo Benedet. Engenharia Física, Mestrado em Física Aplicada (UNILA/CAPES), instrumentação com fenda cônica impressa em 3D e espalhamento de raios X." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      /* Soft Rose, Pastel Lavender & Deep Cosmic Dark Palette */
+      --bg-deep: #0a0714;
+      --bg-surface: #120d22;
+      --bg-surface-trans: rgba(18, 13, 34, 0.78);
+      --bg-card: rgba(28, 20, 48, 0.65);
+      --bg-card-hover: rgba(42, 29, 73, 0.85);
+
+      --pink-soft: #f472b6;
+      --pink-pastel: #fbcfe8;
+      --pink-rose: #fb7185;
+      --purple-lavender: #c084fc;
+      --purple-lilac: #d8b4fe;
+      --purple-soft: #e9d5ff;
+      --neon-violet: #a855f7;
+
+      --glow-pink: rgba(244, 114, 182, 0.35);
+      --glow-lavender: rgba(192, 132, 252, 0.3);
+      --glow-beam: rgba(251, 207, 232, 0.75);
+
+      --text-main: #faf5ff;
+      --text-muted: #d8b4fe;
+      --text-subtle: #a797be;
+      --border-soft: rgba(216, 180, 254, 0.16);
+      --border-hover: rgba(244, 114, 182, 0.45);
+
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Background Simulation Canvas */
+    #physicsCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.68;
+    }
+
+    /* Laser Scanning Sheen */
+    .laser-scan-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--pink-soft), var(--purple-lavender), transparent);
+      box-shadow: 0 0 15px var(--pink-soft), 0 0 30px var(--purple-lavender);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 1;
+      animation: scanLaser 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes scanLaser {
+      0% { transform: translateY(-100px); opacity: 0; }
+      15% { opacity: 0.4; }
+      85% { opacity: 0.4; }
+      100% { transform: translateY(105vh); opacity: 0; }
+    }
+
+    /* Container Utility */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Glassmorphism Styles */
+    .glass-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-soft);
+      border-radius: 18px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-panel:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 10px 35px -5px var(--glow-lavender);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 7, 20, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-soft);
+      z-index: 100;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+    }
+
+    .brand-logo-svg {
+      width: 44px;
+      height: 44px;
+      filter: drop-shadow(0 0 10px var(--glow-pink));
+      transition: transform 0.4s ease;
+    }
+
+    .brand-group:hover .brand-logo-svg {
+      transform: rotate(45deg) scale(1.05);
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      background: linear-gradient(90deg, #ffffff, var(--pink-pastel), var(--purple-lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-text span {
+      font-size: 0.68rem;
+      letter-spacing: 1.2px;
+      color: var(--pink-soft);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--purple-soft);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.25s, text-shadow 0.25s;
+      position: relative;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--pink-soft);
+      text-shadow: 0 0 10px var(--glow-pink);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Language Switcher Button */
+    .lang-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(244, 114, 182, 0.12);
+      border: 1px solid var(--border-soft);
+      color: var(--pink-pastel);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .lang-toggle-btn:hover {
+      border-color: var(--pink-soft);
+      box-shadow: 0 0 12px var(--glow-pink);
+      background: rgba(244, 114, 182, 0.22);
+    }
+
+    .btn-nav-contact {
+      background: linear-gradient(135deg, var(--pink-soft), var(--purple-lavender));
+      color: #1a0524;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.5rem 1.15rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-nav-contact:hover {
+      box-shadow: 0 0 20px var(--glow-pink);
+      transform: translateY(-2px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+      padding: 5rem 0 3.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(244, 114, 182, 0.12);
+      border: 1px solid rgba(244, 114, 182, 0.35);
+      color: var(--pink-pastel);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .pulsing-crystal-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--pink-soft);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--pink-soft);
+      animation: pulseCrystal 1.8s infinite alternate;
+    }
+
+    @keyframes pulseCrystal {
+      0% { transform: scale(0.8); opacity: 0.5; }
+      100% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px var(--pink-soft), 0 0 24px var(--purple-lavender); }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 1.2rem;
+    }
+
+    .gradient-text-soft {
+      background: linear-gradient(110deg, #ffffff 0%, var(--pink-pastel) 45%, var(--purple-lilac) 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--purple-soft);
+      font-weight: 500;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-desc {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 620px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-glow {
+      background: linear-gradient(135deg, var(--pink-soft), var(--purple-lavender));
+      color: #170420;
+      box-shadow: 0 6px 25px var(--glow-pink);
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--glow-pink), 0 0 20px var(--glow-lavender);
+    }
+
+    .btn-outline-soft {
+      background: rgba(28, 20, 48, 0.6);
+      border: 1px solid var(--border-soft);
+      color: var(--text-main);
+    }
+
+    .btn-outline-soft:hover {
+      border-color: var(--pink-soft);
+      color: var(--pink-soft);
+      transform: translateY(-2px);
+      background: rgba(42, 29, 73, 0.7);
+    }
+
+    /* 3D Tilt Emblem Card with Holographic Layers */
+    .tilt-card-wrapper {
+      perspective: 1000px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tilt-card {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      padding: 2.2rem 2rem;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(35, 23, 61, 0.8), rgba(18, 13, 34, 0.9));
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px var(--glow-lavender);
+      transform-style: preserve-3d;
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+      cursor: grab;
+    }
+
+    .tilt-card:active {
+      cursor: grabbing;
+    }
+
+    .card-emblem-svg-wrap {
+      width: 240px;
+      height: 240px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      transform: translateZ(40px);
+    }
+
+    .svg-emblem-main {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 16px var(--glow-pink));
+    }
+
+    .card-title-group {
+      text-align: center;
+      transform: translateZ(30px);
+    }
+
+    .card-title-group h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-title-group p {
+      font-size: 0.8rem;
+      color: var(--purple-lilac);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .card-badges-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      transform: translateZ(25px);
+    }
+
+    .mini-badge {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(244, 114, 182, 0.15);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      color: var(--pink-pastel);
+      font-family: var(--font-mono);
+    }
+
+    .metrics-bar {
+      margin: 2.5rem 0 4.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .metric-box {
+      padding: 1.5rem;
+      text-align: center;
+      border-radius: 16px;
+      background: rgba(23, 16, 40, 0.65);
+      border: 1px solid var(--border-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-box::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--pink-soft), var(--purple-lavender), transparent);
+    }
+
+    .metric-val {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      background: linear-gradient(90deg, var(--pink-soft), var(--purple-lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .metric-lbl {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .lab-sim-section {
+      padding: 3.5rem 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-pill {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--pink-soft);
+      margin-bottom: 0.5rem;
+      padding: 0.25rem 0.85rem;
+      background: rgba(244, 114, 182, 0.12);
+      border-radius: 999px;
+      border: 1px solid rgba(244, 114, 182, 0.25);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .simulator-container {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 2rem;
+      padding: 2.2rem;
+      border-radius: 24px;
+      background: rgba(20, 14, 38, 0.85);
+      border: 1px solid var(--border-hover);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(192, 132, 252, 0.05);
+    }
+
+    .sim-viewport {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .canvas-viewport-wrap {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      background: #080511;
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+    }
+
+    #coneRayCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .sim-readout-hud {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .hud-chip {
+      background: rgba(14, 9, 26, 0.8);
+      border: 1px solid var(--border-soft);
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+    }
+
+    .hud-chip-label {
+      font-size: 0.68rem;
+      color: var(--text-subtle);
+      display: block;
+      text-transform: uppercase;
+    }
+
+    .hud-chip-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--pink-pastel);
+    }
+
+    .sim-controls-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .control-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--purple-soft);
+    }
+
+    .control-val-tag {
+      font-family: var(--font-mono);
+      color: var(--pink-soft);
+    }
+
+    .custom-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #251b3a;
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    .custom-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--pink-soft);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--pink-soft);
+      border: 2px solid #ffffff;
+    }
+
+    .sample-preset-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .preset-btn {
+      padding: 0.6rem 0.8rem;
+      background: rgba(36, 25, 59, 0.7);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      color: var(--text-main);
+      font-size: 0.84rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .preset-btn span.preset-sub {
+      font-size: 0.68rem;
+      color: var(--text-subtle);
+    }
+
+    .preset-btn.active, .preset-btn:hover {
+      border-color: var(--pink-soft);
+      background: rgba(244, 114, 182, 0.15);
+      color: var(--pink-pastel);
+    }
+
+    .sim-explanation-note {
+      font-size: 0.84rem;
+      color: var(--text-subtle);
+      background: rgba(18, 12, 33, 0.75);
+      padding: 0.85rem;
+      border-radius: 10px;
+      border-left: 3px solid var(--purple-lavender);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .pillar-card {
+      padding: 2.2rem 1.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.18), rgba(192, 132, 252, 0.18));
+      border: 1px solid rgba(244, 114, 182, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--pink-soft);
+      margin-bottom: 1.4rem;
+      box-shadow: 0 0 15px var(--glow-pink);
+    }
+
+    .pillar-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-card p {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .pillar-tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      list-style: none;
+    }
+
+    .pillar-tags-list li {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(192, 132, 252, 0.12);
+      border: 1px solid rgba(192, 132, 252, 0.22);
+      border-radius: 6px;
+      color: var(--purple-soft);
+      font-family: var(--font-mono);
+    }
+
+    .pub-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      background: rgba(28, 20, 48, 0.7);
+      border: 1px solid var(--border-soft);
+      color: var(--purple-soft);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: linear-gradient(135deg, var(--pink-soft), var(--purple-lavender));
+      color: #170420;
+      border-color: transparent;
+      font-weight: 700;
+      box-shadow: 0 0 16px var(--glow-pink);
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.55rem 1rem 0.55rem 2.4rem;
+      border-radius: 10px;
+      background: rgba(22, 15, 38, 0.85);
+      border: 1px solid var(--border-soft);
+      color: #ffffff;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--pink-soft);
+      box-shadow: 0 0 12px var(--glow-pink);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-subtle);
+      font-size: 0.85rem;
+    }
+
+    .publications-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .pub-card {
+      padding: 1.6rem;
+      position: relative;
+    }
+
+    .pub-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pub-kind-badge {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--pink-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pub-year-badge {
+      font-size: 0.78rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+      background: rgba(244, 114, 182, 0.14);
+      color: var(--pink-pastel);
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    .pub-headline {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+    }
+
+    .pub-authors-line {
+      font-size: 0.9rem;
+      color: var(--purple-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .pub-authors-line strong {
+      color: var(--pink-pastel);
+      text-decoration: underline decoration-pink-400/50;
+    }
+
+    .pub-journal-line {
+      font-size: 0.88rem;
+      color: var(--pink-soft);
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .pub-actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .cite-btn {
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      background: rgba(36, 25, 59, 0.6);
+      border: 1px solid var(--border-soft);
+      color: var(--text-main);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .cite-btn:hover {
+      border-color: var(--pink-soft);
+      color: var(--pink-soft);
+      background: rgba(244, 114, 182, 0.15);
+    }
+
+    .timeline-wrap {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid var(--border-soft);
+      margin-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    .timeline-entry {
+      position: relative;
+    }
+
+    .timeline-beacon {
+      position: absolute;
+      left: calc(-2rem - 9px);
+      top: 1.4rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--pink-soft);
+      box-shadow: 0 0 15px var(--pink-soft);
+      border: 2px solid #ffffff;
+    }
+
+    .timeline-year-tag {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--pink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-sub {
+      font-size: 0.95rem;
+      color: var(--purple-soft);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-body {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .advisor-callout {
+      margin-top: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.86rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+      background: rgba(244, 114, 182, 0.12);
+      border: 1px solid rgba(244, 114, 182, 0.25);
+      color: var(--pink-pastel);
+    }
+
+    .contact-card {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, rgba(31, 21, 54, 0.85), rgba(20, 14, 38, 0.95));
+      border: 1px solid var(--border-hover);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--glow-lavender);
+      border-radius: 28px;
+    }
+
+    .contact-card h2 {
+      font-family: var(--font-display);
+      font-size: 2.3rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card p {
+      max-width: 650px;
+      margin: 0 auto 2.2rem;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .contact-btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 2.5rem 0;
+      background: rgba(10, 7, 20, 0.95);
+      margin-top: 5rem;
+      font-size: 0.88rem;
+      color: var(--text-subtle);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Interactive Toast Feedback */
+    #citationToast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(28, 20, 48, 0.95);
+      border: 1px solid var(--pink-soft);
+      color: #ffffff;
+      padding: 0.85rem 1.4rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--glow-pink);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 1000;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 0.9rem;
+    }
+
+    #citationToast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Responsive Rules */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-cta-group {
+        justify-content: center;
+      }
+      .simulator-container {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient X-ray Beam / Crystallography Simulation Canvas -->
+  <canvas id="physicsCanvas"></canvas>
+  <div class="laser-scan-line"></div>
+
+  <header>
+    <div class="container nav-bar">
+      <a href="#about" class="brand-group">
+        <!-- SVG Vector Emblem Mini -->
+        <svg viewBox="0 0 100 100" class="brand-logo-svg">
+          <defs>
+            <linearGradient id="navBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f472b6" />
+              <stop offset="100%" stop-color="#c084fc" />
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="46" fill="#130d24" stroke="url(#navBrandGrad)" stroke-width="3" />
+          <circle cx="50" cy="50" r="41" fill="none" stroke="rgba(244, 114, 182, 0.3)" stroke-width="1.5" stroke-dasharray="3 3" />
+          <ellipse cx="50" cy="50" rx="30" ry="11" fill="none" stroke="rgba(216, 180, 254, 0.65)" stroke-width="1.5" transform="rotate(30 50 50)" />
+          <ellipse cx="50" cy="50" rx="30" ry="11" fill="none" stroke="rgba(216, 180, 254, 0.65)" stroke-width="1.5" transform="rotate(-30 50 50)" />
+          <polygon points="50,18 40,65 60,65" fill="#fdf2f8" stroke="#d946ef" stroke-width="1.5" />
+          <polygon points="35,67 65,67 59,73 41,73" fill="#f472b6" />
+          <polygon points="30,75 70,75 64,81 36,81" fill="#c084fc" />
+        </svg>
+        <div class="brand-text">
+          <h1>Renata O. Benedet</h1>
+          <span data-i18n="brand_sub">Física Médica • Raios X • 3D</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav_about">Sobre</a></li>
+        <li><a href="#simulator" data-i18n="nav_simulator">Simulador CS-XSI</a></li>
+        <li><a href="#research" data-i18n="nav_research">Pesquisa</a></li>
+        <li><a href="#trajectory" data-i18n="nav_trajectory">Trajetória</a></li>
+        <li><a href="#publications" data-i18n="nav_publications">Publicações</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contato</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button id="langToggleBtn" class="lang-toggle-btn" aria-label="Alterar idioma">
+          <i class="fa-solid fa-globe"></i> <span id="langCurrentText">EN</span>
+        </button>
+        <a href="#contact" class="btn-nav-contact">
+          <i class="fa-solid fa-paper-plane"></i> <span data-i18n="nav_btn">Colaborar</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero-grid" id="about">
+      <div class="hero-text-col">
+        <div class="hero-badge">
+          <span class="pulsing-crystal-dot"></span>
+          <span data-i18n="hero_badge">Mestrado em Física Aplicada • Bolsista CAPES (UNILA)</span>
+        </div>
+
+        <h1 class="hero-title">
+          Renata Olmedo <br>
+          <span class="gradient-text-soft">Benedet</span>
+        </h1>
+
+        <p class="hero-subtitle" data-i18n="hero_sub">
+          Engenheira Física &bull; Prototipagem 3D &bull; Espalhamento & Difração de Raios X
+        </p>
+
+        <p class="hero-desc" data-i18n="hero_desc">
+          Pesquisa de ponta na modelagem e manufatura aditiva de fendas cônicas para sistemas de espalhamento de raios X (CS-XSI). Foco no diagnóstico precoce e não invasivo de microcalcificações mamárias (oxalato de cálcio) em materiais tecido-equivalentes.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#simulator" class="btn btn-glow">
+            <i class="fa-solid fa-flask-vial"></i> <span data-i18n="btn_try_sim">Testar Simulador de Feixe</span>
+          </a>
+          <a href="#publications" class="btn btn-outline-soft">
+            <i class="fa-solid fa-book-open"></i> <span data-i18n="btn_view_papers">Ver Artigos & Anais</span>
+          </a>
+          <a href="http://lattes.cnpq.br/" target="_blank" rel="noopener" class="btn btn-outline-soft">
+            <i class="fa-solid fa-graduation-cap"></i> <span>Lattes</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3D Gyroscope / Tilt Emblem Card -->
+      <div class="tilt-card-wrapper">
+        <div class="tilt-card" id="emblemTiltCard">
+          <div class="card-emblem-svg-wrap">
+            <svg viewBox="0 0 320 320" class="svg-emblem-main">
+              <defs>
+                <radialGradient id="cardHalo" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#f472b6" stop-opacity="0.38" />
+                  <stop offset="70%" stop-color="#c084fc" stop-opacity="0.12" />
+                  <stop offset="100%" stop-color="#0f0c1b" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="monolithGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="60%" stop-color="#fae8ff" />
+                  <stop offset="100%" stop-color="#d8b4fe" />
+                </linearGradient>
+                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#f472b6" />
+                  <stop offset="100%" stop-color="#c084fc" />
+                </linearGradient>
+              </defs>
+
+              <!-- Outer Glowing Halo -->
+              <circle cx="160" cy="160" r="148" fill="url(#cardHalo)" />
+              <circle cx="160" cy="160" r="145" fill="none" stroke="url(#ringGrad)" stroke-width="3" />
+              <circle cx="160" cy="160" r="137" fill="none" stroke="#fbcfe8" stroke-width="1.2" stroke-dasharray="4 4" />
+              <circle cx="160" cy="160" r="118" fill="none" stroke="#e9d5ff" stroke-width="1" />
+
+              <!-- Circular Typography Paths -->
+              <path id="curveTop" fill="none" d="M 40,160 A 120,120 0 0,1 280,160" />
+              <path id="curveBottom" fill="none" d="M 280,160 A 120,120 0 0,1 40,160" />
+
+              <text font-family="'Space Grotesk', sans-serif" font-size="13px" font-weight="700" fill="#fbcfe8" letter-spacing="2px">
+                <textPath href="#curveTop" startOffset="50%" text-anchor="middle">
+                  RENATA OLMEDO BENEDET
+                </textPath>
+              </text>
+              <text font-family="'Plus Jakarta Sans', sans-serif" font-size="8.8px" font-weight="600" fill="#d8b4fe" letter-spacing="1.5px">
+                <textPath href="#curveBottom" startOffset="50%" text-anchor="middle">
+                  PHYSICS • 3D PRINTING • RADIOLOGY
+                </textPath>
+              </text>
+
+              <!-- Radial X-Ray Diffracting Beams -->
+              <g stroke="#f472b6" stroke-width="1.2" opacity="0.45">
+                <line x1="160" y1="160" x2="160" y2="40" stroke-dasharray="3 3" />
+                <line x1="160" y1="160" x2="245" y2="75" stroke-dasharray="3 3" />
+                <line x1="160" y1="160" x2="75" y2="75" stroke-dasharray="3 3" />
+                <line x1="160" y1="160" x2="275" y2="160" stroke-dasharray="3 3" />
+                <line x1="160" y1="160" x2="45" y2="160" stroke-dasharray="3 3" />
+              </g>
+
+              <!-- Biocrystallography Orbitals -->
+              <ellipse cx="160" cy="160" rx="90" ry="32" fill="none" stroke="#d946ef" stroke-width="2" opacity="0.7" transform="rotate(35 160 160)" />
+              <ellipse cx="160" cy="160" rx="90" ry="32" fill="none" stroke="#c084fc" stroke-width="2" opacity="0.7" transform="rotate(-35 160 160)" />
+              <circle cx="215" cy="115" r="4.5" fill="#fb7185" />
+              <circle cx="105" cy="205" r="4" fill="#a855f7" />
+
+              <!-- Conical Slit Monolith -->
+              <polygon points="160,65 130,205 190,205" fill="url(#monolithGrad)" stroke="#c084fc" stroke-width="2" />
+              <polygon points="160,65 160,205 190,205" fill="#e9d5ff" opacity="0.8" />
+              <ellipse cx="160" cy="65" rx="5" ry="2" fill="#d946ef" />
+
+              <!-- 3D Layered Base Platform -->
+              <polygon points="115,210 205,210 188,226 132,226" fill="#f472b6" />
+              <polygon points="102,229 218,229 201,245 119,245" fill="#c084fc" />
+              <polygon points="90,248 230,248 213,264 107,264" fill="#a855f7" />
+            </svg>
+          </div>
+
+          <div class="card-title-group">
+            <h3 data-i18n="card_emblem_title">Emblema de Pesquisa</h3>
+            <p data-i18n="card_emblem_sub">Instrumentação • Cristalografia • Óptica 3D</p>
+          </div>
+
+          <div class="card-badges-row">
+            <span class="mini-badge">UNILA / CAPES</span>
+            <span class="mini-badge">CS-XSI</span>
+            <span class="mini-badge">COD Rings</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="metrics-bar">
+      <div class="metric-box">
+        <span class="metric-val" data-target="3">0</span>
+        <span class="metric-lbl" data-i18n="metric_papers">Artigos em Periódicos</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-val" data-target="6">0</span>
+        <span class="metric-lbl" data-i18n="metric_confs">Trabalhos em Congressos</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-val" data-target="5">0</span>
+        <span class="metric-lbl" data-i18n="metric_talks">Apresentações Científicas</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-val" data-target="200">0</span>
+        <span class="metric-lbl" data-i18n="metric_hours">Horas em Extensão & Cursos</span>
+      </div>
+    </div>
+
+    <section class="lab-sim-section" id="simulator">
+      <div class="section-head">
+        <span class="section-pill" data-i18n="sim_pill">Laboratório Virtual Interativo</span>
+        <h2 class="section-title" data-i18n="sim_title">Simulador de Fenda Cônica (CS-XSI)</h2>
+        <p class="section-subtitle" data-i18n="sim_sub">
+          Ajuste os parâmetros geométricos da fenda impressa em 3D e veja a colimação dos fótons e os picos de Bragg no detector de raios X.
+        </p>
+      </div>
+
+      <div class="simulator-container">
+        <!-- Visual Simulation Viewport -->
+        <div class="sim-viewport">
+          <div class="canvas-viewport-wrap">
+            <canvas id="coneRayCanvas"></canvas>
+          </div>
+
+          <!-- Real-Time Readout HUD -->
+          <div class="sim-readout-hud">
+            <div class="hud-chip">
+              <span class="hud-chip-label" data-i18n="hud_snr">Sinal/Ruído (SNR)</span>
+              <span class="hud-chip-value" id="hudSNR">14.8 dB</span>
+            </div>
+            <div class="hud-chip">
+              <span class="hud-chip-label" data-i18n="hud_flux">Fluxo no Detector</span>
+              <span class="hud-chip-value" id="hudFlux">1.82e5 ph/s</span>
+            </div>
+            <div class="hud-chip">
+              <span class="hud-chip-label" data-i18n="hud_peak">Pico Bragg (2θ)</span>
+              <span class="hud-chip-value" id="hudPeak">14.92°</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Side Panel -->
+        <div class="sim-controls-panel">
+          
+          <!-- Aperture Slider -->
+          <div class="control-group">
+            <div class="control-header">
+              <span data-i18n="lbl_aperture">Abertura da Fenda Cônica (w)</span>
+              <span class="control-val-tag" id="valAperture">0.8 mm</span>
+            </div>
+            <input type="range" class="custom-slider" id="sliderAperture" min="0.2" max="2.0" step="0.1" value="0.8">
+          </div>
+
+          <!-- Cone Angle Slider -->
+          <div class="control-group">
+            <div class="control-header">
+              <span data-i18n="lbl_cone_angle">Semi-ângulo Cônico (θ_c)</span>
+              <span class="control-val-tag" id="valConeAngle">7.5°</span>
+            </div>
+            <input type="range" class="custom-slider" id="sliderConeAngle" min="3.0" max="15.0" step="0.5" value="7.5">
+          </div>
+
+          <!-- X-Ray Energy Slider -->
+          <div class="control-group">
+            <div class="control-header">
+              <span data-i18n="lbl_energy">Energia do Feixe (E)</span>
+              <span class="control-val-tag" id="valEnergy">17.5 keV (Mo Kα)</span>
+            </div>
+            <input type="range" class="custom-slider" id="sliderEnergy" min="8" max="40" step="1" value="18">
+          </div>
+
+          <!-- Material Presets -->
+          <div class="control-group">
+            <div class="control-header">
+              <span data-i18n="lbl_sample">Amostra / Fantoma Tecido-Equivalente</span>
+            </div>
+            <div class="sample-preset-buttons">
+              <button class="preset-btn active" data-preset="cod">
+                <strong>Oxalato de Cálcio</strong>
+                <span class="preset-sub" data-i18n="sample_cod_sub">Dihidratado (COD)</span>
+              </button>
+              <button class="preset-btn" data-preset="hydroxy">
+                <strong>Hidroxiapatita</strong>
+                <span class="preset-sub" data-i18n="sample_ha_sub">Calcificação Tipo II</span>
+              </button>
+              <button class="preset-btn" data-preset="adipose">
+                <strong>Tecido Adiposo</strong>
+                <span class="preset-sub" data-i18n="sample_adipose_sub">Fantoma de Mama</span>
+              </button>
+              <button class="preset-btn" data-preset="glandular">
+                <strong>Tecido Glandular</strong>
+                <span class="preset-sub" data-i18n="sample_gland_sub">Alta Densidade</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="sim-explanation-note">
+            <i class="fa-solid fa-circle-info text-pink-400"></i>
+            <span data-i18n="sim_note">
+              A geometria de fenda cônica impressa em 3D permite capturar os anéis completos de difração de Debye-Scherrer, amplificando o sinal contra o ruído de espalhamento Compton no tecido mamário.
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-sim-section" id="research">
+      <div class="section-head">
+        <span class="section-pill" data-i18n="res_pill">Competências Centrais</span>
+        <h2 class="section-title" data-i18n="res_title">Pilares de Pesquisa & Desenvolvimento</h2>
+        <p class="section-subtitle" data-i18n="res_sub">
+          A convergência entre física fundamental, engenharia de materiais e diagnósticos em saúde.
+        </p>
+      </div>
+
+      <div class="pillars-grid">
+        
+        <div class="glass-panel pillar-card">
+          <div class="pillar-icon-box">
+            <i class="fa-solid fa-radiation"></i>
+          </div>
+          <h3 data-i18n="p1_title">Espalhamento de Raios X (CS-XSI)</h3>
+          <p data-i18n="p1_desc">
+            Simulação computacional e caracterização experimental de imagens por espalhamento de raios X com fendas cônicas para identificação precisa de microcalcificações patológicas.
+          </p>
+          <ul class="pillar-tags-list">
+            <li>CS-XSI Geometry</li>
+            <li>Monte Carlo</li>
+            <li>Tissue Phantoms</li>
+          </ul>
+        </div>
+
+        <div class="glass-panel pillar-card">
+          <div class="pillar-icon-box">
+            <i class="fa-solid fa-cube"></i>
+          </div>
+          <h3 data-i18n="p2_title">Prototipagem em Impressão 3D</h3>
+          <p data-i18n="p2_desc">
+            Modelagem CAD e manufatura aditiva de alta precisão para colimadores cônicos complexos em resina/filamento denso, reduzindo custos de fabricação e aumentando a flexibilidade experimental.
+          </p>
+          <ul class="pillar-tags-list">
+            <li>CAD Modeling</li>
+            <li>Additive Manufacturing</li>
+            <li>Collimator Tolerances</li>
+          </ul>
+        </div>
+
+        <div class="glass-panel pillar-card">
+          <div class="pillar-icon-box">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <h3 data-i18n="p3_title">Cristalografia & Análise Estrutural</h3>
+          <p data-i18n="p3_desc">
+            Análise de difração de oxalato de cálcio biológico e biomateriais. Formação complementar em Cryo-EM pela Associação Brasileira de Cristalografia (ABCR).
+          </p>
+          <ul class="pillar-tags-list">
+            <li>Powder XRD</li>
+            <li>Cryo-EM</li>
+            <li>Calcium Oxalate</li>
+          </ul>
+        </div>
+
+        <div class="glass-panel pillar-card">
+          <div class="pillar-icon-box">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h3 data-i18n="p4_title">Divulgação Científica & Extensão</h3>
+          <p data-i18n="p4_desc">
+            Compromisso com a transferência do conhecimento científico à sociedade através de projetos de extensão em eletroquímica para escolas e liderança estudantil no CAENFIS.
+          </p>
+          <ul class="pillar-tags-list">
+            <li>CAENFIS UNILA</li>
+            <li>Eletroquímica Escolar</li>
+            <li>Comunicação Científica</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="lab-sim-section" id="trajectory">
+      <div class="section-head">
+        <span class="section-pill" data-i18n="traj_pill">Formação & Histórico</span>
+        <h2 class="section-title" data-i18n="traj_title">Trajetória Acadêmica</h2>
+        <p class="section-subtitle" data-i18n="traj_sub">
+          Formação contínua em Engenharia Física e Física Médica Aplicada na UNILA.
+        </p>
+      </div>
+
+      <div class="timeline-wrap">
+        
+        <!-- Mestrado -->
+        <div class="timeline-entry glass-panel" style="padding: 1.8rem;">
+          <div class="timeline-beacon"></div>
+          <div class="timeline-year-tag">2025 – Presente</div>
+          <h3 class="timeline-title" data-i18n="t1_title">Mestrado em Física Aplicada</h3>
+          <div class="timeline-sub">Universidade Federal da Integração Latino-Americana (UNILA) &bull; Bolsista CAPES</div>
+          <p class="timeline-body" data-i18n="t1_body">
+            Pesquisa em andamento focada em instrumentação física com raios X, otimização da relação sinal-ruído (SNR) e caracterização de microcalcificações mamárias com fendas cônicas.
+          </p>
+          <div class="advisor-callout">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>Orientador: <strong>Prof. Dr. Marcelo Gonçalves Hönnicke</strong></span>
+          </div>
+        </div>
+
+        <!-- Graduação -->
+        <div class="timeline-entry glass-panel" style="padding: 1.8rem;">
+          <div class="timeline-beacon"></div>
+          <div class="timeline-year-tag">2020 – 2025</div>
+          <h3 class="timeline-title" data-i18n="t2_title">Graduação em Engenharia Física</h3>
+          <div class="timeline-sub">Universidade Federal da Integração Latino-Americana (UNILA)</div>
+          <p class="timeline-body" data-i18n="t2_body">
+            <strong>Trabalho de Conclusão de Curso (TCC):</strong> <em>PROTOTIPAGEM DE FENDA CÔNICA IMPRESSA EM 3D PARA IDENTIFICAÇÃO DE OXALATO DE CÁLCIO: POSSÍVEL APLICAÇÃO PARA DIAGNÓSTICO NÃO INVASIVO DE MICROCALCIFICAÇÕES MAMÁRIAS.</em>
+          </p>
+          <div class="advisor-callout">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>Orientador: <strong>Prof. Dr. Marcelo Gonçalves Hönnicke</strong></span>
+          </div>
+        </div>
+
+        <!-- Cursos Complementares -->
+        <div class="timeline-entry glass-panel" style="padding: 1.8rem;">
+          <div class="timeline-beacon"></div>
+          <div class="timeline-year-tag" data-i18n="t3_badge">Formação Complementar</div>
+          <h3 class="timeline-title" data-i18n="t3_title">Especializações & Atuação Extensionista</h3>
+          <div class="timeline-sub">ABCR &bull; UNILA &bull; Idiomas sem Fronteiras</div>
+          <p class="timeline-body">
+            • <strong>Single Particle Cryo-Electron Microscopy (Cryo-EM):</strong> Associação Brasileira de Cristalografia (ABCR, 2023 - 6h).<br>
+            • <strong>Extensão Universitária:</strong> Centro Acadêmico de Engenharia Física - CAENFIS (2022–2023 - 30h).<br>
+            • <strong>Idiomas sem Fronteiras:</strong> Espanhol e Português para Estrangeiros (96h, 2021) &bull; Inglês Básico (68h, 2019).
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="lab-sim-section" id="publications">
+      <div class="section-head">
+        <span class="section-pill" data-i18n="pub_pill">Produção Científica</span>
+        <h2 class="section-title" data-i18n="pub_title">Artigos & Anais de Congressos</h2>
+        <p class="section-subtitle" data-i18n="pub_sub">
+          Publicações em periódicos indexados de alto impacto e contribuições em conferências científicas.
+        </p>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="pub-toolbar">
+        <div class="filter-tabs">
+          <button class="tab-btn active" data-filter="all" data-i18n="filter_all">Todos (9)</button>
+          <button class="tab-btn" data-filter="journal" data-i18n="filter_journal">Periódicos (3)</button>
+          <button class="tab-btn" data-filter="conference" data-i18n="filter_conf">Congressos & Seminários (5)</button>
+          <button class="tab-btn" data-filter="outreach" data-i18n="filter_outreach">Extensão (1)</button>
+        </div>
+
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="pubSearchInput" placeholder="Buscar por título, autor, ano..." data-i18n-placeholder="search_placeholder">
+        </div>
+      </div>
+
+      <!-- Publication Cards List -->
+      <div class="publications-list" id="pubCardsList">
+
+        <!-- Paper 1 -->
+        <article class="glass-panel pub-card" data-category="journal" data-year="2027" data-cite-abnt="MORAVEC DE VIANA BORGES, C.; OLMEDO BENEDET, R.; GONÇALVES HÖNNICKE, M.; POLETTI, M. E. Enhancing microcalcification characterization using conical slit X-ray scattering imaging (CS-XSI): a simulation and experimental study. Radiation Physics and Chemistry, v. 250, p. 114341, 2027." data-cite-bibtex="@article{borges2027enhancing, title={Enhancing microcalcification characterization using conical slit X-ray scattering imaging (CS-XSI): a simulation and experimental study}, author={Moravec de Viana Borges, Carolina and Olmedo Benedet, Renata and Gon{\c{c}}alves H{\"o}nnicke, Marcelo and Poletti, Martin Eduardo}, journal={Radiation Physics and Chemistry}, volume={250}, pages={114341}, year={2027}}">
+          <div class="pub-card-top">
+            <span class="pub-kind-badge"><i class="fa-solid fa-book-journal-whills"></i> <span data-i18n="badge_journal">Periódico Internacional</span></span>
+            <span class="pub-year-badge">2027</span>
+          </div>
+          <h3 class="pub-headline">Enhancing microcalcification characterization using conical slit X-ray scattering imaging (CS-XSI): a simulation and experimental study</h3>
+          <div class="pub-authors-line">
+            Moravec de Viana Borges, Carolina; <strong>Olmedo Benedet, Renata</strong>; Gonçalves Hönnicke, Marcelo; Poletti, Martin Eduardo.
+          </div>
+          <div class="pub-journal-line">
+            <i class="fa-solid fa-newspaper"></i> Radiation Physics and Chemistry, v. 250, p. 114341.
+          </div>
+          <div class="pub-actions">
+            <button class="cite-btn copy-abnt-btn"><i class="fa-solid fa-quote-left"></i> Copiar ABNT</button>
+            <button class="cite-btn copy-bibtex-btn"><i class="fa-solid fa-code"></i> BibTeX</button>
+          </div>
+        </article>
+
+        <!-- Paper 2 -->
+        <article class="glass-panel pub-card" data-category="journal" data-year="2025" data-cite-abnt="BENEDET, R. O.; SANTOS, P. R.; CUSATIS, C.; POLETTI, M. E.; HONNICKE, M. G. 3D Printed Conical Slits for Seeking Calcium Spots Among Different Tissue-Equivalent Materials. X-Ray Spectrometry, v. 54, p. 765, 2025." data-cite-bibtex="@article{benedet20253d, title={3D Printed Conical Slits for Seeking Calcium Spots Among Different Tissue-Equivalent Materials}, author={Benedet, R. O. and Santos, P. R. and Cusatis, C. and Poletti, M. E. and Honnicke, M. G.}, journal={X-Ray Spectrometry}, volume={54}, pages={765}, year={2025}}">
+          <div class="pub-card-top">
+            <span class="pub-kind-badge"><i class="fa-solid fa-book-journal-whills"></i> <span data-i18n="badge_journal">Periódico Internacional</span></span>
+            <span class="pub-year-badge">2025 &bull; Citações: 1</span>
+          </div>
+          <h3 class="pub-headline">3D Printed Conical Slits for Seeking Calcium Spots Among Different Tissue-Equivalent Materials</h3>
+          <div class="pub-authors-line">
+            <strong>Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Honnicke, M. G.
+          </div>
+          <div class="pub-journal-line">
+            <i class="fa-solid fa-newspaper"></i> X-Ray Spectrometry (Online), v. 54, p. 765.
+          </div>
+          <div class="pub-actions">
+            <button class="cite-btn copy-abnt-btn"><i class="fa-solid fa-quote-left"></i> Copiar ABNT</button>
+            <button class="cite-btn copy-bibtex-btn"><i class="fa-solid fa-code"></i> BibTeX</button>
+          </div>
+        </article>
+
+        <!-- Paper 3 -->
+        <article class="glass-panel pub-card" data-category="outreach" data-year="2023" data-cite-abnt="MACEDO, B. H. D.; BENEDET, R. O.; SALGADO, J. R. C. A Eletroquímica ao Alcance da Sociedade. Revista Técnico Científica do CREA-PR, v. 1, p. 146, 2023." data-cite-bibtex="@article{macedo2023eletroquimica, title={A Eletroqu{\'\i}mica ao Alcance da Sociedade}, author={Macedo, B. H. D. and Benedet, R. O. and Salgado, J. R. C.}, journal={Revista T{\'e}cnico Cient{\'\i}fica do CREA-PR}, volume={1}, pages={146}, year={2023}}">
+          <div class="pub-card-top">
+            <span class="pub-kind-badge"><i class="fa-solid fa-lightbulb"></i> <span data-i18n="badge_outreach">Artigo Técnico-Científico</span></span>
+            <span class="pub-year-badge">2023</span>
+          </div>
+          <h3 class="pub-headline">A Eletroquímica ao Alcance da Sociedade</h3>
+          <div class="pub-authors-line">
+            Macedo, B. H. D.; <strong>Benedet, R. O.</strong>; Salgado, J. R. C.
+          </div>
+          <div class="pub-journal-line">
+            <i class="fa-solid fa-newspaper"></i> Revista Técnico Científica do CREA-PR, v. 1, p. 146.
+          </div>
+          <div class="pub-actions">
+            <button class="cite-btn copy-abnt-btn"><i class="fa-solid fa-quote-left"></i> Copiar ABNT</button>
+            <button class="cite-btn copy-bibtex-btn"><i class="fa-solid fa-code"></i> BibTeX</button>
+          </div>
+        </article>
+
+        <!-- Conf 1 - SARX -->
+        <article class="glass-panel pub-card" data-category="conference" data-year="2024" data-cite-abnt="BENEDET, R. O.; SANTOS, P. R.; CUSATIS, C.; POLETTI, M. E.; HONNICKE, M. G. Seeking calcium spots with 3D Printed Conical Slits: SNR evaluation in samples models with different tissue equivalent materials. In: XVII Latin American Seminar of Analysis by X-Ray Techniques (SARX), Rio de Janeiro, 2024. p. 18." data-cite-bibtex="@inproceedings{benedet2024sarx, title={Seeking calcium spots with 3D Printed Conical Slits: SNR evaluation in samples models with different tissue equivalent materials}, author={Benedet, R. O. and Santos, P. R. and Cusatis, C. and Poletti, M. E. and Honnicke, M. G.}, booktitle={XVII Latin American Seminar of Analysis by X-Ray Techniques (SARX)}, pages={18}, year={2024}, address={Rio de Janeiro}}">
+          <div class="pub-card-top">
+            <span class="pub-kind-badge"><i class="fa-solid fa-globe"></i> <span data-i18n="badge_intl_conf">Congresso Internacional</span></span>
+            <span class="pub-year-badge">2024 &bull; SARX</span>
+          </div>
+          <h3 class="pub-headline">Seeking calcium spots with 3D Printed Conical Slits: SNR evaluation in samples models with different tissue equivalent materials</h3>
+          <div class="pub-authors-line">
+            <strong>Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Honnicke, M. G.
+          </div>
+          <div class="pub-journal-line">
+            <i class="fa-solid fa-landmark"></i> XVII Latin American Seminar of Analysis by X-Ray Techniques (SARX 2024), Rio de Janeiro.
+          </div>
+          <div class="pub-actions">
+            <button class="cite-btn copy-abnt-btn"><i class="fa-solid fa-quote-left"></i> Copiar ABNT</button>
+            <button class="cite-btn copy-bibtex-btn"><i class="fa-solid fa-code"></i> BibTeX</button>
+          </div>
+        </article>
+
+        <!-- Conf 2 - MEC3F -->
+        <article class="glass-panel pub-card" data-category="conference" data-year="2024" data-cite-abnt="BENEDET, R. O.; SANTOS, P. R.; CUSATIS, C.; POLETTI, M. E.; HONNICKE, M. G. Procurando Traços de Cálcio Com Fendas Cônicas Prototipadas Por Impressão 3D: Caracterização da Relação Sinal Ruído Utilizando Fantomas de Materiais Tecido-Equivalentes. In: 5° Congresso de Engenharia e Ciências Aplicadas das Três Fronteiras (MEC3F), Foz do Iguaçu, 2024." data-cite-bibtex="@inproceedings{benedet2024mec3f, title={Procurando Tra{\c{c}}os de C{\'a}lcio Com Fendas C{\^o}nicas Prototipadas Por Impress{\~a}o 3D: Caracteriza{\c{c}}{\~a}o da Rela{\c{c}}{\~a}o Sinal Ru{\'\i}do Utilizando Fantomas de Materiais Tecido-Equivalentes}, author={Benedet, R. O. and Santos, P. R. and Cusatis, C. and Poletti, M. E. and Honnicke, M. G.}, booktitle={5° Congresso de Engenharia e Ci{\^e}ncias Aplicadas das Tr{\^e}s Fronteiras (MEC3F)}, year={2024}, address={Foz do Igua{\c{c}}u}}">
+          <div class="pub-card-top">
+            <span class="pub-kind-badge"><i class="fa-solid fa-chart-line"></i> <span data-i18n="badge_conf">Congresso de Engenharia</span></span>
+            <span class="pub-year-badge">2024 &bull; MEC3F</span>
+          </div>
+          <h3 class="pub-headline">Procurando Traços de Cálcio Com Fendas Cônicas Prototipadas Por Impressão 3D: Caracterização da Relação Sinal Ruído</h3>
+          <div class="pub-authors-line">
+            <strong>Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Honnicke, M. G.
+          </div>
+          <div class="pub-journal-line">
+            <i class="fa-solid fa-landmark"></i> 5° Congresso de Engenharia e Ciências Aplicadas das Três Fronteiras (MEC3F), Foz do Iguaçu - PR.
+          </div>
+          <div class="pub-actions">
+            <button class="cite-btn copy-abnt-btn"><i class="fa-solid fa-quote-left"></i> Copiar ABNT</button>
+            <button class="cite-btn copy-bibtex-btn"><i class="fa-solid fa-code"></i> BibTeX</button>
+          </div>
+        </article>
+
+        <!-- Conf 3 - ABCR -->
+        <article class="glass-panel pub-card" data-category="conference" data-year="2023" data-cite-abnt="BENEDET, R. O.; SANTOS, P. R.; CUSATIS, C.; POLETTI, M. E.; HONNICKE, M. G. Prototipagem em impressão 3D de uma fenda cônica para detecção do padrão de difração do oxalato de cálcio duplamente hidratado. In: 26ª Reunião da Associação Brasileira de Cristalografia, Ribeirão Preto, 2023." data-cite-bibtex="@inproceedings{benedet2023abcr, title={Prototipagem em impress{\~a}o 3D de uma fenda c{\^o}nica para detec{\c{c}}{\~a}o do padr{\~a}o de difra{\c{c}}{\~a}o do oxalato de c{\'a}lcio duplamente hidratado}, author={Benedet, R. O. and Santos, P. R. and Cusatis, C. and Poletti, M. E. and Honnicke, M. G.}, booktitle={26ª Reuni{\~a}o da Associa{\c{c}}{\~a}o Brasileira de Cristalografia}, year={2023}, address={Ribeir{\~a}o Preto}}">
+          <div class="pub-card-top">
+            <span class="pub-kind-badge"><i class="fa-solid fa-gem"></i> <span data-i18n="badge_cryst">Reunião de Cristalografia</span></span>
+            <span class="pub-year-badge">2023 &bull; ABCR</span>
+          </div>
+          <h3 class="pub-headline">Prototipagem em impressão 3D de uma fenda cônica para detecção do padrão de difração do oxalato de cálcio duplamente hidratado</h3>
+          <div class="pub-authors-line">
+            <strong>Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Honnicke, M. G.
+          </div>
+          <div class="pub-journal-line">
+            <i class="fa-solid fa-landmark"></i> 26ª Reunião da Associação Brasileira de Cristalografia (ABCR), Ribeirão Preto - SP.
+          </div>
+          <div class="pub-actions">
+            <button class="cite-btn copy-abnt-btn"><i class="fa-solid fa-quote-left"></i> Copiar ABNT</button>
+            <button class="cite-btn copy-bibtex-btn"><i class="fa-solid fa-code"></i> BibTeX</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="lab-sim-section" id="contact">
+      <div class="contact-card">
+        <span class="section-pill" data-i18n="contact_pill">Conectar & Parcerias</span>
+        <h2 data-i18n="contact_title">Vamos Colaborar em Pesquisa</h2>
+        <p data-i18n="contact_desc">
+          Aberta a intercâmbios de pesquisa internacionais, programas de Doutorado e projetos colaborativos em Física Médica, Raios X e Instrumentação Biomédica.
+        </p>
+
+        <div class="contact-btn-row">
+          <a href="mailto:renata.benedet@unila.edu.br" class="btn btn-glow">
+            <i class="fa-solid fa-envelope"></i> <span data-i18n="btn_email">Enviar E-mail Direto</span>
+          </a>
+          <a href="http://lattes.cnpq.br/" target="_blank" rel="noopener" class="btn btn-outline-soft">
+            <i class="fa-solid fa-graduation-cap"></i> <span>Currículo Lattes</span>
+          </a>
+          <a href="https://orcid.org" target="_blank" rel="noopener" class="btn btn-outline-soft">
+            <i class="fa-brands fa-orcid"></i> <span>ORCID</span>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-outline-soft">
+            <i class="fa-brands fa-linkedin"></i> <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        &copy; 2026 <strong>Renata Olmedo Benedet</strong> &bull; <span data-i18n="footer_sub">Física Médica, Instrumentação & Radiações Ionizantes</span>
+      </div>
+      <div>
+        <i class="fa-solid fa-location-dot text-pink-400"></i> UNILA &bull; Foz do Iguaçu, PR &bull; Brasil
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="citationToast">
+    <i class="fa-solid fa-circle-check text-pink-400"></i>
+    <span id="citationToastMsg">Citação copiada com sucesso para a área de transferência!</span>
+  </div>
+
+  <script>
+    /* =========================================================
+       I18N DICTIONARY (PORTUGUÊS / ENGLISH)
+       ========================================================= */
+    const translations = {
+      pt: {
+        brand_sub: "Física Médica • Raios X • 3D",
+        nav_about: "Sobre",
+        nav_simulator: "Simulador CS-XSI",
+        nav_research: "Pesquisa",
+        nav_trajectory: "Trajetória",
+        nav_publications: "Publicações",
+        nav_contact: "Contato",
+        nav_btn: "Colaborar",
+        hero_badge: "Mestrado em Física Aplicada • Bolsista CAPES (UNILA)",
+        hero_sub: "Engenheira Física • Prototipagem 3D • Espalhamento & Difração de Raios X",
+        hero_desc: "Pesquisa de ponta na modelagem e manufatura aditiva de fendas cônicas para sistemas de espalhamento de raios X (CS-XSI). Foco no diagnóstico precoce e não invasivo de microcalcificações mamárias (oxalato de cálcio) em materiais tecido-equivalentes.",
+        btn_try_sim: "Testar Simulador de Feixe",
+        btn_view_papers: "Ver Artigos & Anais",
+        card_emblem_title: "Emblema de Pesquisa",
+        card_emblem_sub: "Instrumentação • Cristalografia • Óptica 3D",
+        metric_papers: "Artigos em Periódicos",
+        metric_confs: "Trabalhos em Congressos",
+        metric_talks: "Apresentações Científicas",
+        metric_hours: "Horas em Extensão & Cursos",
+        sim_pill: "Laboratório Virtual Interativo",
+        sim_title: "Simulador de Fenda Cônica (CS-XSI)",
+        sim_sub: "Ajuste os parâmetros geométricos da fenda impressa em 3D e veja a colimação dos fótons e os picos de Bragg no detector de raios X.",
+        hud_snr: "Sinal/Ruído (SNR)",
+        hud_flux: "Fluxo no Detector",
+        hud_peak: "Pico Bragg (2θ)",
+        lbl_aperture: "Abertura da Fenda Cônica (w)",
+        lbl_cone_angle: "Semi-ângulo Cônico (θ_c)",
+        lbl_energy: "Energia do Feixe (E)",
+        lbl_sample: "Amostra / Fantoma Tecido-Equivalente",
+        sample_cod_sub: "Dihidratado (COD)",
+        sample_ha_sub: "Calcificação Tipo II",
+        sample_adipose_sub: "Fantoma de Mama",
+        sample_gland_sub: "Alta Densidade",
+        sim_note: "A geometria de fenda cônica impressa em 3D permite capturar os anéis completos de difração de Debye-Scherrer, amplificando o sinal contra o ruído de espalhamento Compton no tecido mamário.",
+        res_pill: "Competências Centrais",
+        res_title: "Pilares de Pesquisa & Desenvolvimento",
+        res_sub: "A convergência entre física fundamental, engenharia de materiais e diagnósticos em saúde.",
+        p1_title: "Espalhamento de Raios X (CS-XSI)",
+        p1_desc: "Simulação computacional e caracterização experimental de imagens por espalhamento de raios X com fendas cônicas para identificação precisa de microcalcificações patológicas.",
+        p2_title: "Prototipagem em Impressão 3D",
+        p2_desc: "Modelagem CAD e manufatura aditiva de alta precisão para colimadores cônicos complexos em resina/filamento denso, reduzindo custos de fabricação e aumentando a flexibilidade experimental.",
+        p3_title: "Cristalografia & Análise Estrutural",
+        p3_desc: "Análise de difração de oxalato de cálcio biológico e biomateriais. Formação complementar em Cryo-EM pela Associação Brasileira de Cristalografia (ABCR).",
+        p4_title: "Divulgação Científica & Extensão",
+        p4_desc: "Compromisso com a transferência do conhecimento científico à sociedade através de projetos de extensão em eletroquímica para escolas e liderança estudantil no CAENFIS.",
+        traj_pill: "Formação & Histórico",
+        traj_title: "Trajetória Acadêmica",
+        traj_sub: "Formação contínua em Engenharia Física e Física Médica Aplicada na UNILA.",
+        t1_title: "Mestrado em Física Aplicada",
+        t1_body: "Pesquisa em andamento focada em instrumentação física com raios X, otimização da relação sinal-ruído (SNR) e caracterização de microcalcificações mamárias com fendas cônicas.",
+        t2_title: "Graduação em Engenharia Física",
+        t2_body: "Trabalho de Conclusão de Curso (TCC): PROTOTIPAGEM DE FENDA CÔNICA IMPRESSA EM 3D PARA IDENTIFICAÇÃO DE OXALATO DE CÁLCIO: POSSÍVEL APLICAÇÃO PARA DIAGNÓSTICO NÃO INVASIVO DE MICROCALCIFICAÇÕES MAMÁRIAS.",
+        t3_badge: "Formação Complementar",
+        t3_title: "Especializações & Atuação Extensionista",
+        pub_pill: "Produção Científica",
+        pub_title: "Artigos & Anais de Congressos",
+        pub_sub: "Publicações em periódicos indexados de alto impacto e contribuições em conferências científicas.",
+        filter_all: "Todos (9)",
+        filter_journal: "Periódicos (3)",
+        filter_conf: "Congressos & Seminários (5)",
+        filter_outreach: "Extensão (1)",
+        search_placeholder: "Buscar por título, autor, ano...",
+        badge_journal: "Periódico Internacional",
+        badge_outreach: "Artigo Técnico-Científico",
+        badge_intl_conf: "Congresso Internacional",
+        badge_conf: "Congresso de Engenharia",
+        badge_cryst: "Reunião de Cristalografia",
+        contact_pill: "Conectar & Parcerias",
+        contact_title: "Vamos Colaborar em Pesquisa",
+        contact_desc: "Aberta a intercâmbios de pesquisa internacionais, programas de Doutorado e projetos colaborativos em Física Médica, Raios X e Instrumentação Biomédica.",
+        btn_email: "Enviar E-mail Direto",
+        footer_sub: "Física Médica, Instrumentação & Radiações Ionizantes",
+        toast_copied: "Citação copiada para a área de transferência!"
+      },
+      en: {
+        brand_sub: "Medical Physics • X-Ray • 3D",
+        nav_about: "About",
+        nav_simulator: "CS-XSI Simulator",
+        nav_research: "Research",
+        nav_trajectory: "Trajectory",
+        nav_publications: "Publications",
+        nav_contact: "Contact",
+        nav_btn: "Collaborate",
+        hero_badge: "M.Sc. in Applied Physics • CAPES Fellow (UNILA)",
+        hero_sub: "Physical Engineer • 3D Prototyping • X-Ray Scattering & Diffraction",
+        hero_desc: "Cutting-edge research on additive manufacturing and modeling of conical slits for X-ray scattering imaging (CS-XSI). Focused on non-invasive early diagnosis of breast microcalcifications (calcium oxalate) in tissue-equivalent media.",
+        btn_try_sim: "Launch Beam Simulator",
+        btn_view_papers: "View Publications & Papers",
+        card_emblem_title: "Research Emblem",
+        card_emblem_sub: "Instrumentation • Crystallography • 3D Optics",
+        metric_papers: "Peer-Reviewed Papers",
+        metric_confs: "Conference Proceedings",
+        metric_talks: "Symposium Presentations",
+        metric_hours: "Extension & Training Hours",
+        sim_pill: "Interactive Virtual Lab",
+        sim_title: "Conical Slit Simulator (CS-XSI)",
+        sim_sub: "Adjust 3D-printed aperture parameters to observe photon collimation and Bragg diffraction peaks on the X-ray detector.",
+        hud_snr: "Signal/Noise (SNR)",
+        hud_flux: "Detector Flux",
+        hud_peak: "Bragg Peak (2θ)",
+        lbl_aperture: "Conical Slit Aperture (w)",
+        lbl_cone_angle: "Cone Semi-Angle (θ_c)",
+        lbl_energy: "Beam Energy (E)",
+        lbl_sample: "Sample / Tissue-Equivalent Phantom",
+        sample_cod_sub: "Dihydrate (COD)",
+        sample_ha_sub: "Type II Calcification",
+        sample_adipose_sub: "Breast Phantom",
+        sample_gland_sub: "High Density",
+        sim_note: "The 3D-printed conical slit geometry gathers complete Debye-Scherrer diffraction rings, suppressing diffuse Compton scatter from adipose and glandular breast tissue.",
+        res_pill: "Core Competencies",
+        res_title: "Research & Development Pillars",
+        res_sub: "Convergence of fundamental physics, materials engineering, and biomedical diagnostics.",
+        p1_title: "X-Ray Scattering (CS-XSI)",
+        p1_desc: "Computational simulation and experimental validation of conical slit X-ray scattering setups for the distinct identification of pathological tissue calcifications.",
+        p2_title: "3D Additive Prototyping",
+        p2_desc: "High-precision CAD drafting and 3D printing of conical collimator geometries with dense filaments and resins, minimizing manufacturing costs and maximizing versatility.",
+        p3_title: "Crystallography & Structure",
+        p3_desc: "Diffraction analysis of biogenic calcium oxalate salts and tissue phantoms. Specialized training in single-particle cryo-electron microscopy (Cryo-EM) by ABCR.",
+        p4_title: "Science Communication & Leadership",
+        p4_desc: "Dedication to scientific dissemination through electrochemistry high school outreach programs and student representation within the CAENFIS board.",
+        traj_pill: "Academic Background",
+        traj_title: "Academic Trajectory",
+        traj_sub: "Physical Engineering and Applied Medical Physics education at UNILA, Brazil.",
+        t1_title: "M.Sc. in Applied Physics (In Progress)",
+        t1_body: "Ongoing master's research focusing on physical instrumentation with X-rays, SNR optimization, and breast microcalcification characterization using conical collimators.",
+        t2_title: "B.Sc. in Physical Engineering",
+        t2_body: "Graduation Thesis: PROTOTYPING OF 3D-PRINTED CONICAL SLITS FOR CALCIUM OXALATE IDENTIFICATION: FEASIBLE APPLICATION FOR NON-INVASIVE DIAGNOSIS OF BREAST MICROCALCIFICATIONS.",
+        t3_badge: "Specialized Training",
+        t3_title: "Complementary Qualifications & Outreach",
+        pub_pill: "Scientific Output",
+        pub_title: "Articles & Conference Proceedings",
+        pub_sub: "Publications in high-impact peer-reviewed international journals and major symposium proceedings.",
+        filter_all: "All (9)",
+        filter_journal: "Journals (3)",
+        filter_conf: "Conferences (5)",
+        filter_outreach: "Outreach (1)",
+        search_placeholder: "Filter by title, author, year...",
+        badge_journal: "International Journal",
+        badge_outreach: "Technical-Scientific Article",
+        badge_intl_conf: "International Conference",
+        badge_conf: "Engineering Congress",
+        badge_cryst: "Crystallography Meeting",
+        contact_pill: "Connect & Inquire",
+        contact_title: "Let's Collaborate on Research",
+        contact_desc: "Available for international research exchange, Ph.D. recruitments, and collaborative ventures in Medical Physics, X-Ray Instrumentation, and Additive Prototyping.",
+        btn_email: "Send Direct Email",
+        footer_sub: "Medical Physics, Instrumentation & Ionizing Radiation",
+        toast_copied: "Citation copied to clipboard!"
+      }
+    };
+
+    let currentLang = 'pt';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+      document.getElementById('langCurrentText').textContent = lang === 'pt' ? 'EN' : 'PT';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key]) {
+          el.setAttribute('placeholder', translations[lang][key]);
+        }
+      });
+    }
+
+    document.getElementById('langToggleBtn').addEventListener('click', () => {
+      setLanguage(currentLang === 'pt' ? 'en' : 'pt');
+    });
+
+    /* =========================================================
+       BACKGROUND CANVAS SIMULATION (PHOTONS & BRAGG DIFFRACTION RINGS)
+       ========================================================= */
+    const bgCanvas = document.getElementById('physicsCanvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    let width = bgCanvas.width = window.innerWidth;
+    let height = bgCanvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = bgCanvas.width = window.innerWidth;
+      height = bgCanvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const numParticles = 45;
+    let mouse = { x: width * 0.7, y: height * 0.4 };
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.9,
+        vy: (Math.random() - 0.5) * 0.9,
+        size: Math.random() * 2 + 1,
+        color: Math.random() > 0.5 ? '#f472b6' : '#c084fc'
+      });
+    }
+
+    let ringPhase = 0;
+
+    function renderBgSimulation() {
+      bgCtx.clearRect(0, 0, width, height);
+
+      // Draw faint Debye-Scherrer concentric scattering rings around mouse center
+      ringPhase += 0.01;
+      const baseRings = [110, 190, 280];
+      baseRings.forEach((r, idx) => {
+        const rad = r + Math.sin(ringPhase + idx) * 8;
+        bgCtx.beginPath();
+        bgCtx.arc(mouse.x, mouse.y, rad, 0, Math.PI * 2);
+        bgCtx.strokeStyle = idx % 2 === 0 ? 'rgba(244, 114, 182, 0.08)' : 'rgba(192, 132, 252, 0.07)';
+        bgCtx.lineWidth = 1.5;
+        bgCtx.stroke();
+      });
+
+      // Photons & Interconnecting Beam Trajectories
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        bgCtx.beginPath();
+        bgCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        bgCtx.fillStyle = p.color;
+        bgCtx.shadowColor = p.color;
+        bgCtx.shadowBlur = 8;
+        bgCtx.fill();
+        bgCtx.shadowBlur = 0;
+
+        // Draw coherent scattering lines between close particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 120) {
+            bgCtx.beginPath();
+            bgCtx.moveTo(p.x, p.y);
+            bgCtx.lineTo(p2.x, p2.y);
+            bgCtx.strokeStyle = `rgba(216, 180, 254, ${0.15 * (1 - dist / 120)})`;
+            bgCtx.lineWidth = 0.8;
+            bgCtx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(renderBgSimulation);
+    }
+    renderBgSimulation();
+
+    /* =========================================================
+       3D GYROSCOPE TILT CARD FOR EMBLEM
+       ========================================================= */
+    const tiltCard = document.getElementById('emblemTiltCard');
+    if (tiltCard) {
+      tiltCard.addEventListener('mousemove', (e) => {
+        const rect = tiltCard.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = -(y / (rect.height / 2)) * 14;
+        const rotateY = (x / (rect.width / 2)) * 14;
+        tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      tiltCard.addEventListener('mouseleave', () => {
+        tiltCard.style.transform = `rotateX(0deg) rotateY(0deg)`;
+      });
+    }
+
+    /* =========================================================
+       ANIMATED METRIC COUNTERS
+       ========================================================= */
+    const metricVals = document.querySelectorAll('.metric-val');
+    let counted = false;
+
+    function countMetrics() {
+      metricVals.forEach(val => {
+        const target = +val.getAttribute('data-target');
+        let current = 0;
+        const increment = target / 40;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            val.textContent = target + (target > 50 ? '+' : '');
+            clearInterval(timer);
+          } else {
+            val.textContent = Math.ceil(current);
+          }
+        }, 30);
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      const metricsSection = document.querySelector('.metrics-bar');
+      if (metricsSection && !counted) {
+        const rect = metricsSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          counted = true;
+          countMetrics();
+        }
+      }
+    });
+
+    /* =========================================================
+       INTERACTIVE CS-XSI LABORATORY CONICAL SLIT SIMULATOR
+       ========================================================= */
+    const simCanvas = document.getElementById('coneRayCanvas');
+    const simCtx = simCanvas.getContext('2d');
+
+    function resizeSimCanvas() {
+      simCanvas.width = simCanvas.parentElement.clientWidth;
+      simCanvas.height = simCanvas.parentElement.clientHeight;
+    }
+    resizeSimCanvas();
+    window.addEventListener('resize', resizeSimCanvas);
+
+    // Sliders
+    const sAperture = document.getElementById('sliderAperture');
+    const sConeAngle = document.getElementById('sliderConeAngle');
+    const sEnergy = document.getElementById('sliderEnergy');
+
+    const vAperture = document.getElementById('valAperture');
+    const vConeAngle = document.getElementById('valConeAngle');
+    const vEnergy = document.getElementById('valEnergy');
+
+    const hudSNR = document.getElementById('hudSNR');
+    const hudFlux = document.getElementById('hudFlux');
+    const hudPeak = document.getElementById('hudPeak');
+
+    let currentSample = 'cod';
+
+    const sampleData = {
+      cod: { name: 'Calcium Oxalate (COD)', base2Theta: 14.92, snrFactor: 1.25, color: '#f472b6' },
+      hydroxy: { name: 'Hydroxyapatite', base2Theta: 31.77, snrFactor: 1.10, color: '#c084fc' },
+      adipose: { name: 'Adipose Breast Tissue', base2Theta: 9.40, snrFactor: 0.65, color: '#fb7185' },
+      glandular: { name: 'Glandular Tissue', base2Theta: 11.20, snrFactor: 0.72, color: '#a855f7' }
+    };
+
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentSample = btn.getAttribute('data-preset');
+        drawSimFrame();
+      });
+    });
+
+    [sAperture, sConeAngle, sEnergy].forEach(slider => {
+      slider.addEventListener('input', drawSimFrame);
+    });
+
+    let simAnimOffset = 0;
+
+    function drawSimFrame() {
+      const w = simCanvas.width;
+      const h = simCanvas.height;
+      simCtx.clearRect(0, 0, w, h);
+
+      const aperture = parseFloat(sAperture.value);
+      const coneAngle = parseFloat(sConeAngle.value);
+      const energy = parseFloat(sEnergy.value);
+
+      vAperture.textContent = `${aperture.toFixed(1)} mm`;
+      vConeAngle.textContent = `${coneAngle.toFixed(1)}°`;
+      vEnergy.textContent = `${energy} keV`;
+
+      // Readouts calculation based on real Bragg's Law: n*lambda = 2*d*sin(theta)
+      // E (keV) -> lambda (Angstrom) = 12.398 / E
+      const lambda = 12.398 / energy;
+      const sample = sampleData[currentSample];
+      const thetaCalc = (sample.base2Theta * (lambda / 0.7093)).toFixed(2); // reference Mo Kα = 0.7093 Å
+
+      const calculatedSNR = (12.0 + (1.2 / aperture) * (coneAngle / 7.5) * sample.snrFactor).toFixed(1);
+      const calculatedFlux = ((aperture * 2.1) * (energy / 18) * 1.1).toFixed(2);
+
+      hudSNR.textContent = `${calculatedSNR} dB`;
+      hudFlux.textContent = `${calculatedFlux}e5 ph/s`;
+      hudPeak.textContent = `${thetaCalc}°`;
+
+      // Simulation Geometry Layout
+      const srcX = 50;
+      const srcY = h / 2;
+      const sampleX = w * 0.35;
+      const sampleY = h / 2;
+      const slitX = w * 0.60;
+      const detX = w * 0.90;
+
+      // 1. Primary X-Ray Source & Pencil Beam
+      simCtx.beginPath();
+      simCtx.arc(srcX, srcY, 8, 0, Math.PI * 2);
+      simCtx.fillStyle = '#f472b6';
+      simCtx.shadowColor = '#f472b6';
+      simCtx.shadowBlur = 15;
+      simCtx.fill();
+      simCtx.shadowBlur = 0;
+
+      simCtx.font = '10px "JetBrains Mono"';
+      simCtx.fillStyle = '#fbcfe8';
+      simCtx.fillText('X-Ray Tube', srcX - 25, srcY - 14);
+
+      // Primary incident ray with photon pulse
+      simCtx.beginPath();
+      simCtx.moveTo(srcX, srcY);
+      simCtx.lineTo(sampleX, sampleY);
+      simCtx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+      simCtx.lineWidth = 2.5;
+      simCtx.stroke();
+
+      // Photon packet animation
+      simAnimOffset = (simAnimOffset + 1.2) % (sampleX - srcX);
+      simCtx.beginPath();
+      simCtx.arc(srcX + simAnimOffset, srcY, 3, 0, Math.PI * 2);
+      simCtx.fillStyle = '#ffffff';
+      simCtx.fill();
+
+      // 2. Breast Tissue Phantom / Calcium Sample
+      simCtx.fillStyle = 'rgba(192, 132, 252, 0.25)';
+      simCtx.strokeStyle = sample.color;
+      simCtx.lineWidth = 2;
+      simCtx.beginPath();
+      simCtx.roundRect(sampleX - 18, sampleY - 45, 36, 90, 8);
+      simCtx.fill();
+      simCtx.stroke();
+
+      simCtx.fillStyle = '#ffffff';
+      simCtx.fillText('Phantom', sampleX - 20, sampleY - 52);
+
+      // 3. 3D-Printed Conical Slit Apertures
+      const slitHalfSpan = 45;
+      const slitGap = aperture * 12;
+      const angleOffset = (coneAngle - 7.5) * 2;
+
+      simCtx.fillStyle = 'rgba(244, 114, 182, 0.4)';
+      simCtx.strokeStyle = '#f472b6';
+      simCtx.lineWidth = 2;
+
+      // Top Slit Half
+      simCtx.beginPath();
+      simCtx.moveTo(slitX - 15, sampleY - slitGap - 28 - angleOffset);
+      simCtx.lineTo(slitX + 20, sampleY - slitGap - angleOffset);
+      simCtx.lineTo(slitX + 20, sampleY - slitHalfSpan - 25);
+      simCtx.lineTo(slitX - 15, sampleY - slitHalfSpan - 25);
+      simCtx.closePath();
+      simCtx.fill();
+      simCtx.stroke();
+
+      // Bottom Slit Half
+      simCtx.beginPath();
+      simCtx.moveTo(slitX - 15, sampleY + slitGap + 28 + angleOffset);
+      simCtx.lineTo(slitX + 20, sampleY + slitGap + angleOffset);
+      simCtx.lineTo(slitX + 20, sampleY + slitHalfSpan + 25);
+      simCtx.lineTo(slitX - 15, sampleY + slitHalfSpan + 25);
+      simCtx.closePath();
+      simCtx.fill();
+      simCtx.stroke();
+
+      simCtx.fillStyle = '#fbcfe8';
+      simCtx.fillText('3D Conical Slit', slitX - 35, sampleY - slitHalfSpan - 32);
+
+      // 4. Coherent Scattering Cone Rays (Through Slit to Detector)
+      const spreadY = (coneAngle * 3.8) + (aperture * 6);
+
+      // Upper cone ray
+      simCtx.beginPath();
+      simCtx.moveTo(sampleX, sampleY);
+      simCtx.lineTo(slitX + 20, sampleY - slitGap - angleOffset);
+      simCtx.lineTo(detX, sampleY - spreadY);
+      simCtx.strokeStyle = sample.color;
+      simCtx.lineWidth = 1.8;
+      simCtx.stroke();
+
+      // Lower cone ray
+      simCtx.beginPath();
+      simCtx.moveTo(sampleX, sampleY);
+      simCtx.lineTo(slitX + 20, sampleY + slitGap + angleOffset);
+      simCtx.lineTo(detX, sampleY + spreadY);
+      simCtx.strokeStyle = sample.color;
+      simCtx.lineWidth = 1.8;
+      simCtx.stroke();
+
+      // 5. Linear / 2D X-Ray Detector Plane
+      simCtx.strokeStyle = '#c084fc';
+      simCtx.lineWidth = 5;
+      simCtx.beginPath();
+      simCtx.moveTo(detX, sampleY - 95);
+      simCtx.lineTo(detX, sampleY + 95);
+      simCtx.stroke();
+
+      simCtx.fillStyle = '#ffffff';
+      simCtx.fillText('Detector (CS-XSI)', detX - 45, sampleY - 105);
+
+      // High-Intensity Diffraction Peaks on Detector
+      simCtx.beginPath();
+      simCtx.arc(detX, sampleY - spreadY, 4, 0, Math.PI * 2);
+      simCtx.arc(detX, sampleY + spreadY, 4, 0, Math.PI * 2);
+      simCtx.fillStyle = '#ffffff';
+      simCtx.shadowColor = '#ffffff';
+      simCtx.shadowBlur = 10;
+      simCtx.fill();
+      simCtx.shadowBlur = 0;
+    }
+
+    // Continuous photon pulse animation in simulation canvas
+    setInterval(() => {
+      drawSimFrame();
+    }, 45);
+
+    /* =========================================================
+       PUBLICATIONS FILTERING & SEARCH
+       ========================================================= */
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const pubCards = document.querySelectorAll('.pub-card');
+    const searchInput = document.getElementById('pubSearchInput');
+
+    let activeFilter = 'all';
+
+    function filterPublications() {
+      const query = searchInput.value.toLowerCase().trim();
+
+      pubCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const content = card.textContent.toLowerCase();
+
+        const matchesTab = activeFilter === 'all' || category === activeFilter;
+        const matchesSearch = query === '' || content.includes(query);
+
+        if (matchesTab && matchesSearch) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.getAttribute('data-filter');
+        filterPublications();
+      });
+    });
+
+    searchInput.addEventListener('input', filterPublications);
+
+    /* =========================================================
+       COPY CITATION TO CLIPBOARD (ABNT & BIBTEX)
+       ========================================================= */
+    const toast = document.getElementById('citationToast');
+    const toastMsg = document.getElementById('citationToastMsg');
+    let toastTimeout;
+
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    document.querySelectorAll('.copy-abnt-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.pub-card');
+        const citation = card.getAttribute('data-cite-abnt');
+        copyText(citation, currentLang === 'pt' ? 'Citação ABNT copiada com sucesso!' : 'ABNT Citation copied to clipboard!');
+      });
+    });
+
+    document.querySelectorAll('.copy-bibtex-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.pub-card');
+        const citation = card.getAttribute('data-cite-bibtex');
+        copyText(citation, currentLang === 'pt' ? 'Entrada BibTeX copiada com sucesso!' : 'BibTeX entry copied to clipboard!');
+      });
+    });
+
+    function copyText(text, successMessage) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(successMessage);
+        }).catch(() => fallbackCopy(text, successMessage));
+      } else {
+        fallbackCopy(text, successMessage);
+      }
+    }
+
+    function fallbackCopy(text, successMessage) {
+      const tempArea = document.createElement('textarea');
+      tempArea.value = text;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempArea);
+      showToast(successMessage);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renata Olmedo Benedet | Medical Physics & Applied Instrumentation</title>
+  <meta name="description" content="Academic portfolio and research showcase of Renata Olmedo Benedet. Physical Engineer, M.Sc. Candidate in Applied Physics (CAPES Fellow), specialized in 3D-printed conical slits, X-ray scattering, and biocrystallography." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="brand-link">
+        <div class="brand-logo-icon">
+          <!-- Scalable Vector Emblem Icon -->
+          <svg viewBox="0 0 100 100" class="brand-svg">
+            <defs>
+              <linearGradient id="navGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f472b6" />
+                <stop offset="100%" stop-color="#c084fc" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="46" fill="none" stroke="url(#navGrad)" stroke-width="3" />
+            <circle cx="50" cy="50" r="41" fill="none" stroke="rgba(244, 114, 182, 0.3)" stroke-width="1.5" stroke-dasharray="3 3" />
+            <!-- Orbits -->
+            <ellipse cx="50" cy="50" rx="30" ry="11" fill="none" stroke="rgba(216, 180, 254, 0.6)" stroke-width="1.5" transform="rotate(30 50 50)" />
+            <ellipse cx="50" cy="50" rx="30" ry="11" fill="none" stroke="rgba(216, 180, 254, 0.6)" stroke-width="1.5" transform="rotate(-30 50 50)" />
+            <!-- 3D Conical Slit Center -->
+            <polygon points="50,18 40,65 60,65" fill="#fdf2f8" stroke="#d946ef" stroke-width="1.5" />
+            <polygon points="50,18 50,65 60,65" fill="#e9d5ff" />
+            <!-- Layered Base -->
+            <polygon points="35,67 65,67 59,73 41,73" fill="#f472b6" />
+            <polygon points="30,75 70,75 64,81 36,81" fill="#c084fc" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">R. O. BENEDET</span>
+          <span class="brand-tagline">APPLIED PHYSICS • RESEARCH</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-item">About</a></li>
+        <li><a href="#focus" class="nav-item">Core Competencies</a></li>
+        <li><a href="#publications" class="nav-item">Publications</a></li>
+        <li><a href="#trajectory" class="nav-item">Trajectory</a></li>
+        <li><a href="#contact" class="btn-sm">Get in Touch</a></li>
+      </ul>
+
+      <button class="mobile-toggle" aria-label="Toggle Menu" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="about">
+      <div class="container hero-grid">
+        
+        <div class="hero-content">
+          <div class="badge-pill">
+            <span class="pulse-dot"></span> M.Sc. Applied Physics Candidate &bull; CAPES Fellow
+          </div>
+          <h1 class="hero-title">
+            Renata Olmedo <span class="text-gradient">Benedet</span>
+          </h1>
+          <p class="hero-subtitle">
+            Bridging <strong>Radiation Physics</strong>, <strong>Additive Manufacturing</strong>, and <strong>Diagnostic Imaging</strong>.
+          </p>
+          <p class="hero-desc">
+            Physical Engineer specialized in developing high-precision 3D-printed conical collimation slits for X-ray scattering imaging (CS-XSI), focusing on non-invasive identification of calcium oxalate microcalcifications in soft breast tissues.
+          </p>
+
+          <!-- Application Callout Box -->
+          <div class="target-box">
+            <div class="target-badge"><i class="fa-solid fa-compass"></i> Research Vision</div>
+            <p>
+              Dedicated to advancing oncological screening and biomedical instrumentation. Actively seeking <strong>Ph.D. Opportunities</strong> and international research fellowships in Medical Physics, Synchrotron Diagnostic Imaging, and Crystallography.
+            </p>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#publications" class="btn btn-primary">
+              <i class="fa-solid fa-newspaper"></i> View Research Output
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="fa-solid fa-envelope"></i> Contact for Collaborations
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Emblem / Showcase -->
+        <div class="hero-visual">
+          <div class="emblem-card">
+            <div class="emblem-container">
+              <svg viewBox="0 0 320 320" class="hero-svg-emblem">
+                <defs>
+                  <radialGradient id="haloGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#f472b6" stop-opacity="0.35" />
+                    <stop offset="70%" stop-color="#c084fc" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#fdf4ff" stop-opacity="0" />
+                  </radialGradient>
+                  <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="60%" stop-color="#fae8ff" />
+                    <stop offset="100%" stop-color="#d8b4fe" />
+                  </linearGradient>
+                  <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#f472b6" />
+                    <stop offset="100%" stop-color="#c084fc" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Background Soft Aura -->
+                <circle cx="160" cy="160" r="148" fill="url(#haloGlow)" />
+
+                <!-- Outer Seals -->
+                <circle cx="160" cy="160" r="145" fill="none" stroke="url(#ringGrad)" stroke-width="3" />
+                <circle cx="160" cy="160" r="137" fill="none" stroke="#fbcfe8" stroke-width="1.2" stroke-dasharray="4 4" />
+                <circle cx="160" cy="160" r="118" fill="none" stroke="#e9d5ff" stroke-width="1" />
+
+                <!-- Circular Path for Typography -->
+                <path id="textCircleTop" fill="none" d="M 40,160 A 120,120 0 0,1 280,160" />
+                <path id="textCircleBottom" fill="none" d="M 280,160 A 120,120 0 0,1 40,160" />
+
+                <text class="emblem-text-svg">
+                  <textPath href="#textCircleTop" startOffset="50%" text-anchor="middle">
+                    RENATA OLMEDO BENEDET
+                  </textPath>
+                </text>
+                <text class="emblem-text-sub-svg">
+                  <textPath href="#textCircleBottom" startOffset="50%" text-anchor="middle">
+                    M.SC. APPLIED PHYSICS • MEDICAL PHYSICS
+                  </textPath>
+                </text>
+
+                <!-- Diffraction Radiating Beams -->
+                <g stroke="#f472b6" stroke-width="1.2" opacity="0.4">
+                  <line x1="160" y1="160" x2="160" y2="40" stroke-dasharray="3 3" />
+                  <line x1="160" y1="160" x2="245" y2="75" stroke-dasharray="3 3" />
+                  <line x1="160" y1="160" x2="75" y2="75" stroke-dasharray="3 3" />
+                  <line x1="160" y1="160" x2="275" y2="160" stroke-dasharray="3 3" />
+                  <line x1="160" y1="160" x2="45" y2="160" stroke-dasharray="3 3" />
+                </g>
+
+                <!-- Biocrystallography Orbitals -->
+                <ellipse cx="160" cy="160" rx="90" ry="32" fill="none" stroke="#d946ef" stroke-width="2" opacity="0.65" transform="rotate(35 160 160)" />
+                <ellipse cx="160" cy="160" rx="90" ry="32" fill="none" stroke="#c084fc" stroke-width="2" opacity="0.65" transform="rotate(-35 160 160)" />
+                <circle cx="215" cy="115" r="4.5" fill="#f43f5e" />
+                <circle cx="105" cy="205" r="4" fill="#a855f7" />
+
+                <!-- 3D Conical Slit Monolith -->
+                <polygon points="160,65 130,205 190,205" fill="url(#metalGrad)" stroke="#c084fc" stroke-width="2" />
+                <polygon points="160,65 160,205 190,205" fill="#e9d5ff" opacity="0.8" />
+                <ellipse cx="160" cy="65" rx="5" ry="2" fill="#d946ef" />
+
+                <!-- 3D Additive Layered Platform -->
+                <polygon points="115,210 205,210 188,226 132,226" fill="#f472b6" />
+                <polygon points="102,229 218,229 201,245 119,245" fill="#c084fc" />
+                <polygon points="90,248 230,248 213,264 107,264" fill="#a855f7" />
+              </svg>
+            </div>
+            <div class="emblem-info">
+              <span class="symbol-tag"><i class="fa-solid fa-fingerprint"></i> Symbolic Identity</span>
+              <p>Conical Collimator &bull; X-Ray Scattering Waves &bull; Additive Base</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Core Scientific Pillars -->
+    <section class="section-padding" id="focus">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-badge">Competencies & Expertise</span>
+          <h2 class="section-heading">Multidisciplinary Scientific Focus</h2>
+          <p class="section-lead">
+            Integrating engineering methodology with physical modeling for clinical and analytical diagnostics.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          
+          <div class="pillar-card">
+            <div class="icon-circle">
+              <i class="fa-solid fa-radiation"></i>
+            </div>
+            <h3>X-Ray Scattering & Imaging (CS-XSI)</h3>
+            <p>
+              Characterization of healthy and pathological soft tissue using conical slit geometries. Special emphasis on signal-to-noise ratio (SNR) optimization with tissue-equivalent phantoms.
+            </p>
+            <ul class="pillar-tags">
+              <li>Monte Carlo Sim.</li>
+              <li>Radiological Physics</li>
+              <li>Tissue Phantoms</li>
+            </ul>
+          </div>
+
+          <div class="pillar-card">
+            <div class="icon-circle">
+              <i class="fa-solid fa-cubes"></i>
+            </div>
+            <h3>Additive Manufacturing for Precision Optics</h3>
+            <p>
+              Full cycle CAD modeling, slicing optimization, and 3D printing of conical slits and custom optical holders tailored for laboratory and benchtop X-ray beamlines.
+            </p>
+            <ul class="pillar-tags">
+              <li>CAD / CAM</li>
+              <li>FDM & SLA Prototyping</li>
+              <li>Geometric Collimation</li>
+            </ul>
+          </div>
+
+          <div class="pillar-card">
+            <div class="icon-circle">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <h3>Biocrystallography & Structural Analysis</h3>
+            <p>
+              Diffraction pattern evaluation of calcium oxalate dihydrate and microcalcifications. Specialized training in single particle cryo-electron microscopy (Cryo-EM) by the ABCR.
+            </p>
+            <ul class="pillar-tags">
+              <li>Powder XRD</li>
+              <li>Cryo-EM Fundamentals</li>
+              <li>Biological Salts</li>
+            </ul>
+          </div>
+
+          <div class="pillar-card">
+            <div class="icon-circle">
+              <i class="fa-solid fa-flask-vial"></i>
+            </div>
+            <h3>Applied Physics & Scientific Outreach</h3>
+            <p>
+              Demonstrated leadership in academic extension initiatives, teaching applied electrochemistry and fundamental physical concepts across secondary educational institutions.
+            </p>
+            <ul class="pillar-tags">
+              <li>Educational Outreach</li>
+              <li>Academic Leadership</li>
+              <li>CAENFIS Board</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Publications & Proceedings -->
+    <section class="section-padding bg-alt" id="publications">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-badge">Scholarly Track Record</span>
+          <h2 class="section-heading">Articles & Conference Proceedings</h2>
+          <p class="section-lead">Peer-reviewed international journals, symposium contributions, and communications.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+          <button class="filter-btn active" data-filter="all">All Contributions</button>
+          <button class="filter-btn" data-filter="journal">Peer-Reviewed Journals</button>
+          <button class="filter-btn" data-filter="conference">Conferences & Symposia</button>
+          <button class="filter-btn" data-filter="outreach">Outreach & Applied</button>
+        </div>
+
+        <!-- Publications List -->
+        <div class="pub-grid">
+
+          <article class="pub-item" data-category="journal">
+            <div class="pub-badge-wrap">
+              <span class="badge-cat"><i class="fa-solid fa-book"></i> Journal Article</span>
+              <span class="pub-year">2027</span>
+            </div>
+            <h3 class="pub-title">
+              Enhancing microcalcification characterization using conical slit X-ray scattering imaging (CS-XSI): a simulation and experimental study
+            </h3>
+            <p class="pub-authors">
+              Moravec de Viana Borges, C.; <strong class="author-highlight">Olmedo Benedet, R.</strong>; Gonçalves Hönnicke, M.; Poletti, M. E.
+            </p>
+            <div class="pub-venue">
+              <i class="fa-solid fa-square-check"></i> Radiation Physics and Chemistry, v. 250, p. 114341.
+            </div>
+          </article>
+
+          <article class="pub-item" data-category="journal">
+            <div class="pub-badge-wrap">
+              <span class="badge-cat"><i class="fa-solid fa-book"></i> Journal Article</span>
+              <span class="pub-year">2025</span>
+            </div>
+            <h3 class="pub-title">
+              3D Printed Conical Slits for Seeking Calcium Spots Among Different Tissue-Equivalent Materials
+            </h3>
+            <p class="pub-authors">
+              <strong class="author-highlight">Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Hönnicke, M. G.
+            </p>
+            <div class="pub-venue">
+              <i class="fa-solid fa-square-check"></i> X-Ray Spectrometry (Online), v. 54, p. 765.
+            </div>
+          </article>
+
+          <article class="pub-item" data-category="conference">
+            <div class="pub-badge-wrap">
+              <span class="badge-cat"><i class="fa-solid fa-globe"></i> International Symposium</span>
+              <span class="pub-year">2024</span>
+            </div>
+            <h3 class="pub-title">
+              Seeking calcium spots with 3D Printed Conical Slits: SNR evaluation in samples models with different tissue equivalent materials
+            </h3>
+            <p class="pub-authors">
+              <strong class="author-highlight">Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Hönnicke, M. G.
+            </p>
+            <div class="pub-venue">
+              <i class="fa-solid fa-location-dot"></i> XVII Latin American Seminar of Analysis by X-Ray Techniques (SARX), Rio de Janeiro, Brazil.
+            </div>
+          </article>
+
+          <article class="pub-item" data-category="conference">
+            <div class="pub-badge-wrap">
+              <span class="badge-cat"><i class="fa-solid fa-users"></i> National Meeting</span>
+              <span class="pub-year">2024 / 2023</span>
+            </div>
+            <h3 class="pub-title">
+              Prototipagem em impressão 3D de uma fenda cônica para detecção do padrão de difração do oxalato de cálcio duplamente hidratado
+            </h3>
+            <p class="pub-authors">
+              <strong class="author-highlight">Benedet, R. O.</strong>; Santos, P. R.; Cusatis, C.; Poletti, M. E.; Hönnicke, M. G.
+            </p>
+            <div class="pub-venue">
+              <i class="fa-solid fa-location-dot"></i> 26ª Reunião da Associação Brasileira de Cristalografia (ABCR) & SIEPE/EICTI UNILA.
+            </div>
+          </article>
+
+          <article class="pub-item" data-category="outreach">
+            <div class="pub-badge-wrap">
+              <span class="badge-cat"><i class="fa-solid fa-lightbulb"></i> Applied Science & Outreach</span>
+              <span class="pub-year">2023</span>
+            </div>
+            <h3 class="pub-title">
+              A Eletroquímica ao Alcance da Sociedade
+            </h3>
+            <p class="pub-authors">
+              Macedo, B. H. D.; <strong class="author-highlight">Benedet, R. O.</strong>; Salgado, J. R. C.
+            </p>
+            <div class="pub-venue">
+              <i class="fa-solid fa-square-check"></i> Revista Técnico Científica do CREA-PR, v. 1, p. 146.
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Trajectory / Academic Timeline -->
+    <section class="section-padding" id="trajectory">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-badge">Academic Milestones</span>
+          <h2 class="section-heading">Education & Research Background</h2>
+        </div>
+
+        <div class="timeline-container">
+
+          <div class="timeline-card">
+            <div class="timeline-point"></div>
+            <div class="timeline-date">2025 – Present</div>
+            <h3 class="timeline-role">M.Sc. Candidate in Applied Physics</h3>
+            <div class="timeline-inst">Universidade Federal da Integração Latino-Americana (UNILA)</div>
+            <p class="timeline-desc">
+              Research focusing on advanced X-ray analytical techniques, diffraction geometry, and breast tissue phantom characterization. Supported by a competitive research grant from CAPES.
+            </p>
+            <div class="advisor-info">
+              <i class="fa-solid fa-user-tie"></i> Advisor: <strong>Prof. Dr. Marcelo Gonçalves Hönnicke</strong>
+            </div>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-point"></div>
+            <div class="timeline-date">2020 – 2025</div>
+            <h3 class="timeline-role">B.Sc. in Physical Engineering</h3>
+            <div class="timeline-inst">Universidade Federal da Integração Latino-Americana (UNILA)</div>
+            <p class="timeline-desc">
+              Graduation Thesis: <em>"Prototyping of 3D-printed conical slit for calcium oxalate identification: feasible application for non-invasive diagnosis of breast microcalcifications."</em>
+            </p>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-point"></div>
+            <div class="timeline-date">Specialized Certifications</div>
+            <h3 class="timeline-role">Complementary Academic Training</h3>
+            <div class="timeline-inst">ABCR & UNILA</div>
+            <ul class="cert-list">
+              <li><strong>Cryo-EM:</strong> Introduction to Single Particle Cryo-Electron Microscopy (ABCR, 2023).</li>
+              <li><strong>Leadership:</strong> Engineering Academic Center (CAENFIS) Board Member (2022–2023).</li>
+              <li><strong>Languages:</strong> Portuguese (Native), English, Spanish (Idiomas sem Fronteiras).</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Collaboration Contact Section -->
+    <section class="section-padding bg-alt" id="contact">
+      <div class="container contact-container">
+        <div class="contact-card">
+          <span class="sub-badge">Inquiries & Networking</span>
+          <h2 class="contact-title">Let's Connect & Collaborate</h2>
+          <p class="contact-text">
+            I am eager to engage with research groups, doctoral supervisors, and industry laboratories in the fields of radiation physics, medical instrumentation, and additive manufacturing.
+          </p>
+
+          <div class="contact-actions">
+            <a href="mailto:renata.benedet@unila.edu.br" class="btn btn-primary">
+              <i class="fa-solid fa-envelope"></i> Send Direct Email
+            </a>
+            <a href="http://lattes.cnpq.br/" target="_blank" rel="noopener" class="btn btn-secondary">
+              <i class="fa-solid fa-graduation-cap"></i> Curriculo Lattes
+            </a>
+            <a href="https://orcid.org" target="_blank" rel="noopener" class="btn btn-secondary">
+              <i class="fa-brands fa-orcid"></i> ORCID Profile
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-secondary">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Renata Olmedo Benedet &bull; Applied Physics & Medical Instrumentation.</p>
+      <div class="footer-links">
+        <span>Foz do Iguaçu, PR &bull; Brazil</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
