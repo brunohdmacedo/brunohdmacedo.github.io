@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bruno Macedo — Física Computacional &amp; Mecânica Quântica</title>
+  <meta name="description" content="Bruno H. D. Macedo — Mestrando em Física Aplicada, Engenheiro Físico (UNILA), pesquisador no LIMCCA e Grupo de Eletroquímica. Simulação quântica por primeiros princípios (DFT) e HPC.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%230d1d19%22/><text x=%2250%22 y=%2266%22 font-size=%2254%22 font-family=%22serif%22 fill=%22%2358A69B%22 text-anchor=%22middle%22>Ψ</text></svg>">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header id="siteHeader">
+    <nav class="wrap">
+      <a class="brand" href="#top">
+        <span class="tile q-tile"><span class="sym">&Psi;</span></span>
+        Bruno Macedo
+      </a>
+      <div class="navlinks" id="navlinks">
+        <a href="#sobre" data-nav>Sobre</a>
+        <a href="#quantum-lab" data-nav>Lab Quântico</a>
+        <a href="#pesquisa" data-nav>Pesquisa &amp; DFT</a>
+        <a href="#simulador" data-nav>Simulador Bandas</a>
+        <a href="#trajetoria" data-nav>Trajetória</a>
+        <a href="#midia" data-nav>Mídia</a>
+        <a href="#terminal" data-nav>Cluster</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+          <span class="theme-icon">🌓</span>
+          <span class="theme-label">Tema</span>
+        </button>
+      </div>
+      <a class="navcta" href="#contato">Fale comigo</a>
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <div class="wrap mobilemenu" id="mobilemenu">
+      <a href="#sobre">Sobre</a>
+      <a href="#quantum-lab">Lab Quântico</a>
+      <a href="#pesquisa">Pesquisa &amp; DFT</a>
+      <a href="#simulador">Simulador Bandas</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#midia">Mídia</a>
+      <a href="#terminal">Terminal Cluster</a>
+      <a href="#contato">Fale comigo</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO COM ONDAS QUÂNTICAS & DENSIDADE DE PROBABILIDADE -->
+    <section class="hero wrap">
+      <canvas id="quantumWaveCanvas" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="tile small-tile"><span class="sym">i&hbar;&part;</span></span>
+          <span>Física Computacional · LIMCCA &amp; Eletroquímica · UNILA</span>
+        </div>
+        <h1>Modelando a matéria pela <em>Mecânica Quântica</em> e primeiros princípios.</h1>
+        <p class="lede">
+          Pesquisador em Física Computacional e Materiais Sustentáveis. Combino cálculos de Teoria do Funcional da Densidade (DFT), computação em clusters e algoritmos preditivos para resolver a equação de muitos corpos e simular o armazenamento quântico de hidrogênio no MgH₂.
+        </p>
+        <div class="quantum-eq-badge">
+          &Hcirc;|&psi;&rang; = E|&psi;&rang; &nbsp;&middot;&nbsp; [&minus;&hbar;&sup2;/(2m)&nabla;&sup2; + V(r)]&psi; = E&psi;
+        </div>
+        <div class="roles">
+          <span>Mestrando em Física Aplicada</span>
+          <span>Engenharia Física</span>
+          <span>Cálculos DFT &amp; HPC</span>
+          <span>Modelagem Quântica · LIMCCA</span>
+          <span>Eletroquímica UNILA</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#quantum-lab" class="btn btn-primary">Simular Função de Onda</a>
+          <a href="#terminal" class="btn btn-ghost">Abrir Terminal Quântico</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="tile-cluster">
+          <div class="tile big t1" data-tilt><span class="num">12</span><span class="sym">Mg</span><span class="name">Magnésio</span></div>
+          <div class="tile t2" data-tilt><span class="num">1</span><span class="sym">H</span><span class="name">Hidrogênio</span></div>
+          <div class="tile t3" data-tilt><span class="num">&Psi;</span><span class="sym">DFT</span><span class="name">Kohn-Sham</span></div>
+          <div class="tile t4" data-tilt><span class="num">14</span><span class="sym">Si</span><span class="name">Estruturas</span></div>
+          <div class="tile t5" data-tilt><span class="num">&Ecirc;</span><span class="sym">HPC</span><span class="name">Cluster</span></div>
+          <div class="tile t6" data-tilt><span class="num">26</span><span class="sym">Fe</span><span class="name">Dopagens</span></div>
+          <div class="tile t7" data-tilt><span class="num">&sigma;</span><span class="sym">ML</span><span class="name">Redes Neurais</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="tile"><span class="num">12</span><span class="sym">Mg</span><span class="name">Magnésio</span></span>
+          <div>
+            <h2>Fundamentos &amp; Linha Científica</h2>
+            <p>A física do estado sólido desvendada através de simulações numéricas intensivas e computação quântica de materiais.</p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <div class="about-photo reveal">
+            <img src="https://wwws.cnpq.br/cvlattesweb/pkg_util_img.show_foto?v_cod=K4494050P3" alt="Foto de Bruno Macedo" loading="lazy">
+          </div>
+          <div class="about-text reveal">
+            <p>Meu nome é <strong>Bruno Macedo</strong>, mestrando no Programa de Pós-Graduação em Física Aplicada e Engenheiro Físico graduado pela <strong>Universidade Federal da Integração Latino-Americana (UNILA)</strong>. Minha pesquisa concentra-se na física do estado sólido computacional, termodinâmica quântica e machine learning aplicado às ciências da matéria.</p>
+            <p>Atuo ativamente como pesquisador no <strong>Laboratório Interdisciplinar de Modelagem e Computação Científica Aplicada (LIMCCA)</strong> e no <strong>Grupo Interdisciplinar de Eletroquímica da UNILA</strong>. Minha trajetória engloba projetos de <strong>P&amp;D na UNIOESTE</strong> e investigação por primeiros princípios no grupo <strong>GANEL</strong>, desenvolvendo modelos mecanísticos de aprisionamento de hidrogênio no hidreto de magnésio (MgH₂).</p>
+            <p>Detenho certificação avançada em <em>Density Functional Theory</em> pela renomada École Polytechnique (França) e em <em>Machine Learning Foundations</em> pela University of Washington (EUA), construindo rotinas de simulação atomística em Python, Fortran e ambientes paralelos em supercomputadores.</p>
+            <div class="about-facts">
+              <div class="fact">
+                <span class="n counter" data-target="1500" data-suffix="+">0</span>
+                <span class="l">horas em simulação &amp; treinamento avançado</span>
+              </div>
+              <div class="fact">
+                <span class="n counter" data-target="5" data-suffix="">0</span>
+                <span class="l">menções honrosas acadêmicas</span>
+              </div>
+              <div class="fact">
+                <span class="n counter" data-target="4" data-suffix="">0</span>
+                <span class="l">grupos &amp; labs (LIMCCA, Eletroquímica, GANEL, LACA)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LABORATÓRIO QUÂNTICO INTERATIVO: POÇO DE POTENCIAL 1D -->
+    <section id="quantum-lab" class="section-alt">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="tile"><span class="num">&Psi;(x)</span><span class="sym">Q</span><span class="name">Quântica</span></span>
+          <div>
+            <h2>Laboratório Quântico Interativo</h2>
+            <p>Explore as soluções da Equação de Schrödinger para um poço de potencial infinito. Altere o número quântico principal $n$ e observe a probabilidade $|\psi(x)|^2$.</p>
+          </div>
+        </div>
+
+        <div class="quantum-box reveal">
+          <div class="quantum-controls">
+            <div class="q-control-group">
+              <label for="quantumN">Estado Quântico (Nível de Energia $n$):</label>
+              <div class="q-buttons" id="qLevelButtons">
+                <button class="btn-q active" data-n="1">n = 1 (Fundamental)</button>
+                <button class="btn-q" data-n="2">n = 2</button>
+                <button class="btn-q" data-n="3">n = 3</button>
+                <button class="btn-q" data-n="4">n = 4</button>
+                <button class="btn-q" data-n="5">n = 5</button>
+              </div>
+            </div>
+            <div class="q-metric-display">
+              <div>Energia Relativa $E_n \propto n^2$: <strong id="energyValue">1.00 E₁</strong></div>
+              <div>Nós na Função de Onda: <strong id="nodesCount">0</strong></div>
+            </div>
+          </div>
+
+          <div class="canvas-container">
+            <canvas id="wellCanvas" width="900" height="340"></canvas>
+            <div class="canvas-legend">
+              <span class="leg-psi"><span class="dot"></span> Função de Onda &psi;<sub>n</sub>(x)</span>
+              <span class="leg-prob"><span class="dot"></span> Densidade de Probabilidade |&psi;<sub>n</sub>(x)|&sup2;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PESQUISA COM FILTRO -->
+    <section id="pesquisa">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="tile"><span class="num">1</span><span class="sym">H</span><span class="name">Hidrogênio</span></span>
+          <div>
+            <h2>Linhas de Pesquisa Computacional</h2>
+            <p>Aplicações da mecânica quântica e inteligência artificial na fronteira dos materiais e da energia.</p>
+          </div>
+        </div>
+
+        <div class="research-filters reveal">
+          <button class="filter-btn active" data-filter="all">Todos os Projetos</button>
+          <button class="filter-btn" data-filter="dft">DFT &amp; Hidrogênio</button>
+          <button class="filter-btn" data-filter="limcca">LIMCCA &amp; Eletroquímica</button>
+          <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        </div>
+
+        <div class="research-grid reveal">
+          <div class="rcard" data-category="dft">
+            <span class="tile small-tile"><span class="sym">MgH₂</span></span>
+            <h3>Armazenamento de Hidrogênio via DFT</h3>
+            <p>Cálculos por primeiros princípios sobre células unitárias do hidreto de magnésio dopado com metais de transição. Análise de relaxação atômica, densidade de estados e energia de formação para viabilizar desidretação a baixas temperaturas.</p>
+            <a href="https://bit.ly/3UFRpo5" target="_blank" rel="noopener">Acessar Artigo / TCC &rarr;</a>
+          </div>
+
+          <div class="rcard" data-category="limcca">
+            <span class="tile small-tile"><span class="sym">LIMCCA</span></span>
+            <h3>Modelagem no LIMCCA &amp; Interfaces Eletroquímicas</h3>
+            <p>Modelagem numérica atomística e de transporte iônico no LIMCCA em convergência com o Grupo de Eletroquímica da UNILA, estudando cinética reacional e estabilidade em interfaces ativas.</p>
+            <a href="#contato">Ver Colaborações &rarr;</a>
+          </div>
+
+          <div class="rcard" data-category="ml">
+            <span class="tile small-tile"><span class="sym">ML</span></span>
+            <h3>Classificação Espectroscópica &amp; Séries Temporais</h3>
+            <p>Redes neurais e algoritmos ensemble aplicados sobre dados espectrais de difração de raios-X / Raman (banco RRUFF) e triagem de exoplanetas a partir de curvas de luz astronômicas do Kepler.</p>
+            <a href="https://bit.ly/4oYAFWU" target="_blank" rel="noopener">Ver Resultados &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIMULADOR DE ESTRUTURA DE BANDAS E FERMI LEVEL -->
+    <section id="simulador" class="section-alt">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="tile"><span class="num">E(k)</span><span class="sym">Band</span><span class="name">Estrutura</span></span>
+          <div>
+            <h2>Simulador de Estrutura Eletrônica &amp; Bandgap</h2>
+            <p>Veja como o gap de energia quântico define as propriedades condutoras dos materiais que investigamos.</p>
+          </div>
+        </div>
+
+        <div class="band-simulator-box reveal">
+          <div class="band-actions">
+            <button class="band-btn active" data-type="insulator">Isolante Quântico (MgH₂ Puro)</button>
+            <button class="band-btn" data-type="semiconductor">Semicondutor (MgH₂ Dopado)</button>
+            <button class="band-btn" data-type="metal">Condutor Metálico (Banda Cruzada)</button>
+          </div>
+          <div class="band-canvas-wrap">
+            <canvas id="bandCanvas" width="860" height="280"></canvas>
+          </div>
+          <div class="band-notes">
+            <p id="bandExplanation"><strong>MgH₂ Puro:</strong> Apresenta um bandgap amplo (~5.6 eV), característico de um isolante. Nossas simulações investigam dopagens para estreitar essa faixa proibida e induzir condutividade eletrônica favorável.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAJETÓRIA (ASCENDENTE) -->
+    <section id="trajetoria">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="tile"><span class="num">14</span><span class="sym">Si</span><span class="name">Silício</span></span>
+          <div>
+            <h2>Trajetória Acadêmica &amp; P&amp;D</h2>
+            <p>Caminho evolutivo da base em Engenharia Física à pesquisa avançada em pós-graduação e projetos aplicados.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <!-- PRESENTE -->
+          <div class="tl-item milestone">
+            <div class="tl-year">Atual</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content reveal-tl">
+              <span class="tl-tag">Mestrado &amp; Modelagem</span>
+              <h4>Mestrado em Física Aplicada — LIMCCA &amp; Grupo de Eletroquímica</h4>
+              <p>
+                Pesquisador de pós-graduação no <strong>LIMCCA</strong> e membro do <strong>Grupo Interdisciplinar de Eletroquímica da UNILA</strong>. Modelagem computacional por primeiros princípios de nanomateriais e eletroquímica de superfícies para transição energética.
+              </p>
+            </div>
+          </div>
+
+          <!-- 2025 -->
+          <div class="tl-item milestone">
+            <div class="tl-year">2025</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content reveal-tl">
+              <span class="tl-tag">P&amp;D &amp; Graduação</span>
+              <h4>Projeto de P&amp;D na UNIOESTE e Conclusão do TCC</h4>
+              <p>
+                Atuação em projeto de <strong>Pesquisa e Desenvolvimento (P&amp;D) na UNIOESTE</strong> integrando hardware de sensoriamento, automação e análise de dados. Defesa da tese de graduação em dopagem de hidreto de magnésio por DFT e Menção Honrosa na SIEPE 2025.
+              </p>
+              <div class="tl-photo">
+                <img src="https://brunohdmacedo.tech/img/dummies/slides/tcc.png" alt="Apresentação de TCC" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 2024 -->
+          <div class="tl-item">
+            <div class="tl-year">2024</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content reveal-tl">
+              <span class="tl-tag">Menção Honrosa</span>
+              <h4>Início no Grupo GANEL — Pesquisa em Hidrogênio</h4>
+              <p>
+                Ingresso no grupo de pesquisa GANEL, liderando cálculos mecânico-quânticos em clusters de supercomputação dedicados à dinâmica atômica de difusão de hidrogênio em redes metálicas.
+              </p>
+            </div>
+          </div>
+
+          <!-- 2023 -->
+          <div class="tl-item milestone">
+            <div class="tl-year">2023</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content reveal-tl">
+              <span class="tl-tag">Prêmio de Extensão</span>
+              <h4>Melhor Projeto de Extensão &amp; Univ. of Washington</h4>
+              <p>
+                Laureado com o troféu de Melhor Projeto de Extensão da UNILA e certificação em <em>Machine Learning Foundations</em> pela University of Washington (EUA).
+              </p>
+              <div class="tl-photo">
+                <img src="https://live.staticflickr.com/65535/53212033032_d086a3bbba_h.jpg" alt="Concurso de Pontes UNILA 2023" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 2022 -->
+          <div class="tl-item milestone">
+            <div class="tl-year">2022</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content reveal-tl">
+              <span class="tl-tag">Menção Honrosa</span>
+              <h4>Especialização em DFT (École Polytechnique) &amp; SIEPE</h4>
+              <p>
+                Certificação intensiva em Teoria do Funcional da Densidade pela prestigiada École Polytechnique (França) e Menção Honrosa em mostra de ensino e pesquisa científica.
+              </p>
+              <div class="tl-photo">
+                <img src="https://live.staticflickr.com/65535/52444509824_b74891e553_h.jpg" alt="Menção Honrosa SIEPE 2022" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 2020-2024 -->
+          <div class="tl-item">
+            <div class="tl-year">2020–24</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content reveal-tl">
+              <h4>Atuação em IA no Laboratório LACA</h4>
+              <p>
+                Quatro anos como integrante do LACA/UNILA, trabalhando na modelagem computacional de dados observacionais espaciais da NASA para identificação de trânsitos exoplanetários.
+              </p>
+            </div>
+          </div>
+
+          <!-- 2020 -->
+          <div class="tl-item">
+            <div class="tl-year">2020</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content reveal-tl">
+              <h4>Ingresso em Engenharia Física — UNILA</h4>
+              <p>
+                Início da formação acadêmica em Foz do Iguaçu, iniciando na física do estado sólido, métodos numéricos, equações diferenciais parciais e instrumentação.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÍDIA (@brunohdmacedo) -->
+    <section id="midia" class="section-media">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="tile"><span class="num">&#9654;</span><span class="sym">Med</span><span class="name">Canal</span></span>
+          <div>
+            <h2>Vídeos &amp; Instagram</h2>
+            <p>Divulgação científica, rotinas laboratoriais e física computacional no <strong>@brunohdmacedo</strong>.</p>
+          </div>
+        </div>
+
+        <div class="media-group reveal">
+          <div class="media-header">
+            <div class="media-title">
+              <svg class="ic-yt" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <h3>Vídeos no YouTube</h3>
+            </div>
+            <a href="https://www.youtube.com/@brunohdmacedo" target="_blank" rel="noopener" class="media-link">Canal @brunohdmacedo &rarr;</a>
+          </div>
+
+          <div class="youtube-grid">
+            <article class="yt-card">
+              <a href="https://www.youtube.com/@brunohdmacedo" target="_blank" rel="noopener" class="yt-thumb-wrap">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=700&q=80" alt="DFT e Células Unitárias" loading="lazy">
+                <span class="yt-badge">DFT</span>
+                <span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+              </a>
+              <div class="yt-body">
+                <span class="media-tag">Física Quântica</span>
+                <h4>Como Construir Células Unitárias e Calcular DFT</h4>
+                <p>Métodos práticos de simulação da mecânica quântica em redes cristalinas periódicas.</p>
+              </div>
+            </article>
+
+            <article class="yt-card">
+              <a href="https://www.youtube.com/@brunohdmacedo" target="_blank" rel="noopener" class="yt-thumb-wrap">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" alt="Exoplanetas e IA" loading="lazy">
+                <span class="yt-badge">Machine Learning</span>
+                <span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+              </a>
+              <div class="yt-body">
+                <span class="media-tag">Séries Temporais</span>
+                <h4>Classificando Exoplanetas com Dados do Kepler</h4>
+                <p>Processamento e redução de ruído em dados espaciais com Python científico.</p>
+              </div>
+            </article>
+
+            <article class="yt-card">
+              <a href="https://www.youtube.com/@brunohdmacedo" target="_blank" rel="noopener" class="yt-thumb-wrap">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=700&q=80" alt="Supercomputação e Código" loading="lazy">
+                <span class="yt-badge">HPC</span>
+                <span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+              </a>
+              <div class="yt-body">
+                <span class="media-tag">Computação Científica</span>
+                <h4>Automação e Scripts para Simulação de Materiais</h4>
+                <p>Construção de rotinas para convergência de energia e extração de autovalores.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- INSTAGRAM -->
+        <div class="media-group reveal" style="margin-top: 52px;">
+          <div class="media-header">
+            <div class="media-title">
+              <svg class="ic-ig" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.449-1.44z"/></svg>
+              <h3>Instagram @brunohdmacedo</h3>
+            </div>
+            <a href="https://www.instagram.com/brunohdmacedo" target="_blank" rel="noopener" class="media-link">Ver Feed Completo &rarr;</a>
+          </div>
+
+          <div class="insta-grid">
+            <a href="https://www.instagram.com/brunohdmacedo" target="_blank" rel="noopener" class="insta-card">
+              <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=500&q=80" alt="Pesquisa e Simulações" loading="lazy">
+              <div class="insta-overlay">
+                <span class="insta-text">Cálculos quânticos no cluster e convergência SCF para MgH₂. 🔬⚡</span>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com/brunohdmacedo" target="_blank" rel="noopener" class="insta-card">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=500&q=80" alt="Códigos e scripts" loading="lazy">
+              <div class="insta-overlay">
+                <span class="insta-text">Desenvolvimento de rotinas em Python para pós-processamento de bandas. 💻</span>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com/brunohdmacedo" target="_blank" rel="noopener" class="insta-card">
+              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=500&q=80" alt="Apresentação Acadêmica" loading="lazy">
+              <div class="insta-overlay">
+                <span class="insta-text">Apresentação dos projetos do LIMCCA e Eletroquímica na SIEPE. 🎓</span>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com/brunohdmacedo" target="_blank" rel="noopener" class="insta-card">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=500&q=80" alt="Astrofísica e IA" loading="lazy">
+              <div class="insta-overlay">
+                <span class="insta-text">Modelos supervisionados em dados do telescópio Kepler. 🌌</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TERMINAL QUÂNTICO INTERATIVO -->
+    <section id="terminal" class="section-dark">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="tile"><span class="num">>_</span><span class="sym">HPC</span><span class="name">Cluster</span></span>
+          <div>
+            <h2>Terminal de Simulação Científica</h2>
+            <p>Ambiente simulando um nó de processamento de alto desempenho (HPC). Digite os comandos para rodar rotinas quânticas.</p>
+          </div>
+        </div>
+
+        <div class="terminal-shell reveal">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="terminal-title">bruno@cluster-limcca: ~/quantum_simulations</div>
+          </div>
+          <div class="terminal-body" id="termOutput">
+            <p class="term-line-info">Cluster LIMCCA/UNILA (x86_64, 64 nós de cálculo, OpenMPI + DFT)</p>
+            <p class="term-line-info">Digite <span class="term-cmd">ajuda</span> para listar os comandos quânticos disponíveis.</p>
+          </div>
+          <div class="terminal-prompt-row">
+            <span class="term-user">bruno@limcca:~$</span>
+            <input type="text" id="termInput" autocomplete="off" spellcheck="false" placeholder="Ex: rodar-dft, calcular-gap, status">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="wrap contact-layout">
+        <div class="reveal">
+          <span class="tile" style="margin-bottom:22px;"><span class="num">1</span><span class="sym">H</span><span class="name">Hidrogênio</span></span>
+          <h2 class="contact-title">Colaborações Científicas</h2>
+          <p class="contact-desc">
+            Disponível para cooperações em simulações por primeiros princípios, projetos interdisciplinares no LIMCCA, Grupo de Eletroquímica da UNILA e desenvolvimento de modelos numéricos avançados.
+          </p>
+          
+          <div class="contact-list">
+            <div class="contact-item" id="emailCopyBtn" title="Clique para copiar o e-mail">
+              <div class="contact-value">
+                <strong>brunohdmacedo@gmail.com</strong>
+                <span class="copy-hint">Copiar e-mail científico</span>
+              </div>
+              <span class="k">E-mail</span>
+            </div>
+            <div class="contact-item no-click">
+              <span>LIMCCA · UNILA · Foz do Iguaçu, PR — Brasil</span>
+              <span class="k">Localização</span>
+            </div>
+            <a href="https://bit.ly/3UHhBi0" target="_blank" rel="noopener" class="contact-item">
+              <span>Currículo Lattes (CNPq)</span>
+              <span class="k">CV &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="social-grid">
+            <a href="https://bit.ly/3HGUTDW" target="_blank" rel="noopener">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 8.5s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.4 5 12 5 12 5h0s-4.4 0-7.1.2c-.4 0-1.3.1-2.1 1-.6.7-.8 2.3-.8 2.3S1.8 10.4 1.8 12.3v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.3.2 7.3.2s4.4 0 7.1-.2c.4 0 1.3-.1 2.1-1 .6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.8c0-1.9-.2-3.8-.2-3.8Z"/><path d="M9.8 15.3V8.9l5.5 3.2-5.5 3.2Z"/></svg>
+              <span class="lbl">YouTube</span>
+              <span class="sub">@brunohdmacedo</span>
+            </a>
+            <a href="https://bit.ly/465SETR" target="_blank" rel="noopener">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg>
+              <span class="lbl">Instagram</span>
+              <span class="sub">@brunohdmacedo</span>
+            </a>
+            <a href="https://bit.ly/3VlPBAE" target="_blank" rel="noopener">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7.5 9.5v7M7.5 7v.01M12 16.5v-4.2c0-1.4 1-2.3 2.3-2.3 1.3 0 2.2 1 2.2 2.4v4.1"/></svg>
+              <span class="lbl">LinkedIn</span>
+              <span class="sub">Bruno Macedo</span>
+            </a>
+            <a href="https://bit.ly/47dlUt0" target="_blank" rel="noopener">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3C7 3 3 7 3 12c0 4 2.6 7.4 6.3 8.6.3.1.5-.1.5-.4v-1.6c-2.6.3-2.8-1.3-3-1.6-.2-.3-.9-1-1.5-1.3-.5-.2-1.2-.8 0-.8 1.1 0 1.9 1.1 2.2 1.6.9 1.5 2.4 1.1 3 .8.1-.6.4-1.1.7-1.3-2.5-.3-4.3-1.5-4.3-3.9 0-1.1.3-2 1-2.7-.1-.3-.4-1.2.1-2.4 0 0 .9-.3 2.7.9.8-.2 1.6-.3 2.4-.3.8 0 1.6.1 2.4.3 1.9-1.2 2.7-.9 2.7-.9.5 1.2.2 2.1.1 2.4.7.7 1 1.6 1 2.7 0 2.4-1.8 3.6-4.3 3.9.4.3.7 1 .7 1.9v2.6c0 .3.2.5.5.4C18.4 19.4 21 16 21 12c0-5-4-9-9-9Z"/></svg>
+              <span class="lbl">GitHub</span>
+              <span class="sub">Repositórios Quânticos</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap foot-row">
+      <span>&copy; <span id="year"></span> Bruno Macedo — Mestrando em Física Aplicada · Engenheiro Físico (UNILA).</span>
+      <span>LIMCCA · Grupo de Eletroquímica · Foz do Iguaçu, Brasil</span>
+      <a href="#top" class="back-top">Voltar ao topo &uarr;</a>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
