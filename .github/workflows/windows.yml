@@ -16,11 +16,35 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+
+      - name: Localizar e conferir arquivos do projeto
+        shell: bash
+        run: |
+          echo "== Raiz do repositório =="; ls -la
+          if [ ! -f bruma.py ]; then
+            P=$(find . -type f -iname 'bruma.py' -not -path './.git/*' | head -n1)
+            if [ -z "$P" ]; then
+              echo "::error::bruma.py não foi encontrado em nenhuma pasta deste repositório"
+              find . -maxdepth 3 -not -path './.git/*' | sort
+              exit 1
+            fi
+            D=$(dirname "$P")
+            echo "bruma.py encontrado em: $D  -> copiando o conteúdo dessa pasta para a raiz"
+            cp -rn "$D"/. .
+          fi
+          faltando=0
+          for f in bruma.py bruma_gui.py assets/bruma.ico packaging/windows/bruma.iss; do
+            if [ ! -f "$f" ]; then echo "::error::Falta o arquivo obrigatório: $f"; faltando=1; fi
+          done
+          for f in README.md CITATION.cff bruma.bib bruma-tutorial.pdf; do
+            if [ ! -f "$f" ]; then echo "::warning::Falta (opcional): $f"; fi
+          done
+          [ "$faltando" = 0 ] || { echo "== Arquivos vistos =="; find . -maxdepth 3 -not -path './.git/*' | sort; exit 1; }
 
       - name: Versão
         shell: bash
