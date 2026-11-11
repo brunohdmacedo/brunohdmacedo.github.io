@@ -40,11 +40,11 @@ Name: "addpath"; Description: "Adicionar o comando 'bruma' (linha de comando) ao
 
 [Files]
 Source: "..\..\dist\Bruma.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\dist\bruma.exe"; DestDir: "{app}\cli"; Flags: ignoreversion
-Source: "..\..\README.md"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\CITATION.cff"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\bruma.bib"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\bruma-tutorial.pdf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\dist\bruma-cli.exe"; DestDir: "{app}\cli"; DestName: "bruma.exe"; Flags: ignoreversion
+Source: "..\..\README.md"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
+Source: "..\..\CITATION.cff"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
+Source: "..\..\bruma.bib"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
+Source: "..\..\bruma-tutorial.pdf"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
 
 [Icons]
 Name: "{group}\Bruma"; Filename: "{app}\Bruma.exe"
