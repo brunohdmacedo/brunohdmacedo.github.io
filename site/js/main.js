@@ -7,7 +7,7 @@ document.getElementById('y').textContent=new Date().getFullYear();
 var hd=document.getElementById('hd');document.getElementById('bur').onclick=function(){hd.classList.toggle('o')};
 document.querySelectorAll('.links a').forEach(function(a){a.onclick=function(){hd.classList.remove('o')}});
 // typed
-var ph=['Engenheiro Físico','Mestrando em Física Aplicada','DFT · Machine Learning · Materiais'],pi=0,ci=0,del=false,T=document.getElementById('typed');
+var ph=['Engenheiro Físico','Mestrando em Física Aplicada','DFT · Machine Learning · Materiais','Deep Learning · ab initio · novos materiais','Ciência dos Materiais para a sustentabilidade'],pi=0,ci=0,del=false,T=document.getElementById('typed');
 function tp(){var s=ph[pi];T.textContent='> '+s.slice(0,ci)+'▌';if(!del&&ci<s.length){ci++;setTimeout(tp,60)}else if(!del){del=true;setTimeout(tp,1400)}else if(ci>0){ci--;setTimeout(tp,28)}else{del=false;pi=(pi+1)%ph.length;setTimeout(tp,300)}}tp();
 // lattice canvas
 var c=document.getElementById('cv'),x=c.getContext('2d'),W,H,pts=[],m={x:-999,y:-999},red=matchMedia('(prefers-reduced-motion:reduce)').matches;
