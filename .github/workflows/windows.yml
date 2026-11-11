@@ -64,8 +64,14 @@ jobs:
 
       - name: Foto do autor (opcional)
         shell: pwsh
-        continue-on-error: true
-        run: Invoke-WebRequest -UseBasicParsing -Uri 'https://wwws.cnpq.br/cvlattesweb/pkg_util_img.show_foto?v_cod=K4494050P3' -OutFile 'assets/autor.jpg'
+        run: |
+          try {
+            Invoke-WebRequest -UseBasicParsing -Uri 'https://wwws.cnpq.br/cvlattesweb/pkg_util_img.show_foto?v_cod=K4494050P3' -OutFile 'assets/autor.jpg'
+            Write-Host 'Foto baixada.'
+          } catch {
+            Write-Host 'Foto nao baixada (servidor do CNPq recusou); o programa mostrara as iniciais.'
+          }
+          exit 0
 
       - name: Bruma.exe (janela)
         run: >
