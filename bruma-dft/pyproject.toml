@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bruma-dft"
+version = "1.0.0"
+description = "Bruma: bandas, DOS, PDOS, densidade de carga, defeitos e termodinâmica a partir de cálculos CASTEP"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{ name = "Bruno Henrique Dourado Macedo", email = "brunohdmacedo@gmail.com" }]
+keywords = ["CASTEP", "DFT", "band structure", "density of states", "charge density", "point defects", "hydrogen storage"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Topic :: Scientific/Engineering :: Chemistry",
+  "Intended Audience :: Science/Research",
+  "Natural Language :: Portuguese (Brazilian)",
+  "Environment :: Console",
+  "Environment :: X11 Applications",
+  "Environment :: Win32 (MS Windows)",
+]
+dependencies = ["numpy>=1.20", "matplotlib>=3.3"]
+
+[project.optional-dependencies]
+gui = ["pillow>=8"]
+
+[project.urls]
+"Site e tutorial" = "https://brunohdmacedo.tech/bruma/"
+"Código-fonte" = "https://github.com/brunohdmacedo/bruma-dft"
+"Autor" = "https://brunohdmacedo.tech/"
+
+[project.scripts]
+bruma = "bruma:main"
+
+[project.gui-scripts]
+bruma-gui = "bruma_gui:main"
+
+[tool.setuptools]
+py-modules = ["bruma", "bruma_gui"]

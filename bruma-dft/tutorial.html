@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tutorial do Bruma: bandas, DOS, densidade, defeitos e termodinâmica | Bruno H. D. Macedo</title>
+<meta name="description" content="Ferramenta gratuita no navegador para estrutura de bandas, DOS e PDOS de cálculos CASTEP com spin up e down, orbitais s, p, d, f e componentes m, sem alterar a energia de Fermi.">
+<meta name="theme-color" content="#070C0B">
+<meta property="og:title" content="Bruma: bandas, DOS e PDOS do CASTEP">
+<meta property="og:description" content="Arraste os arquivos do CASTEP e gere bandas, DOS, PDOS e bandas projetadas, com spin up e down, no seu navegador.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20128%20128%22%3E%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2312201D%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080E0D%22/%3E%3C/linearGradient%3E%0A%3ClinearGradient%20id%3D%22edge%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234FE3C1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238B7CF6%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2228%22%20fill%3D%22url%28%23bg%29%22%20stroke%3D%22url%28%23edge%29%22%20stroke-width%3D%228%22/%3E%0A%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M22%2038C40%2028%2052%2046%2064%2040S90%2028%20106%2036%22%20stroke%3D%22%238B7CF6%22%20stroke-width%3D%2211%22/%3E%0A%3Cpath%20d%3D%22M22%2064H106%22%20stroke%3D%22%23F5B544%22%20stroke-width%3D%227%22%20stroke-dasharray%3D%2212%2010%22/%3E%0A%3Cpath%20d%3D%22M22%2090C40%20100%2052%2082%2064%2088S90%20100%20106%2092%22%20stroke%3D%22%234FE3C1%22%20stroke-width%3D%2211%22/%3E%3C/g%3E%0A%3Ccircle%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2213%22%20fill%3D%22%23F5B544%22/%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Tokens do brunohdmacedo.tech (tema escuro padrão + tema claro) */
+:root{--bg:#070C0B;--bg2:#0D1514;--card:#101A18;--line:#1F2E2B;--tx:#E8F1EE;--mut:#8FA39E;--cy:#4FE3C1;--am:#F5B544;--vi:#8B7CF6;
+  --hd:rgba(7,12,11,.78);--onp:#04201a;--up:#6E9BFF;--down:#FF7A7A;--field:#0A1110;color-scheme:dark;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{color-scheme:light;--bg:#F3F7F6;--bg2:#E7EFED;--card:#FFFFFF;--line:#D2DEDB;--tx:#0C1614;--mut:#4D625D;--cy:#0A8F78;--am:#B26B00;--vi:#6552E0;--hd:rgba(243,247,246,.82);--onp:#fff;--up:#2457C5;--down:#C23B3B;--field:#F7FAF9}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--bg:#F3F7F6;--bg2:#E7EFED;--card:#FFFFFF;--line:#D2DEDB;--tx:#0C1614;--mut:#4D625D;--cy:#0A8F78;--am:#B26B00;--vi:#6552E0;--hd:rgba(243,247,246,.82);--onp:#fff;--up:#2457C5;--down:#C23B3B;--field:#F7FAF9}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+html,body{background:var(--bg)}
+body{font-family:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--tx);line-height:1.55;font-size:15px;font-variant-numeric:tabular-nums}
+a{color:inherit;text-decoration:none}
+.w{max-width:1440px;margin:0 auto;padding:0 28px}
+.mono{font-family:'JetBrains Mono',Consolas,monospace}
+/* cabeçalho igual ao do site */
+header#hd{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:var(--hd);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:49;background:var(--hd)}
+nav{display:flex;justify-content:space-between;align-items:center;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--cy)}.logo b{color:var(--tx);font-weight:500}
+.links{display:flex;gap:24px;font-size:14px;color:var(--mut)}.links a:hover,.links a.on{color:var(--cy)}
+.nr{display:flex;gap:8px;align-items:center}
+.tg{background:var(--card);border:1px solid var(--line);color:var(--tx);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:17px;display:grid;place-items:center}
+.tg:hover{border-color:var(--cy);color:var(--cy)}
+.bur{display:none;background:none;border:0;color:var(--tx);font-size:24px;cursor:pointer}
+@media(max-width:900px){.links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg2);padding:16px 28px;gap:14px;border-bottom:1px solid var(--line)}header.o .links{display:flex}.bur{display:block}}
+/* introdução */
+.intro{padding:104px 0 26px}
+.intro .w{display:grid;gap:20px}
+.sh small{font:500 12.5px 'JetBrains Mono',monospace;color:var(--cy)}
+.intro h1{font-size:clamp(30px,4.2vw,50px);font-weight:600;letter-spacing:-.02em;line-height:1.08;margin:8px 0 12px}
+.intro h1 span{background:linear-gradient(90deg,var(--cy),var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro p{color:var(--mut);max-width:640px;font-size:16.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font:12.5px 'JetBrains Mono',monospace;padding:6px 11px;border-radius:6px;background:var(--card);border:1px solid var(--line);color:var(--mut)}
+.chip b{color:var(--tx);font-weight:500}
+.chip button{border:0;background:none;padding:0 0 0 8px;margin:0;color:var(--mut);font-size:15px;line-height:1;cursor:pointer;min-height:0}
+.chip button:hover{color:var(--down)}
+/* botões (estilo .b do site) */
+button,.b{font:inherit;font-size:14px;font-weight:500;padding:10px 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--tx);cursor:pointer;transition:border-color .2s,color .2s,box-shadow .2s;text-align:left}
+button:hover,.b:hover{border-color:var(--cy);color:var(--cy)}
+button.primary,.b.p{background:var(--cy);border-color:var(--cy);color:var(--onp)}
+button.primary:hover,.b.p:hover{color:var(--onp);box-shadow:0 0 28px rgba(79,227,193,.40)}
+button.danger{color:var(--down)}button.danger:hover{border-color:var(--down);color:var(--down)}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible,.drop:focus-visible{outline:2px solid var(--cy);outline-offset:2px}
+/* ferramenta */
+.tool{padding-bottom:70px}
+.layout{display:grid;grid-template-columns:330px minmax(0,1fr);border:1px solid var(--line);border-radius:14px;background:var(--bg2);overflow:clip;min-height:70vh}
+aside{border-right:1px solid var(--line);background:var(--card);padding:4px 0 26px;overflow-y:auto;max-height:calc(100vh - 88px);position:sticky;top:76px;align-self:start}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:12px 18px;font-weight:600;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:'JetBrains Mono',monospace;color:var(--cy);font-weight:400}
+details[open] summary::after{content:"−"}
+.sec{padding:2px 18px 16px;display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+.sec>*,.pair>*{min-width:0}
+aside{min-width:0}
+.sec button{width:100%}
+label{display:grid;gap:4px;font-size:13px;color:var(--mut)}
+label.row{display:flex;gap:8px;align-items:center;color:var(--tx)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+input[type=text],input[type=number],select{min-width:0;max-width:100%;font:inherit;font-size:13.5px;color:var(--tx);background:var(--field);border:1px solid var(--line);border-radius:7px;padding:7px 9px;width:100%}
+input[type=checkbox]{accent-color:var(--cy);width:15px;height:15px}
+input[type=color]{width:100%;height:32px;border:1px solid var(--line);border-radius:7px;background:var(--field);padding:2px}
+.els{display:flex;flex-wrap:wrap;gap:6px 12px}
+.els label{display:flex;gap:6px;align-items:center;color:var(--tx);font-size:13.5px}
+.hint{font-size:12.5px;color:var(--mut)}
+.app{padding:16px 22px 26px;min-width:0}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.tabs button{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:10px 14px;color:var(--mut);font-weight:500}
+.tabs button:hover{color:var(--cy)}
+.tabs button[aria-selected=true]{color:var(--tx);border-bottom-color:var(--cy)}
+.efbar{display:flex;flex-wrap:wrap;gap:6px 20px;font:12.5px 'JetBrains Mono',monospace;color:var(--mut);margin:0 0 12px}
+.efbar strong{color:var(--am);font-weight:500}
+.sheet{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto}
+.sheet.site{background:var(--card)}
+#plot{width:100%}
+.ed.densctl{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1100px){.ed.densctl{grid-template-columns:minmax(0,1fr)}}
+.refgen{margin:0 0 16px}
+#cmpTable td:first-child{white-space:nowrap}
+.defctl{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-bottom:16px}
+.mu{display:grid;gap:8px}
+.murow{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:center}
+.murow b{font:500 13px 'JetBrains Mono',monospace;color:var(--tx)}
+#sheetDef{margin-top:16px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.interp{border-left:3px solid var(--cy);background:var(--card);border-radius:0 10px 10px 0;padding:12px 16px;display:grid;gap:6px;font-size:14.5px}
+.interp p{color:var(--tx)}
+.tag{display:inline-block;font:500 12px 'JetBrains Mono',monospace;color:var(--cy);border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin-right:6px}
+.editor{border:1px solid var(--line);border-radius:12px;background:var(--card);margin:12px 0 0}
+.editor>summary{padding:12px 16px;font-size:14.5px}
+.ed{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:2px 16px 16px}
+@media(min-width:1500px){.ed{grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(0,1.6fr)}.ed fieldset.wide{grid-column:auto}}
+.ed fieldset{border:1px solid var(--line);border-radius:10px;padding:12px 14px 14px;display:grid;gap:10px;min-width:0;align-content:start}
+.ed fieldset>*{min-width:0}
+.ed legend{font:500 12px 'JetBrains Mono',monospace;color:var(--cy);padding:0 6px}
+.ed fieldset.wide{grid-column:1/-1}
+.ctab{display:grid;gap:6px;max-height:340px;overflow-y:auto}
+.crow{display:grid;grid-template-columns:44px minmax(0,1fr) 128px 76px 64px;gap:8px;align-items:center}
+.crow.h{font:500 11.5px 'JetBrains Mono',monospace;color:var(--mut);position:sticky;top:0;background:var(--card);padding-bottom:2px}
+.crow input[type=color]{height:30px;padding:2px}
+.crow .vis{display:flex;justify-content:center}
+.edbar{display:flex;flex-wrap:wrap;gap:8px}
+.ed .empty{font-size:13px;color:var(--mut)}
+@media(max-width:760px){.ed{grid-template-columns:minmax(0,1fr)}.crow{grid-template-columns:38px minmax(0,1fr) 92px 56px 34px;gap:6px}}
+.drop{border:1.5px dashed color-mix(in srgb,var(--cy) 55%,var(--line));border-radius:14px;background:var(--card);min-height:460px;display:grid;place-items:center;text-align:center;padding:44px 24px;position:relative;overflow:hidden;cursor:pointer;transition:border-color .2s,background .2s}
+.drop.over{border-color:var(--cy);background:color-mix(in srgb,var(--cy) 7%,var(--card))}
+.drop svg.bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;color:var(--cy);opacity:.22}
+.drop svg.bg .f{stroke:var(--am);opacity:.9}
+.drop .inner{position:relative;max-width:560px}
+.drop small{font:500 12.5px 'JetBrains Mono',monospace;color:var(--cy)}
+.drop h2{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-.02em;margin:8px 0 10px;line-height:1.15}
+.drop p{color:var(--mut);margin:0 0 20px}
+.drop ul{list-style:none;margin:0 0 24px;display:grid;gap:6px;font-size:14px;text-align:left;justify-content:center;color:var(--mut)}
+.drop code{font:12.5px 'JetBrains Mono',monospace;color:var(--tx);background:var(--bg2);border:1px solid var(--line);padding:2px 7px;border-radius:5px;margin-right:6px}
+.tables{display:grid;gap:24px}
+.tables h3{font-size:16px;margin:0 0 8px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:13.5px;background:var(--card)}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:500;font:500 12px 'JetBrains Mono',monospace}
+td.n,th.n{text-align:right}
+td.n{font-family:'JetBrains Mono',monospace;font-size:12.5px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.note{font-size:12.5px;color:var(--am);margin:8px 0 0}
+#status{font:12.5px 'JetBrains Mono',monospace;color:var(--am);min-height:20px;margin:10px 0 0}
+@media (max-width:900px){.layout{grid-template-columns:minmax(0,1fr)}.app{order:-1;padding:14px 12px 20px}aside{position:static;max-height:none;border-right:0;border-top:1px solid var(--line)}.w{padding:0 16px}.intro{padding-top:92px}}
+/* rodapé de informações */
+.more{padding:80px 0;background:var(--bg2);border-block:1px solid var(--line)}
+.more h2{font-size:clamp(24px,3.4vw,36px);font-weight:600;letter-spacing:-.02em;margin:8px 0 28px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .25s}
+.card:hover{border-color:var(--cy)}
+.card h3{font-size:18px;margin-bottom:8px;font-weight:600}
+.card p{color:var(--mut);font-size:14.5px}
+.card .k{font:12px 'JetBrains Mono',monospace;color:var(--am);margin-top:14px;display:block}
+.card a.lk{color:var(--cy);font-weight:500}
+.card a.lk:hover{text-decoration:underline}
+.cite{margin-top:22px;font:12.5px/1.7 'JetBrains Mono',monospace;color:var(--mut);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto}
+.cite b{color:var(--tx);font-weight:500}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mut);font-size:13px}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer a:hover{color:var(--cy)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* tutorial */
+.tut{display:grid;grid-template-columns:250px minmax(0,1fr);gap:36px;padding-bottom:70px}
+.toc{position:sticky;top:84px;align-self:start;display:grid;height:auto;justify-content:stretch;align-items:stretch;gap:2px;font-size:14px;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 12px;max-height:calc(100vh - 100px);overflow-y:auto}
+.toc b{font:500 12.5px 'JetBrains Mono',monospace;color:var(--cy);margin:0 6px 6px}
+.toc a{color:var(--mut);padding:4px 6px;border-radius:6px}.toc a:hover{color:var(--cy);background:var(--bg2)}
+.prose{max-width:860px;min-width:0}
+.prose h2{font-size:26px;font-weight:600;letter-spacing:-.01em;margin:44px 0 12px;padding-top:6px;border-top:1px solid var(--line)}
+.prose h2:first-child{margin-top:0;border-top:0}
+.prose h3{font-size:18px;margin:22px 0 8px}
+.prose p,.prose li{color:var(--tx);font-size:16px;line-height:1.65}
+.prose p{margin:0 0 12px}.prose ul,.prose ol{margin:0 0 14px 22px;display:grid;gap:6px}
+.prose a{color:var(--cy)}.prose a:hover{text-decoration:underline}
+.prose code{font:13.5px 'JetBrains Mono',monospace;background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+.prose pre{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;margin:0 0 14px}
+.prose pre code{border:0;padding:0;background:none;font-size:13px;line-height:1.6}
+.prose .tw{margin:0 0 16px}
+.prose figure{margin:10px 0 20px}.prose figure img{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff}
+.prose figcaption{font-size:13px;color:var(--mut);margin-top:6px}
+.callout{border-left:3px solid var(--am);background:var(--card);border-radius:0 10px 10px 0;padding:12px 16px}
+.prose .cite{font-family:'Space Grotesk',system-ui,sans-serif;color:var(--tx);font-size:14.5px;line-height:1.6;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:0 0 10px}
+.bib{position:relative;margin:0 0 12px}.bib pre{margin:0;font-size:12.5px}
+.bib .copy{position:absolute;top:8px;right:8px;padding:5px 10px;font-size:12px}
+.refs li{font-size:14.5px;scroll-margin-top:90px}
+mjx-container{color:var(--tx)}
+@media(max-width:900px){.tut{grid-template-columns:minmax(0,1fr)}.toc{position:static;max-height:none}}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},chtml:{scale:1.02}};</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+</head>
+<body>
+<header id="hd"><nav class="w">
+  <a class="logo" href="https://brunohdmacedo.tech/" aria-label="Bruno Macedo, página inicial"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="34" height="34" aria-hidden="true"><defs><linearGradient id="gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4FE3C1"/><stop offset="1" stop-color="#8B7CF6"/></linearGradient></defs><polygon points="50,5 89,27.5 89,72.5 50,95 11,72.5 11,27.5" fill="#0D1514" stroke="url(#gl)" stroke-width="4" stroke-linejoin="round"/><ellipse cx="50" cy="50" rx="36" ry="12" transform="rotate(-32 50 50)" fill="none" stroke="#4FE3C1" stroke-opacity=".35" stroke-width="1.6"/><polyline points="30,69 30,34 50,57 70,34 70,69" fill="none" stroke="url(#gl)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="57" r="4.6" fill="#F5B544"/></svg><span>bruno<b>.macedo</b>_</span></a>
+  <div class="links" id="links">
+    <a href="https://brunohdmacedo.tech/#sobre">sobre</a>
+    <a href="https://brunohdmacedo.tech/#pesquisa">pesquisa</a>
+    <a href="https://brunohdmacedo.tech/#lab">laboratório</a>
+    <a href="./">Bruma</a>
+    <a class="on" href="tutorial.html" aria-current="page">tutorial</a>
+    <a href="./#sobre-bruma">sobre o Bruma</a>
+    <a href="https://brunohdmacedo.tech/#producao">produção</a>
+    <a href="https://brunohdmacedo.tech/#contato">contato</a>
+  </div>
+  <div class="nr"><button class="tg" id="tg" aria-label="Alternar tema">☀</button><button class="bur" id="bur" aria-label="Menu">☰</button></div>
+</nav></header>
+<main id="top">
+<section class="intro"><div class="w">
+  <div class="sh">
+    <small>// Bruma · tutorial</small>
+    <h1 style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span style="display:inline-flex;width:64px;height:64px;-webkit-text-fill-color:initial;background:none"><svg style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><defs>
+<linearGradient id="tm-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#12201D"/><stop offset="1" stop-color="#080E0D"/></linearGradient>
+<linearGradient id="tm-edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4FE3C1"/><stop offset="1" stop-color="#8B7CF6"/></linearGradient>
+<linearGradient id="tm-fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff"/><stop offset=".8" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="tm-mist" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128"><rect width="128" height="128" fill="url(#tm-fade)"/></mask>
+<radialGradient id="tm-glow"><stop offset="0" stop-color="#F5B544" stop-opacity=".55"/><stop offset="1" stop-color="#F5B544" stop-opacity="0"/></radialGradient>
+</defs><rect x="4" y="4" width="120" height="120" rx="30" fill="url(#tm-bg)" stroke="url(#tm-edge)" stroke-width="3.5"/>
+<g mask="url(#tm-mist)" fill="none" stroke-linecap="round">
+<path d="M12 34C32 24 48 44 64 36S96 24 116 32" stroke="#8B7CF6" stroke-width="5.5"/>
+<path d="M12 48C34 40 50 56 68 48S98 40 116 46" stroke="#8B7CF6" stroke-opacity=".5" stroke-width="4"/>
+<path d="M12 64H116" stroke="#F5B544" stroke-width="3" stroke-dasharray="6 6"/>
+<path d="M12 80C30 88 48 72 64 80S94 90 116 82" stroke="#4FE3C1" stroke-opacity=".5" stroke-width="4"/>
+<path d="M12 95C32 103 50 87 68 95S98 103 116 95" stroke="#4FE3C1" stroke-width="5.5"/>
+</g>
+<circle cx="64" cy="64" r="15" fill="url(#tm-glow)"/>
+<circle cx="64" cy="64" r="6.5" fill="#F5B544"/></svg></span>Guia completo <span>do Bruma</span></h1>
+    <p>Tudo o que a ferramenta faz, passo a passo: do cálculo no CASTEP até as figuras e tabelas do artigo, do TCC ou da dissertação. Inclui as fórmulas usadas, as boas práticas e como citar.</p>
+  </div>
+  <div class="chips"><a class="b p" href="./">Abrir a ferramenta</a><a class="b" href="bruma-tutorial.pdf">Tutorial em PDF</a><a class="b" href="#citar">Como citar</a></div>
+</div></section>
+
+<div class="w tut">
+<nav class="toc" aria-label="Sumário">
+  <b>Sumário</b>
+  <a href="#visao">1. Visão geral</a>
+  <a href="#formas">1b. Formas de usar</a>
+  <a href="#castep">2. Preparar o cálculo</a>
+  <a href="#abrir">3. Abrir os arquivos</a>
+  <a href="#bandas">4. Bandas</a>
+  <a href="#dos">5. DOS e PDOS</a>
+  <a href="#fat">6. Bandas projetadas</a>
+  <a href="#analise">7. Análise eletrônica</a>
+  <a href="#editor">8. Editor de gráfico</a>
+  <a href="#defeito">9. Defeito e distorção</a>
+  <a href="#termo">10. Termodinâmica</a>
+  <a href="#refs">11. Cálculos de referência</a>
+  <a href="#densidade">12. Densidade de carga</a>
+  <a href="#planos">13. Planos (h k l)</a>
+  <a href="#delta">14. Contribuição do defeito (Δρ)</a>
+  <a href="#cmp">15. Comparação</a>
+  <a href="#export">16. Exportações</a>
+  <a href="#python">17. Script Python</a>
+  <a href="#formulas">18. Fórmulas</a>
+  <a href="#cuidados">19. Cuidados</a>
+  <a href="#citar">20. Como citar</a>
+  <a href="#biblio">21. Referências</a>
+</nav>
+<article class="prose">
+
+<h2 id="visao">1. Visão geral</h2>
+<p>O <b>Bruma</b> lê as saídas do CASTEP <a href="#r-clark">[1]</a> e produz, para qualquer material e qualquer átomo:</p>
+<ul>
+  <li>a estrutura de bandas, a DOS e a PDOS, com spin up e down;</li>
+  <li>as bandas projetadas por orbital;</li>
+  <li>a análise da estrutura local de defeitos (vacância, substitucional ou intersticial) e da distorção que eles causam;</li>
+  <li>a termodinâmica de formação e de dessorção de hidrogênio;</li>
+  <li>a densidade de carga total e polarizada, em 3D, 2D e em perfis;</li>
+  <li>a comparação lado a lado entre vários cálculos.</li>
+</ul>
+<p>Há duas formas de uso, que fazem a mesma análise:</p>
+<div class="tw"><table>
+<tr><th></th><th>Site (navegador)</th><th>Script Python (cluster)</th></tr>
+<tr><td>Como usar</td><td>arraste os arquivos; ajuste tudo na tela</td><td><code>python3 bruma.py seed</code></td></tr>
+<tr><td>Instalação</td><td>nenhuma; os arquivos não saem do seu computador</td><td>Python 3.8+, numpy e matplotlib</td></tr>
+<tr><td>Saídas</td><td>figuras PNG/SVG, <code>.dat</code> para o Origin, CHGCAR/XSF para o VESTA, <code>.zip</code> de cálculos, relatórios <code>.txt</code></td><td>as mesmas, em <code>seed_plots/</code></td></tr>
+</table></div>
+<p class="callout"><b>Princípio central:</b> a energia de Fermi nunca é recalculada. O valor usado é exatamente o que o CASTEP escreveu no <code>.bands</code>, para cada spin; o programa só escolhe o que subtrair do eixo de energia.</p>
+
+<h2 id="formas">Formas de usar o Bruma</h2>
+<p>O nome vem de <i>bruma</i>, névoa: a nuvem eletrônica que o programa mostra. As letras também são as iniciais do autor, <b>Bru</b>no <b>Ma</b>cedo. A mesma análise está disponível de quatro formas:</p>
+<div class="tw"><table>
+<tr><th>Forma</th><th>Para quem</th><th>Como começar</th></tr>
+<tr><td>Página web</td><td>análise interativa, sem instalar nada</td><td>abra <a href="./">brunohdmacedo.tech/bruma</a> e arraste os arquivos</td></tr>
+<tr><td>Python, linha de comando</td><td>cluster e scripts, sem interface gráfica</td><td><code>pip install bruma-dft</code> ou baixe o <code>bruma.py</code>; depois <code>bruma mgh2_Fe</code></td></tr>
+<tr><td>Python, com janela</td><td>uso local com cliques, em Linux, macOS ou Windows</td><td><code>bruma-gui</code> (ou <code>python3 bruma_gui.py</code>)</td></tr>
+<tr><td>Programa para Windows</td><td>quem não usa Python</td><td>baixe o instalador <code>Bruma-Setup.exe</code> na <a href="https://github.com/brunohdmacedo/bruma-dft/releases/latest" target="_blank" rel="noopener">página de versões</a></td></tr>
+</table></div>
+<p>Todas as formas têm uma parte <b>Sobre</b>, com nome, versão, autor, links e como citar. Na linha de comando, use <code>bruma --sobre</code>.</p>
+
+<h2 id="castep">2. Preparar o cálculo no CASTEP</h2>
+<p>Palavras-chave do <code>.param</code> que geram tudo o que a ferramenta usa:</p>
+<pre><code>TASK                    : SPECTRAL           ! ou GeometryOptimization, SinglePoint
+SPECTRAL_TASK           : BANDSTRUCTURE      ! DOS para uma malha densa
+SPIN_POLARIZED          : TRUE
+PDOS_CALCULATE_WEIGHTS  : TRUE               ! gera o .pdos_bin (PDOS e bandas projetadas)
+POPN_CALCULATE          : TRUE               ! Mulliken e ligações no .castep
+WRITE_FORMATTED_DENSITY : TRUE               ! gera o .den_fmt (densidade de carga e de spin)</code></pre>
+<p>O caminho de bandas vai no <code>.cell</code>, em <code>%BLOCK SPECTRAL_KPOINT_PATH</code> <a href="#r-setyawan">[5]</a>. Para uma DOS quantitativa, rode um segundo cálculo com <code>SPECTRAL_TASK : DOS</code> e uma malha Monkhorst–Pack densa <a href="#r-mp">[3]</a>; depois indique esse cálculo em <i>DOS a partir de</i>.</p>
+<div class="tw"><table>
+<tr><th>Arquivo</th><th>Para quê</th></tr>
+<tr><td><code>seed.bands</code></td><td>autovalores, E<sub>F</sub> de cada spin, pesos dos k-pontos e célula: bandas, DOS e gap</td></tr>
+<tr><td><code>seed.pdos_bin</code></td><td>peso de cada orbital em cada banda e k-ponto: PDOS e bandas projetadas</td></tr>
+<tr><td><code>seed.castep</code></td><td>camadas (2p, 3d…), orbitais m, Mulliken <a href="#r-mulliken">[6]</a><a href="#r-segall">[7]</a>, ligações, energias, forças, Z de valência</td></tr>
+<tr><td><code>seed.cell</code></td><td>ordem das espécies, estrutura do defeito, base para gerar as referências</td></tr>
+<tr><td><code>seed.den_fmt</code>, <code>.cube</code>, <code>CHGCAR</code></td><td>densidade de carga e de spin</td></tr>
+</table></div>
+
+<h2 id="abrir">3. Abrir os arquivos</h2>
+<ol>
+  <li>Abra a ferramenta e arraste os arquivos para a área tracejada, ou clique em <b>Abrir arquivos</b>.</li>
+  <li><b>Cada seedname é um cálculo.</b> Você pode carregar vários de uma vez: o defeito, a estrutura pura, as referências elementares e outros dopantes.</li>
+  <li>Use <b>×</b> ao lado de um cálculo para removê-lo, ou <b>Limpar dados</b> para recomeçar.</li>
+  <li>O botão ☀/☾ troca o tema; a escolha vale também para o portfólio.</li>
+</ol>
+
+<h2 id="bandas">4. Bandas</h2>
+<p>A aba <b>Bandas</b> mostra spin up e down sobrepostos, lado a lado ou só um deles. Os rótulos dos pontos de alta simetria são detectados para redes cúbica, tetragonal, ortorrômbica e hexagonal, ou digitados em <i>Rótulos dos pontos k</i> (por exemplo <code>G,X,M,G,Z,R,A,Z</code>).</p>
+<p>A referência de energia pode ser o E<sub>F</sub> de cada spin, um E<sub>F</sub> comum ou a energia absoluta.</p>
+
+<h2 id="dos">5. DOS e PDOS</h2>
+<p>A DOS é a soma de gaussianas sobre as bandas e os k-pontos, com o alargamento σ escolhido. A PDOS pode ser separada em cinco níveis:</p>
+<div class="tw"><table>
+<tr><th>Nível</th><th>Exemplo</th></tr>
+<tr><td>Elemento</td><td>Mg, H, Fe</td></tr>
+<tr><td>Orbital l</td><td>Fe-s, Fe-p, Fe-d</td></tr>
+<tr><td>Camada (n, l) do pseudopotencial</td><td>Mg 2p e Mg 3p</td></tr>
+<tr><td>Componente m</td><td>p<sub>x</sub>, p<sub>y</sub>, p<sub>z</sub>, d<sub>z²</sub>, d<sub>yz</sub>, d<sub>xz</sub>, d<sub>x²−y²</sub>, d<sub>xy</sub></td></tr>
+<tr><td>t<sub>2g</sub>/e<sub>g</sub> e átomos individuais</td><td>Fe 3d t<sub>2g</sub>; Fe1, H25</td></tr>
+</table></div>
+<p>A aba <b>Bandas + DOS</b> põe os dois gráficos lado a lado, no mesmo eixo de energia.</p>
+
+<h2 id="fat">6. Bandas projetadas</h2>
+<p>Nas bandas projetadas, o tamanho de cada ponto é proporcional ao peso do orbital naquela banda e naquele k-ponto. Elas usam as projeções escolhidas na seção <i>Projeção</i>, em painéis separados ou sobrepostos.</p>
+
+<h2 id="analise">7. Análise eletrônica</h2>
+<p>A aba <b>Análise</b> reúne, para cada spin:</p>
+<ul>
+  <li>E<sub>F</sub> em Ha e em eV;</li>
+  <li>VBM e CBM, definidos pela contagem de elétrons (banda N e N+1), e o gap direto ou indireto com os k-pontos;</li>
+  <li>se E<sub>F</sub> cai dentro de alguma banda;</li>
+  <li>N(E<sub>F</sub>) e a polarização de spin;</li>
+  <li>o spin integrado;</li>
+  <li>as ocupações integradas da PDOS e o centro da banda d;</li>
+  <li>Mulliken por espécie e por átomo;</li>
+  <li>as ligações do dopante.</li>
+</ul>
+
+<h2 id="editor">8. Editor de gráfico</h2>
+<p>Logo abaixo de cada figura fica o painel <b>Editar gráfico: título, legenda e cores</b>:</p>
+<ul>
+  <li><b>Título e eixos:</b> título, tamanho, cor, rótulos dos eixos, fonte e fundo (branco para publicação ou cores do site).</li>
+  <li><b>Legenda:</b> posição, tamanho, título e moldura.</li>
+  <li><b>Curvas:</b> para cada curva, cor, nome na legenda, traço, espessura e visibilidade.</li>
+  <li><b>Direto no gráfico:</b> clique num nome da legenda para editá-lo. As edições valem em todas as abas.</li>
+</ul>
+<figure><img src="img/site_editor.png" alt="Editor de gráfico" loading="lazy"><figcaption>Editor de gráfico.</figcaption></figure>
+
+<h2 id="defeito">9. Defeito e distorção</h2>
+<p>A aba <b>Defeito e termodinâmica</b> identifica o defeito de duas formas:</p>
+<ul>
+  <li><b>Com a estrutura pura de referência:</b> cada átomo é casado com o seu sítio, com condições periódicas, e o tipo (vacância, substitucional ou intersticial) é encontrado sozinho.</li>
+  <li><b>Sem referência:</b> o defeito é comparado com o "bulk" da própria supercélula, isto é, com os átomos longe dele.</li>
+</ul>
+<p>São calculados:</p>
+<ul>
+  <li><b>primeiros vizinhos:</b> cada ligação X–H, por exemplo, contra a referência e contra Mg–H no bulk;</li>
+  <li><b>ligações dos vizinhos</b> (por exemplo H–Mg);</li>
+  <li><b>índices de distorção do poliedro:</b> Baur <a href="#r-baur">[9]</a>, ECoN <a href="#r-hoppe">[10]</a>, elongação quadrática ⟨λ⟩ e variância angular σ² <a href="#r-robinson">[8]</a>, volume e ângulos;</li>
+  <li><b>segunda camada;</b></li>
+  <li><b>com a referência:</b> o campo de deslocamentos e o raio de perturbação.</li>
+</ul>
+<figure><img src="img/site_defeito.png" alt="Aba Defeito e termodinâmica" loading="lazy"><figcaption>Interpretação automática e tabelas da aba Defeito e termodinâmica.</figcaption></figure>
+
+<h2 id="termo">10. Termodinâmica</h2>
+<p>Os potenciais químicos μ<sub>i</sub> são a energia por átomo das referências elementares, calculadas com os mesmos parâmetros: Mg hcp, Fe bcc e \(\mu_\mathrm{H}=\tfrac12E(\mathrm{H_2})\). Ao carregar os <code>.castep</code> dessas referências, eles entram sozinhos.</p>
+<p>São calculados:</p>
+<ul>
+  <li>a energia de formação do defeito <a href="#r-freysoldt">[16]</a><a href="#r-vdw">[17]</a>;</li>
+  <li>a entalpia de formação do hidreto por mol de H₂, e o efeito do defeito ΔΔH;</li>
+  <li>a temperatura de dessorção por van ’t Hoff, com ΔS ≈ entropia padrão do H₂ gasoso <a href="#r-janaf">[19]</a>;</li>
+  <li>a energia de remoção de H;</li>
+  <li>a capacidade gravimétrica.</li>
+</ul>
+<p>As fórmulas estão na <a href="#formulas">seção 18</a>.</p>
+
+<h2 id="refs">11. Gerar os cálculos de referência</h2>
+<p>Em <b>Gerar os cálculos de referência a partir deste .cell</b>, a ferramenta escreve <code>.cell</code> e <code>.param</code> com o mesmo funcional, corte, spin, tolerâncias e pseudopotenciais do seu cálculo:</p>
+<div class="tw"><table>
+<tr><th>Cálculo</th><th>Uso</th></tr>
+<tr><td><code>seed_puro</code></td><td>estrutura pura (relaxar)</td></tr>
+<tr><td><code>seed_dif_puro_fixo</code></td><td>hospedeiro puro <b>na geometria do defeito</b> (single point): Δρ sem dipolos de relaxação</td></tr>
+<tr><td><code>seed_dif_sem_X</code>, <code>seed_dif_so_X</code></td><td>sem o dopante e só o dopante, na mesma célula (single point): densidade de ligação</td></tr>
+<tr><td><code>seed_semH_perto</code>, <code>seed_semH_longe</code></td><td>energia de remoção de H perto e longe do defeito</td></tr>
+<tr><td><code>Mg_hcp</code>, <code>Fe_bcc</code>, <code>H_H2</code>…</td><td>potenciais químicos μ</td></tr>
+</table></div>
+<p>As supercélulas usam exatamente a mesma malha k do defeito. As referências elementares usam a mesma densidade de pontos k.</p>
+
+<h2 id="densidade">12. Densidade de carga</h2>
+<p>Na aba <b>Estrutura 3D e densidade</b>, as grandezas disponíveis são ρ total, ρ↑, ρ↓, ρ↑ − ρ↓, |ρ↑ − ρ↓|, ζ = (ρ↑ − ρ↓)/ρ e Δρ.</p>
+<ul>
+  <li><b>3D:</b> isosuperfície ajustável, com átomos, ligações e célula.</li>
+  <li><b>2D:</b> cortes por um plano.</li>
+  <li><b>Perfil:</b> densidade ao longo de uma ligação, com o mínimo que aproxima o ponto crítico de ligação.</li>
+  <li><b>Cargas e momentos por átomo:</b> partição de Voronoi <a href="#r-voronoi">[12]</a>, comum ou radical <a href="#r-gellatly">[13]</a>, e esfera em torno do defeito.</li>
+  <li><b>Para o VESTA</b> <a href="#r-vesta">[15]</a>: exporte CHGCAR (formato VASP 5 com os elementos, ρ·V) ou XSF. O CHGCAR também serve para o programa <code>bader</code> <a href="#r-bader">[14]</a>.</li>
+</ul>
+
+<h2 id="planos">13. Planos (h k l), galeria e célula</h2>
+<ul>
+  <li><b>Índices da célula base:</b> a ferramenta detecta a multiplicidade da supercélula (por exemplo 3×3×3 do rutilo MgH₂), e os índices são os do material.</li>
+  <li><b>Eixos naturais:</b> os eixos do corte seguem direções da rede; no (110), horizontal [1̄10] e vertical [001].</li>
+  <li><b>Seção inteira:</b> o corte cobre toda a seção da supercélula, com o contorno da célula.</li>
+  <li><b>Varredura:</b> um controle desloca o plano ao longo da normal.</li>
+  <li><b>Galeria:</b> mostra (110), (1̄10), (001), (100), (010), (101), (011) e (111) lado a lado.</li>
+  <li><b>Painel da célula:</b> densidade, capacidade de H, coordenação, distâncias por par e espaçamentos d<sub>hkl</sub>.</li>
+</ul>
+<figure><img src="img/site_galeria_planos.png" alt="Galeria de planos" loading="lazy"><figcaption>Galeria de planos pelo dopante, com a densidade de um CHGCAR real.</figcaption></figure>
+
+<h2 id="delta">14. Contribuição do defeito: Δρ</h2>
+<p>Para ver só o efeito do defeito, escolha <b>Grandeza → contribuição do defeito</b> e, em <i>Subtrair ρ(B)</i>, a densidade do material puro (ela é escolhida sozinha quando o nome contém "puro"). Há três formas, da mais simples à mais limpa:</p>
+<ol>
+  <li><b>ρ(defeito) − ρ(puro relaxado):</b> inclui o efeito eletrônico e a relaxação. Aparecem dipolos em torno dos átomos que se moveram.</li>
+  <li><b>ρ(defeito) − ρ(puro na geometria do defeito)</b>, com o <code>seed_dif_puro_fixo</code>: mesma grade e mesmas posições. Mostra só a troca do hospedeiro pelo dopante.</li>
+  <li><b>ρ(defeito) − ρ(sem o dopante) − ρ(só o dopante)</b>, com B e C: a <b>densidade de ligação</b> do dopante, isto é, a redistribuição de carga ao formar as ligações.</li>
+</ol>
+<p>Se as grades forem diferentes, a densidade subtraída é reamostrada na grade do defeito. A ferramenta mostra:</p>
+<ul>
+  <li>os elétrons ganhos e perdidos e o saldo;</li>
+  <li>∫Δρ em esferas em volta do dopante;</li>
+  <li>a <b>transferência de carga por átomo</b> (∫Δρ na célula de Voronoi de cada átomo).</li>
+</ul>
+<p><b>Componentes e sentido.</b> A diferença pode ser feita no total (Δρ), em cada spin (Δρ↑, Δρ↓) e na magnetização, Δ(ρ↑ − ρ↓). Em <i>Sentido da diferença</i>, escolha ρ(defeito) − ρ(puro) ou ρ(puro) − ρ(defeito). Em vermelho ficam os valores positivos e em azul os negativos. Use <i>Limite da escala de cor ±</i> para realçar a redistribuição fraca nos vizinhos.</p>
+<p><b>3D em volta do defeito.</b> Em <i>Região 3D</i>, uma caixa de ±3 a ±6 Å centrada no dopante mostra os lóbulos de Δρ com as ligações.</p>
+<p><b>Comparação e VESTA.</b> Na aba Comparação, a diferença de cada defeito contra a referência aparece em 3D, lado a lado, e em 2D no mesmo plano. O botão <b>Exportar para o VESTA: todos os cálculos</b> gera um <code>.zip</code> com uma pasta por estrutura. Cada pasta tem os CHGCARs de ρ, ρ↑, ρ↓, ρ↑ − ρ↓ e das quatro diferenças, com os elementos e as posições corretos, mais um guia com a faixa de valores e o passo a passo no VESTA.</p>
+
+<h3>Aba Diferença de densidade</h3>
+<p>Um relatório dedicado à redistribuição de carga causada pelo defeito, com:</p>
+<ul>
+  <li><b>indicadores:</b> ΔN, acúmulo, depleção e carga redistribuída ½∫|Δ|; raios de 50% e 90%; pontos de máximo acúmulo e depleção; dipolo da redistribuição (\(\mathbf p=\int(\mathbf r-\mathbf r_c)\,\Delta\rho\,dV\), em e·Å e Debye); variação do momento;</li>
+  <li><b>ligações:</b> ρ mínimo de cada ligação dopante–vizinho contra a mesma ligação do hospedeiro no puro;</li>
+  <li><b>carga por átomo</b> nas duas estruturas, com os átomos casados;</li>
+  <li><b>trípticos</b> ρ(puro) | ρ(defeito) | Δρ, em 2D e em 3D;</li>
+  <li><b>perfil radial</b> ⟨Δ⟩(r) com a carga acumulada \(\Delta Q(r)=\int_0^r\Delta\rho\,4\pi r'^2dr'\);</li>
+  <li><b>médias planares</b> ao longo de a, b e c;</li>
+  <li><b>perfil ao longo da ligação.</b></li>
+</ul>
+<p>Tudo é exportável para o Origin e o VESTA.</p>
+<h2 id="cmp">15. Comparação entre cálculos</h2>
+<p>Na aba <b>Comparação</b>, marque os cálculos e, se houver, a estrutura pura de referência. Você obtém:</p>
+<ul>
+  <li><b>uma tabela com uma coluna por cálculo:</b> energias, E<sub>f</sub>, ΔH, ΔΔH, T<sub>d</sub>, E<sub>F</sub>, gaps, N(E<sub>F</sub>), polarização, ocupação e momento d, Mulliken, Voronoi, ρ no ponto crítico, coordenação, ligações, ⟨λ⟩, σ², deslocamentos, ΔV/V, célula e força residual;</li>
+  <li><b>gráficos:</b> barras, DOS e PDOS sobrepostas, bandas lado a lado, ligações, deslocamentos, densidade (inclusive Δρ contra a referência) no mesmo plano e perfis.</li>
+</ul>
+<figure><img src="img/site_comparacao.png" alt="Comparação" loading="lazy"><figcaption>Gráficos da aba Comparação (exemplo ilustrativo).</figcaption></figure>
+
+<h2 id="export">16. Exportações</h2>
+<div class="tw"><table>
+<tr><th>Saída</th><th>Formato</th><th>Uso</th></tr>
+<tr><td>Figuras</td><td>PNG, SVG, JPEG (escala 3 = 300 dpi em 8×6 pol.)</td><td>artigos, TCC, dissertação</td></tr>
+<tr><td>Bandas, DOS/PDOS, pesos, cortes, perfis, comparação</td><td><code>.dat</code> com TAB e uma linha de nomes</td><td>Origin, Excel, gnuplot</td></tr>
+<tr><td>Densidade</td><td>CHGCAR (VASP 5), XSF</td><td>VESTA, Bader, XCrySDen</td></tr>
+<tr><td>Cálculos de referência</td><td><code>.zip</code> com <code>.cell</code>, <code>.param</code>, LEIAME, script</td><td>cluster</td></tr>
+<tr><td><code>.bands</code> por spin</td><td><code>seed_up.bands</code>, <code>seed_down.bands</code></td><td>sumo <a href="#r-sumo">[18]</a> e outros</td></tr>
+<tr><td>Relatórios</td><td><code>.txt</code></td><td>análise, defeito, comparação</td></tr>
+</table></div>
+<p><b>No Origin:</b> arraste o <code>.dat</code>; a linha de nomes vira o <i>Long Name</i> de cada coluna. Nas bandas, a coluna 1 é o X; plote as demais como linhas.</p>
+
+<h2 id="python">17. Script Python</h2>
+<pre><code># tudo: bandas, DOS/PDOS, análise, defeito, densidade, estrutura
+python3 bruma.py mgh2_Fe -e Mg,H,Fe
+
+# defeito com referência e termodinâmica
+python3 bruma.py mgh2_Fe --ref mgh2_puro --mu "Mg=@Mg_hcp,Fe=@Fe_bcc,H=@H_H2" --h-less mgh2_Fe_semH_perto
+
+# gerar os cálculos de referência
+python3 bruma.py mgh2_Fe --gerar-referencias
+
+# densidade: galeria de planos, spin, CHGCAR para o VESTA
+python3 bruma.py mgh2_Fe --planes todos --field spin --chgcar
+
+# contribuição do defeito e transferência de carga por átomo
+python3 bruma.py mgh2_Fe --field diff --subtract mgh2_Fe_dif_puro_fixo.den_fmt
+
+# pacote para o VESTA: ρ, ρ↑, ρ↓, spin e as diferenças (puro − defeito)
+python3 bruma.py mgh2_Fe --vesta --subtract mgh2_puro.den_fmt --diff-sign puro-defeito</code></pre>
+<p>Use <code>python3 bruma.py -h</code> para todas as opções.</p>
+
+<h2 id="formulas">18. Fórmulas</h2>
+<p><b>DOS</b>, com pesos \(w_k\) e alargamento gaussiano \(\sigma\):</p>
+<p>\[ g_s(E)=\sum_{k}w_k\sum_n \frac{1}{\sigma\sqrt{2\pi}}\exp\!\left[-\frac{(E-\varepsilon_{nks})^2}{2\sigma^2}\right],\qquad g^{\mathrm{PDOS}}_{s,\alpha}(E)=\sum_k w_k\sum_n p^{\alpha}_{nks}\,\delta_\sigma(E-\varepsilon_{nks}) \]</p>
+<p><b>Gap</b>, com \(N\) o número de elétrons por spin: \(E_g=\min_k\varepsilon_{N+1,k}-\max_k\varepsilon_{N,k}\). <b>Polarização:</b> \(P=\dfrac{N_\uparrow(E_F)-N_\downarrow(E_F)}{N_\uparrow(E_F)+N_\downarrow(E_F)}\).</p>
+<p><b>Distorção do poliedro</b> <a href="#r-baur">[9]</a><a href="#r-hoppe">[10]</a><a href="#r-robinson">[8]</a>:</p>
+<p>\[ D=\frac1n\sum_i\frac{|d_i-\bar d|}{\bar d},\qquad \langle\lambda\rangle=\frac1n\sum_i\left(\frac{d_i}{l_0}\right)^2,\qquad \sigma^2=\frac{1}{m-1}\sum_j(\theta_j-\theta_0)^2,\qquad \mathrm{ECoN}=\sum_i e^{\,1-(d_i/d_\mathrm{av})^6} \]</p>
+<p>Aqui \(l_0\) é a distância centro–vértice do poliedro regular de mesmo volume e \(\theta_0\) é 90° (octaedro) ou 109,47° (tetraedro).</p>
+<p><b>Termodinâmica</b> <a href="#r-freysoldt">[16]</a>:</p>
+<p>\[ E_f=E_\mathrm{def}-E_\mathrm{pura}-\sum_i n_i\mu_i,\qquad \Delta H_f=\frac{E-\sum_i N_i\mu_i}{N_\mathrm{H}/2},\qquad T_d=\frac{\Delta H}{\Delta S},\qquad \mu_\mathrm{H}=\tfrac12E(\mathrm{H}_2) \]</p>
+<p>No E<sub>f</sub>, \(n_i>0\) indica átomos adicionados. O ΔH é por mol de H₂ e o ΔS padrão é 130,7 J/(mol·K).</p>
+<p><b>Densidade:</b> o CASTEP e o VASP gravam \(\rho V\). O Bruma usa \(\rho\) em e/Å³, com \(\int\rho\,dV=N_e\), \(\zeta=(\rho_\uparrow-\rho_\downarrow)/\rho\) e \(\Delta\rho=\rho_A-\rho_B-\rho_C\). Na partição de Voronoi radical, cada ponto vai para o átomo que minimiza \(|\mathbf r-\mathbf R_a|^2-r_a^2\), com os raios covalentes de Cordero <a href="#r-cordero">[11]</a>.</p>
+
+<h2 id="cuidados">19. Cuidados e limitações</h2>
+<ul>
+  <li><b>DOS do caminho de bandas</b> serve só para ilustrar; para números, use uma malha densa.</li>
+  <li><b>Gap e bordas</b> vêm só dos k-pontos do caminho.</li>
+  <li><b>Componentes m e t<sub>2g</sub>/e<sub>g</sub></b> estão nos eixos cartesianos da célula.</li>
+  <li><b>Energias de 0 K</b> não têm energia de ponto zero; T<sub>d</sub> é uma estimativa para comparar tendências.</li>
+  <li><b>Mesmos parâmetros:</b> compare só cálculos com o mesmo funcional, corte, pseudopotenciais e U.</li>
+  <li><b>Cargas de Voronoi</b> são estimativas; para números quantitativos, use Bader.</li>
+  <li><b>Δρ com grades ou volumes diferentes</b> é reamostrado. Grades idênticas, com o <code>dif_puro_fixo</code>, são o ideal.</li>
+</ul>
+
+<h2 id="citar">20. Como citar</h2>
+<p>Se o Bruma ajudou no seu trabalho, cite o software e, quando fizer sentido, o TCC e a dissertação do autor. Cite também o CASTEP <a href="#r-clark">[1]</a> e o VESTA <a href="#r-vesta">[15]</a>, se usá-lo. Downloads: <a href="bruma.bib" download>bruma.bib</a> · <a href="CITATION.cff" download>CITATION.cff</a> · <a href="bruma-tutorial.pdf" download>tutorial em PDF</a> · <a href="bruma-tutorial.tex" download>fonte LaTeX</a>.</p>
+<h3>ABNT (NBR 6023)</h3>
+<div class="cite">MACEDO, B. H. D. <b>Bruma</b>: análise de estrutura de bandas, DOS, PDOS, densidade de carga, defeitos e termodinâmica a partir de cálculos CASTEP. Versão 1.0. Foz do Iguaçu, 2026. Software. Disponível em: https://brunohdmacedo.tech/bruma/. Acesso em: [dia mês ano].</div>
+<div class="cite">MACEDO, B. H. D. <b>Influência de defeitos substitucionais nas propriedades estruturais, eletrônicas, termodinâmicas e de armazenamento do hidreto MgH₂</b>: uma abordagem <i>ab initio</i>. 2025. Trabalho de Conclusão de Curso (Bacharelado em Engenharia Física) – Universidade Federal da Integração Latino-Americana, Foz do Iguaçu, 2025. Disponível em: https://dspace.unila.edu.br/items/8db3836e-925d-422f-9cd2-6ff3f9f02080.</div>
+<div class="cite">MACEDO, B. H. D.; ZALEWSKI, W. <b>Dataset_Machine_Learning_Exoplanets_2024</b>. Mendeley Data, v. 3, 2024. DOI: 10.17632/wctcv34962.3.</div>
+<div class="cite">MACEDO, B. H. D.; ZALEWSKI, W. Processamento automático de curvas de luz para a identificação de exoplanetas por meio de algoritmos de aprendizado de máquina. <b>Revista Brasileira de Iniciação Científica</b>, v. 11, e024021, 2024.</div>
+<div class="cite">MACEDO, B. H. D. <b>Influência de defeitos substitucionais no MgH₂</b>: uma abordagem <i>ab initio</i>. Dissertação (Mestrado em Física Aplicada) – Programa de Pós-Graduação em Física Aplicada, Universidade Federal da Integração Latino-Americana, Foz do Iguaçu, [ano]. <span class="hint">[em andamento: confira o título definitivo]</span></div>
+<h3>BibTeX</h3>
+<div class="bib"><button class="copy" data-target="bib1">copiar</button><pre id="bib1">@misc{macedo2026bruma,
+  author       = {Macedo, Bruno Henrique Dourado},
+  title        = {Bruma: análise de estrutura de bandas, {DOS}, {PDOS}, densidade de carga, defeitos e termodinâmica a partir de cálculos {CASTEP}},
+  year         = {2026},
+  version      = {1.0},
+  howpublished = {\url{https://brunohdmacedo.tech/bruma/}},
+  note         = {Código-fonte: \url{https://github.com/brunohdmacedo/bruma-dft}}
+}</pre></div>
+<div class="bib"><button class="copy" data-target="bib2">copiar</button><pre id="bib2">@misc{macedo2025tcc,
+  author       = {Macedo, Bruno Henrique Dourado},
+  title        = {Influência de defeitos substitucionais nas propriedades estruturais, eletrônicas, termodinâmicas e de armazenamento do hidreto {MgH$_2$}: uma abordagem \textit{ab initio}},
+  year         = {2025},
+  howpublished = {Trabalho de Conclusão de Curso (Bacharelado em Engenharia Física), UNILA},
+  url          = {https://dspace.unila.edu.br/items/8db3836e-925d-422f-9cd2-6ff3f9f02080},
+  note         = {Orientador: Rodrigo Santos da Lapa}
+}
+
+@misc{macedo2024dataset,
+  author = {Macedo, Bruno Henrique Dourado and Zalewski, Willian},
+  title  = {Dataset\_Machine\_Learning\_Exoplanets\_2024},
+  year   = {2024},
+  howpublished = {Mendeley Data, v3},
+  doi    = {10.17632/wctcv34962.3}
+}</pre></div>
+<div class="bib"><button class="copy" data-target="bib3">copiar</button><pre id="bib3">@mastersthesis{macedo2027dissertacao,
+  author  = {Macedo, Bruno Henrique Dourado},
+  title   = {Influência de defeitos substitucionais no {MgH$_2$}: uma abordagem \textit{ab initio}},
+  school  = {PPGFISA, Universidade Federal da Integração Latino-Americana (UNILA)},
+  address = {Foz do Iguaçu, PR},
+  year    = {2027},
+  type    = {Dissertação (Mestrado em Física Aplicada)},
+  note    = {Orientador: J. R. C. Salgado; coorientador: R. S. da Lapa. Bolsa CNPq}
+}</pre></div>
+<p class="hint">O TCC, o artigo e a base de dados foram conferidos no DSpace UNILA, na RBIC e no Mendeley Data; o título da dissertação (em andamento) ainda deve ser conferido. No GitHub, o arquivo CITATION.cff faz aparecer o botão “Cite this repository”.</p>
+
+<h2 id="biblio">21. Referências</h2>
+<ol class="refs">
+<li id="r-clark">CLARK, S. J. et al. First principles methods using CASTEP. <i>Z. Kristallogr.</i>, v. 220, p. 567–570, 2005. doi:10.1524/zkri.220.5.567.65075</li>
+<li id="r-pbe">PERDEW, J. P.; BURKE, K.; ERNZERHOF, M. Generalized gradient approximation made simple. <i>Phys. Rev. Lett.</i>, v. 77, p. 3865, 1996. doi:10.1103/PhysRevLett.77.3865</li>
+<li id="r-mp">MONKHORST, H. J.; PACK, J. D. Special points for Brillouin-zone integrations. <i>Phys. Rev. B</i>, v. 13, p. 5188, 1976. doi:10.1103/PhysRevB.13.5188</li>
+<li id="r-sakintuna">SAKINTUNA, B.; LAMARI-DARKRIM, F.; HIRSCHER, M. Metal hydride materials for solid hydrogen storage: a review. <i>Int. J. Hydrogen Energy</i>, v. 32, p. 1121–1140, 2007. doi:10.1016/j.ijhydene.2006.11.022</li>
+<li id="r-setyawan">SETYAWAN, W.; CURTAROLO, S. High-throughput electronic band structure calculations. <i>Comput. Mater. Sci.</i>, v. 49, p. 299–312, 2010. doi:10.1016/j.commatsci.2010.05.010</li>
+<li id="r-mulliken">MULLIKEN, R. S. Electronic population analysis on LCAO–MO molecular wave functions. I. <i>J. Chem. Phys.</i>, v. 23, p. 1833, 1955. doi:10.1063/1.1740588</li>
+<li id="r-segall">SEGALL, M. D. et al. Population analysis of plane-wave electronic structure calculations of bulk materials. <i>Phys. Rev. B</i>, v. 54, p. 16317, 1996. doi:10.1103/PhysRevB.54.16317</li>
+<li id="r-robinson">ROBINSON, K.; GIBBS, G. V.; RIBBE, P. H. Quadratic elongation. <i>Science</i>, v. 172, p. 567–570, 1971. doi:10.1126/science.172.3983.567</li>
+<li id="r-baur">BAUR, W. H. The geometry of polyhedral distortions. <i>Acta Cryst. B</i>, v. 30, p. 1195–1215, 1974. doi:10.1107/S0567740874004560</li>
+<li id="r-hoppe">HOPPE, R. Effective coordination numbers (ECoN) and mean fictive ionic radii (MEFIR). <i>Z. Kristallogr.</i>, v. 150, p. 23–52, 1979. doi:10.1524/zkri.1979.150.1-4.23</li>
+<li id="r-cordero">CORDERO, B. et al. Covalent radii revisited. <i>Dalton Trans.</i>, p. 2832–2838, 2008. doi:10.1039/B801115J</li>
+<li id="r-voronoi">VORONOI, G. Nouvelles applications des paramètres continus à la théorie des formes quadratiques. <i>J. Reine Angew. Math.</i>, v. 134, p. 198–287, 1908. doi:10.1515/crll.1908.134.198</li>
+<li id="r-gellatly">GELLATLY, B. J.; FINNEY, J. L. The radical alternative to the Voronoi polyhedron. <i>J. Non-Cryst. Solids</i>, v. 50, p. 313–329, 1982. doi:10.1016/0022-3093(82)90093-X</li>
+<li id="r-bader">HENKELMAN, G.; ARNALDSSON, A.; JÓNSSON, H. A fast and robust algorithm for Bader decomposition of charge density. <i>Comput. Mater. Sci.</i>, v. 36, p. 354–360, 2006. doi:10.1016/j.commatsci.2005.04.010</li>
+<li id="r-vesta">MOMMA, K.; IZUMI, F. VESTA 3 for three-dimensional visualization of crystal, volumetric and morphology data. <i>J. Appl. Cryst.</i>, v. 44, p. 1272–1276, 2011. doi:10.1107/S0021889811038970</li>
+<li id="r-freysoldt">FREYSOLDT, C. et al. First-principles calculations for point defects in solids. <i>Rev. Mod. Phys.</i>, v. 86, p. 253–305, 2014. doi:10.1103/RevModPhys.86.253</li>
+<li id="r-vdw">VAN DE WALLE, C. G.; NEUGEBAUER, J. First-principles calculations for defects and impurities. <i>J. Appl. Phys.</i>, v. 95, p. 3851, 2004. doi:10.1063/1.1682673</li>
+<li id="r-sumo">GANOSE, A. M.; JACKSON, A. J.; SCANLON, D. O. sumo. <i>J. Open Source Softw.</i>, v. 3, p. 717, 2018. doi:10.21105/joss.00717</li>
+<li id="r-janaf">CHASE, M. W. <i>NIST-JANAF Thermochemical Tables</i>. 4. ed. J. Phys. Chem. Ref. Data, Monograph 9, 1998.</li>
+</ol>
+</article>
+</div>
+
+</main>
+<footer><div class="w"><span>© <span id="y">2026</span> Bruno H. D. Macedo</span><span class="mono">UNILA · PPGFISA · Foz do Iguaçu</span><a href="#top">↑ topo</a></div></footer>
+<script>
+const $ = id => document.getElementById(id);
+function curTheme(){ const d = document.documentElement; return d.dataset.theme || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); }
+function syncThemeBtn(){ const b = $('tg'), t = curTheme(); b.textContent = t === 'light' ? '☾' : '☀'; b.title = t === 'light' ? 'Modo escuro' : 'Modo claro'; b.setAttribute('aria-label', b.title); }
+$('tg').onclick = () => { const n = curTheme() === 'light' ? 'dark' : 'light'; document.documentElement.dataset.theme = n; try { localStorage.setItem('theme', n); } catch (e) {} syncThemeBtn(); };
+syncThemeBtn();
+$('bur').onclick = () => $('hd').classList.toggle('o');
+$('y').textContent = new Date().getFullYear();
+document.querySelectorAll('.copy').forEach(b => b.onclick = async () => { const t = $(b.dataset.target).textContent;
+  try { await navigator.clipboard.writeText(t); b.textContent = 'copiado'; } catch (e) { const r = document.createRange(); r.selectNodeContents($(b.dataset.target)); getSelection().removeAllRanges(); getSelection().addRange(r); b.textContent = 'selecionado: Ctrl+C'; }
+  setTimeout(() => b.textContent = 'copiar', 1800); });
+</script>
+</body>
+</html>

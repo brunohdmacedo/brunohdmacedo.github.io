@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: "Se você usar o Bruma em um trabalho, cite-o como abaixo e cite também o CASTEP (Clark et al., 2005)."
+title: "Bruma: análise de estrutura de bandas, DOS, PDOS, densidade de carga, defeitos e termodinâmica a partir de cálculos CASTEP"
+type: software
+authors:
+  - family-names: Macedo
+    given-names: "Bruno Henrique Dourado"
+    orcid: "https://orcid.org/0000-0002-8152-0950"
+    affiliation: "Universidade Federal da Integração Latino-Americana (UNILA), PPGFISA"
+version: "1.0.0"
+date-released: "2026-11-11"
+url: "https://brunohdmacedo.tech/bruma/"
+repository-code: "https://github.com/brunohdmacedo/bruma-dft"
+keywords:
+  - CASTEP
+  - DFT
+  - band structure
+  - density of states
+  - charge density
+  - point defects
+  - hydrogen storage
+  - MgH2
+references:
+  - type: article
+    title: "First principles methods using CASTEP"
+    authors:
+      - family-names: Clark
+        given-names: "Stewart J."
+      - family-names: Segall
+        given-names: "Matthew D."
+      - family-names: Pickard
+        given-names: "Chris J."
+      - family-names: Hasnip
+        given-names: "Phil J."
+      - family-names: Probert
+        given-names: "Matt I. J."
+      - family-names: Refson
+        given-names: "Keith"
+      - family-names: Payne
+        given-names: "Mike C."
+    journal: "Zeitschrift für Kristallographie"
+    volume: 220
+    start: 567
+    end: 570
+    year: 2005
+    doi: "10.1524/zkri.220.5.567.65075"
