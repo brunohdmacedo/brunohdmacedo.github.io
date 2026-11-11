@@ -1,6 +1,12 @@
 <!-- [![Alt text](github_banner.png)](https://www.youtube.com/channel/UCk2O3jSU3_B2MMGr8wLcAdw "CodeVoyage YouTube Channel") -->
 
 <h1 align="center">Hi, I'm Bruno H.D. Macedo! 👋 </h1>
+
+<p align="center">
+Engenheiro Físico (UNILA) e mestrando em Física Aplicada (PPGFISA/UNILA, bolsa CNPq).<br>
+4 anos de iniciação científica em Ciência de Dados e Machine Learning e 3 anos em Engenharia de Materiais (Ciência dos Materiais) com Deep Learning e cálculos <i>ab initio</i> pela Teoria do Funcional da Densidade (DFT), com foco em sustentabilidade e novos materiais.<br>
+🌐 <a href="https://brunohdmacedo.tech">brunohdmacedo.tech</a> · 🔬 <a href="https://brunohdmacedo.tech/bruma/">Bruma</a>: bandas, DOS, PDOS, densidade de carga e defeitos a partir do CASTEP (<a href="https://brunohdmacedo.tech/bruma/tutorial.html">tutorial</a> · <a href="https://github.com/brunohdmacedo/bruma-dft">código</a>)
+</p>
 <img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=brunohdmacedo"  />
 
 <h3 align="center">:hammer_and_wrench: Languages and Tools</h3>
