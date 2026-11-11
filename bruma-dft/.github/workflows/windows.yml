@@ -1,0 +1,92 @@
+name: Release Windows
+
+on:
+  push:
+    tags: ["v*"]          # ex.: git tag v1.0.1 && git push origin v1.0.1
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Versão (ex.: 1.0.1)"
+        required: true
+
+permissions:
+  contents: write         # necessário para criar o Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Versão
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            V="${{ github.event.inputs.version }}"
+          else
+            V="${GITHUB_REF_NAME#v}"
+          fi
+          echo "VERSION=$V" >> "$GITHUB_ENV"
+          # mantém VERSAO do bruma.py igual à tag
+          sed -i "s/^VERSAO = .*/VERSAO = \"$V\"/" bruma.py
+          grep -n '^VERSAO' bruma.py
+
+      - name: Dependências
+        run: python -m pip install --upgrade pip numpy matplotlib pillow pyinstaller
+
+      - name: Foto do autor (opcional)
+        shell: pwsh
+        continue-on-error: true
+        run: Invoke-WebRequest -UseBasicParsing -Uri 'https://wwws.cnpq.br/cvlattesweb/pkg_util_img.show_foto?v_cod=K4494050P3' -OutFile 'assets/autor.jpg'
+
+      - name: Bruma.exe (janela)
+        run: >
+          python -m PyInstaller --noconfirm --clean --onefile --windowed --name Bruma
+          --icon assets/bruma.ico --add-data "assets;assets"
+          --hidden-import PIL._tkinter_finder
+          --exclude-module scipy --exclude-module pandas --exclude-module IPython
+          --exclude-module PyQt5 --exclude-module PyQt6 --exclude-module PySide2
+          --exclude-module PySide6 --exclude-module notebook --exclude-module jedi
+          --exclude-module sympy bruma_gui.py
+
+      - name: bruma-cli.exe (linha de comando)
+        run: >
+          python -m PyInstaller --noconfirm --clean --onefile --console --name bruma-cli
+          --icon assets/bruma.ico
+          --exclude-module scipy --exclude-module pandas --exclude-module IPython
+          --exclude-module PyQt5 --exclude-module PyQt6 --exclude-module PySide2
+          --exclude-module PySide6 --exclude-module notebook --exclude-module jedi
+          --exclude-module sympy --exclude-module tkinter bruma.py
+
+      - name: Instalador (Inno Setup)
+        shell: pwsh
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) { choco install innosetup -y --no-progress }
+          & $iscc "/DAppVersion=$env:VERSION" packaging\windows\bruma.iss
+
+      - name: Nomes finais dos arquivos
+        shell: bash
+        run: |
+          cd dist
+          mv Bruma.exe "Bruma-${VERSION}-portable.exe"
+          mv bruma-cli.exe "bruma-cli-${VERSION}.exe"
+          sha256sum *.exe > SHA256SUMS.txt
+          ls -la
+
+      - name: Publicar Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: Bruma ${{ env.VERSION }}
+          generate_release_notes: true
+          make_latest: true
+          files: |
+            dist/Bruma-Setup-*.exe
+            dist/Bruma-*-portable.exe
+            dist/bruma-cli-*.exe
+            dist/SHA256SUMS.txt
