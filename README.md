@@ -1,60 +1,98 @@
-<!-- [![Alt text](github_banner.png)](https://www.youtube.com/channel/UCk2O3jSU3_B2MMGr8wLcAdw "CodeVoyage YouTube Channel") -->
-
-<h1 align="center">Hi, I'm Bruno H.D. Macedo! 👋 </h1>
+# Hi, I'm Bruno H. D. Macedo! 👋
 
 <p align="center">
-Engenheiro Físico (UNILA) e mestrando em Física Aplicada (PPGFISA/UNILA, bolsa CNPq).<br>
-4 anos de iniciação científica em Ciência de Dados e Machine Learning e 3 anos em Engenharia de Materiais (Ciência dos Materiais) com Deep Learning e cálculos <i>ab initio</i> pela Teoria do Funcional da Densidade (DFT), com foco em sustentabilidade e novos materiais.<br>
-🌐 <a href="https://brunohdmacedo.tech">brunohdmacedo.tech</a> · 🔬 <a href="https://brunohdmacedo.tech/bruma/">Bruma</a>: bandas, DOS, PDOS, densidade de carga e defeitos a partir do CASTEP (<a href="https://brunohdmacedo.tech/bruma/tutorial.html">tutorial</a> · <a href="https://github.com/brunohdmacedo/bruma-dft">código</a>)
+  <strong>Physical Engineer | MSc Student in Applied Physics | Scientific Researcher</strong><br>
+  Universidade Federal da Integração Latino-Americana (UNILA)
 </p>
-<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=brunohdmacedo"  />
 
-<h3 align="center">:hammer_and_wrench: Languages and Tools</h3>
+<p align="center">
+  Physical Engineer graduated from UNILA and Master's student in Applied Physics (PPGFISA/UNILA), supported by a CNPq scholarship.<br><br>
+  My research interests include Computational Physics, Materials Science, Density Functional Theory (DFT), Machine Learning, Deep Learning, and Data Science, with applications in sustainable materials, hydrogen storage, and advanced computational methods.<br><br>
+  I have experience in scientific research involving Data Science and Machine Learning, as well as computational materials science and first-principles calculations (DFT).<br><br>
+  🌐 <a href="https://brunohdmacedo.tech">Personal Website</a> ·
+  🔬 <a href="https://brunohdmacedo.tech/bruma/">Bruma DFT</a> ·
+  📚 <a href="https://brunohdmacedo.tech/bruma/tutorial.html">Documentation</a> ·
+  💻 <a href="https://github.com/brunohdmacedo/bruma-dft">Source Code</a>
+</p>
+
+<p align="center">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=brunohdmacedo" alt="Profile visitors"/>
+</p>
+
+---
+
+## 🔬 Research Interests
+
+- Computational Physics and First-Principles Methods
+- Density Functional Theory (DFT)
+- Computational Materials Science
+- Hydrogen Storage and Metal Hydrides
+- Machine Learning and Deep Learning
+- Data Science and Scientific Computing
+- Artificial Intelligence applied to Materials Science
+
+## 🧑‍💻 Languages and Tools
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=arduino,cs,c,cpp,css,electron,gcp,gitlab,androidstudio,html,java,git,github,js,linux,php,anaconda,py" alt="Skills and tools"/>
+    <img src="https://skillicons.dev/icons?i=python,c,cpp,cs,java,js,html,css,git,github,linux,anaconda,arduino,gcp" alt="Programming languages and tools"/>
   </a>
 </p>
-<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 20px;">
-    <!-- Left Column: Metrics -->
-    <div style="flex: 1; max-width: 45%;">
-        <!-- <img align="left" width="50%" alt="if you see this, it means my metrics are not working" src="https://github.com/officialcodevoyage/officialcodevoyage/blob/main/github-metrics.svg"> -->
-    </div>
 
+### Scientific Computing
 
-<!--  <div style="flex: 1; max-width: 45%; text-align: left; margin-left: 20px;">
-        <h3>🌐 Let's Connect and Grow Together!</h3>
-        <p>
-            <a href="https://www.linkedin.com/in/mrbondarenko/" target="_blank" style="text-decoration: none;">
-                <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/large/filled/linkedin.svg" alt="LinkedIn">
-            </a>
-            </a>
-            <a href="https://www.youtube.com/@OfficialCodeVoyage" target="_blank" style="text-decoration: none;">
-                <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/large/filled/youtube.svg" alt="YouTube">
-            </a>
-            <a href="https://www.instagram.com/officialcodevoyage/" target="_blank" style="text-decoration: none;">
-                <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/large/filled/instagram.svg" alt="Instagram">
-            </a>
-        </p>
-        
-  <h3>✨ Fun Facts</h3>
-        <ul>
-            <li>I love Hackathons, Swimming and Tennis.</li>
-            <li>I’m on a journey to build a big house in Alaska!</li>
-            <li>I enjoy creating content for my YouTube channel, where I share coding tutorials and project walkthroughs.</li>
-            <li>In my free time, I explore the beauty of nature and capture it through my photography on Instagram.</li>
-        </ul>
-        
-  <h3>🧑‍💻 About Me</h3>
-        <p>
-            I'm a passionate software developer with a strong background in cloud computing, game development, and full-stack web development. 
-            I have a keen interest in solving complex problems and building scalable solutions. When I'm not coding, you can find me engaged 
-            in physical activities like swimming and judo, or planning my next adventure. 
-        </p>
-        <p>
-            My journey in tech has led me to work with various cutting-edge technologies and collaborate with amazing teams across different 
-            projects. I’m always eager to learn new things and share my knowledge with the community through my YouTube.
-        </p>
-    </div>
-</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/CASTEP-DFT-blue?style=for-the-badge" alt="CASTEP"/>
+  <img src="https://img.shields.io/badge/Python-Scientific%20Computing-yellow?style=for-the-badge&logo=python" alt="Python"/>
+  <img src="https://img.shields.io/badge/Machine%20Learning-AI-orange?style=for-the-badge" alt="Machine Learning"/>
+  <img src="https://img.shields.io/badge/Materials%20Science-Research-green?style=for-the-badge" alt="Materials Science"/>
+</p>
+
+---
+
+## 🚀 Featured Projects
+
+### 🔬 Bruma DFT
+A computational tool for analyzing CASTEP results, including:
+
+- Electronic band structures
+- Density of States (DOS) and Projected DOS (PDOS)
+- Charge density analysis
+- Defect-related properties
+
+🌐 [Access Bruma DFT](https://brunohdmacedo.tech/bruma/) · [Documentation](https://brunohdmacedo.tech/bruma/tutorial.html) · [Source Code](https://github.com/brunohdmacedo/bruma-dft)
+
+---
+
+## 📊 GitHub Statistics
+
+<p align="center">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=brunohdmacedo&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true" alt="GitHub statistics"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=brunohdmacedo&layout=compact&theme=tokyonight" alt="Most used languages"/>
+</p>
+
+## 🐍 Contribution Snake
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo/output/github-contribution-grid-snake2.svg" alt="GitHub contribution snake animation"/>
+</p>
+
+---
+
+## 🌐 Connect with Me
+
+<p align="center">
+  <a href="https://brunohdmacedo.tech">
+    <img src="https://img.shields.io/badge/Website-0D1117?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"/>
+  </a>
+  <a href="https://github.com/brunohdmacedo">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+  </a>
+  <a href="https://www.linkedin.com/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+</p>
+
+<p align="center">
+  <i>Exploring the intersection of Physics, Artificial Intelligence, and Materials Science.</i>
+</p>
