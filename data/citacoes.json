@@ -1,8 +1,29 @@
 {
-  "atualizado": null,
+  "schema_version": 1,
   "orcid": "0000-0002-8152-0950",
-  "scholar_id": "zl-LdTMAAAAJ",
-  "openalex": null,
-  "scholar": null,
-  "avisos": ["Aguardando a primeira execução do workflow 'Atualizar citações' (GitHub → Actions → Run workflow)."]
+  "updated_at": null,
+  "sources": {
+    "openalex": {
+      "status": "pending"
+    },
+    "google_scholar": {
+      "status": "not_configured"
+    }
+  },
+  "metrics": {
+    "publications": 0,
+    "openalex": {
+      "total_citations": 0,
+      "h_index": 0
+    },
+    "google_scholar": {
+      "matched_publications": 0,
+      "total_citations": null,
+      "h_index": null
+    }
+  },
+  "publications": [],
+  "warnings": [
+    "Execute o workflow do GitHub Actions para gerar os primeiros dados."
+  ]
 }
