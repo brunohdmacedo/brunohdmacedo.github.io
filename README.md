@@ -53,6 +53,7 @@
 ## 🚀 Featured Projects
 
 ### 🔬 Bruma DFT
+
 A computational tool for analyzing CASTEP results, including:
 
 - Electronic band structures
@@ -71,28 +72,26 @@ A computational tool for analyzing CASTEP results, including:
   <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=brunohdmacedo&layout=compact&theme=tokyonight" alt="Most used languages"/>
 </p>
 
-## 🐍 Contribution Snake
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/brunohdmacedo/brunohdmacedo/output/github-contribution-grid-snake2.svg" alt="GitHub contribution snake animation"/>
-</p>
-
 ---
 
 ## 🌐 Connect with Me
 
 <p align="center">
-  <a href="https://brunohdmacedo.tech">
-    <img src="https://img.shields.io/badge/Website-0D1117?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"/>
+  <a href="https://brunohdmacedo.tech" target="_blank">
+    <img src="https://img.shields.io/badge/Website-0D1117?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Personal Website"/>
   </a>
-  <a href="https://github.com/brunohdmacedo">
+  <a href="https://github.com/brunohdmacedo" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
   </a>
-  <a href="https://www.linkedin.com/">
+  <a href="https://bit.ly/3VlPBAE" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="http://lattes.cnpq.br/7842985016416991" target="_blank">
+    <img src="https://img.shields.io/badge/Curriculum_Lattes-00599C?style=for-the-badge&logo=academia&logoColor=white" alt="Curriculum Lattes"/>
   </a>
 </p>
 
 <p align="center">
-  <i>Exploring the intersection of Physics, Artificial Intelligence, and Materials Science.</i>
+  <i>Exploring the intersection of Physics, Artificial Intelligence, and Materials Science.</i><br>
+  <strong>Science, computation, and innovation for a sustainable future. 🔬</strong>
 </p>
