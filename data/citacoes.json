@@ -1,29 +1,64 @@
 {
   "schema_version": 1,
   "orcid": "0000-0002-8152-0950",
-  "updated_at": null,
+  "updated_at": "2026-11-13T20:13:14+00:00",
   "sources": {
     "openalex": {
-      "status": "pending"
+      "works_found": 2,
+      "orcid": "0000-0002-8152-0950",
+      "status": "ok",
+      "updated_at": "2026-11-13T20:13:12+00:00",
+      "total_citations": 0,
+      "h_index": 0
     },
     "google_scholar": {
-      "status": "not_configured"
+      "status": "ok",
+      "works_found": 14,
+      "updated_at": "2026-11-13T20:13:14+00:00",
+      "matched_publications": 2,
+      "total_citations_matched": 2,
+      "h_index_matched": 1
     }
   },
   "metrics": {
-    "publications": 0,
+    "publications": 2,
     "openalex": {
       "total_citations": 0,
       "h_index": 0
     },
     "google_scholar": {
-      "matched_publications": 0,
-      "total_citations": null,
-      "h_index": null
+      "matched_publications": 2,
+      "total_citations": 2,
+      "h_index": 1
     }
   },
-  "publications": [],
-  "warnings": [
-    "Execute o workflow do GitHub Actions para gerar os primeiros dados."
-  ]
+  "publications": [
+    {
+      "openalex_id": "https://openalex.org/W7119301701",
+      "doi": null,
+      "title": "Processamento automático de curvas de luz para a identificação de exoplanetas por meio de uso de algoritmos de aprendizado de máquina",
+      "year": 2024,
+      "type": "article",
+      "url": "https://openalex.org/W7119301701",
+      "cited_by_count": 0,
+      "citations": {
+        "openalex": 0,
+        "google_scholar": 2
+      }
+    },
+    {
+      "openalex_id": "https://openalex.org/W4388750536",
+      "doi": "10.2139/ssrn.4607638",
+      "title": "Experimental Evaluation Of Machine Learning Algorithms For The Automatic Detection Of Exoplanets Using Light Curves",
+      "year": 2023,
+      "type": "preprint",
+      "url": "https://doi.org/10.2139/ssrn.4607638",
+      "cited_by_count": 0,
+      "citations": {
+        "openalex": 0,
+        "google_scholar": 0
+      }
+    }
+  ],
+  "warnings": []
 }
