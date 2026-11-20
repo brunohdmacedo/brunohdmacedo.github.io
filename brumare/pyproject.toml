@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brumare"
+version = "1.3.0"
+description = "BrUMaRe (Brillouin-zone Utilities for Materials Research): bandas, DOS, PDOS, densidade de carga, defeitos e termodinâmica a partir de cálculos CASTEP, VASP e SIESTA"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "Bruno Henrique Dourado Macedo", email = "brunohdmacedo@gmail.com" }]
+keywords = ["CASTEP", "VASP", "SIESTA", "DFT", "band structure", "density of states", "charge density", "point defects", "hydrogen storage"]
+classifiers = [
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Development Status :: 5 - Production/Stable",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Topic :: Scientific/Engineering :: Chemistry",
+  "Intended Audience :: Science/Research",
+  "Natural Language :: Portuguese (Brazilian)",
+  "Environment :: Console",
+  "Environment :: X11 Applications",
+  "Environment :: Win32 (MS Windows)",
+]
+dependencies = ["numpy>=1.20", "matplotlib>=3.3"]
+
+[project.optional-dependencies]
+simetria = ["moyopy>=0.22"]
+completo = ["moyopy>=0.22", "imagecodecs>=2024.1.1", "Pillow", "pywebview>=5"]
+jxl = ["imagecodecs>=2024.1.1", "Pillow"]
+gui = ["pywebview>=5", "pillow>=8"]
+
+[project.urls]
+"Site e tutorial" = "https://brunohdmacedo.tech/brumare/"
+"Código-fonte" = "https://github.com/brunohdmacedo/brumare"
+"Autor" = "https://brunohdmacedo.tech/"
+
+[project.scripts]
+brumare = "brumare:main"
+
+[project.gui-scripts]
+brumare-gui = "brumare_gui:main"       # interface igual ao site (janela nativa; sem internet)
+brumare-lote = "brumare_lote:main"     # analise em lote com janela (Tkinter), mesmo pipeline da linha de comando
+
+[tool.setuptools]
+py-modules = ["brumare", "brumare_gui", "brumare_lote"]
+packages = ["brumare_app"]
+
+[tool.setuptools.package-data]
+brumare_app = ["web/*", "web/*/*", "web/*/*/*", "web/*/*/*/*", "web/*/*/*/*/*", "web/*/*/*/*/*/*", "web/*/*/*/*/*/*/*", "web/*/*/*/*/*/*/*/*", "web/*/*/*/*/*/*/*/*/*"]
