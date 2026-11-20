@@ -52,12 +52,12 @@ jobs:
             }
           }
 
-          # Garante assets/brumare.ico se estiver apenas na raiz assets/
+          # Garante assets/brumare.ico e assets/bruma.ico caso algum script referencie um deles
           New-Item -ItemType Directory -Force -Path (Join-Path $root "assets") | Out-Null
-          $icoDest = Join-Path $root "assets\brumare.ico"
-          $icoRoot = Join-Path $root "assets\brumare.ico"
-          if (-not (Test-Path $icoDest -PathType Leaf) -and (Test-Path (Join-Path $root "brumare\assets\brumare.ico"))) {
-            Copy-Item (Join-Path $root "brumare\assets\brumare.ico") $icoDest -Force
+          $icoBrumare = Join-Path $root "assets\brumare.ico"
+          $icoBruma = Join-Path $root "assets\bruma.ico"
+          if ((Test-Path $icoBrumare -PathType Leaf) -and (-not (Test-Path $icoBruma -PathType Leaf))) {
+            Copy-Item $icoBrumare $icoBruma -Force
           }
 
           $obrigatorios = @(
@@ -108,6 +108,18 @@ jobs:
           }
           python -m pip install numpy matplotlib pillow pyinstaller
 
+      - name: Foto do autor (opcional)
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path "assets" | Out-Null
+          try {
+            Invoke-WebRequest -UseBasicParsing -Uri 'https://wwws.cnpq.br/cvlattesweb/pkg_util_img.show_foto?v_cod=K4494050P3' -OutFile 'assets/autor.jpg' -TimeoutSec 15
+            Write-Host 'Foto baixada.'
+          } catch {
+            Write-Host 'Foto nao baixada (servidor do CNPq recusou); o programa mostrara as iniciais.'
+          }
+          exit 0
+
       - name: Gerar Brumare.exe (janela)
         shell: pwsh
         run: |
@@ -116,14 +128,10 @@ jobs:
             $iconArgs = @("--icon", "assets\brumare.ico")
           }
           $dataArgs = @()
-          if (Test-Path "assets") {
-            $dataArgs += @("--add-data", "assets;assets")
-          }
-          if (Test-Path "i18n") {
-            $dataArgs += @("--add-data", "i18n;i18n")
-          }
-          if (Test-Path "vendor") {
-            $dataArgs += @("--add-data", "vendor;vendor")
+          foreach ($dir in @("assets", "i18n", "vendor")) {
+            if (Test-Path $dir) {
+              $dataArgs += @("--add-data", "$dir;$dir")
+            }
           }
 
           python -m PyInstaller --noconfirm --clean --onefile --windowed --name Brumare `
@@ -176,11 +184,14 @@ jobs:
             throw "ISCC.exe não encontrado."
           }
 
-          & $iscc "/DAppVersion=$env:VERSION" "packaging\windows\bruma.iss"
+          & $iscc "/DAppVersion=$env:VERSION" "packaging\windows\brumare.iss"
 
           New-Item -ItemType Directory -Force -Path "dist" | Out-Null
           if (Test-Path "Output") {
             Get-ChildItem -Path "Output" -Filter "*.exe" | Copy-Item -Destination "dist" -Force
+          }
+          if (Test-Path "packaging\windows\Output") {
+            Get-ChildItem -Path "packaging\windows\Output" -Filter "*.exe" | Copy-Item -Destination "dist" -Force
           }
 
       - name: Padronizar nomes finais e gerar SHA256SUMS.txt
@@ -191,9 +202,6 @@ jobs:
 
           if (Test-Path "Brumare.exe") {
             Move-Item "Brumare.exe" "Brumare-$v-portable.exe" -Force
-          }
-          if (Test-Path "bruma-cli.exe") {
-            Move-Item "bruma-cli.exe" "brumare-cli-$v.exe" -Force
           }
           if (Test-Path "brumare-cli.exe") {
             Move-Item "brumare-cli.exe" "brumare-cli-$v.exe" -Force
@@ -210,6 +218,17 @@ jobs:
           }
           $hashes | Out-File -FilePath "SHA256SUMS.txt" -Encoding utf8
           Get-ChildItem -Force
+
+      - name: Enviar artefatos do build (v4)
+        uses: actions/upload-artifact@v4
+        with:
+          name: brumare-windows-${{ env.VERSION }}
+          path: |
+            dist/*Setup*.exe
+            dist/Brumare-*-portable.exe
+            dist/brumare-cli-*.exe
+            dist/SHA256SUMS.txt
+          if-no-files-found: warn
 
       - name: Criar tag via workflow_dispatch (opcional)
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.create_tag }}
