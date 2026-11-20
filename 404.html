@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Página não encontrada | Bruno H. D. Macedo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<script>
+/* Endereços antigos do BrUMaRe (antes Bruma, antes castep-plot) levam ao endereço novo,
+   inclusive arquivos: /bruma/bruma-tutorial.pdf -> /brumare/brumare-tutorial.pdf */
+(function () {
+  var p = location.pathname, m = p.match(/^\/(bruma|castep)(\/.*)?$/);
+  if (!m) return;
+  var resto = (m[2] || '/').replace(/bruma-tutorial/g, 'brumare-tutorial').replace(/bruma\.bib/g, 'brumare.bib')
+                           .replace(/assets\/bruma-/g, 'assets/brumare-');
+  location.replace('/brumare' + resto + location.search + location.hash);
+})();
+</script>
+<style>
+:root{color-scheme:dark;--bg:#070C0B;--card:#0F1A18;--line:#1E2E2B;--tx:#E8F1EF;--mut:#8FA6A0;--cy:#4FE3C1;--am:#F5B544}
+@media (prefers-color-scheme:light){:root{color-scheme:light;--bg:#F3F7F6;--card:#fff;--line:#D2DEDB;--tx:#0C1614;--mut:#4D625D;--cy:#0A8F78;--am:#B26B00}}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;display:grid;place-items:center;padding:24px;
+     padding-top:max(24px,env(safe-area-inset-top));padding-bottom:max(24px,env(safe-area-inset-bottom))}
+main{max-width:560px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 28px}
+small{font:500 13px ui-monospace,'JetBrains Mono',Consolas,monospace;color:var(--cy)}
+h1{font-size:clamp(28px,6vw,40px);margin:8px 0 10px;letter-spacing:-.02em}
+p{color:var(--mut);line-height:1.6;margin:0 0 20px}
+nav{display:flex;flex-wrap:wrap;gap:10px}
+a{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:10px;border:1px solid var(--line);color:var(--tx);text-decoration:none}
+a.p{background:var(--cy);color:#04120F;border-color:var(--cy);font-weight:600}
+a:focus-visible{outline:2px solid var(--am);outline-offset:2px}
+code{font-family:ui-monospace,Consolas,monospace;color:var(--am);overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<main>
+  <small>// erro 404</small>
+  <h1>Página não encontrada</h1>
+  <p>O endereço <code id="u"></code> não existe neste site. Ele pode ter mudado de lugar: o software <b>Bruma</b> agora se chama <b>BrUMaRe</b> e está em <code>/brumare/</code>.</p>
+  <nav>
+    <a class="p" href="/">Página inicial</a>
+    <a href="/brumare/">Abrir o BrUMaRe</a>
+    <a href="/brumare/tutorial.html">Tutorial</a>
+  </nav>
+</main>
+<script>document.getElementById('u').textContent = location.pathname;</script>
+</body>
+</html>
