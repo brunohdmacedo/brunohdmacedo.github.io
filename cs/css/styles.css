@@ -1,0 +1,517 @@
+:root{
+
+    --ct-blue:#00A2FF;
+    --ct-blue-light:#43c5ff;
+
+    --tr-orange:#FF8C00;
+    --tr-orange-light:#ffb347;
+
+    --dark:#050505;
+    --dark2:#101010;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:#050505;
+    color:white;
+
+    font-family:'Rajdhani',sans-serif;
+
+    overflow-x:hidden;
+}
+
+/* ===========================
+   LOADING
+=========================== */
+
+#loading-screen{
+
+    position:fixed;
+    inset:0;
+
+    background:#050505;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+}
+
+.loader-logo{
+
+    font-family:'Orbitron';
+
+    font-size:4rem;
+    font-weight:900;
+
+    color:white;
+
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.1);
+    }
+
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px 60px;
+
+    backdrop-filter:blur(15px);
+
+    background:rgba(0,0,0,.6);
+
+    z-index:999;
+}
+
+.logo img{
+
+    height:65px;
+}
+
+nav ul{
+
+    list-style:none;
+
+    display:flex;
+    gap:40px;
+}
+
+nav ul a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    position:relative;
+
+    transition:.3s;
+}
+
+nav ul a:hover{
+
+    color:var(--ct-blue);
+}
+
+nav ul a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-5px;
+
+    width:0;
+    height:2px;
+
+    background:
+    linear-gradient(
+    90deg,
+    var(--ct-blue),
+    var(--tr-orange)
+    );
+
+    transition:.4s;
+}
+
+nav ul a:hover::after{
+
+    width:100%;
+}
+
+/* ===========================
+   CUPOM
+=========================== */
+
+.cupom-btn{
+
+    padding:12px 24px;
+
+    border-radius:10px;
+
+    border:2px solid var(--tr-orange);
+
+    text-decoration:none;
+
+    color:var(--tr-orange);
+
+    font-weight:700;
+
+    transition:.4s;
+}
+
+.cupom-btn:hover{
+
+    background:var(--tr-orange);
+
+    color:white;
+
+    box-shadow:
+
+    0 0 15px var(--tr-orange),
+    0 0 35px var(--tr-orange);
+
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+
+    position:relative;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+
+    radial-gradient(
+    circle at left center,
+    rgba(0,162,255,.15),
+    transparent 35%
+    ),
+
+    radial-gradient(
+    circle at right center,
+    rgba(255,140,0,.15),
+    transparent 35%
+    ),
+
+    #050505;
+}
+
+.ct{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:1;
+
+    pointer-events:none;
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:20;
+
+    text-align:center;
+
+    max-width:900px;
+
+    padding:20px;
+}
+
+.hero-logo{
+
+    width:500px;
+
+    max-width:90%;
+
+    transition:.4s;
+}
+
+.hero-logo:hover{
+
+    filter:
+
+    drop-shadow(0 0 15px var(--ct-blue))
+    drop-shadow(0 0 30px var(--tr-orange));
+}
+
+.hero h1{
+
+    font-family:'Orbitron';
+
+    font-size:4rem;
+
+    margin-top:20px;
+}
+
+.hero h2{
+
+    margin-top:15px;
+
+    color:#ddd;
+}
+
+.hero p{
+
+    margin-top:20px;
+
+    font-size:1.3rem;
+
+    line-height:1.5;
+}
+
+.hero-buttons{
+
+    margin-top:35px;
+
+    display:flex;
+    justify-content:center;
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.btn-primary,
+.btn-secondary{
+
+    padding:15px 30px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.4s;
+}
+
+.btn-primary{
+
+    background:var(--ct-blue);
+
+    color:white;
+}
+
+.btn-primary:hover{
+
+    box-shadow:
+    0 0 20px var(--ct-blue);
+}
+
+.btn-secondary{
+
+    border:2px solid var(--tr-orange);
+
+    color:var(--tr-orange);
+}
+
+.btn-secondary:hover{
+
+    background:var(--tr-orange);
+
+    color:white;
+}
+
+/* ===========================
+   PARTICULAS
+=========================== */
+
+#particles{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:10;
+
+    pointer-events:none;
+}
+
+/* ===========================
+   SEÇÕES
+=========================== */
+
+section{
+
+    padding:120px 10%;
+}
+
+section h2{
+
+    text-align:center;
+
+    font-size:2.5rem;
+
+    margin-bottom:50px;
+
+    font-family:'Orbitron';
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+}
+
+.card{
+
+    background:#111;
+
+    border:1px solid #222;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.35s;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-10px);
+
+    box-shadow:
+
+    0 0 25px rgba(0,162,255,.25),
+
+    0 0 45px rgba(255,140,0,.15);
+}
+
+/* ===========================
+   REDES
+=========================== */
+
+.socials{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+}
+
+.socials a{
+
+    padding:15px 25px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    background:#111;
+
+    color:white;
+
+    transition:.4s;
+}
+
+.socials a:hover{
+
+    background:var(--ct-blue);
+
+    transform:translateY(-5px);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    text-align:center;
+
+    padding:40px;
+
+    border-top:1px solid #222;
+}
+
+/* ===========================
+   SEO
+=========================== */
+
+.seo-hidden{
+
+    position:absolute;
+
+    left:-99999px;
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media(max-width:900px){
+
+    nav{
+
+        padding:15px 20px;
+    }
+
+    nav ul{
+
+        display:none;
+    }
+
+    .hero h1{
+
+        font-size:2.6rem;
+    }
+
+    .hero h2{
+
+        font-size:1.1rem;
+    }
+
+    .hero-logo{
+
+        width:320px;
+    }
+
+}
