@@ -3,22 +3,21 @@ name: Release Windows
 on:
   push:
     tags:
-      - "v*"          # ex.: git tag v1.0.1 && git push origin v1.0.1
+      - "v*"
   workflow_dispatch:
     inputs:
       version:
         description: "Versão do release (ex.: 1.0.1)"
         required: true
         default: "1.0.1"
+      source_repo:
+        description: "Opcional: outro repositório no formato usuario/repo (vazio = este mesmo repo)"
+        required: false
+        default: ""
       target_path:
-        description: "Subpasta do projeto no repositório (ex.: brumare ou . para raiz)"
+        description: "Subpasta dentro do repo (ex.: brumare ou . para raiz)"
         required: false
         default: "brumare"
-      create_tag:
-        description: "Criar e enviar a tag v<versão> automaticamente?"
-        type: boolean
-        required: false
-        default: false
 
 permissions:
   contents: write
@@ -27,40 +26,67 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Checkout do repositório
+      - name: Checkout do repositório principal
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+
+      - name: Checkout de repositório externo (se informado)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.source_repo != '' }}
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ inputs.source_repo }}
+          path: _external_src
 
       - name: Configurar Python 3.11
         uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
-      - name: Localizar e preparar pasta do projeto (brumare)
+      - name: Localizar arquivos do projeto e inspecionar estrutura
         shell: pwsh
         run: |
           $root = (Get-Location).Path
-          $targetInput = "${{ github.event_name }}" -eq "workflow_dispatch" ? "${{ inputs.target_path }}" : "brumare"
-          if ([string]::IsNullOrWhiteSpace($targetInput)) { $targetInput = "brumare" }
+          $searchBase = if ("${{ github.event_name }}" -eq "workflow_dispatch" -and -not [string]::IsNullOrWhiteSpace("${{ inputs.source_repo }}")) {
+            Join-Path $root "_external_src"
+          } else {
+            $root
+          }
 
-          $candidate = Join-Path $root $targetInput
-          if (-not (Test-Path (Join-Path $candidate "bruma.py"))) {
-            $found = Get-ChildItem -Path $root -Recurse -Filter "bruma.py" -File |
+          $subPath = if ("${{ github.event_name }}" -eq "workflow_dispatch" -and -not [string]::IsNullOrWhiteSpace("${{ inputs.target_path }}")) {
+            "${{ inputs.target_path }}".Trim()
+          } else {
+            "brumare"
+          }
+
+          Write-Host "== Estrutura encontrada em $searchBase (até 3 níveis) =="
+          Get-ChildItem -Path $searchBase -Recurse -Depth 3 -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -notmatch "\\\.git\\" } |
+            Select-Object -ExpandProperty FullName
+
+          $candidate = if ($subPath -eq "." -or $subPath -eq "./") {
+            $searchBase
+          } else {
+            Join-Path $searchBase ($subPath -replace "/", "\")
+          }
+
+          if (-not (Test-Path (Join-Path $candidate "bruma.py") -PathType Leaf)) {
+            $found = Get-ChildItem -Path $searchBase -Recurse -Filter "bruma.py" -File -ErrorAction SilentlyContinue |
               Where-Object { $_.FullName -notmatch "\\\.git\\" } |
               Select-Object -First 1
+
             if ($null -eq $found) {
-              Write-Error "bruma.py não foi encontrado em '$targetInput' nem em subpastas do repositório."
+              Write-Error "bruma.py não foi encontrado em '$candidate' nem em subpastas de '$searchBase'. Veja a listagem de arquivos acima."
               exit 1
             }
             $candidate = $found.Directory.FullName
           }
 
-          Write-Host "Diretório de origem localizado: $candidate"
+          Write-Host "Diretório do projeto localizado em: $candidate"
 
           if ($candidate -ne $root) {
             Get-ChildItem -Path $candidate -Force | ForEach-Object {
-              if ($_.Name -ne ".git") {
+              if ($_.Name -ne ".git" -and $_.Name -ne "_external_src") {
                 $dest = Join-Path $root $_.Name
                 Copy-Item -Path $_.FullName -Destination $dest -Recurse -Force
               }
@@ -81,136 +107,4 @@ jobs:
               $faltando = $true
             }
           }
-
-          $opcionais = @(
-            "README.md",
-            "CITATION.cff",
-            "bruma.bib",
-            "bruma-tutorial.pdf"
-          )
-          foreach ($rel in $opcionais) {
-            $full = Join-Path $root ($rel -replace "/", "\")
-            if (-not (Test-Path $full -PathType Leaf)) {
-              Write-Host "::warning::Falta (opcional): $rel"
-            }
-          }
-
-          if ($faltando) {
-            Get-ChildItem -Path $root -Depth 2 | Where-Object { $_.Name -ne ".git" } | Select-Object FullName
-            exit 1
-          }
-
-      - name: Definir versão e atualizar bruma.py
-        shell: pwsh
-        run: |
-          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
-            $v = "${{ inputs.version }}".Trim()
-          } else {
-            $v = "${{ github.ref_name }}" -replace "^v", ""
-          }
-          $v = $v -replace "^v", ""
-
-          "VERSION=$v" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-          Write-Host "Versão configurada: $v"
-
-          $brumaPath = "bruma.py"
-          $content = Get-Content -Path $brumaPath -Raw -Encoding utf8
-          if ($content -match '(?m)^VERSAO\s*=.*$') {
-            $content = [regex]::Replace($content, '(?m)^VERSAO\s*=.*$', "VERSAO = `"$v`"")
-          } else {
-            $content = "VERSAO = `"$v`"`n" + $content
-          }
-          Set-Content -Path $brumaPath -Value $content -Encoding utf8
-          Select-String -Path $brumaPath -Pattern '^VERSAO'
-
-      - name: Dependências
-        shell: pwsh
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install numpy matplotlib pillow pyinstaller
-
-      - name: Foto do autor (opcional)
-        shell: pwsh
-        run: |
-          New-Item -ItemType Directory -Force -Path "assets" | Out-Null
-          try {
-            Invoke-WebRequest -UseBasicParsing -Uri 'https://wwws.cnpq.br/cvlattesweb/pkg_util_img.show_foto?v_cod=K4494050P3' -OutFile 'assets/autor.jpg'
-            Write-Host 'Foto baixada.'
-          } catch {
-            Write-Host 'Foto nao baixada (servidor do CNPq recusou); o programa mostrara as iniciais.'
-          }
-          exit 0
-
-      - name: Bruma.exe (janela)
-        shell: pwsh
-        run: >
-          python -m PyInstaller --noconfirm --clean --onefile --windowed --name Bruma
-          --icon assets/bruma.ico --add-data "assets;assets"
-          --hidden-import PIL._tkinter_finder
-          --exclude-module scipy --exclude-module pandas --exclude-module IPython
-          --exclude-module PyQt5 --exclude-module PyQt6 --exclude-module PySide2
-          --exclude-module PySide6 --exclude-module notebook --exclude-module jedi
-          --exclude-module sympy bruma_gui.py
-
-      - name: bruma-cli.exe (linha de comando)
-        shell: pwsh
-        run: >
-          python -m PyInstaller --noconfirm --clean --onefile --console --name bruma-cli
-          --icon assets/bruma.ico
-          --exclude-module scipy --exclude-module pandas --exclude-module IPython
-          --exclude-module PyQt5 --exclude-module PyQt6 --exclude-module PySide2
-          --exclude-module PySide6 --exclude-module notebook --exclude-module jedi
-          --exclude-module sympy --exclude-module tkinter bruma.py
-
-      - name: Instalador (Inno Setup)
-        shell: pwsh
-        run: |
-          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
-          if (-not (Test-Path $iscc)) { choco install innosetup -y --no-progress }
-          & $iscc "/DAppVersion=$env:VERSION" packaging\windows\bruma.iss
-
-          New-Item -ItemType Directory -Force -Path "dist" | Out-Null
-          if (Test-Path "Output") {
-            Get-ChildItem -Path "Output" -Filter "*.exe" | Copy-Item -Destination "dist" -Force
-          }
-
-      - name: Nomes finais dos arquivos
-        shell: pwsh
-        run: |
-          $v = $env:VERSION
-          Set-Location "dist"
-          if (Test-Path "Bruma.exe") { Move-Item "Bruma.exe" "Bruma-$v-portable.exe" -Force }
-          if (Test-Path "bruma-cli.exe") { Move-Item "bruma-cli.exe" "bruma-cli-$v.exe" -Force }
-
-          $lines = Get-ChildItem -Filter "*.exe" | Sort-Object Name | ForEach-Object {
-            $hash = (Get-FileHash -Path $_.FullName -Algorithm SHA256).Hash.ToLower()
-            "$hash  $($_.Name)"
-          }
-          $lines | Out-File -FilePath "SHA256SUMS.txt" -Encoding utf8
-          Get-ChildItem
-
-      - name: Criar e enviar tag via workflow_dispatch (opcional)
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.create_tag }}
-        shell: pwsh
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          $tag = "v$env:VERSION"
-          $exists = git tag -l $tag
-          if (-not $exists) {
-            git tag $tag
-            git push origin $tag
-          }
-
-      - name: Publicar Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ env.VERSION }}
-          name: Bruma ${{ env.VERSION }}
-          generate_release_notes: true
-          make_latest: true
-          files: |
-            dist/Bruma-Setup-*.exe
-            dist/Bruma-*-portable.exe
-            dist/bruma-cli-*.exe
-            dist/SHA256SUMS.txt
+          if ($faltando) { exit 1 }
