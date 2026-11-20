@@ -1,0 +1,361 @@
+<!--meta title="Institutio BrUMaRe (Brillouin-zone Utilities for Materials Research): fasciae, DOS, densitas, vitia et thermodynamica | Bruno H. D. Macedo" desc="Institutio integra BrUMaRe: quomodo computationes CASTEP, VASP et SIESTA parentur et fasciae, DOS, PDOS, densitas oneris, vitia et thermodynamica analysentur, cum formulis et modo citandi."-->
+<!--intro h1="Institutio integra <span>BrUMaRe</span>" p="Omnia quae instrumentum facit, gradatim: a computatione CASTEP usque ad figuras et tabulas commentarii, dissertationis vel thesis. Formulae adhibitae, bonae consuetudines et modus citandi includuntur." a1="Instrumentum aperire" a2="Institutio (PDF)" a3="Quomodo citare"-->
+<div class="w tut">
+<nav class="toc" aria-label="Index">
+  <b>Index</b>
+  <a href="#visao">1. Conspectus</a>
+  <a href="#formas">1b. Modi utendi</a>
+  <a href="#programas">1c. CASTEP, VASP et SIESTA</a>
+  <a href="#castep">2. Computationem parare</a>
+  <a href="#abrir">3. Fasciculos aperire</a>
+  <a href="#bandas">4. Fasciae</a>
+  <a href="#dos">5. DOS et PDOS</a>
+  <a href="#fat">6. Fasciae proiectae</a>
+  <a href="#analise">7. Analysis electronica</a>
+  <a href="#editor">8. Graphematum editor</a>
+  <a href="#defeito">9. Vitium et distortio</a>
+  <a href="#termo">10. Thermodynamica</a>
+  <a href="#refs">11. Computationes relationis</a>
+  <a href="#zb">12b. Zona Brillouin et via k</a>
+  <a href="#densidade">12. Densitas oneris</a>
+  <a href="#planos">13. Plana (h k l)</a>
+  <a href="#delta">14. Contributio vitii (Δρ)</a>
+  <a href="#cmp">15. Comparatio</a>
+  <a href="#export">16. Exportationes</a>
+  <a href="#python">17. Scriptum Python</a>
+  <a href="#formulas">18. Formulae</a>
+  <a href="#teoria">18b. Theoria integra et exempla</a>
+  <a href="#cuidados">19. Cautiones</a>
+  <a href="#citar">20. Quomodo citare</a>
+  <a href="#biblio">21. Opera citata</a>
+</nav>
+<article class="prose">
+<h2 id="visao">1. Conspectus</h2>
+<p><b>BrUMaRe</b> exitus programmatum CASTEP <a href="#r-clark">[1]</a>, VASP et SIESTA legit et, pro quavis materia et quovis atomo, haec reddit:</p>
+<ul>
+  <li>structuram fasciarum, DOS et PDOS, cum spin sursum et deorsum;</li>
+  <li>fascias per orbitalia proiectas;</li>
+  <li>analysin structurae localis vitiorum (vacantiae, substitutivi vel interstitialis) et distortionis quam efficiunt;</li>
+  <li>thermodynamicam formationis et desorptionis hydrogenii;</li>
+  <li>densitatem oneris totam et polarizatam, in 3D, 2D et in profilis;</li>
+  <li>comparationem plurium computationum iuxta positarum.</li>
+</ul>
+<p>Duo modi utendi eandem analysin faciunt:</p>
+<div class="tw"><table>
+<tr><th></th><th>Situs (navigatrum)</th><th>Scriptum Python (botryon)</th></tr>
+<tr><td>Usus</td><td>fasciculos trahe; omnia in visu accommoda</td><td><code>python3 brumare.py seed</code></td></tr>
+<tr><td>Installatio</td><td>nulla; fasciculi computatrum tuum non relinquunt</td><td>Python 3.8+, numpy et matplotlib</td></tr>
+<tr><td>Exitus</td><td>figurae PNG/SVG, <code>.dat</code> pro Origin, CHGCAR/XSF pro VESTA, <code>.zip</code> computationum, relationes <code>.txt</code></td><td>eadem, in <code>seed_plots/</code></td></tr>
+</table></div>
+<p class="callout"><b>Principium praecipuum:</b> energia Fermi numquam iterum computatur. Valor adhibitus est ipse quem programma scripsit, pro quoque spin. Praefinito, fasciae et DOS energias originales servant et linea ductus-puncti E<sub>F</sub> notat; etiam E − E<sub>F</sub> eligi potest.</p>
+<h2 id="formas">Modi utendi BrUMaRe</h2>
+<p>Nomen <b>BrUMaRe</b> <b>Bru</b>nonem <b>Ma</b>cedo et <b>Re</b>natam Benedet coniungit, atque etiam acronymum est <b>Br</b>illouin-zone <b>U</b>tilities for <b>Ma</b>terials <b>Re</b>search. Intus latet <i>bruma</i>, Lusitanice «nebula»: nubes electronica quam programma ostendit. Eadem analysis quattuor modis praesto est:</p>
+<div class="tw"><table>
+<tr><th>Modus</th><th>Cui</th><th>Quomodo incipere</th></tr>
+<tr><td>Pagina interretialis</td><td>analysis interactiva, nihil installandum</td><td>aperi <a href="./">brunohdmacedo.tech/brumare</a> et fasciculos trahe</td></tr>
+<tr><td>Applicatio computatri</td><td><b>eadem interfacies</b> ac haec pagina, in fenestra, sine interreti</td><td><code>pip install "brumare[gui]"</code> et <code>brumare-gui</code></td></tr>
+<tr><td>Programma Windows</td><td>eadem applicatio, iis qui Python non adhibent</td><td>installator <code>BrUMaRe-Setup.exe</code> in <a href="https://github.com/brunohdmacedo/brumare/releases/latest" target="_blank" rel="noopener">pagina versionum</a></td></tr>
+<tr><td>Linea mandatorum</td><td>botrya computatrorum et scripta</td><td><code>pip install brumare</code> vel <code>brumare.py</code>; deinde <code>brumare mgh2_Fe</code></td></tr>
+</table></div>
+<p>Applicatio computatri et <code>.exe</code> hanc ipsam interfaciem aperiunt, cum eisdem tabulis et exportationibus, bibliothecis inclusis: sine interreti operantur. Linea mandatorum etiam <b>comparationem</b> (<code>brumare --comparar A,B,C</code>) et <b>relationem differentiae densitatis</b> (<code>--field diff</code>) facit. Quisque modus partem <b>De programmate</b> habet cum nomine, versione, auctore, nexibus et modo citandi; in linea mandatorum, <code>brumare --sobre</code> adhibe. Interfacies Lusitanice, Anglice, Hispanice, Francogallice, Italice et Latine praesto est (<code>--idioma</code> in linea mandatorum).</p>
+<h2 id="programas">Programmata sustentata: CASTEP, VASP et SIESTA</h2>
+<p>BrUMaRe exitus trium programmatum legit et omnia in eandem formam internam convertit. Fasciae, DOS, PDOS, analysis electronica, vitia, thermodynamica, densitas et comparatio eodem modo pro omnibus tribus operantur, et computationes diversorum programmatum in eadem tabula comparari possunt. Energia Fermi semper ea est quam programma scripsit.</p>
+<div class="tw"><table>
+<tr><th>Programma</th><th>Fasciculi</th><th>Quomodo gignantur</th></tr>
+<tr><td>CASTEP</td><td><code>seed.bands</code>, <code>.pdos_bin</code>, <code>.castep</code>, <code>.cell</code>, <code>.den_fmt</code></td><td>sectio 2 huius institutionis</td></tr>
+<tr><td>VASP</td><td><b>capsa</b> computationis: <code>vasprun.xml</code>, <code>KPOINTS</code>, <code>CHGCAR</code> (et <code>POSCAR</code>/<code>CONTCAR</code>)</td><td><code>LORBIT = 11</code> (proiectiones), <code>ISPIN = 2</code> (spin), <code>LCHARG = .TRUE.</code> (densitas); <code>KPOINTS</code> modo lineae pro fasciis</td></tr>
+<tr><td>SIESTA</td><td><code>SystemLabel.bands</code>, <code>.EIG</code>, <code>.KP</code>, <code>.PDOS</code>, <code>.STRUCT_OUT</code> vel <code>.XV</code>, <code>.RHO</code> et exitus <code>.out</code></td><td><code>%block BandLines</code> (vel <code>BandPoints</code>), <code>%block ProjectedDensityOfStates</code>, <code>SaveRho true</code>, <code>Spin polarized</code></td></tr>
+</table></div>
+<p><b>Quomodo onerare:</b></p>
+<ul>
+  <li><b>In navigatro:</b> totam capsam trahe vel <b>Aperire capsam</b> adhibe. In VASP nomen capsae nomen computationis fit, quia fasciculi nomina fixa habent. Sine capsa, fasciculos ut <code>nomen.vasprun.xml</code>, <code>nomen.KPOINTS</code> et similia renomina.</li>
+  <li><b>In Python:</b> <code>brumare capsa_vasp/</code>, <code>brumare SystemLabel</code> (SIESTA) vel simpliciter <code>brumare</code> intra capsam. In interfacie graphica, capsam et computationem ex indice elige.</li>
+</ul>
+<p><b>Quid in quoque programmate mutetur:</b></p>
+<ul>
+  <li><b>VASP:</b>
+    <ul>
+      <li>Proiectiones tantum sphaeras PAW circa atomos complectuntur; ideo summa PDOS infra DOS totam manet. Hoc solitum est.</li>
+      <li>In computatione fasciarum non sibi congrua, ipsum VASP commendat E<sub>F</sub> computationis sibi congruae adhibere: utramque onera et sibi congruam in <i>DOS ex</i> elige.</li>
+      <li>In computationibus non collinearibus, tantum pars tota proiectionum adhibetur.</li>
+    </ul></li>
+  <li><b>SIESTA:</b>
+    <ul>
+      <li><code>.PDOS</code> PDOS iam a SIESTA computatam continet, cum stratis <i>n</i>, <i>l</i> et <i>m</i> et dilatatione in <code>.fdf</code> electa. Directe adhibetur.</li>
+      <li>Cum pondera per fasciam desint, fasciae proiectae non exstant.</li>
+      <li>Cum <code>.bands</code> et <code>.EIG</code> simul, fasciae ex via et DOS ex reticulo sibi congruo, sponte electo, veniunt.</li>
+    </ul></li>
+  <li><b>Tantum in CASTEP:</b> populatio Mulliken et generator computationum relationis, qui <code>.cell</code> et <code>.param</code> scribit.</li>
+</ul>
+<h2 id="castep">2. Computationem in CASTEP parare</h2>
+<p>Verba clavis <code>.param</code> quae omnia ab instrumento adhibita gignunt:</p>
+<pre><code>TASK                    : SPECTRAL           ! vel GeometryOptimization, SinglePoint
+SPECTRAL_TASK           : BANDSTRUCTURE      ! DOS pro reticulo denso
+SPIN_POLARIZED          : TRUE
+PDOS_CALCULATE_WEIGHTS  : TRUE               ! .pdos_bin scribit (PDOS et fasciae proiectae)
+POPN_CALCULATE          : TRUE               ! Mulliken et vincula in .castep
+WRITE_FORMATTED_DENSITY : TRUE               ! .den_fmt scribit (densitas oneris et spin)</code></pre>
+<p>Via fasciarum in <code>.cell</code> ponitur, in <code>%BLOCK SPECTRAL_KPOINT_PATH</code> <a href="#r-setyawan">[5]</a>. Pro DOS quantitativa, alteram computationem cum <code>SPECTRAL_TASK : DOS</code> et reticulo Monkhorst–Pack denso <a href="#r-mp">[3]</a> exsequere; deinde illam in <i>DOS ex</i> indica.</p>
+<div class="tw"><table>
+<tr><th>Fasciculus</th><th>Ad quid</th></tr>
+<tr><td><code>seed.bands</code></td><td>valores proprii, E<sub>F</sub> cuiusque spin, pondera punctorum k et cellula: fasciae, DOS et hiatus</td></tr>
+<tr><td><code>seed.pdos_bin</code></td><td>pondus cuiusque orbitalis in quaque fascia et puncto k: PDOS et fasciae proiectae</td></tr>
+<tr><td><code>seed.castep</code></td><td>strata (2p, 3d…), orbitalia m, Mulliken <a href="#r-mulliken">[6]</a><a href="#r-segall">[7]</a>, vincula, energiae, vires, Z valentiae</td></tr>
+<tr><td><code>seed.cell</code></td><td>ordo specierum, structura vitii, basis ad relationes generandas</td></tr>
+<tr><td><code>seed.den_fmt</code>, <code>.cube</code>, <code>CHGCAR</code></td><td>densitas oneris et spin</td></tr>
+</table></div>
+<h2 id="abrir">3. Fasciculos aperire</h2>
+<ol>
+  <li>Instrumentum aperi et fasciculos in aream lineis interruptis circumdatam trahe, vel <b>Aperire fasciculos</b> preme.</li>
+  <li><b>Quodque seedname computatio est.</b> Plures simul onerare potes: vitium, structuram puram, relationes elementares et alia dopantia.</li>
+  <li><b>×</b> iuxta computationem adhibe ut eam removeas, vel <b>Data purgare</b> ut denuo incipias.</li>
+  <li>Bulla ☀/☾ thema mutat; electio etiam pro paginis auctoris valet. Electrum linguae iuxta est.</li>
+</ol>
+<h2 id="bandas">4. Fasciae</h2>
+<p>Tabula <b>Fasciae</b> spin sursum et deorsum superpositos, iuxta positos vel unum tantum ostendit. Tituli punctorum altae symmetriae pro reticulis cubicis, tetragonalibus, orthorhombicis et hexagonalibus sponte agnoscuntur, vel in <i>Tituli punctorum k</i> scribuntur (exempli gratia <code>G,X,M,G,Z,R,A,Z</code>).</p>
+<p>Praefinito axis energiae energias originales servat, cum linea ductus-puncti et valore E<sub>F</sub>; relatio etiam esse potest E<sub>F</sub> cuiusque spin vel E<sub>F</sub> communis (E − E<sub>F</sub>).</p>
+<h2 id="dos">5. DOS et PDOS</h2>
+<p>DOS est summa functionum Gaussianarum per fascias et puncta k, cum dilatatione σ electa. PDOS in quinque gradus dividi potest:</p>
+<div class="tw"><table>
+<tr><th>Gradus</th><th>Exemplum</th></tr>
+<tr><td>Elementum</td><td>Mg, H, Fe</td></tr>
+<tr><td>Orbitale l</td><td>Fe-s, Fe-p, Fe-d</td></tr>
+<tr><td>Strata (n, l) pseudopotentialis</td><td>Mg 2p et Mg 3p</td></tr>
+<tr><td>Pars m</td><td>p<sub>x</sub>, p<sub>y</sub>, p<sub>z</sub>, d<sub>z²</sub>, d<sub>yz</sub>, d<sub>xz</sub>, d<sub>x²−y²</sub>, d<sub>xy</sub></td></tr>
+<tr><td>t<sub>2g</sub>/e<sub>g</sub> et atomi singuli</td><td>Fe 3d t<sub>2g</sub>; Fe1, H25</td></tr>
+</table></div>
+<p>Tabula <b>Fasciae + DOS</b> duo graphemata iuxta ponit, in eodem axe energiae.</p>
+<h2 id="fat">6. Fasciae proiectae</h2>
+<p>In fasciis proiectis, magnitudo cuiusque puncti ponderi orbitalis in illa fascia et illo puncto k proportionalis est. Proiectiones in sectione <i>Proiectio</i> electas adhibent, in tabulis separatis vel superpositis.</p>
+<h2 id="analise">7. Analysis electronica</h2>
+<p>Tabula <b>Analysis</b> pro quoque spin colligit:</p>
+<ul>
+  <li>E<sub>F</sub> in Ha et in eV;</li>
+  <li>VBM et CBM, numeratione electronum definitas (fasciae N et N+1), et hiatum directum vel indirectum cum punctis k;</li>
+  <li>utrum E<sub>F</sub> intra fasciam cadat;</li>
+  <li>N(E<sub>F</sub>) et polarizationem spin;</li>
+  <li>spin integratum;</li>
+  <li>occupationes integratas PDOS et centrum fasciae d;</li>
+  <li>Mulliken per speciem et per atomum;</li>
+  <li>vincula dopantis.</li>
+</ul>
+<h2 id="editor">8. Graphematum editor</h2>
+<p>Statim sub quaque figura est tabula <b>Graphema mutare: titulus, legenda et colores</b>:</p>
+<ul>
+  <li><b>Titulus et axes:</b> titulus, magnitudo, color, tituli axium, typus litterarum et fundus (album ad editionem vel colores situs).</li>
+  <li><b>Legenda:</b> positio, magnitudo, titulus et margo.</li>
+  <li><b>Curvae:</b> pro quaque curva color, nomen in legenda, ductus, crassitudo et visibilitas; etiam linea E<sub>F</sub> hic accommodatur.</li>
+  <li><b>In ipso graphemate:</b> nomen legendae preme ut mutes. Mutationes in omnibus tabulis valent.</li>
+</ul>
+<figure><picture><source srcset="img/site_editor.jxl" type="image/jxl"><img src="img/site_editor.png" alt="Graphematum editor" loading="lazy"></picture><figcaption>Graphematum editor.</figcaption></figure>
+<h2 id="defeito">9. Vitium et distortio</h2>
+<p>Tabula <b>Vitium et thermodynamica</b> vitium duobus modis agnoscit:</p>
+<ul>
+  <li><b>Cum structura pura relationis:</b> quisque atomus suo loco, condicionibus periodicis, coniungitur, et genus (vacantia, substitutivum vel interstitiale) sponte invenitur.</li>
+  <li><b>Sine relatione:</b> vitium cum "massa" ipsius supercellulae comparatur, id est cum atomis procul positis.</li>
+</ul>
+<p>Computantur:</p>
+<ul>
+  <li><b>primi vicini:</b> quodque vinculum X–H, exempli gratia, contra relationem et contra Mg–H in massa;</li>
+  <li><b>vincula vicinorum</b> (exempli gratia H–Mg);</li>
+  <li><b>indices distortionis polyedri:</b> Baur <a href="#r-baur">[9]</a>, ECoN <a href="#r-hoppe">[10]</a>, elongatio quadratica ⟨λ⟩ et variantia angularis σ² <a href="#r-robinson">[8]</a>, volumen et anguli;</li>
+  <li><b>strata secunda;</b></li>
+  <li><b>cum relatione:</b> campus translationum et radius perturbationis.</li>
+</ul>
+<figure><picture><source srcset="img/site_defeito.jxl" type="image/jxl"><img src="img/site_defeito.png" alt="Tabula Vitium et thermodynamica" loading="lazy"></picture><figcaption>Interpretatio automatica et tabulae paginae Vitium et thermodynamica.</figcaption></figure>
+<h2 id="termo">10. Thermodynamica</h2>
+<p>Potentialia chimica μ<sub>i</sub> sunt energiae per atomum relationum elementarium, eisdem parametris computatae: Mg hcp, Fe bcc et \(\mu_\mathrm{H}=\tfrac12E(\mathrm{H_2})\). Cum <code>.castep</code> harum relationum onerantur, sponte implentur.</p>
+<p>Computantur:</p>
+<ul>
+  <li>energia formationis vitii <a href="#r-freysoldt">[16]</a><a href="#r-vdw">[17]</a>;</li>
+  <li>enthalpia formationis hydridi per molem H₂, et effectus vitii ΔΔH;</li>
+  <li>temperatura desorptionis secundum van ’t Hoff, cum ΔS ≈ entropia normali H₂ gasei <a href="#r-janaf">[19]</a>;</li>
+  <li>energia remotionis H;</li>
+  <li>capacitas gravimetrica.</li>
+</ul>
+<p>Formulae in <a href="#formulas">sectione 18</a> sunt.</p>
+<h2 id="refs">11. Computationes relationis generare</h2>
+<p>Per <b>Computationes relationis ex hoc .cell generare</b>, instrumentum <code>.cell</code> et <code>.param</code> scribit eodem functionali, limite, spin, tolerantiis et pseudopotentialibus ac computatio tua:</p>
+<div class="tw"><table>
+<tr><th>Computatio</th><th>Usus</th></tr>
+<tr><td><code>seed_puro</code></td><td>structura pura (relaxanda)</td></tr>
+<tr><td><code>seed_dif_puro_fixo</code></td><td>hospes purus <b>in geometria vitii</b> (single point): Δρ sine dipolis relaxationis</td></tr>
+<tr><td><code>seed_dif_sem_X</code>, <code>seed_dif_so_X</code></td><td>sine dopante et solum dopans, in eadem cellula (single point): densitas vinculi</td></tr>
+<tr><td><code>seed_semH_perto</code>, <code>seed_semH_longe</code></td><td>energia remotionis H prope et procul a vitio</td></tr>
+<tr><td><code>Mg_hcp</code>, <code>Fe_bcc</code>, <code>H_H2</code>…</td><td>potentialia chimica μ</td></tr>
+</table></div>
+<p>Supercellulae idem omnino reticulum k ac vitium adhibent. Relationes elementares eandem densitatem punctorum k adhibent.</p>
+<h2 id="zb">12b. Zona Brillouin et via k</h2>
+<p>Tabula <b>Zona Brillouin</b> primam zonam (cellulam Wigner–Seitz reticuli reciproci) cuiusvis crystalli computat, puncta altae symmetriae invenit, viam fasciarum construit et data ad computationem parata gignit.</p>
+<ol>
+  <li><b>Structuram elige:</b> computationem oneratam, exemplum (Si, Cu, Fe, Mg, rutilum, MgH₂…) vel reticulum manu scriptum (a, b, c, α, β, γ vel tres vectores).</li>
+  <li><b>Tolerantia symmetriae:</b> cum “Reticulum symmetrizare”, anguli et longitudines paene aequales accommodantur (0,5° et 0,5%), ut in SeeK-path; mutationes ostenduntur.</li>
+  <li><b>Densitas viae et Δk:</b> puncta per segmentum et reticula Monkhorst–Pack suggesta (nᵢ = ⌈|bᵢ|/Δk⌉) statuunt.</li>
+  <li><b>Effectus:</b> zona in 3D, genus reticuli, volumina, vectores, tabula punctorum, longitudines segmentorum et reticula.</li>
+  <li><b>Data parata:</b> CASTEP, VASP (<code>KPOINTS</code>), Quantum ESPRESSO (<code>K_POINTS crystal_b</code>), SIESTA (<code>BandLines</code>) et JSON.</li>
+  <li><b>Linea mandatorum:</b> <code>brumare --zona-brillouin "fcc 5.431"</code> vel <code>brumare seed --zona-brillouin</code>.</li>
+</ol>
+<p><b>Symmetria et structurae.</b> Cum atomis (computatio onerata, fasciculus CIF/POSCAR/.cell/XSF/QE/XYZ, numerus COD vel <b>bibliotheca 51 materiarum litterarum</b>), tabula <b>gregem spatialem</b> per moyo, successorem spglib, agnoscit: numerum, symbola Hermann–Mauguin et Hall, Pearson, systema, reticulum Bravais, gregem punctalem, operationes, inversionem et situs Wyckoff. Zona <b>cellulam primitivam normatam</b> adhibet, quae (et conventionalis) ut POSCAR, .cell, QE et CIF exportari potest. Cum structura, <b>omnia 14 reticula Bravais</b> (25 casus Setyawan et Curtarolo) puncta et vias normatas accipiunt, cum pymatgen comparata. Linea mandatorum: <code>brumare --estrutura fasciculus.cif</code>.</p>
+<p class="callout">Coordinatae fractae in basi reciproca <b>cellulae electae</b> sunt: eandem cellulam in computatione adhibe. In supercellulis fasciae plicantur; ad viam normalem cellulam primitivam adhibe. Reticula cubica, CFC, CCC, hexagonalia, tetragonalia et orthorhombica Setyawan et Curtarolo (2010) sequuntur; in symmetria humili SeeK-path (Hinuma et al., 2017) commendatur.</p>
+<h2 id="densidade">12. Densitas oneris</h2>
+<p>In tabula <b>Structura 3D et densitas</b>, quantitates praesto sunt ρ tota, ρ↑, ρ↓, ρ↑ − ρ↓, |ρ↑ − ρ↓|, ζ = (ρ↑ − ρ↓)/ρ et Δρ.</p>
+<ul>
+  <li><b>3D:</b> isosuperficies accommodabilis, cum atomis, vinculis et cellula.</li>
+  <li><b>2D:</b> sectiones per planum.</li>
+  <li><b>Profilum:</b> densitas secundum vinculum, cum minimo quod punctum criticum vinculi approximat.</li>
+  <li><b>Onera et momenta per atomum:</b> partitio Voronoi <a href="#r-voronoi">[12]</a>, communis vel radicalis <a href="#r-gellatly">[13]</a>, et sphaera circa vitium.</li>
+  <li><b>Pro VESTA</b> <a href="#r-vesta">[15]</a>: CHGCAR (forma VASP 5 cum elementis, ρ·V) vel XSF exporta. CHGCAR etiam programmati <code>bader</code> <a href="#r-bader">[14]</a> servit.</li>
+</ul>
+<h2 id="planos">13. Plana (h k l), pinacotheca et cellula</h2>
+<ul>
+  <li><b>Indices cellulae basis:</b> instrumentum multiplicitatem supercellulae agnoscit (exempli gratia 3×3×3 rutili MgH₂), et indices sunt materiae.</li>
+  <li><b>Axes naturales:</b> axes sectionis directiones reticuli sequuntur; in (110), horizontalis [1̄10] et verticalis [001].</li>
+  <li><b>Sectio integra:</b> sectio totam sectionem supercellulae tegit, cum ambitu cellulae.</li>
+  <li><b>Percursio:</b> moderamen planum secundum normalem movet.</li>
+  <li><b>Pinacotheca:</b> (110), (1̄10), (001), (100), (010), (101), (011) et (111) iuxta ostendit.</li>
+  <li><b>Tabula cellulae:</b> densitas, capacitas H, coordinatio, distantiae per par et spatia d<sub>hkl</sub>.</li>
+</ul>
+<figure><picture><source srcset="img/site_galeria_planos.jxl" type="image/jxl"><img src="img/site_galeria_planos.png" alt="Pinacotheca planorum" loading="lazy"></picture><figcaption>Pinacotheca planorum per dopans, cum densitate veri CHGCAR.</figcaption></figure>
+<h2 id="delta">14. Contributio vitii: Δρ</h2>
+<p>Ut tantum effectum vitii videas, elige <b>Quantitas → contributio vitii</b> et, in <i>Subtrahere ρ(B)</i>, densitatem materiae purae (sponte eligitur cum nomen "puro" continet). Tres modi sunt, a simplicissimo ad mundissimum:</p>
+<ol>
+  <li><b>ρ(vitium) − ρ(purum relaxatum):</b> effectum electronicum et relaxationem includit. Dipoli circa atomos motos apparent.</li>
+  <li><b>ρ(vitium) − ρ(purum in geometria vitii)</b>, cum <code>seed_dif_puro_fixo</code>: idem reticulum et eaedem positiones. Tantum permutationem hospitis cum dopante ostendit.</li>
+  <li><b>ρ(vitium) − ρ(sine dopante) − ρ(solum dopans)</b>, cum B et C: <b>densitas vinculi</b> dopantis, id est redistributio oneris dum vincula formantur.</li>
+</ol>
+<p>Si reticula differunt, densitas subtracta in reticulo vitii iterum capitur. Instrumentum ostendit:</p>
+<ul>
+  <li>electrones acquisitos et amissos et summam;</li>
+  <li>∫Δρ in sphaeris circa dopans;</li>
+  <li><b>translationem oneris per atomum</b> (∫Δρ in cellula Voronoi cuiusque atomi).</li>
+</ul>
+<p><b>Partes et sensus.</b> Differentia fieri potest in toto (Δρ), in quoque spin (Δρ↑, Δρ↓) et in magnetizatione, Δ(ρ↑ − ρ↓). In <i>Sensus differentiae</i>, elige ρ(vitium) − ρ(purum) vel ρ(purum) − ρ(vitium). Valores positivi rubri, negativi caerulei sunt. <i>Limes scalae colorum ±</i> adhibe ut debilem redistributionem in vicinis extollas.</p>
+<p><b>3D circa vitium.</b> In <i>Regio 3D</i>, capsa ±3 ad ±6 Å in dopante centrata lobos Δρ cum vinculis ostendit.</p>
+<p><b>Comparatio et VESTA.</b> In tabula Comparatio, differentia cuiusque vitii contra relationem in 3D iuxta et in 2D in eodem plano apparet. Bulla <b>Exportare ad VESTA: omnes computationes</b> <code>.zip</code> cum una capsa per structuram facit. Quaeque capsa CHGCAR densitatum ρ, ρ↑, ρ↓, ρ↑ − ρ↓ et quattuor differentiarum continet, cum elementis et positionibus rectis, et ducem cum ambitu valorum et gradibus in VESTA.</p>
+<h3>Tabula Differentia densitatis</h3>
+<p>Relatio redistributioni oneris a vitio effectae dedicata, cum:</p>
+<ul>
+  <li><b>indicibus:</b> ΔN, cumulatio, exhaustio et onus redistributum ½∫|Δ|; radii 50% et 90%; puncta maximae cumulationis et exhaustionis; dipolus redistributionis (\(\mathbf p=\int(\mathbf r-\mathbf r_c)\,\Delta\rho\,dV\), in e·Å et debye); mutatio momenti;</li>
+  <li><b>vinculis:</b> ρ minima cuiusque vinculi dopans–vicinus contra idem vinculum hospitis in puro;</li>
+  <li><b>onere per atomum</b> in ambabus structuris, atomis coniunctis;</li>
+  <li><b>triptychis</b> ρ(purum) | ρ(vitium) | Δρ, in 2D et 3D;</li>
+  <li><b>profilo radiali</b> ⟨Δ⟩(r) cum onere cumulato \(\Delta Q(r)=\int_0^r\Delta\rho\,4\pi r'^2dr'\);</li>
+  <li><b>mediis planaribus</b> secundum a, b et c;</li>
+  <li><b>profilo secundum vinculum.</b></li>
+</ul>
+<p>Omnia ad Origin et VESTA exportari possunt.</p>
+<h2 id="cmp">15. Comparatio computationum</h2>
+<p>In tabula <b>Comparatio</b>, computationes et, si adest, structuram puram relationis nota. Accipis:</p>
+<ul>
+  <li><b>tabulam cum una columna per computationem:</b> energiae, E<sub>f</sub>, ΔH, ΔΔH, T<sub>d</sub>, E<sub>F</sub>, hiatus, N(E<sub>F</sub>), polarizatio, occupatio et momentum d, Mulliken, Voronoi, ρ in puncto critico, coordinatio, vincula, ⟨λ⟩, σ², translationes, ΔV/V, cellula et vis residua;</li>
+  <li><b>graphemata:</b> columnae, DOS et PDOS superpositae (ad E<sub>F</sub> cuiusque computationis alignatae), fasciae iuxta, vincula, translationes, densitas (etiam Δρ contra relationem) in eodem plano et profila.</li>
+</ul>
+<figure><picture><source srcset="img/site_comparacao.jxl" type="image/jxl"><img src="img/site_comparacao.png" alt="Comparatio" loading="lazy"></picture><figcaption>Graphemata tabulae Comparatio (exemplum illustrativum).</figcaption></figure>
+<h2 id="export">16. Exportationes</h2>
+<div class="tw"><table>
+<tr><th>Exitus</th><th>Forma</th><th>Usus</th></tr>
+<tr><td>Figurae</td><td>PNG, JPG, JXL (JPEG XL), WEBP, SVG (scala 3 = 300 dpi in 8×6 pollicibus)</td><td>commentarii, dissertationes, theses</td></tr>
+<tr><td>Fasciae, DOS/PDOS, pondera, sectiones, profila, comparatio</td><td><code>.dat</code> cum TAB et linea nominum</td><td>Origin, Excel, gnuplot</td></tr>
+<tr><td>Densitas</td><td>CHGCAR (VASP 5), XSF</td><td>VESTA, Bader, XCrySDen</td></tr>
+<tr><td>Computationes relationis</td><td><code>.zip</code> cum <code>.cell</code>, <code>.param</code>, LEIAME, scripto</td><td>botryon</td></tr>
+<tr><td><code>.bands</code> per spin</td><td><code>seed_up.bands</code>, <code>seed_down.bands</code></td><td>sumo <a href="#r-sumo">[18]</a> et alia</td></tr>
+<tr><td>Relationes</td><td><code>.txt</code></td><td>analysis, vitium, comparatio</td></tr>
+<tr><td>Citatio</td><td><code>brumare_citacao.bib</code></td><td>BrUMaRe, programmata et methodi adhibiti</td></tr>
+</table></div>
+<p><b>In Origin:</b> <code>.dat</code> trahe; linea nominum <i>Long Name</i> cuiusque columnae fit. In fasciis, columna prima est X; ceteras ut lineas delinea.</p>
+<h2 id="python">17. Scriptum Python</h2>
+<pre><code># omnia: fasciae, DOS/PDOS, analysis, vitium, densitas, structura
+python3 brumare.py mgh2_Fe -e Mg,H,Fe
+# vitium cum relatione et thermodynamica
+python3 brumare.py mgh2_Fe --ref mgh2_puro --mu "Mg=@Mg_hcp,Fe=@Fe_bcc,H=@H_H2" --h-less mgh2_Fe_semH_perto
+# computationes relationis generare
+python3 brumare.py mgh2_Fe --gerar-referencias
+# densitas: pinacotheca planorum, spin, CHGCAR pro VESTA
+python3 brumare.py mgh2_Fe --planes todos --field spin --chgcar
+# contributio vitii et translatio oneris per atomum
+python3 brumare.py mgh2_Fe --field diff --subtract mgh2_Fe_dif_puro_fixo.den_fmt
+# fascis pro VESTA: ρ, ρ↑, ρ↓, spin et differentiae (purum − vitium)
+python3 brumare.py mgh2_Fe --vesta --subtract mgh2_puro.den_fmt --diff-sign puro-defeito
+# textus (--sobre, citatio, auxilium -h) Latine; energiae ad E_F relatae loco originalium
+python3 brumare.py mgh2_Fe --idioma la --fermi-ref spin</code></pre>
+<p><code>python3 brumare.py --idioma la -h</code> omnes optiones Latine ostendit.</p>
+<h2 id="formulas">18. Formulae</h2>
+<p><b>DOS</b>, cum ponderibus \(w_k\) et dilatatione Gaussiana \(\sigma\):</p>
+<p>\[ g_s(E)=\sum_{k}w_k\sum_n \frac{1}{\sigma\sqrt{2\pi}}\exp\!\left[-\frac{(E-\varepsilon_{nks})^2}{2\sigma^2}\right],\qquad g^{\mathrm{PDOS}}_{s,\alpha}(E)=\sum_k w_k\sum_n p^{\alpha}_{nks}\,\delta_\sigma(E-\varepsilon_{nks}) \]</p>
+<p><b>Hiatus</b>, cum \(N\) numero electronum per spin: \(E_g=\min_k\varepsilon_{N+1,k}-\max_k\varepsilon_{N,k}\). <b>Polarizatio:</b> \(P=\dfrac{N_\uparrow(E_F)-N_\downarrow(E_F)}{N_\uparrow(E_F)+N_\downarrow(E_F)}\).</p>
+<p><b>Distortio polyedri</b> <a href="#r-baur">[9]</a><a href="#r-hoppe">[10]</a><a href="#r-robinson">[8]</a>:</p>
+<p>\[ D=\frac1n\sum_i\frac{|d_i-\bar d|}{\bar d},\qquad \langle\lambda\rangle=\frac1n\sum_i\left(\frac{d_i}{l_0}\right)^2,\qquad \sigma^2=\frac{1}{m-1}\sum_j(\theta_j-\theta_0)^2,\qquad \mathrm{ECoN}=\sum_i e^{\,1-(d_i/d_\mathrm{av})^6} \]</p>
+<p>Hic \(l_0\) est distantia centrum–vertex polyedri regularis eiusdem voluminis et \(\theta_0\) est 90° (octaedrum) vel 109,47° (tetraedrum).</p>
+<p><b>Thermodynamica</b> <a href="#r-freysoldt">[16]</a>:</p>
+<p>\[ E_f=E_\mathrm{vit}-E_\mathrm{pur}-\sum_i n_i\mu_i,\qquad \Delta H_f=\frac{E-\sum_i N_i\mu_i}{N_\mathrm{H}/2},\qquad T_d=\frac{\Delta H}{\Delta S},\qquad \mu_\mathrm{H}=\tfrac12E(\mathrm{H}_2) \]</p>
+<p>In E<sub>f</sub>, \(n_i>0\) atomos additos significat. ΔH per molem H₂ est et ΔS normalis est 130,7 J/(mol·K).</p>
+<p><b>Densitas:</b> CASTEP et VASP \(\rho V\) scribunt. BrUMaRe \(\rho\) in e/Å³ adhibet, cum \(\int\rho\,dV=N_e\), \(\zeta=(\rho_\uparrow-\rho_\downarrow)/\rho\) et \(\Delta\rho=\rho_A-\rho_B-\rho_C\). In partitione Voronoi radicali, quodque punctum ad atomum pertinet qui \(|\mathbf r-\mathbf R_a|^2-r_a^2\) minuit, cum radiis covalentibus Cordero <a href="#r-cordero">[11]</a>.</p>
+<h2 id="teoria">18b. Theoria integra et exempla</h2>
+<p>Omnes quantitates quas BrUMaRe computat, cum aequatione adhibita, et exemplum verum cuiusque programmatis, ut probes num effectus tuus sensum habeat.</p>
+<h3>Unitates et lectio cuiusque programmatis</h3>
+<div class="tw"><table>
+<tr><th>Programma</th><th>Quid legatur</th><th>Conversio</th></tr>
+<tr><td>CASTEP</td><td><code>.bands</code> (Ha), <code>.pdos_bin</code>, <code>.castep</code>, <code>.den_fmt</code> (ρV)</td><td>\(1\,\mathrm{Ha}=27{,}211386\,\mathrm{eV}\); \(1\,\mathrm{Bohr}=0{,}529177\,\text{Å}\)</td></tr>
+<tr><td>VASP</td><td><code>vasprun.xml</code> (eV), proiectiones PAW, <code>CHGCAR</code> (ρV)</td><td>energiae iam in eV; \(\rho=\mathrm{CHGCAR}/V\)</td></tr>
+<tr><td>SIESTA</td><td><code>.bands</code>, <code>.EIG</code> (eV), <code>.PDOS</code> parata, <code>.RHO</code> (e/Bohr³)</td><td>\(\rho\,[\mathrm{e/\text{Å}^3}]=\rho\,[\mathrm{e/Bohr^3}]/0{,}529177^3\)</td></tr>
+<tr><td>Quantum ESPRESSO</td><td><code>data-file-schema.xml</code> (Ha; k em \(2\pi/a\))</td><td>\(\mathbf k_\mathrm{frac}=\mathbf k_\mathrm{cart}\cdot\mathbf A^{T}/(2\pi)\)</td></tr>
+<tr><td>ORCA</td><td>exitus <code>.out</code>: orbitalia, energia, geometria, onera</td><td>molecula: unicum "punctum k"; DOS per Gaussianas graduum</td></tr>
+</table></div>
+<h3>Fasciae, hiatus et massa efficax</h3>
+<p>Cum \(N_s\) electronibus in spin \(s\), ultima fascia occupata est \(N_s\) et prima vacua est \(N_s+1\): \(E_\mathrm{VBM}=\max_k\varepsilon_{N_s,k}\), \(E_\mathrm{CBM}=\min_k\varepsilon_{N_s+1,k}\) e \(E_g=E_\mathrm{CBM}-E_\mathrm{VBM}\). In moleculis (ORCA), idem criterium <b>hiatum HOMO–LUMO</b> dat.</p>
+<p><b>Massa efficax</b> ex accommodatione parabolica circa extremum secundum viam venit:</p>
+<p>\[ E(k)\approx E_0+\frac{\hbar^2 (k-k_0)^2}{2m^*}\quad\Rightarrow\quad \frac{m^*}{m_e}=\frac{\hbar^2}{2m_e\,c_2},\qquad \frac{\hbar^2}{2m_e}=3{,}80998\ \mathrm{eV\,\text{Å}^2} \]</p>
+<p>In vertice (ut Γ), una massa pro quaque directione viae datur. Tantum computatur cum E<sub>F</sub> in hiatu est et via continua.</p>
+<h3>DOS, PDOS et gradus Fermi</h3>
+<p>\[ g_s(E)=\sum_k w_k\sum_n \frac{e^{-(E-\varepsilon_{nks})^2/2\sigma^2}}{\sigma\sqrt{2\pi}},\qquad N_s(E_F)=g_s(E_F),\qquad P=\frac{N_\uparrow-N_\downarrow}{N_\uparrow+N_\downarrow} \]</p>
+<p>E<sub>F</sub> semper est valor a programmate scriptus. Praefinito, axis energias originales ostendit et linea ductus-puncti E<sub>F</sub> notat; fenestra E min/E max ab E<sub>F</sub> numeratur. Polarizatio tantum definitur cum \(N_\uparrow+N_\downarrow>0{,}05\) status/eV.</p>
+<p><b>Centrum fasciae d:</b> \(\varepsilon_d=\int E\,g_d(E)\,dE\big/\int g_d(E)\,dE\), usque ad E<sub>F</sub> (occupata) vel per totam fenestram.</p>
+<h3 id="teoria-zb">Zona Brillouin</h3>
+<p>Zona per plana Bragg k·G = |G|²/2 in basi reciproca reducta (LLL) construitur; volumen contra (2π)³/V probatur et genus reticuli ex forma zonae agnoscitur.</p>
+<p>\[ \mathbf b_1=2\pi\frac{\mathbf a_2\times\mathbf a_3}{V},\quad \mathbf a_i\cdot\mathbf b_j=2\pi\delta_{ij},\quad V_\mathrm{ZB}=\frac{(2\pi)^3}{V},\quad \mathbf k\cdot\mathbf G\le\tfrac12|\mathbf G|^2\ \ \forall\,\mathbf G,\quad k_i^\mathrm{frac}=\frac{\mathbf a_i\cdot\mathbf k}{2\pi},\quad n_i=\left\lceil\frac{|\mathbf b_i|}{\Delta k}\right\rceil \]</p>
+<h3 id="gapcorr">Correctio hiatus (forfex)</h3>
+<p>Functionalia LDA et GGA (ut PBE) hiatum minuunt, quia hiatus Kohn–Sham non est hiatus fundamentalis: deest discontinuitas derivatae functionalis permutationis et correlationis, et adest error delocalizationis. BrUMaRe correctionem post computationem praebet: <b>forfex</b> fascias vacuas (\(n>N_s\)) per \(\Delta\) rigide transfert, occupatis et E<sub>F</sub> non mutatis. \(\Delta\) dari potest, ex hiatu relationis (experimentali, HSE06 vel GW) computari, vel exemplari empirico PBE → G<sub>0</sub>W<sub>0</sub> Morales-García, Valero et Illas (2017), in 66 solidis accommodato, aestimari.</p>
+<p>\[ E_g^\mathrm{DFT}=E_\mathrm{CBM}-E_\mathrm{VBM},\qquad \varepsilon^\mathrm{corr}_{n\mathbf k s}=\varepsilon_{n\mathbf k s}+\Delta\,\Theta(n-N_s),\qquad \Delta_\mathrm{ref}=E_g^\mathrm{ref}-E_g^\mathrm{DFT},\qquad E_g^{G_0W_0}\approx 1{,}358\,E_g^\mathrm{PBE}+0{,}904\ \mathrm{eV} \]</p>
+<p>Limites: forfex neque dispersionem fasciarum neque massas efficaces neque positionem graduum vitii vacuorum in hiatu corrigit; exemplar empiricum pro PBE valet (non LDA), hiatum non nullum requirit et aliquot decimas eV errat (Si: 1,74 eV aestimatum contra 1,17 eV experimentale). In supercellulis cum vitio, Δ materiae purae praefer. Ad vere corrigendum, computationem cum HSE06, rSCAN vel DFT+U repete. In linea mandatorum: <code>--gap-corr mvi</code>, <code>--gap-corr ref --gap-ref 1.17</code> vel <code>--gap-corr tesoura --tesoura 0.5</code>.</p>
+<h3>Onera: Mulliken, Voronoi et Bader</h3>
+<ul>
+  <li><b>Mulliken</b> (CASTEP et ORCA): ex exitu programmatis lectum; onus \(q_a=Z_a-N_a\).</li>
+  <li><b>Voronoi:</b> \(N_a=\int_{V_a}\rho\,dV\), cum \(V_a\) puncta atomo proxima \(a\) (vel, in versione radicali, quae minuunt \(|\mathbf r-\mathbf R_a|^2-r_a^2\)).</li>
+  <li><b>Bader</b> <a href="#r-bader">[14]</a>: quodque punctum reticuli gradientem ρ ad maximum sequitur (algorithmus Henkelman in reticulo); alvei in eodem atomo desinentes summant \(N_a\). Momentum magneticum: \(m_a=\int_{V_a}(\rho_\uparrow-\rho_\downarrow)\,dV\) in μ<sub>B</sub>. In linea mandatorum, margines alveorum methodo <i>near-grid</i> (Tang, Sanville et Henkelman, 2009) emendantur, quae verum gradientem ρ sequitur et inclinationem reticuli tollit; effectus ab exsecutione relationis (pybader) minus quam 0,001 e per atomum medie differt.</li>
+</ul>
+<h3>Vitium, distortio et thermodynamica</h3>
+<p>\[ E_f=E_\mathrm{def}-E_\mathrm{puro}-\sum_i n_i\mu_i,\qquad \Delta H=\frac{E-\sum_iN_i\mu_i}{N_\mathrm H/2},\qquad T_d=\frac{\Delta H}{\Delta S},\qquad \langle\lambda\rangle=\frac1n\sum_i\Big(\frac{d_i}{l_0}\Big)^2 \]</p>
+<h3>Densitas et differentia densitatis</h3>
+<p>\[ \Delta\rho=\rho_\mathrm{def}-\rho_\mathrm{ref}\ [-\rho_C],\qquad Q_\mathrm{red}=\tfrac12\!\int|\Delta\rho|\,dV,\qquad \mathbf p=\int(\mathbf r-\mathbf r_c)\Delta\rho\,dV,\qquad \Delta Q(r)=\int_0^r\overline{\Delta\rho}\,4\pi r'^2dr' \]</p>
+<h3>Exempla vera (unum per programma)</h3>
+<p>Effectus ex veris fasciculis exitus obtenti; eos adhibe ut installationem probes.</p>
+<div class="tw"><table>
+<tr><th>Programma et systema</th><th>Mandatum</th><th>Effectus</th></tr>
+<tr><td>CASTEP · MgH₂:Fe (supercellula 162 atomorum, spin)</td><td><code>brumare mgh2_Fe -e Mg,H,Fe</code></td><td>E<sub>F</sub> = 1,837 eV; hiatus totus 1,394 eV, indirectus M→R; Fe–H 1,649–1,653 Å</td></tr>
+<tr><td>VASP · Si (fasciae modo lineae)</td><td><code>brumare Si_bands/</code></td><td>hiatus 0,614 eV indirectus (Γ→prope X); m*<sub>e</sub> = 0,94 m<sub>e</sub>; m*<sub>h</sub>(Γ) = 0,32 m<sub>e</sub></td></tr>
+<tr><td>VASP · Fe₂O₃ ferromagneticum (LDA+U)</td><td><code>brumare FeO_ldau/</code></td><td>56 electrones ↑ et 36 ↓: momentum 20 μ<sub>B</sub> (4 Fe³⁺ spin alti)</td></tr>
+<tr><td>SIESTA · SrTiO₃</td><td><code>brumare SrTiO3</code></td><td>hiatus 2,25 eV indirectus R→Γ; O 2p in valentia; Ti 3d t<sub>2g</sub>/e<sub>g</sub> in conductione; ∫ρ = 40,000 e</td></tr>
+<tr><td>Quantum ESPRESSO · Si</td><td><code>brumare capsa_cum_xml/</code></td><td>hiatus 1,32 eV inter duo puncta k probationis (reticulum crassum)</td></tr>
+<tr><td>ORCA · divinylbenzenum (molecula)</td><td><code>brumare dvb_sp.out</code></td><td>hiatus HOMO–LUMO 5,18 eV; onera Mulliken et Löwdin</td></tr>
+<tr><td>Comparatio programmatum</td><td><code>brumare --comparar mgh2_Fe,Si_bands/,SrTiO3</code></td><td>tabula <code>comparacao.dat</code>, DOS superpositae, fasciae iuxta et <code>comparacao_citacao.bib</code></td></tr>
+</table></div>
+
+<h2 id="cuidados">19. Cautiones et limites</h2>
+<ul>
+  <li><b>DOS viae fasciarum</b> tantum illustrandi causa est; pro numeris, reticulum densum adhibe.</li>
+  <li><b>Hiatus et margines</b> tantum ex punctis k viae veniunt.</li>
+  <li><b>Partes m et t<sub>2g</sub>/e<sub>g</sub></b> in axibus Cartesianis cellulae sunt.</li>
+  <li><b>Energiae ad 0 K</b> energiam puncti nulli non habent; T<sub>d</sub> aestimatio est ad inclinationes comparandas.</li>
+  <li><b>Eadem parametra:</b> tantum computationes eodem functionali, limite, pseudopotentialibus et U compara.</li>
+  <li><b>Onera Voronoi</b> aestimationes sunt; pro numeris quantitativis, Bader adhibe.</li>
+  <li><b>Δρ cum reticulis vel voluminibus diversis</b> iterum capitur. Optima sunt reticula identica, cum <code>dif_puro_fixo</code>.</li>
+</ul>
+<h2 id="citar">20. Quomodo citare</h2>
+<p>Si BrUMaRe operi tuo profuit, programma cita et, cum convenit, dissertationem et thesim auctoris. Cita etiam CASTEP <a href="#r-clark">[1]</a> (vel VASP vel SIESTA) et VESTA <a href="#r-vesta">[15]</a>, si eo usus es. Bulla <b>Citare (.bib)</b> instrumenti <code>.bib</code> depromit cum iis ipsis quae adhibuisti. Depromenda: <a href="brumare.bib" download>brumare.bib</a> · <a href="CITATION.cff" download>CITATION.cff</a> · <a href="brumare-tutorial.la.pdf" download>institutio in PDF</a> · <a href="brumare-tutorial.tex" download>fons LaTeX (Lusitanice)</a>.</p>
+<h3>ABNT (NBR 6023)</h3>
+<p class="hint">Citationes in lingua originali servantur, ut editae sunt.</p>
+<!--keep-citations-->
+<h2 id="biblio">21. Opera citata</h2>
+<!--keep-references-->
+</article>
+</div>

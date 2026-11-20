@@ -1,0 +1,2669 @@
+ +-------------------------------------------------+
+ |                                                 |
+ |      CCC   AA    SSS  TTTTT  EEEEE  PPPP        |
+ |     C     A  A  S       T    E      P   P       |
+ |     C     AAAA   SS     T    EEE    PPPP        |
+ |     C     A  A     S    T    E      P           |
+ |      CCC  A  A  SSS     T    EEEEE  P           |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ | Welcome to Academic Release CASTEP version 26.11|
+ | Ab Initio Total Energy Program                  |
+ |                                                 |
+ | Authors:                                        |
+ | M. Segall, M. Probert, C. Pickard, P. Hasnip,   |
+ | S. Clark, K. Refson, J. R. Yates,               |
+ | A. Bartok-Partay, M. Payne                      |
+ |                                                 |
+ | Contributors:                                   |
+ | P. Lindan, P. Haynes, J. White, V. Milman,      |
+ | N. Govind, M. Gibson, P. Tulip, V. Cocula,      |
+ | B. Montanari, D. Quigley, M. Glover,            |
+ | L. Bernasconi, A. Perlov, M. Plummer,           |
+ | E. McNellis, J. Meyer, J. Gale, D. Jochym       |
+ | J. Aarons, B. Walker, R. Gillen, D. Jones       |
+ | T. Green, I. J. Bush, C. J. Armstrong,          |
+ | E. J. Higgins, E. L. Brown, M. S. McFly,        |
+ | J. Wilkins, B-C. Shih, P. J. P. Byrne,          |
+ | R. J. Maurer, J. C. Womack, J. Dziedzic,        |
+ | L. LeBlanc, T. K. Stenczel, J. Kermode,         |
+ | S. Sturniolo, B. Shi, B. Durham, M. Evans,      |
+ | M. J. Smith, A. Tamerus, Z. Hawkhead,           |
+ | V. Ravindran, T. Hollins, S. A. Joyce,          |
+ | R. T. Strong, A. M. Reilly, S. J. Donaldson,    |
+ | J. C. A. Prentice, A. Dean, A. Christison,      |
+ | S. Butler, K. Brown                             |
+ |                                                 |
+ | Copyright (c) 2000 - 2025                       |
+ |                                                 |
+ |     Distributed under license from Cambridge    |
+ |     Enterprise for academic use only.           |
+ |                                                 |
+ | Please cite                                     |
+ |                                                 |
+ |     "First principles methods using CASTEP"     |
+ |                                                 |
+ |         Zeitschrift fuer Kristallographie       |
+ |           220(5-6) pp. 567-570 (2005)           |
+ |                                                 |
+ | S. J. Clark, M. D. Segall, C. J. Pickard,       |
+ | P. J. Hasnip, M. J. Probert, K. Refson,         |
+ | M. C. Payne                                     |
+ |                                                 |
+ |       in all publications arising from          |
+ |              your use of CASTEP                 |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ |              http://www.castep.org              |
+ |                                                 |
+ +-------------------------------------------------+
+ 
+ 
+ 
+ Compiled for linux_x86_64_ifort on Mon, 24 Aug 2026 12:43:23 -0300
+ from code version b7f537205  Castep261_branch  Tue Feb 24 20:22:20 2026 +0000
+ Compiler: Intel Fortran 2021.3.0; Optimisation: fast
+ Comms   : Intel(R) MPI Library 2021.3 for Linux* OS
+ MATHLIBS: Intel MKL(2021.3-Product) (LAPACK version 3.9.0)
+ FFT Lib : mkl
+ Fundamental constants values: CODATA 2022
+ 
+ Run started: Tue, 10 Nov 2026 12:09:28 -0300
+ 
+ Atomic calculation performed for H: 1s1
+ 
+ Converged in 41 iterations to an ae energy of -12.488 eV
+ 
+   ============================================================                
+   | Pseudopotential Report - Date of generation 10-11-2026   |                
+   ------------------------------------------------------------                
+   | Element: H Ionic charge:  1.00 Level of theory: PBE      |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            1s              1.000           -0.239        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.239   0.599     qc      0         |                
+   |          2      0    0.250   0.599     qc      0         |                
+   |         loc     1    0.000   0.599     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 0.421                       |                
+   | No partial core correction                               |                
+   ------------------------------------------------------------                
+   | "1|0.6|13|15|17|10(qc=8)"                                |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ 
+ Atomic calculation performed for Mg: 1s2 2s2 2p6 3s2
+ 
+ Converged in 57 iterations to an ae energy of -5449.889 eV
+ 
+   ============================================================                
+   | Pseudopotential Report - Date of generation 10-11-2026   |                
+   ------------------------------------------------------------                
+   | Element: Mg Ionic charge: 10.00 Level of theory: PBE     |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            2s              2.000           -2.934        |                
+   |            2p              6.000           -1.713        |                
+   |            3s              2.000           -0.173        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -2.934   1.804     qc      0         |                
+   |          2      0   -0.173   1.804     qc      0         |                
+   |          3      0    0.250   1.804     qc      0         |                
+   |          4      1   -1.713   1.804     qc      0         |                
+   |          5      1    0.250   1.804     qc      0         |                
+   |          6      2    0.000   1.804     qc      0         |                
+   |          7      2    0.250   1.804     qc      0         |                
+   |         loc     3    0.000   1.804     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.261                       |                
+   | Partial core correction Rc = 1.261                       |                
+   ------------------------------------------------------------                
+   | "3|1.8|7|8|9|20U:30:21:32"                               |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ 
+ Atomic calculation performed for Fe: 1s2 2s2 2p6 3s2 3p6 3d6 4s2
+ 
+ Converged in 97 iterations to an ae energy of -34625.102 eV
+ 
+   ============================================================                
+   | Pseudopotential Report - Date of generation 10-11-2026   |                
+   ------------------------------------------------------------                
+   | Element: Fe Ionic charge:  8.00 Level of theory: PBE     |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            3d              6.000           -0.276        |                
+   |            4s              2.000           -0.194        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.194   2.399     qc      0         |                
+   |          2      0    0.250   2.399     qc      0         |                
+   |          3      1    0.000   2.399     qc      0         |                
+   |          4      1    0.250   2.399     qc      0         |                
+   |          5      2   -0.276   1.997     qc      0         |                
+   |          6      2    0.250   1.997     qc      0         |                
+   |         loc     3    0.000   2.399     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.000                       |                
+   | Partial core correction Rc = 1.000                       |                
+   ------------------------------------------------------------                
+   | "3|2.4|2.4|1.0|8|9|10|40:41:32U2U2(qc=5.5)"              |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ 
+ Pseudo atomic calculation performed for H 1s1
+ 
+ Converged in 16 iterations to a total energy of -12.4592 eV
+ 
+ Pseudo atomic calculation performed for Mg 2s2 2p6 3s2
+ 
+ Converged in 25 iterations to a total energy of -1688.3152 eV
+ 
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+ 
+ Converged in 39 iterations to a total energy of -853.7864 eV
+
+********************** HOW THIS CASTEP CALCULATION WILL RUN ********************
+This CASTEP executable was built with:
+
+   Support for MPI-parallelism; MPI version 3.1
+   Support for OpenMP threading; OpenMP version 201611
+
+This calculation will use 128 CPU cores in total:
+
+   MPI processes:                         64
+   OpenMP threads per process:             2                                                           
+   Max. threads in maths library:          1
+   Max. threads in FFT library:            1
+
+Calculation is not split into farms.
+Data is distributed over 64 MPI processes by G-vector (4-way) and k-point (16-way).                 
+ 
+The number and performance of OpenMP threads depend particularly on these environment variables:
+ 
+   CASTEP_NUM_THREADS                  not set                                                                                             
+   CASTEP_MATHLIBS_NUM_THREADS         not set                                                                                             
+   CASTEP_FFT_NUM_THREADS              not set                                                                                             
+   OMP_NUM_THREADS                     2
+   OMP_WAIT_POLICY                     not set; recommend setting to active                                                                
+   OMP_PLACES                          not set                                                                                             
+   OMP_PROC_BIND                       not set                                                                                             
+   OMP_STACKSIZE                       not set; recommend setting to at least 16M                                                          
+
+ ************************************ Title ************************************
+ 
+
+ ***************************** General Parameters ******************************
+  
+ output verbosity                               : normal  (1)
+ write checkpoint data to                       : mgh2_Fe.check
+ type of calculation                            : Electronic Spectroscopy
+ stress calculation                             : off
+ density difference calculation                 : off
+ electron localisation func (ELF) calculation   : off
+ Hirshfeld analysis                             : off
+ polarisation (Berry phase) analysis            : off
+ molecular orbital projected DOS                : off
+ deltaSCF calculation                           : off
+ unlimited duration calculation
+ timing information                             : on
+ memory usage estimate                          : on
+ write extra output files                       : on
+ write final potential to formatted file        : off
+ write final density to formatted file          : on
+ write BibTeX reference list                    : on
+ write OTFG pseudopotential files               : on
+ write electrostatic potential file             : on
+ write bands file                               : on
+ checkpoint writing                             : both castep_bin and check files
+  
+ output         length unit                     : A
+ output           mass unit                     : amu
+ output           time unit                     : ps
+ output         charge unit                     : e
+ output           spin unit                     : hbar/2
+ output         energy unit                     : eV
+ output          force unit                     : eV/A
+ output       velocity unit                     : A/ps
+ output       pressure unit                     : GPa
+ output     inv_length unit                     : 1/A
+ output      frequency unit                     : cm-1
+ output force constant unit                     : eV/A**2
+ output         volume unit                     : A**3
+ output   IR intensity unit                     : (D/A)**2/amu
+ output         dipole unit                     : D
+ output         efield unit                     : eV/A/e
+ output        entropy unit                     : J/mol/K
+ output    efield chi2 unit                     : pm/V
+  
+ wavefunctions paging                           : none
+ random number generator seed                   :  120928109
+ data distribution                              : optimal for this architecture
+ optimization strategy                          : balance speed and memory
+
+ *********************** Exchange-Correlation Parameters ***********************
+  
+ using functional                               : Perdew Burke Ernzerhof
+ relativistic treatment                         : Koelling-Harmon
+ DFT+D: Semi-empirical dispersion correction    : off
+
+ ************************* Pseudopotential Parameters **************************
+  
+ pseudopotential representation                 : reciprocal space
+ <beta|phi> representation                      : reciprocal space
+ spin-orbit coupling                            : off
+
+ **************************** Basis Set Parameters *****************************
+  
+ plane wave basis set cut-off                   :   450.0000   eV
+ size of standard grid                          :     2.0000
+ size of   fine   gmax                          :    21.7358   1/A
+ finite basis set correction                    : none
+
+ **************************** Electronic Parameters ****************************
+  
+ number of  electrons                           :  646.0    
+ net charge of system                           :  0.000    
+ net spin   of system                           :  0.000    
+ number of  up  spins                           :  323.0    
+ number of down spins                           :  323.0    
+ treating system as spin-polarized
+ number of bands                                :        323
+
+ ********************* Electronic Minimization Parameters **********************
+  
+ Method: Treating system as non-metallic,
+         and number of  SD  steps               :          1
+         and number of  CG  steps               :          4
+  
+ total energy / atom convergence tol.           : 0.1000E-06   eV
+ eigen-energy convergence tolerance             : 0.1000E-04   eV
+ max force / atom convergence tol.              : ignored
+ convergence tolerance window                   :          3   cycles
+ max. number of SCF cycles                      :        100
+ periodic dipole correction                     : NONE
+
+ ************************** Density Mixing Parameters **************************
+  
+ density-mixing scheme                          : Pulay
+ max. length of mixing history                  :         20
+ charge density mixing amplitude                : 0.2000    
+   spin density mixing amplitude                :  2.000    
+ cut-off energy for mixing                      :  450.0       eV
+
+ ******************* Mulliken Population Analysis Parameters *******************
+  
+ Mulliken analysis with cutoff                  :  3.000       A
+ Mulliken analysis output                       : summary and pdos components
+ Mulliken partial DOS weights calculated
+
+ ********************* Electronic Spectroscopy Parameters **********************
+  
+ electronic spectroscopy with theory level      : DFT       
+ spectroscopy calculation                       : band structure
+ max. number of iterations                      :         60
+ max. steps per iteration                       :          5
+ number of bands / k-point                      :        413
+ band convergence tolerance                     : 0.1000E-05   eV
+ write orbitals file                            : off
+
+ *******************************************************************************
+  
+ 
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)                      Reciprocal Lattice(1/A)
+    13.5191028     0.0296945     0.0000024        0.464765726  -0.001020850   0.000000345
+     0.0296945    13.5191029     0.0000025       -0.001020850   0.464765721   0.000000341
+    -0.0000067    -0.0000066     9.0006501       -0.000000122  -0.000000128   0.698081278
+ 
+                       Lattice parameters(A)       Cell Angles
+                    a =     13.519135          alpha =   90.000032
+                    b =     13.519136          beta  =   90.000033
+                    c =      9.000650          gamma =   89.748302
+ 
+                       Current cell volume =          1645.006153       A**3
+                                   density =             0.883199   AMU/A**3
+                                           =             1.466586     g/cm^3
+ 
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+                         Total number of ions in cell =  162
+                      Total number of species in cell =    3
+                        Max number of any one species =  108
+ 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms  x
+            x            Number           u          v          w      x
+            x----------------------------------------------------------x
+            x  H            1         0.234196   0.234196  -0.000002   x 
+            x  H            2         0.765897   0.765897   0.000061   x 
+            x  H            3         0.934333   0.398747   0.166356   x 
+            x  H            4         0.398747   0.934333   0.166356   x 
+            x  H            5         0.232208   0.232208   0.331540   x 
+            x  H            6         0.767896   0.767896   0.668570   x 
+            x  H            7         0.767891   0.767891   0.331560   x 
+            x  H            8         0.232185   0.232185   0.668447   x 
+            x  H            9         0.933669   0.398566   0.500045   x 
+            x  H           10         0.398770   0.934333   0.833725   x 
+            x  H           11         0.398566   0.933669   0.500045   x 
+            x  H           12         0.934333   0.398770   0.833725   x 
+            x  H           13         0.232138   0.564938   0.000030   x 
+            x  H           14         0.767877   0.434942   0.000098   x 
+            x  H           15         0.599759   0.400438   0.162098   x 
+            x  H           16         0.731796   0.935182   0.166602   x 
+            x  H           17         0.935182   0.731796   0.166602   x 
+            x  H           18         0.400438   0.599759   0.162098   x 
+            x  H           19         0.564938   0.232138   0.000030   x 
+            x  H           20         0.434942   0.767877   0.000098   x 
+            x  H           21         0.234847   0.562401   0.334638   x 
+            x  H           22         0.765269   0.437467   0.665520   x 
+            x  H           23         0.765286   0.437452   0.334654   x 
+            x  H           24         0.234801   0.562428   0.665478   x 
+            x  H           25         0.586665   0.413777   0.499993   x 
+            x  H           26         0.731905   0.935270   0.833543   x 
+            x  H           27         0.731368   0.935052   0.500039   x 
+            x  H           28         0.599659   0.400364   0.838095   x 
+            x  H           29         0.935270   0.731905   0.833543   x 
+            x  H           30         0.413777   0.586665   0.499993   x 
+            x  H           31         0.400364   0.599659   0.838095   x 
+            x  H           32         0.935052   0.731368   0.500039   x 
+            x  H           33         0.562428   0.234801   0.665478   x 
+            x  H           34         0.437452   0.765286   0.334654   x 
+            x  H           35         0.437467   0.765269   0.665520   x 
+            x  H           36         0.562401   0.234847   0.334638   x 
+            x  H           37         0.232967   0.897219   0.000081   x 
+            x  H           38         0.766832   0.102774   0.000045   x 
+            x  H           39         0.273555   0.402068   0.170708   x 
+            x  H           40         0.065812   0.934036   0.166784   x 
+            x  H           41         0.934036   0.065812   0.166784   x 
+            x  H           42         0.402068   0.273555   0.170708   x 
+            x  H           43         0.897219   0.232967   0.000081   x 
+            x  H           44         0.102774   0.766832   0.000045   x 
+            x  H           45         0.233404   0.896783   0.334235   x 
+            x  H           46         0.766394   0.103255   0.665843   x 
+            x  H           47         0.766399   0.103222   0.334287   x 
+            x  H           48         0.233422   0.896788   0.665847   x 
+            x  H           49         0.260408   0.392135   0.499998   x 
+            x  H           50         0.065817   0.934018   0.833288   x 
+            x  H           51         0.066345   0.933494   0.500030   x 
+            x  H           52         0.273536   0.402078   0.829323   x 
+            x  H           53         0.934018   0.065817   0.833288   x 
+            x  H           54         0.392135   0.260408   0.499998   x 
+            x  H           55         0.402078   0.273536   0.829323   x 
+            x  H           56         0.933494   0.066345   0.500030   x 
+            x  H           57         0.896788   0.233421   0.665847   x 
+            x  H           58         0.103222   0.766399   0.334287   x 
+            x  H           59         0.103255   0.766394   0.665843   x 
+            x  H           60         0.896783   0.233404   0.334235   x 
+            x  H           61         0.563286   0.563286   0.000053   x 
+            x  H           62         0.436913   0.436913   0.000122   x 
+            x  H           63         0.598026   0.726708   0.170789   x 
+            x  H           64         0.726708   0.598026   0.170789   x 
+            x  H           65         0.560066   0.560067   0.367903   x 
+            x  H           66         0.440315   0.440315   0.632173   x 
+            x  H           67         0.440288   0.440288   0.368014   x 
+            x  H           68         0.560064   0.560064   0.632222   x 
+            x  H           69         0.608124   0.740001   0.500059   x 
+            x  H           70         0.726691   0.598045   0.829427   x 
+            x  H           71         0.740000   0.608124   0.500059   x 
+            x  H           72         0.598045   0.726691   0.829427   x 
+            x  H           73         0.566420   0.896674   0.000093   x 
+            x  H           74         0.433249   0.103532   0.000064   x 
+            x  H           75         0.270339   0.729511   0.170458   x 
+            x  H           76         0.065740   0.600982   0.166392   x 
+            x  H           77         0.600982   0.065740   0.166392   x 
+            x  H           78         0.729511   0.270339   0.170458   x 
+            x  H           79         0.896674   0.566420   0.000093   x 
+            x  H           80         0.103532   0.433249   0.000064   x 
+            x  H           81         0.564572   0.899712   0.332067   x 
+            x  H           82         0.435078   0.100501   0.668003   x 
+            x  H           83         0.435093   0.100514   0.332030   x 
+            x  H           84         0.564613   0.899678   0.668098   x 
+            x  H           85         0.275917   0.724061   0.500074   x 
+            x  H           86         0.065686   0.600990   0.833710   x 
+            x  H           87         0.066340   0.601206   0.500071   x 
+            x  H           88         0.270432   0.729522   0.829680   x 
+            x  H           89         0.600990   0.065686   0.833710   x 
+            x  H           90         0.724061   0.275917   0.500074   x 
+            x  H           91         0.729522   0.270432   0.829680   x 
+            x  H           92         0.601206   0.066340   0.500071   x 
+            x  H           93         0.899678   0.564613   0.668098   x 
+            x  H           94         0.100514   0.435093   0.332030   x 
+            x  H           95         0.100501   0.435078   0.668003   x 
+            x  H           96         0.899712   0.564572   0.332067   x 
+            x  H           97         0.898024   0.898024   0.000088   x 
+            x  H           98         0.101942   0.101942   0.000025   x 
+            x  H           99         0.267953   0.064735   0.166575   x 
+            x  H          100         0.064735   0.267953   0.166575   x 
+            x  H          101         0.898363   0.898363   0.333591   x 
+            x  H          102         0.101605   0.101605   0.666437   x 
+            x  H          103         0.101607   0.101607   0.333521   x 
+            x  H          104         0.898349   0.898349   0.666471   x 
+            x  H          105         0.268467   0.064924   0.499976   x 
+            x  H          106         0.064740   0.267954   0.833507   x 
+            x  H          107         0.064924   0.268467   0.499976   x 
+            x  H          108         0.267954   0.064740   0.833507   x 
+            x  Mg           1         0.167037   0.167037   0.166783   x 
+            x  Mg           2         0.833020   0.833020   0.833260   x 
+            x  Mg           3         0.832997   0.832997   0.166850   x 
+            x  Mg           4         0.167026   0.167026   0.833205   x 
+            x  Mg           5         0.999573   0.333461   0.333269   x 
+            x  Mg           6         0.333338   0.999867   1.000038   x 
+            x  Mg           7         0.333461   0.999573   0.333269   x 
+            x  Mg           8         0.999867   0.333338   1.000038   x 
+            x  Mg           9         0.167459   0.167459   0.499987   x 
+            x  Mg          10         0.832555   0.832555   0.500045   x 
+            x  Mg          11         0.999582   0.333447   0.666780   x 
+            x  Mg          12         0.333447   0.999582   0.666780   x 
+            x  Mg          13         0.167591   0.499996   0.167076   x 
+            x  Mg          14         0.832519   0.499837   0.833064   x 
+            x  Mg          15         0.832528   0.499826   0.167116   x 
+            x  Mg          16         0.167533   0.499988   0.832997   x 
+            x  Mg          17         0.657906   0.342108   0.333771   x 
+            x  Mg          18         0.666432   1.000172   1.000068   x 
+            x  Mg          19         0.666339   1.000452   0.333292   x 
+            x  Mg          20         0.667167   0.332775   1.000070   x 
+            x  Mg          21         1.000172   0.666432   1.000068   x 
+            x  Mg          22         0.342108   0.657906   0.333772   x 
+            x  Mg          23         0.332775   0.667167   1.000070   x 
+            x  Mg          24         1.000452   0.666339   0.333292   x 
+            x  Mg          25         0.499988   0.167533   0.832996   x 
+            x  Mg          26         0.499826   0.832528   0.167116   x 
+            x  Mg          27         0.499837   0.832519   0.833064   x 
+            x  Mg          28         0.499996   0.167591   0.167076   x 
+            x  Mg          29         0.166445   0.498857   0.500040   x 
+            x  Mg          30         0.833646   0.501020   0.500083   x 
+            x  Mg          31         0.657831   0.342182   0.666334   x 
+            x  Mg          32         0.666377   1.000416   0.666814   x 
+            x  Mg          33         1.000416   0.666378   0.666814   x 
+            x  Mg          34         0.342182   0.657831   0.666334   x 
+            x  Mg          35         0.498857   0.166445   0.500040   x 
+            x  Mg          36         0.501020   0.833646   0.500084   x 
+            x  Mg          37         0.168266   0.831587   0.167239   x 
+            x  Mg          38         0.831587   0.168327   0.832871   x 
+            x  Mg          39         0.831587   0.168265   0.167239   x 
+            x  Mg          40         0.168327   0.831587   0.832871   x 
+            x  Mg          41         0.334446   0.334446   0.338920   x 
+            x  Mg          42        -0.000016   0.999984   1.000015   x 
+            x  Mg          43        -0.000017   0.999983   0.334122   x 
+            x  Mg          44         0.336426   0.336426   0.999980   x 
+            x  Mg          45         0.169921   0.830005   0.500056   x 
+            x  Mg          46         0.830005   0.169921   0.500056   x 
+            x  Mg          47         0.334426   0.334426   0.661124   x 
+            x  Mg          48        -0.000032   0.999968   0.665953   x 
+            x  Mg          49         0.500127   0.500127   0.178664   x 
+            x  Mg          50         0.500115   0.500115   0.821552   x 
+            x  Mg          51         0.665737   0.665737   0.339011   x 
+            x  Mg          52         0.663746   0.663746   1.000088   x 
+            x  Mg          53         0.665744   0.665744   0.661185   x 
+            x  Fe           1         0.500211   0.500211   0.500067   x 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 
+ 
+                         No user defined ionic velocities
+ 
+                           -------------------------------
+                                   Details of Species
+                           -------------------------------
+ 
+                               Mass of species in AMU
+                                    H    1.0079400
+                                    Mg   24.3050000
+                                    Fe   55.8450001
+ 
+                          Electric Quadrupole Moment (Barn)
+                                    H    0.0028600 Isotope   2
+                                    Mg    0.1994000 Isotope  25
+                                    Fe    0.1600000 Isotope  57
+ 
+                          Files used for pseudopotentials:
+                                    H 1|0.6|13|15|17|10(qc=8)
+                                    Mg 3|1.8|7|8|9|20U:30:21:32
+                                    Fe 3|2.4|2.4|1.0|8|9|10|40:41:32U2U2(qc=5.5)
+ 
+                           -------------------------------
+                              k-Points For BZ Sampling
+                           -------------------------------
+                       MP grid size for SCF calculation is  6  6  8
+                            with an offset of   0.000  0.000  0.000
+                       Number of kpoints used =           144
+ 
+                           -------------------------------
+                               Symmetry and Constraints
+                           -------------------------------
+              Full crystallographic space group =     8: Cm, C -2y
+ 
+              Active space group of calculation =     1: P1, P 1
+ 
+              Active symmetry is reduced from full space group. This may be because
+                   - symmetry is explicitly specified by %BLOCK SYMMETRY_OPS
+ 
+                      Maximum deviation from symmetry = 0.150092E-14     ANG
+ 
+                      Number of symmetry operations   =           1
+                      Number of ionic constraints     =           3
+ 
+             Set iprint > 1 for details on symmetry rotations/translations
+ 
+                         Centre of mass is constrained
+             Set iprint > 2 for details of linear ionic constraints
+ 
+                         Number of cell constraints= 0
+                         Cell constraints are:  1 2 3 4 5 6
+ 
+                         External pressure/stress (GPa)
+                          0.00000   0.00000   0.00000
+                                    0.00000   0.00000
+                                              0.00000
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Baseline code, static data and system overhead     7876.0 MB         0.0 MB |
+| BLAS internal memory storage                          0.0 MB         0.0 MB |
+| Model and support data                             1730.6 MB         0.0 MB |
+| Electronic energy minimisation requirements        1804.3 MB         0.0 MB |
+| Force calculation requirements                       32.6 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process        11411.0 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+Calculating approximate eigenstates for fixed initial Hamiltonian
+Cut-off for approx. calculation is   89.988 eV
+Improving approx. states at cut-off of  225.000 eV
+Resetting cut-off to  450.000 eV
+Calculating total energy with cut-off of  450.000 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy                           Energy gain       Timer   <-- SCF
+                                               per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -9.17981889E+004                                        905.93  <-- SCF
+      1  -9.22101154E+004                    2.54275601E+000    1954.77  <-- SCF
+      2  -9.22121456E+004                    1.25324541E-002    3053.87  <-- SCF
+      3  -9.22024663E+004                   -5.97489162E-002    3813.00  <-- SCF
+      4  -9.21881393E+004                   -8.84380702E-002    4425.78  <-- SCF
+      5  -9.21883175E+004                    1.09949562E-003    5259.29  <-- SCF
+      6  -9.21886700E+004                    2.17621252E-003    5730.27  <-- SCF
+      7  -9.21886772E+004                    4.45890079E-005    6200.70  <-- SCF
+      8  -9.21886821E+004                    3.02463988E-005    6609.96  <-- SCF
+      9  -9.21886840E+004                    1.13533493E-005    7006.27  <-- SCF
+     10  -9.21886842E+004                    1.42771838E-006    7401.85  <-- SCF
+     11  -9.21886843E+004                    5.76964994E-007    7788.32  <-- SCF
+     12  -9.21886842E+004                   -7.65808206E-007    8181.74  <-- SCF
+     13  -9.21886839E+004                   -1.41324380E-006    8568.68  <-- SCF
+     14  -9.21886840E+004                    4.66959860E-007    8955.20  <-- SCF
+     15  -9.21886840E+004                   -1.12704413E-007    9341.43  <-- SCF
+     16  -9.21886840E+004                    3.54004446E-008    9727.86  <-- SCF
+     17  -9.21886840E+004                   -7.32642927E-009   10114.32  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Integrated Spin Density     =   -0.627799E-11 hbar/2
+Integrated |Spin Density|   =    0.709147E-02 hbar/2
+ 
+Final energy =  -92188.68399778     eV
+(energy not corrected for finite basis set)
+ 
+
+Writing analysis data to mgh2_Fe.castep_bin
+
+Writing model to mgh2_Fe.check
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+|                                               ----------------------------- |
+| Approx. total storage required per process         2022.4 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+ 
+  =====================================================================
+  +                                                                   +
+  +                 Calculation of Spectral Properties                +
+  +                                                                   +
+  + Calculation re-parallelised over 50 processes.                    +
+  + There are 25 k-points distributed across 25 k-point groups.       +
+  + Data distributed by G-vector(2-way), k-point(25-way), band(1-way) +
+  + Data distributed by G-vector(2-way), k-point(25-way)              +
+  +                                                                   +
+  =====================================================================
+ 
+ Pseudo atomic calculation performed for H 1s1
+ 
+ Converged in 16 iterations to a total energy of -12.4592 eV
+ 
+ Pseudo atomic calculation performed for Mg 2s2 2p6 3s2
+ 
+ Converged in 25 iterations to a total energy of -1688.3152 eV
+ 
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+ 
+ Converged in 39 iterations to a total energy of -853.7864 eV
+  Starting k-point:        1 of        1 Time:      0.00 sec  |<-- SPEC
+ 
+ Pseudo atomic calculation performed for H 1s1
+ 
+ Converged in 16 iterations to a total energy of -12.4592 eV
+ 
+ Pseudo atomic calculation performed for Mg 2s2 2p6 3s2
+ 
+ Converged in 25 iterations to a total energy of -1688.3152 eV
+ 
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+ 
+ Converged in 39 iterations to a total energy of -853.7864 eV
+  Starting k-point:        1 of        1 Time:    833.69 sec  |<-- SPEC
+ 
+ Pseudo atomic calculation performed for H 1s1
+ 
+ Converged in 16 iterations to a total energy of -12.4592 eV
+ 
+ Pseudo atomic calculation performed for Mg 2s2 2p6 3s2
+ 
+ Converged in 25 iterations to a total energy of -1688.3152 eV
+ 
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+ 
+ Converged in 39 iterations to a total energy of -853.7864 eV
+  Total time to compute matrix elements           1660.50 sec |<-- SPEC
+  
+  + Calculation re-parallelised over 64 processes.                    +
+  + Data distributed by G-vector(4-way), k-point(16-way)              +
+ 
+ ************************** Forces **************************
+ *                                                          *
+ *               Cartesian components (eV/A)                *
+ * -------------------------------------------------------- *
+ *                         x            y            z      *
+ *                                                          *
+ * H               1      0.01204      0.01203     -0.00028 *
+ * H               2     -0.01248     -0.01248     -0.00072 *
+ * H               3      0.00000      0.00285      0.00378 *
+ * H               4      0.00285      0.00000      0.00378 *
+ * H               5      0.00242      0.00242     -0.00915 *
+ * H               6     -0.00307     -0.00307      0.00925 *
+ * H               7     -0.00315     -0.00315     -0.00889 *
+ * H               8      0.00357      0.00357      0.00996 *
+ * H               9      0.01035     -0.00048      0.00005 *
+ * H              10      0.00185      0.00072     -0.00368 *
+ * H              11     -0.00048      0.01035      0.00005 *
+ * H              12      0.00072      0.00184     -0.00368 *
+ * H              13      0.00694     -0.00323     -0.00006 *
+ * H              14     -0.00551      0.00389     -0.00083 *
+ * H              15     -0.01196      0.01084     -0.01345 *
+ * H              16      0.00283      0.00492      0.00499 *
+ * H              17      0.00492      0.00283      0.00499 *
+ * H              18      0.01084     -0.01197     -0.01345 *
+ * H              19     -0.00324      0.00693     -0.00007 *
+ * H              20      0.00389     -0.00550     -0.00083 *
+ * H              21      0.00735      0.00674     -0.00232 *
+ * H              22     -0.00756     -0.00464      0.00228 *
+ * H              23     -0.00717     -0.00501     -0.00221 *
+ * H              24      0.00813      0.00624      0.00212 *
+ * H              25     -0.01601      0.01589      0.00084 *
+ * H              26      0.00117      0.00324     -0.00508 *
+ * H              27      0.00023      0.00939      0.00006 *
+ * H              28     -0.01117      0.01211      0.01258 *
+ * H              29      0.00325      0.00117     -0.00508 *
+ * H              30      0.01584     -0.01603      0.00085 *
+ * H              31      0.01209     -0.01116      0.01258 *
+ * H              32      0.00940      0.00023      0.00006 *
+ * H              33      0.00623      0.00810      0.00213 *
+ * H              34     -0.00502     -0.00715     -0.00221 *
+ * H              35     -0.00464     -0.00754      0.00228 *
+ * H              36      0.00673      0.00733     -0.00232 *
+ * H              37      0.00598     -0.00124     -0.00103 *
+ * H              38     -0.00586      0.00015     -0.00008 *
+ * H              39     -0.02182      0.01700      0.00776 *
+ * H              40      0.00282     -0.00254      0.00588 *
+ * H              41     -0.00254      0.00282      0.00588 *
+ * H              42      0.01700     -0.02182      0.00777 *
+ * H              43     -0.00124      0.00597     -0.00103 *
+ * H              44      0.00016     -0.00586     -0.00008 *
+ * H              45      0.00972      0.00053     -0.00281 *
+ * H              46     -0.00993     -0.00259      0.00337 *
+ * H              47     -0.00983     -0.00216     -0.00340 *
+ * H              48      0.00946      0.00076      0.00336 *
+ * H              49      0.00911      0.00947      0.00136 *
+ * H              50      0.00293     -0.00220     -0.00621 *
+ * H              51      0.00660     -0.00576      0.00042 *
+ * H              52     -0.02147      0.01651     -0.00814 *
+ * H              53     -0.00219      0.00292     -0.00621 *
+ * H              54      0.00945      0.00908      0.00136 *
+ * H              55      0.01651     -0.02148     -0.00814 *
+ * H              56     -0.00576      0.00660      0.00042 *
+ * H              57      0.00076      0.00946      0.00336 *
+ * H              58     -0.00216     -0.00983     -0.00340 *
+ * H              59     -0.00258     -0.00992      0.00337 *
+ * H              60      0.00053      0.00972     -0.00281 *
+ * H              61      0.00149      0.00149      0.00070 *
+ * H              62     -0.00308     -0.00308     -0.00099 *
+ * H              63     -0.01597      0.01964      0.00720 *
+ * H              64      0.01963     -0.01597      0.00720 *
+ * H              65      0.00379      0.00381      0.00220 *
+ * H              66     -0.00803     -0.00804     -0.00199 *
+ * H              67     -0.00655     -0.00656      0.00164 *
+ * H              68      0.00442      0.00443     -0.00021 *
+ * H              69     -0.01114     -0.01352      0.00110 *
+ * H              70      0.02086     -0.01723     -0.00884 *
+ * H              71     -0.01355     -0.01114      0.00110 *
+ * H              72     -0.01724      0.02087     -0.00884 *
+ * H              73      0.00625      0.00144     -0.00097 *
+ * H              74     -0.00517     -0.00291     -0.00093 *
+ * H              75      0.00024      0.00136      0.00695 *
+ * H              76     -0.00170      0.00035      0.00343 *
+ * H              77      0.00035     -0.00171      0.00343 *
+ * H              78      0.00136      0.00024      0.00695 *
+ * H              79      0.00144      0.00625     -0.00097 *
+ * H              80     -0.00290     -0.00517     -0.00092 *
+ * H              81     -0.00013     -0.00650     -0.00950 *
+ * H              82      0.00229      0.00645      0.01009 *
+ * H              83      0.00226      0.00603     -0.00907 *
+ * H              84     -0.00044     -0.00667      0.00949 *
+ * H              85     -0.00025     -0.00029      0.00020 *
+ * H              86     -0.00073     -0.00084     -0.00340 *
+ * H              87     -0.00979      0.00123     -0.00024 *
+ * H              88     -0.00186      0.00219     -0.00835 *
+ * H              89     -0.00084     -0.00073     -0.00341 *
+ * H              90     -0.00029     -0.00025      0.00020 *
+ * H              91      0.00219     -0.00186     -0.00835 *
+ * H              92      0.00122     -0.00979     -0.00024 *
+ * H              93     -0.00668     -0.00044      0.00948 *
+ * H              94      0.00605      0.00227     -0.00906 *
+ * H              95      0.00647      0.00230      0.01009 *
+ * H              96     -0.00651     -0.00014     -0.00950 *
+ * H              97     -0.00096     -0.00096     -0.00088 *
+ * H              98      0.00237      0.00237     -0.00086 *
+ * H              99     -0.00071     -0.00363      0.00493 *
+ * H             100     -0.00363     -0.00071      0.00493 *
+ * H             101      0.00057      0.00057     -0.00633 *
+ * H             102     -0.00024     -0.00024      0.00717 *
+ * H             103      0.00018      0.00018     -0.00540 *
+ * H             104      0.00172      0.00171      0.00687 *
+ * H             105      0.00074     -0.00946      0.00160 *
+ * H             106     -0.00392     -0.00066     -0.00594 *
+ * H             107     -0.00946      0.00074      0.00159 *
+ * H             108     -0.00066     -0.00392     -0.00594 *
+ * Mg              1      0.00034      0.00033      0.00388 *
+ * Mg              2     -0.00180     -0.00179     -0.00104 *
+ * Mg              3     -0.00138     -0.00137      0.00254 *
+ * Mg              4     -0.00007     -0.00008     -0.00214 *
+ * Mg              5      0.00016      0.00228     -0.00031 *
+ * Mg              6      0.00149     -0.00245      0.00042 *
+ * Mg              7      0.00229      0.00014     -0.00031 *
+ * Mg              8     -0.00244      0.00148      0.00043 *
+ * Mg              9     -0.00079     -0.00080     -0.00105 *
+ * Mg             10     -0.00083     -0.00082     -0.00078 *
+ * Mg             11     -0.00006      0.00250      0.00030 *
+ * Mg             12      0.00251     -0.00007      0.00030 *
+ * Mg             13     -0.00077      0.00178      0.00418 *
+ * Mg             14     -0.00167     -0.00036     -0.00397 *
+ * Mg             15     -0.00170     -0.00015      0.00393 *
+ * Mg             16      0.00001      0.00291     -0.00349 *
+ * Mg             17     -0.00204      0.00233     -0.00194 *
+ * Mg             18      0.00036      0.00117     -0.00029 *
+ * Mg             19     -0.00114     -0.00123      0.00041 *
+ * Mg             20     -0.00161      0.00251      0.00050 *
+ * Mg             21      0.00119      0.00037     -0.00029 *
+ * Mg             22      0.00229     -0.00203     -0.00193 *
+ * Mg             23      0.00252     -0.00161      0.00048 *
+ * Mg             24     -0.00121     -0.00113      0.00043 *
+ * Mg             25      0.00290     -0.00001     -0.00350 *
+ * Mg             26     -0.00017     -0.00171      0.00393 *
+ * Mg             27     -0.00037     -0.00166     -0.00397 *
+ * Mg             28      0.00177     -0.00079      0.00418 *
+ * Mg             29      0.00329     -0.00052     -0.00031 *
+ * Mg             30     -0.00598      0.00285     -0.00020 *
+ * Mg             31     -0.00143      0.00049      0.00183 *
+ * Mg             32     -0.00115      0.00054      0.00017 *
+ * Mg             33      0.00054     -0.00115      0.00015 *
+ * Mg             34      0.00048     -0.00145      0.00180 *
+ * Mg             35     -0.00054      0.00328     -0.00030 *
+ * Mg             36      0.00285     -0.00597     -0.00021 *
+ * Mg             37      0.00185      0.00017      0.00224 *
+ * Mg             38     -0.00081      0.00095     -0.00191 *
+ * Mg             39      0.00018      0.00183      0.00223 *
+ * Mg             40      0.00097     -0.00081     -0.00191 *
+ * Mg             41     -0.00045     -0.00044      0.00703 *
+ * Mg             42     -0.00017     -0.00017      0.00157 *
+ * Mg             43     -0.00009     -0.00011     -0.00205 *
+ * Mg             44      0.00225      0.00225      0.00294 *
+ * Mg             45      0.00368     -0.00355     -0.00026 *
+ * Mg             46     -0.00352      0.00365     -0.00025 *
+ * Mg             47      0.00078      0.00078     -0.00933 *
+ * Mg             48      0.00048      0.00047      0.00088 *
+ * Mg             49     -0.00016     -0.00014     -0.00387 *
+ * Mg             50     -0.00005     -0.00003      0.00305 *
+ * Mg             51     -0.00038     -0.00037      0.00738 *
+ * Mg             52     -0.00230     -0.00229      0.00161 *
+ * Mg             53     -0.00053     -0.00051     -0.00974 *
+ * Fe              1     -0.00084     -0.00083     -0.00016 *
+ *                                                          *
+ ************************************************************
+ 
+ Pseudo atomic calculation performed for H 1s1
+ 
+ Converged in 16 iterations to a total energy of -12.4592 eV
+ 
+ Pseudo atomic calculation performed for Mg 2s2 2p6 3s2
+ 
+ Converged in 25 iterations to a total energy of -1688.3152 eV
+ 
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+ 
+ Converged in 39 iterations to a total energy of -853.7864 eV
+Charge spilling parameter for spin component 1 = 0.19%
+Charge spilling parameter for spin component 2 = 0.19%
+ 
+                   Orbital Populations                  
+  ---------------------------------------------------------------
+     Ion    Atom   Orbital              Up        Down      Spin
+  ---------------------------------------------------------------
+      H     1      S                    0.732     0.732     0.000
+      H     2      S                    0.732     0.732    -0.000
+      H     3      S                    0.738     0.738     0.000
+      H     4      S                    0.738     0.738     0.000
+      H     5      S                    0.734     0.734    -0.000
+      H     6      S                    0.735     0.735    -0.000
+      H     7      S                    0.735     0.735     0.000
+      H     8      S                    0.734     0.734    -0.000
+      H     9      S                    0.738     0.738    -0.000
+      H    10      S                    0.738     0.738    -0.000
+      H    11      S                    0.738     0.738     0.000
+      H    12      S                    0.738     0.738     0.000
+      H    13      S                    0.736     0.736    -0.000
+      H    14      S                    0.736     0.736     0.000
+      H    15      S                    0.745     0.745    -0.000
+      H    16      S                    0.738     0.738     0.000
+      H    17      S                    0.738     0.738     0.000
+      H    18      S                    0.745     0.745     0.000
+      H    19      S                    0.736     0.736    -0.000
+      H    20      S                    0.736     0.736    -0.000
+      H    21      S                    0.736     0.736     0.000
+      H    22      S                    0.736     0.736     0.000
+      H    23      S                    0.736     0.736     0.000
+      H    24      S                    0.736     0.736    -0.000
+      H    25      S                    0.695     0.695     0.000
+      H    26      S                    0.738     0.738    -0.000
+      H    27      S                    0.737     0.737    -0.000
+      H    28      S                    0.745     0.745     0.000
+      H    29      S                    0.738     0.738     0.000
+      H    30      S                    0.695     0.695     0.000
+      H    31      S                    0.745     0.745     0.000
+      H    32      S                    0.737     0.737    -0.000
+      H    33      S                    0.736     0.736    -0.000
+      H    34      S                    0.736     0.736     0.000
+      H    35      S                    0.736     0.736     0.000
+      H    36      S                    0.736     0.736    -0.000
+      H    37      S                    0.736     0.736    -0.000
+      H    38      S                    0.736     0.736     0.000
+      H    39      S                    0.736     0.736     0.000
+      H    40      S                    0.735     0.735    -0.000
+      H    41      S                    0.735     0.735    -0.000
+      H    42      S                    0.736     0.736    -0.000
+      H    43      S                    0.736     0.736    -0.000
+      H    44      S                    0.736     0.736     0.000
+      H    45      S                    0.738     0.738    -0.000
+      H    46      S                    0.739     0.739     0.000
+      H    47      S                    0.739     0.739     0.000
+      H    48      S                    0.739     0.739    -0.000
+      H    49      S                    0.741     0.741     0.000
+      H    50      S                    0.735     0.735    -0.000
+      H    51      S                    0.732     0.732    -0.000
+      H    52      S                    0.736     0.736    -0.000
+      H    53      S                    0.735     0.735     0.000
+      H    54      S                    0.741     0.741    -0.000
+      H    55      S                    0.736     0.736    -0.000
+      H    56      S                    0.732     0.732     0.000
+      H    57      S                    0.739     0.739    -0.000
+      H    58      S                    0.739     0.739     0.000
+      H    59      S                    0.739     0.739    -0.000
+      H    60      S                    0.738     0.738    -0.000
+      H    61      S                    0.728     0.728     0.000
+      H    62      S                    0.728     0.728     0.000
+      H    63      S                    0.736     0.736    -0.000
+      H    64      S                    0.736     0.736    -0.000
+      H    65      S                    0.689     0.689     0.000
+      H    66      S                    0.689     0.689     0.000
+      H    67      S                    0.689     0.689     0.000
+      H    68      S                    0.689     0.689     0.000
+      H    69      S                    0.740     0.740    -0.000
+      H    70      S                    0.736     0.736    -0.000
+      H    71      S                    0.740     0.740     0.000
+      H    72      S                    0.736     0.736     0.000
+      H    73      S                    0.736     0.736    -0.000
+      H    74      S                    0.736     0.736     0.000
+      H    75      S                    0.732     0.732     0.000
+      H    76      S                    0.738     0.738    -0.000
+      H    77      S                    0.738     0.738    -0.000
+      H    78      S                    0.732     0.732     0.000
+      H    79      S                    0.736     0.736    -0.000
+      H    80      S                    0.736     0.736     0.000
+      H    81      S                    0.736     0.736    -0.000
+      H    82      S                    0.736     0.736    -0.000
+      H    83      S                    0.736     0.736     0.000
+      H    84      S                    0.736     0.736    -0.000
+      H    85      S                    0.729     0.729    -0.000
+      H    86      S                    0.738     0.738    -0.000
+      H    87      S                    0.738     0.738     0.000
+      H    88      S                    0.732     0.732     0.000
+      H    89      S                    0.738     0.738     0.000
+      H    90      S                    0.729     0.729    -0.000
+      H    91      S                    0.732     0.732     0.000
+      H    92      S                    0.738     0.738    -0.000
+      H    93      S                    0.736     0.736    -0.000
+      H    94      S                    0.736     0.736     0.000
+      H    95      S                    0.736     0.736     0.000
+      H    96      S                    0.736     0.736    -0.000
+      H    97      S                    0.736     0.736     0.000
+      H    98      S                    0.736     0.736    -0.000
+      H    99      S                    0.738     0.738    -0.000
+      H   100      S                    0.738     0.738     0.000
+      H   101      S                    0.736     0.736    -0.000
+      H   102      S                    0.736     0.736     0.000
+      H   103      S                    0.736     0.736     0.000
+      H   104      S                    0.736     0.736    -0.000
+      H   105      S                    0.737     0.737    -0.000
+      H   106      S                    0.738     0.738     0.000
+      H   107      S                    0.737     0.737    -0.000
+      H   108      S                    0.738     0.738    -0.000
+     Mg     1      S                    1.000     1.000    -0.000
+     Mg     1      Px                   1.000     1.000    -0.000
+     Mg     1      Py                   1.000     1.000    -0.000
+     Mg     1      Pz                   1.000     1.000    -0.000
+     Mg     1      S                    0.174     0.174    -0.000
+     Mg     1      Px                   0.099     0.099    -0.000
+     Mg     1      Py                   0.099     0.099    -0.000
+     Mg     1      Pz                   0.162     0.162    -0.000
+     Mg     2      S                    1.000     1.000    -0.000
+     Mg     2      Px                   1.000     1.000    -0.000
+     Mg     2      Py                   1.000     1.000    -0.000
+     Mg     2      Pz                   1.000     1.000    -0.000
+     Mg     2      S                    0.174     0.174     0.000
+     Mg     2      Px                   0.099     0.099    -0.000
+     Mg     2      Py                   0.099     0.099    -0.000
+     Mg     2      Pz                   0.162     0.162     0.000
+     Mg     3      S                    1.000     1.000    -0.000
+     Mg     3      Px                   1.000     1.000    -0.000
+     Mg     3      Py                   1.000     1.000    -0.000
+     Mg     3      Pz                   1.000     1.000     0.000
+     Mg     3      S                    0.174     0.174     0.000
+     Mg     3      Px                   0.099     0.099    -0.000
+     Mg     3      Py                   0.099     0.099     0.000
+     Mg     3      Pz                   0.162     0.162     0.000
+     Mg     4      S                    1.000     1.000    -0.000
+     Mg     4      Px                   1.000     1.000    -0.000
+     Mg     4      Py                   1.000     1.000    -0.000
+     Mg     4      Pz                   1.000     1.000    -0.000
+     Mg     4      S                    0.174     0.174    -0.000
+     Mg     4      Px                   0.099     0.099    -0.000
+     Mg     4      Py                   0.099     0.099    -0.000
+     Mg     4      Pz                   0.162     0.162     0.000
+     Mg     5      S                    1.000     1.000    -0.000
+     Mg     5      Px                   1.000     1.000    -0.000
+     Mg     5      Py                   1.000     1.000    -0.000
+     Mg     5      Pz                   1.000     1.000    -0.000
+     Mg     5      S                    0.172     0.172    -0.000
+     Mg     5      Px                   0.098     0.098     0.000
+     Mg     5      Py                   0.097     0.097    -0.000
+     Mg     5      Pz                   0.157     0.157    -0.000
+     Mg     6      S                    1.000     1.000     0.000
+     Mg     6      Px                   1.000     1.000     0.000
+     Mg     6      Py                   1.000     1.000     0.000
+     Mg     6      Pz                   1.000     1.000     0.000
+     Mg     6      S                    0.172     0.172     0.000
+     Mg     6      Px                   0.097     0.097     0.000
+     Mg     6      Py                   0.099     0.099    -0.000
+     Mg     6      Pz                   0.158     0.158     0.000
+     Mg     7      S                    1.000     1.000     0.000
+     Mg     7      Px                   1.000     1.000     0.000
+     Mg     7      Py                   1.000     1.000     0.000
+     Mg     7      Pz                   1.000     1.000     0.000
+     Mg     7      S                    0.172     0.172    -0.000
+     Mg     7      Px                   0.097     0.097     0.000
+     Mg     7      Py                   0.098     0.098    -0.000
+     Mg     7      Pz                   0.157     0.157     0.000
+     Mg     8      S                    1.000     1.000    -0.000
+     Mg     8      Px                   1.000     1.000    -0.000
+     Mg     8      Py                   1.000     1.000    -0.000
+     Mg     8      Pz                   1.000     1.000    -0.000
+     Mg     8      S                    0.172     0.172    -0.000
+     Mg     8      Px                   0.099     0.099    -0.000
+     Mg     8      Py                   0.097     0.097    -0.000
+     Mg     8      Pz                   0.158     0.158     0.000
+     Mg     9      S                    1.000     1.000    -0.000
+     Mg     9      Px                   1.000     1.000     0.000
+     Mg     9      Py                   1.000     1.000     0.000
+     Mg     9      Pz                   1.000     1.000     0.000
+     Mg     9      S                    0.173     0.173    -0.000
+     Mg     9      Px                   0.096     0.096    -0.000
+     Mg     9      Py                   0.096     0.096    -0.000
+     Mg     9      Pz                   0.161     0.161     0.000
+     Mg    10      S                    1.000     1.000     0.000
+     Mg    10      Px                   1.000     1.000     0.000
+     Mg    10      Py                   1.000     1.000     0.000
+     Mg    10      Pz                   1.000     1.000     0.000
+     Mg    10      S                    0.172     0.172    -0.000
+     Mg    10      Px                   0.096     0.096     0.000
+     Mg    10      Py                   0.096     0.096    -0.000
+     Mg    10      Pz                   0.160     0.160     0.000
+     Mg    11      S                    1.000     1.000    -0.000
+     Mg    11      Px                   1.000     1.000    -0.000
+     Mg    11      Py                   1.000     1.000    -0.000
+     Mg    11      Pz                   1.000     1.000    -0.000
+     Mg    11      S                    0.172     0.172     0.000
+     Mg    11      Px                   0.098     0.098    -0.000
+     Mg    11      Py                   0.097     0.097    -0.000
+     Mg    11      Pz                   0.157     0.157     0.000
+     Mg    12      S                    1.000     1.000     0.000
+     Mg    12      Px                   1.000     1.000     0.000
+     Mg    12      Py                   1.000     1.000     0.000
+     Mg    12      Pz                   1.000     1.000     0.000
+     Mg    12      S                    0.172     0.172    -0.000
+     Mg    12      Px                   0.097     0.097    -0.000
+     Mg    12      Py                   0.098     0.098    -0.000
+     Mg    12      Pz                   0.157     0.157     0.000
+     Mg    13      S                    1.000     1.000    -0.000
+     Mg    13      Px                   1.000     1.000    -0.000
+     Mg    13      Py                   1.000     1.000    -0.000
+     Mg    13      Pz                   1.000     1.000    -0.000
+     Mg    13      S                    0.173     0.173     0.000
+     Mg    13      Px                   0.101     0.101    -0.000
+     Mg    13      Py                   0.097     0.097    -0.000
+     Mg    13      Pz                   0.161     0.161     0.000
+     Mg    14      S                    1.000     1.000    -0.000
+     Mg    14      Px                   1.000     1.000    -0.000
+     Mg    14      Py                   1.000     1.000    -0.000
+     Mg    14      Pz                   1.000     1.000    -0.000
+     Mg    14      S                    0.173     0.173     0.000
+     Mg    14      Px                   0.101     0.101    -0.000
+     Mg    14      Py                   0.097     0.097    -0.000
+     Mg    14      Pz                   0.161     0.161     0.000
+     Mg    15      S                    1.000     1.000    -0.000
+     Mg    15      Px                   1.000     1.000    -0.000
+     Mg    15      Py                   1.000     1.000    -0.000
+     Mg    15      Pz                   1.000     1.000    -0.000
+     Mg    15      S                    0.173     0.173     0.000
+     Mg    15      Px                   0.101     0.101     0.000
+     Mg    15      Py                   0.097     0.097     0.000
+     Mg    15      Pz                   0.161     0.161     0.000
+     Mg    16      S                    1.000     1.000    -0.000
+     Mg    16      Px                   1.000     1.000    -0.000
+     Mg    16      Py                   1.000     1.000    -0.000
+     Mg    16      Pz                   1.000     1.000    -0.000
+     Mg    16      S                    0.173     0.173     0.000
+     Mg    16      Px                   0.101     0.101    -0.000
+     Mg    16      Py                   0.097     0.097     0.000
+     Mg    16      Pz                   0.161     0.161     0.000
+     Mg    17      S                    1.000     1.000     0.000
+     Mg    17      Px                   1.000     1.000     0.000
+     Mg    17      Py                   1.000     1.000     0.000
+     Mg    17      Pz                   1.000     1.000     0.000
+     Mg    17      S                    0.182     0.182     0.000
+     Mg    17      Px                   0.104     0.104     0.000
+     Mg    17      Py                   0.104     0.104     0.000
+     Mg    17      Pz                   0.159     0.159    -0.000
+     Mg    18      S                    1.000     1.000     0.000
+     Mg    18      Px                   1.000     1.000     0.000
+     Mg    18      Py                   1.000     1.000     0.000
+     Mg    18      Pz                   1.000     1.000     0.000
+     Mg    18      S                    0.172     0.172     0.000
+     Mg    18      Px                   0.097     0.097     0.000
+     Mg    18      Py                   0.099     0.099     0.000
+     Mg    18      Pz                   0.158     0.158     0.000
+     Mg    19      S                    1.000     1.000     0.000
+     Mg    19      Px                   1.000     1.000    -0.000
+     Mg    19      Py                   1.000     1.000    -0.000
+     Mg    19      Pz                   1.000     1.000     0.000
+     Mg    19      S                    0.172     0.172    -0.000
+     Mg    19      Px                   0.097     0.097    -0.000
+     Mg    19      Py                   0.098     0.098     0.000
+     Mg    19      Pz                   0.158     0.158     0.000
+     Mg    20      S                    1.000     1.000     0.000
+     Mg    20      Px                   1.000     1.000     0.000
+     Mg    20      Py                   1.000     1.000     0.000
+     Mg    20      Pz                   1.000     1.000     0.000
+     Mg    20      S                    0.169     0.169    -0.000
+     Mg    20      Px                   0.096     0.096    -0.000
+     Mg    20      Py                   0.096     0.096    -0.000
+     Mg    20      Pz                   0.157     0.157    -0.000
+     Mg    21      S                    1.000     1.000     0.000
+     Mg    21      Px                   1.000     1.000     0.000
+     Mg    21      Py                   1.000     1.000     0.000
+     Mg    21      Pz                   1.000     1.000     0.000
+     Mg    21      S                    0.172     0.172    -0.000
+     Mg    21      Px                   0.099     0.099    -0.000
+     Mg    21      Py                   0.097     0.097    -0.000
+     Mg    21      Pz                   0.158     0.158     0.000
+     Mg    22      S                    1.000     1.000    -0.000
+     Mg    22      Px                   1.000     1.000    -0.000
+     Mg    22      Py                   1.000     1.000    -0.000
+     Mg    22      Pz                   1.000     1.000    -0.000
+     Mg    22      S                    0.182     0.182     0.000
+     Mg    22      Px                   0.104     0.104    -0.000
+     Mg    22      Py                   0.104     0.104    -0.000
+     Mg    22      Pz                   0.159     0.159     0.000
+     Mg    23      S                    1.000     1.000     0.000
+     Mg    23      Px                   1.000     1.000     0.000
+     Mg    23      Py                   1.000     1.000     0.000
+     Mg    23      Pz                   1.000     1.000     0.000
+     Mg    23      S                    0.169     0.169    -0.000
+     Mg    23      Px                   0.096     0.096    -0.000
+     Mg    23      Py                   0.096     0.096    -0.000
+     Mg    23      Pz                   0.157     0.157    -0.000
+     Mg    24      S                    1.000     1.000     0.000
+     Mg    24      Px                   1.000     1.000     0.000
+     Mg    24      Py                   1.000     1.000     0.000
+     Mg    24      Pz                   1.000     1.000     0.000
+     Mg    24      S                    0.172     0.172     0.000
+     Mg    24      Px                   0.098     0.098    -0.000
+     Mg    24      Py                   0.097     0.097    -0.000
+     Mg    24      Pz                   0.158     0.158    -0.000
+     Mg    25      S                    1.000     1.000     0.000
+     Mg    25      Px                   1.000     1.000     0.000
+     Mg    25      Py                   1.000     1.000     0.000
+     Mg    25      Pz                   1.000     1.000     0.000
+     Mg    25      S                    0.173     0.173    -0.000
+     Mg    25      Px                   0.097     0.097    -0.000
+     Mg    25      Py                   0.101     0.101    -0.000
+     Mg    25      Pz                   0.161     0.161     0.000
+     Mg    26      S                    1.000     1.000     0.000
+     Mg    26      Px                   1.000     1.000     0.000
+     Mg    26      Py                   1.000     1.000     0.000
+     Mg    26      Pz                   1.000     1.000     0.000
+     Mg    26      S                    0.173     0.173    -0.000
+     Mg    26      Px                   0.097     0.097     0.000
+     Mg    26      Py                   0.101     0.101    -0.000
+     Mg    26      Pz                   0.161     0.161     0.000
+     Mg    27      S                    1.000     1.000    -0.000
+     Mg    27      Px                   1.000     1.000    -0.000
+     Mg    27      Py                   1.000     1.000    -0.000
+     Mg    27      Pz                   1.000     1.000    -0.000
+     Mg    27      S                    0.173     0.173    -0.000
+     Mg    27      Px                   0.097     0.097    -0.000
+     Mg    27      Py                   0.101     0.101    -0.000
+     Mg    27      Pz                   0.161     0.161     0.000
+     Mg    28      S                    1.000     1.000     0.000
+     Mg    28      Px                   1.000     1.000     0.000
+     Mg    28      Py                   1.000     1.000     0.000
+     Mg    28      Pz                   1.000     1.000     0.000
+     Mg    28      S                    0.173     0.173     0.000
+     Mg    28      Px                   0.097     0.097    -0.000
+     Mg    28      Py                   0.101     0.101    -0.000
+     Mg    28      Pz                   0.161     0.161     0.000
+     Mg    29      S                    1.000     1.000    -0.000
+     Mg    29      Px                   1.000     1.000    -0.000
+     Mg    29      Py                   1.000     1.000    -0.000
+     Mg    29      Pz                   1.000     1.000    -0.000
+     Mg    29      S                    0.171     0.171    -0.000
+     Mg    29      Px                   0.100     0.100    -0.000
+     Mg    29      Py                   0.095     0.095     0.000
+     Mg    29      Pz                   0.160     0.160     0.000
+     Mg    30      S                    1.000     1.000    -0.000
+     Mg    30      Px                   1.000     1.000    -0.000
+     Mg    30      Py                   1.000     1.000    -0.000
+     Mg    30      Pz                   1.000     1.000    -0.000
+     Mg    30      S                    0.171     0.171     0.000
+     Mg    30      Px                   0.100     0.100    -0.000
+     Mg    30      Py                   0.095     0.095     0.000
+     Mg    30      Pz                   0.159     0.159    -0.000
+     Mg    31      S                    1.000     1.000     0.000
+     Mg    31      Px                   1.000     1.000    -0.000
+     Mg    31      Py                   1.000     1.000    -0.000
+     Mg    31      Pz                   1.000     1.000     0.000
+     Mg    31      S                    0.182     0.182     0.000
+     Mg    31      Px                   0.104     0.104    -0.000
+     Mg    31      Py                   0.104     0.104    -0.000
+     Mg    31      Pz                   0.159     0.159     0.000
+     Mg    32      S                    1.000     1.000     0.000
+     Mg    32      Px                   1.000     1.000    -0.000
+     Mg    32      Py                   1.000     1.000     0.000
+     Mg    32      Pz                   1.000     1.000    -0.000
+     Mg    32      S                    0.172     0.172    -0.000
+     Mg    32      Px                   0.097     0.097    -0.000
+     Mg    32      Py                   0.098     0.098    -0.000
+     Mg    32      Pz                   0.158     0.158    -0.000
+     Mg    33      S                    1.000     1.000     0.000
+     Mg    33      Px                   1.000     1.000     0.000
+     Mg    33      Py                   1.000     1.000     0.000
+     Mg    33      Pz                   1.000     1.000     0.000
+     Mg    33      S                    0.172     0.172     0.000
+     Mg    33      Px                   0.098     0.098    -0.000
+     Mg    33      Py                   0.097     0.097    -0.000
+     Mg    33      Pz                   0.158     0.158    -0.000
+     Mg    34      S                    1.000     1.000     0.000
+     Mg    34      Px                   1.000     1.000     0.000
+     Mg    34      Py                   1.000     1.000     0.000
+     Mg    34      Pz                   1.000     1.000     0.000
+     Mg    34      S                    0.182     0.182     0.000
+     Mg    34      Px                   0.104     0.104     0.000
+     Mg    34      Py                   0.104     0.104     0.000
+     Mg    34      Pz                   0.159     0.159    -0.000
+     Mg    35      S                    1.000     1.000    -0.000
+     Mg    35      Px                   1.000     1.000    -0.000
+     Mg    35      Py                   1.000     1.000     0.000
+     Mg    35      Pz                   1.000     1.000     0.000
+     Mg    35      S                    0.171     0.171    -0.000
+     Mg    35      Px                   0.095     0.095    -0.000
+     Mg    35      Py                   0.100     0.100     0.000
+     Mg    35      Pz                   0.160     0.160     0.000
+     Mg    36      S                    1.000     1.000     0.000
+     Mg    36      Px                   1.000     1.000     0.000
+     Mg    36      Py                   1.000     1.000     0.000
+     Mg    36      Pz                   1.000     1.000     0.000
+     Mg    36      S                    0.171     0.171     0.000
+     Mg    36      Px                   0.095     0.095    -0.000
+     Mg    36      Py                   0.100     0.100    -0.000
+     Mg    36      Pz                   0.159     0.159     0.000
+     Mg    37      S                    1.000     1.000     0.000
+     Mg    37      Px                   1.000     1.000     0.000
+     Mg    37      Py                   1.000     1.000     0.000
+     Mg    37      Pz                   1.000     1.000     0.000
+     Mg    37      S                    0.174     0.174     0.000
+     Mg    37      Px                   0.099     0.099    -0.000
+     Mg    37      Py                   0.099     0.099    -0.000
+     Mg    37      Pz                   0.156     0.156    -0.000
+     Mg    38      S                    1.000     1.000     0.000
+     Mg    38      Px                   1.000     1.000     0.000
+     Mg    38      Py                   1.000     1.000     0.000
+     Mg    38      Pz                   1.000     1.000     0.000
+     Mg    38      S                    0.174     0.174     0.000
+     Mg    38      Px                   0.099     0.099    -0.000
+     Mg    38      Py                   0.099     0.099    -0.000
+     Mg    38      Pz                   0.156     0.156    -0.000
+     Mg    39      S                    1.000     1.000     0.000
+     Mg    39      Px                   1.000     1.000    -0.000
+     Mg    39      Py                   1.000     1.000    -0.000
+     Mg    39      Pz                   1.000     1.000    -0.000
+     Mg    39      S                    0.174     0.174     0.000
+     Mg    39      Px                   0.099     0.099     0.000
+     Mg    39      Py                   0.099     0.099     0.000
+     Mg    39      Pz                   0.156     0.156     0.000
+     Mg    40      S                    1.000     1.000    -0.000
+     Mg    40      Px                   1.000     1.000    -0.000
+     Mg    40      Py                   1.000     1.000    -0.000
+     Mg    40      Pz                   1.000     1.000    -0.000
+     Mg    40      S                    0.174     0.174    -0.000
+     Mg    40      Px                   0.099     0.099     0.000
+     Mg    40      Py                   0.099     0.099     0.000
+     Mg    40      Pz                   0.156     0.156    -0.000
+     Mg    41      S                    1.000     1.000    -0.000
+     Mg    41      Px                   1.000     1.000     0.000
+     Mg    41      Py                   1.000     1.000    -0.000
+     Mg    41      Pz                   1.000     1.000    -0.000
+     Mg    41      S                    0.172     0.172     0.000
+     Mg    41      Px                   0.100     0.100     0.000
+     Mg    41      Py                   0.100     0.100     0.000
+     Mg    41      Pz                   0.162     0.162     0.000
+     Mg    42      S                    1.000     1.000    -0.000
+     Mg    42      Px                   1.000     1.000    -0.000
+     Mg    42      Py                   1.000     1.000    -0.000
+     Mg    42      Pz                   1.000     1.000    -0.000
+     Mg    42      S                    0.174     0.174     0.000
+     Mg    42      Px                   0.097     0.097    -0.000
+     Mg    42      Py                   0.097     0.097    -0.000
+     Mg    42      Pz                   0.160     0.160    -0.000
+     Mg    43      S                    1.000     1.000    -0.000
+     Mg    43      Px                   1.000     1.000    -0.000
+     Mg    43      Py                   1.000     1.000    -0.000
+     Mg    43      Pz                   1.000     1.000    -0.000
+     Mg    43      S                    0.175     0.175     0.000
+     Mg    43      Px                   0.098     0.098    -0.000
+     Mg    43      Py                   0.098     0.098    -0.000
+     Mg    43      Pz                   0.161     0.161     0.000
+     Mg    44      S                    1.000     1.000     0.000
+     Mg    44      Px                   1.000     1.000     0.000
+     Mg    44      Py                   1.000     1.000     0.000
+     Mg    44      Pz                   1.000     1.000     0.000
+     Mg    44      S                    0.174     0.174     0.000
+     Mg    44      Px                   0.106     0.106    -0.000
+     Mg    44      Py                   0.106     0.106     0.000
+     Mg    44      Pz                   0.155     0.155     0.000
+     Mg    45      S                    1.000     1.000     0.000
+     Mg    45      Px                   1.000     1.000     0.000
+     Mg    45      Py                   1.000     1.000     0.000
+     Mg    45      Pz                   1.000     1.000     0.000
+     Mg    45      S                    0.174     0.174     0.000
+     Mg    45      Px                   0.094     0.094     0.000
+     Mg    45      Py                   0.094     0.094     0.000
+     Mg    45      Pz                   0.156     0.156     0.000
+     Mg    46      S                    1.000     1.000    -0.000
+     Mg    46      Px                   1.000     1.000    -0.000
+     Mg    46      Py                   1.000     1.000    -0.000
+     Mg    46      Pz                   1.000     1.000    -0.000
+     Mg    46      S                    0.174     0.174     0.000
+     Mg    46      Px                   0.094     0.094     0.000
+     Mg    46      Py                   0.094     0.094    -0.000
+     Mg    46      Pz                   0.156     0.156     0.000
+     Mg    47      S                    1.000     1.000    -0.000
+     Mg    47      Px                   1.000     1.000    -0.000
+     Mg    47      Py                   1.000     1.000    -0.000
+     Mg    47      Pz                   1.000     1.000    -0.000
+     Mg    47      S                    0.172     0.172    -0.000
+     Mg    47      Px                   0.100     0.100    -0.000
+     Mg    47      Py                   0.100     0.100     0.000
+     Mg    47      Pz                   0.162     0.162    -0.000
+     Mg    48      S                    1.000     1.000     0.000
+     Mg    48      Px                   1.000     1.000     0.000
+     Mg    48      Py                   1.000     1.000     0.000
+     Mg    48      Pz                   1.000     1.000     0.000
+     Mg    48      S                    0.175     0.175     0.000
+     Mg    48      Px                   0.098     0.098    -0.000
+     Mg    48      Py                   0.098     0.098    -0.000
+     Mg    48      Pz                   0.161     0.161    -0.000
+     Mg    49      S                    1.000     1.000     0.000
+     Mg    49      Px                   1.000     1.000     0.000
+     Mg    49      Py                   1.000     1.000     0.000
+     Mg    49      Pz                   1.000     1.000     0.000
+     Mg    49      S                    0.194     0.194    -0.000
+     Mg    49      Px                   0.090     0.090     0.000
+     Mg    49      Py                   0.090     0.090    -0.000
+     Mg    49      Pz                   0.165     0.165    -0.000
+     Mg    50      S                    1.000     1.000     0.000
+     Mg    50      Px                   1.000     1.000     0.000
+     Mg    50      Py                   1.000     1.000     0.000
+     Mg    50      Pz                   1.000     1.000     0.000
+     Mg    50      S                    0.194     0.194    -0.000
+     Mg    50      Px                   0.090     0.090     0.000
+     Mg    50      Py                   0.090     0.090    -0.000
+     Mg    50      Pz                   0.165     0.165    -0.000
+     Mg    51      S                    1.000     1.000     0.000
+     Mg    51      Px                   1.000     1.000    -0.000
+     Mg    51      Py                   1.000     1.000     0.000
+     Mg    51      Pz                   1.000     1.000    -0.000
+     Mg    51      S                    0.172     0.172    -0.000
+     Mg    51      Px                   0.100     0.100    -0.000
+     Mg    51      Py                   0.100     0.100     0.000
+     Mg    51      Pz                   0.163     0.163    -0.000
+     Mg    52      S                    1.000     1.000     0.000
+     Mg    52      Px                   1.000     1.000     0.000
+     Mg    52      Py                   1.000     1.000     0.000
+     Mg    52      Pz                   1.000     1.000     0.000
+     Mg    52      S                    0.175     0.175    -0.000
+     Mg    52      Px                   0.106     0.106    -0.000
+     Mg    52      Py                   0.106     0.106    -0.000
+     Mg    52      Pz                   0.155     0.155     0.000
+     Mg    53      S                    1.000     1.000     0.000
+     Mg    53      Px                   1.000     1.000    -0.000
+     Mg    53      Py                   1.000     1.000    -0.000
+     Mg    53      Pz                   1.000     1.000    -0.000
+     Mg    53      S                    0.172     0.172     0.000
+     Mg    53      Px                   0.100     0.100     0.000
+     Mg    53      Py                   0.100     0.100     0.000
+     Mg    53      Pz                   0.163     0.163     0.000
+     Fe     1      Dzz                  0.769     0.769     0.000
+     Fe     1      Dzy                  0.651     0.651     0.000
+     Fe     1      Dzx                  0.651     0.651    -0.000
+     Fe     1      Dxx-yy               0.974     0.974     0.000
+     Fe     1      Dxy                  0.524     0.524    -0.000
+     Fe     1      S                    0.033     0.033    -0.000
+     Fe     1      Px                   0.004     0.004    -0.000
+     Fe     1      Py                   0.004     0.004    -0.000
+     Fe     1      Pz                   0.044     0.044    -0.000
+  ---------------------------------------------------------------
+                           Total:     323.000   323.000    -0.000
+  ---------------------------------------------------------------
+ 
+     Atomic Populations (Mulliken)
+     -----------------------------
+Species          Ion Spin      s       p       d       f      Total   Charge(e)   Spin(hbar/2)
+==============================================================================================
+  H               1   up:     0.732   0.000   0.000   0.000   0.732    -0.464        0.000
+                  1   dn:     0.732   0.000   0.000   0.000   0.732
+  H               2   up:     0.732   0.000   0.000   0.000   0.732    -0.465       -0.000
+                  2   dn:     0.732   0.000   0.000   0.000   0.732
+  H               3   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                  3   dn:     0.738   0.000   0.000   0.000   0.738
+  H               4   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                  4   dn:     0.738   0.000   0.000   0.000   0.738
+  H               5   up:     0.734   0.000   0.000   0.000   0.734    -0.469       -0.000
+                  5   dn:     0.734   0.000   0.000   0.000   0.734
+  H               6   up:     0.735   0.000   0.000   0.000   0.735    -0.469       -0.000
+                  6   dn:     0.735   0.000   0.000   0.000   0.735
+  H               7   up:     0.735   0.000   0.000   0.000   0.735    -0.469        0.000
+                  7   dn:     0.735   0.000   0.000   0.000   0.735
+  H               8   up:     0.734   0.000   0.000   0.000   0.734    -0.469       -0.000
+                  8   dn:     0.734   0.000   0.000   0.000   0.734
+  H               9   up:     0.738   0.000   0.000   0.000   0.738    -0.476       -0.000
+                  9   dn:     0.738   0.000   0.000   0.000   0.738
+  H              10   up:     0.738   0.000   0.000   0.000   0.738    -0.476       -0.000
+                 10   dn:     0.738   0.000   0.000   0.000   0.738
+  H              11   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                 11   dn:     0.738   0.000   0.000   0.000   0.738
+  H              12   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                 12   dn:     0.738   0.000   0.000   0.000   0.738
+  H              13   up:     0.736   0.000   0.000   0.000   0.736    -0.473       -0.000
+                 13   dn:     0.736   0.000   0.000   0.000   0.736
+  H              14   up:     0.736   0.000   0.000   0.000   0.736    -0.473        0.000
+                 14   dn:     0.736   0.000   0.000   0.000   0.736
+  H              15   up:     0.745   0.000   0.000   0.000   0.745    -0.491       -0.000
+                 15   dn:     0.745   0.000   0.000   0.000   0.745
+  H              16   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                 16   dn:     0.738   0.000   0.000   0.000   0.738
+  H              17   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                 17   dn:     0.738   0.000   0.000   0.000   0.738
+  H              18   up:     0.745   0.000   0.000   0.000   0.745    -0.491        0.000
+                 18   dn:     0.745   0.000   0.000   0.000   0.745
+  H              19   up:     0.736   0.000   0.000   0.000   0.736    -0.473       -0.000
+                 19   dn:     0.736   0.000   0.000   0.000   0.736
+  H              20   up:     0.736   0.000   0.000   0.000   0.736    -0.473       -0.000
+                 20   dn:     0.736   0.000   0.000   0.000   0.736
+  H              21   up:     0.736   0.000   0.000   0.000   0.736    -0.471        0.000
+                 21   dn:     0.736   0.000   0.000   0.000   0.736
+  H              22   up:     0.736   0.000   0.000   0.000   0.736    -0.471        0.000
+                 22   dn:     0.736   0.000   0.000   0.000   0.736
+  H              23   up:     0.736   0.000   0.000   0.000   0.736    -0.471        0.000
+                 23   dn:     0.736   0.000   0.000   0.000   0.736
+  H              24   up:     0.736   0.000   0.000   0.000   0.736    -0.471       -0.000
+                 24   dn:     0.736   0.000   0.000   0.000   0.736
+  H              25   up:     0.695   0.000   0.000   0.000   0.695    -0.389        0.000
+                 25   dn:     0.695   0.000   0.000   0.000   0.695
+  H              26   up:     0.738   0.000   0.000   0.000   0.738    -0.476       -0.000
+                 26   dn:     0.738   0.000   0.000   0.000   0.738
+  H              27   up:     0.737   0.000   0.000   0.000   0.737    -0.474       -0.000
+                 27   dn:     0.737   0.000   0.000   0.000   0.737
+  H              28   up:     0.745   0.000   0.000   0.000   0.745    -0.491        0.000
+                 28   dn:     0.745   0.000   0.000   0.000   0.745
+  H              29   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                 29   dn:     0.738   0.000   0.000   0.000   0.738
+  H              30   up:     0.695   0.000   0.000   0.000   0.695    -0.389        0.000
+                 30   dn:     0.695   0.000   0.000   0.000   0.695
+  H              31   up:     0.745   0.000   0.000   0.000   0.745    -0.491        0.000
+                 31   dn:     0.745   0.000   0.000   0.000   0.745
+  H              32   up:     0.737   0.000   0.000   0.000   0.737    -0.474       -0.000
+                 32   dn:     0.737   0.000   0.000   0.000   0.737
+  H              33   up:     0.736   0.000   0.000   0.000   0.736    -0.471       -0.000
+                 33   dn:     0.736   0.000   0.000   0.000   0.736
+  H              34   up:     0.736   0.000   0.000   0.000   0.736    -0.471        0.000
+                 34   dn:     0.736   0.000   0.000   0.000   0.736
+  H              35   up:     0.736   0.000   0.000   0.000   0.736    -0.471        0.000
+                 35   dn:     0.736   0.000   0.000   0.000   0.736
+  H              36   up:     0.736   0.000   0.000   0.000   0.736    -0.471       -0.000
+                 36   dn:     0.736   0.000   0.000   0.000   0.736
+  H              37   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 37   dn:     0.736   0.000   0.000   0.000   0.736
+  H              38   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 38   dn:     0.736   0.000   0.000   0.000   0.736
+  H              39   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 39   dn:     0.736   0.000   0.000   0.000   0.736
+  H              40   up:     0.735   0.000   0.000   0.000   0.735    -0.470       -0.000
+                 40   dn:     0.735   0.000   0.000   0.000   0.735
+  H              41   up:     0.735   0.000   0.000   0.000   0.735    -0.470       -0.000
+                 41   dn:     0.735   0.000   0.000   0.000   0.735
+  H              42   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 42   dn:     0.736   0.000   0.000   0.000   0.736
+  H              43   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 43   dn:     0.736   0.000   0.000   0.000   0.736
+  H              44   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 44   dn:     0.736   0.000   0.000   0.000   0.736
+  H              45   up:     0.738   0.000   0.000   0.000   0.738    -0.477       -0.000
+                 45   dn:     0.738   0.000   0.000   0.000   0.738
+  H              46   up:     0.739   0.000   0.000   0.000   0.739    -0.477        0.000
+                 46   dn:     0.739   0.000   0.000   0.000   0.739
+  H              47   up:     0.739   0.000   0.000   0.000   0.739    -0.477        0.000
+                 47   dn:     0.739   0.000   0.000   0.000   0.739
+  H              48   up:     0.739   0.000   0.000   0.000   0.739    -0.477       -0.000
+                 48   dn:     0.739   0.000   0.000   0.000   0.739
+  H              49   up:     0.741   0.000   0.000   0.000   0.741    -0.481        0.000
+                 49   dn:     0.741   0.000   0.000   0.000   0.741
+  H              50   up:     0.735   0.000   0.000   0.000   0.735    -0.470       -0.000
+                 50   dn:     0.735   0.000   0.000   0.000   0.735
+  H              51   up:     0.732   0.000   0.000   0.000   0.732    -0.465       -0.000
+                 51   dn:     0.732   0.000   0.000   0.000   0.732
+  H              52   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 52   dn:     0.736   0.000   0.000   0.000   0.736
+  H              53   up:     0.735   0.000   0.000   0.000   0.735    -0.470        0.000
+                 53   dn:     0.735   0.000   0.000   0.000   0.735
+  H              54   up:     0.741   0.000   0.000   0.000   0.741    -0.481       -0.000
+                 54   dn:     0.741   0.000   0.000   0.000   0.741
+  H              55   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 55   dn:     0.736   0.000   0.000   0.000   0.736
+  H              56   up:     0.732   0.000   0.000   0.000   0.732    -0.465        0.000
+                 56   dn:     0.732   0.000   0.000   0.000   0.732
+  H              57   up:     0.739   0.000   0.000   0.000   0.739    -0.477       -0.000
+                 57   dn:     0.739   0.000   0.000   0.000   0.739
+  H              58   up:     0.739   0.000   0.000   0.000   0.739    -0.477        0.000
+                 58   dn:     0.739   0.000   0.000   0.000   0.739
+  H              59   up:     0.739   0.000   0.000   0.000   0.739    -0.477       -0.000
+                 59   dn:     0.739   0.000   0.000   0.000   0.739
+  H              60   up:     0.738   0.000   0.000   0.000   0.738    -0.477       -0.000
+                 60   dn:     0.738   0.000   0.000   0.000   0.738
+  H              61   up:     0.728   0.000   0.000   0.000   0.728    -0.456        0.000
+                 61   dn:     0.728   0.000   0.000   0.000   0.728
+  H              62   up:     0.728   0.000   0.000   0.000   0.728    -0.456        0.000
+                 62   dn:     0.728   0.000   0.000   0.000   0.728
+  H              63   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 63   dn:     0.736   0.000   0.000   0.000   0.736
+  H              64   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 64   dn:     0.736   0.000   0.000   0.000   0.736
+  H              65   up:     0.689   0.000   0.000   0.000   0.689    -0.378        0.000
+                 65   dn:     0.689   0.000   0.000   0.000   0.689
+  H              66   up:     0.689   0.000   0.000   0.000   0.689    -0.377        0.000
+                 66   dn:     0.689   0.000   0.000   0.000   0.689
+  H              67   up:     0.689   0.000   0.000   0.000   0.689    -0.377        0.000
+                 67   dn:     0.689   0.000   0.000   0.000   0.689
+  H              68   up:     0.689   0.000   0.000   0.000   0.689    -0.378        0.000
+                 68   dn:     0.689   0.000   0.000   0.000   0.689
+  H              69   up:     0.740   0.000   0.000   0.000   0.740    -0.480       -0.000
+                 69   dn:     0.740   0.000   0.000   0.000   0.740
+  H              70   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 70   dn:     0.736   0.000   0.000   0.000   0.736
+  H              71   up:     0.740   0.000   0.000   0.000   0.740    -0.480        0.000
+                 71   dn:     0.740   0.000   0.000   0.000   0.740
+  H              72   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 72   dn:     0.736   0.000   0.000   0.000   0.736
+  H              73   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 73   dn:     0.736   0.000   0.000   0.000   0.736
+  H              74   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 74   dn:     0.736   0.000   0.000   0.000   0.736
+  H              75   up:     0.732   0.000   0.000   0.000   0.732    -0.465        0.000
+                 75   dn:     0.732   0.000   0.000   0.000   0.732
+  H              76   up:     0.738   0.000   0.000   0.000   0.738    -0.476       -0.000
+                 76   dn:     0.738   0.000   0.000   0.000   0.738
+  H              77   up:     0.738   0.000   0.000   0.000   0.738    -0.476       -0.000
+                 77   dn:     0.738   0.000   0.000   0.000   0.738
+  H              78   up:     0.732   0.000   0.000   0.000   0.732    -0.465        0.000
+                 78   dn:     0.732   0.000   0.000   0.000   0.732
+  H              79   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 79   dn:     0.736   0.000   0.000   0.000   0.736
+  H              80   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 80   dn:     0.736   0.000   0.000   0.000   0.736
+  H              81   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 81   dn:     0.736   0.000   0.000   0.000   0.736
+  H              82   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 82   dn:     0.736   0.000   0.000   0.000   0.736
+  H              83   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 83   dn:     0.736   0.000   0.000   0.000   0.736
+  H              84   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 84   dn:     0.736   0.000   0.000   0.000   0.736
+  H              85   up:     0.729   0.000   0.000   0.000   0.729    -0.458       -0.000
+                 85   dn:     0.729   0.000   0.000   0.000   0.729
+  H              86   up:     0.738   0.000   0.000   0.000   0.738    -0.476       -0.000
+                 86   dn:     0.738   0.000   0.000   0.000   0.738
+  H              87   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                 87   dn:     0.738   0.000   0.000   0.000   0.738
+  H              88   up:     0.732   0.000   0.000   0.000   0.732    -0.465        0.000
+                 88   dn:     0.732   0.000   0.000   0.000   0.732
+  H              89   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                 89   dn:     0.738   0.000   0.000   0.000   0.738
+  H              90   up:     0.729   0.000   0.000   0.000   0.729    -0.458       -0.000
+                 90   dn:     0.729   0.000   0.000   0.000   0.729
+  H              91   up:     0.732   0.000   0.000   0.000   0.732    -0.465        0.000
+                 91   dn:     0.732   0.000   0.000   0.000   0.732
+  H              92   up:     0.738   0.000   0.000   0.000   0.738    -0.476       -0.000
+                 92   dn:     0.738   0.000   0.000   0.000   0.738
+  H              93   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 93   dn:     0.736   0.000   0.000   0.000   0.736
+  H              94   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 94   dn:     0.736   0.000   0.000   0.000   0.736
+  H              95   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 95   dn:     0.736   0.000   0.000   0.000   0.736
+  H              96   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 96   dn:     0.736   0.000   0.000   0.000   0.736
+  H              97   up:     0.736   0.000   0.000   0.000   0.736    -0.472        0.000
+                 97   dn:     0.736   0.000   0.000   0.000   0.736
+  H              98   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                 98   dn:     0.736   0.000   0.000   0.000   0.736
+  H              99   up:     0.738   0.000   0.000   0.000   0.738    -0.476       -0.000
+                 99   dn:     0.738   0.000   0.000   0.000   0.738
+  H             100   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                100   dn:     0.738   0.000   0.000   0.000   0.738
+  H             101   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                101   dn:     0.736   0.000   0.000   0.000   0.736
+  H             102   up:     0.736   0.000   0.000   0.000   0.736    -0.471        0.000
+                102   dn:     0.736   0.000   0.000   0.000   0.736
+  H             103   up:     0.736   0.000   0.000   0.000   0.736    -0.471        0.000
+                103   dn:     0.736   0.000   0.000   0.000   0.736
+  H             104   up:     0.736   0.000   0.000   0.000   0.736    -0.472       -0.000
+                104   dn:     0.736   0.000   0.000   0.000   0.736
+  H             105   up:     0.737   0.000   0.000   0.000   0.737    -0.475       -0.000
+                105   dn:     0.737   0.000   0.000   0.000   0.737
+  H             106   up:     0.738   0.000   0.000   0.000   0.738    -0.476        0.000
+                106   dn:     0.738   0.000   0.000   0.000   0.738
+  H             107   up:     0.737   0.000   0.000   0.000   0.737    -0.475       -0.000
+                107   dn:     0.737   0.000   0.000   0.000   0.737
+  H             108   up:     0.738   0.000   0.000   0.000   0.738    -0.476       -0.000
+                108   dn:     0.738   0.000   0.000   0.000   0.738
+  Mg              1   up:     1.174   3.359   0.000   0.000   4.533     0.934       -0.000
+                  1   dn:     1.174   3.359   0.000   0.000   4.533
+  Mg              2   up:     1.173   3.359   0.000   0.000   4.532     0.935        0.000
+                  2   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg              3   up:     1.173   3.359   0.000   0.000   4.532     0.936        0.000
+                  3   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg              4   up:     1.174   3.359   0.000   0.000   4.533     0.934       -0.000
+                  4   dn:     1.174   3.359   0.000   0.000   4.533
+  Mg              5   up:     1.172   3.352   0.000   0.000   4.524     0.953       -0.000
+                  5   dn:     1.172   3.352   0.000   0.000   4.524
+  Mg              6   up:     1.172   3.354   0.000   0.000   4.526     0.947        0.000
+                  6   dn:     1.172   3.354   0.000   0.000   4.526
+  Mg              7   up:     1.172   3.352   0.000   0.000   4.524     0.953        0.000
+                  7   dn:     1.172   3.352   0.000   0.000   4.524
+  Mg              8   up:     1.172   3.354   0.000   0.000   4.526     0.947       -0.000
+                  8   dn:     1.172   3.354   0.000   0.000   4.526
+  Mg              9   up:     1.172   3.352   0.000   0.000   4.524     0.951       -0.000
+                  9   dn:     1.172   3.352   0.000   0.000   4.524
+  Mg             10   up:     1.172   3.351   0.000   0.000   4.524     0.953       -0.000
+                 10   dn:     1.172   3.351   0.000   0.000   4.524
+  Mg             11   up:     1.172   3.352   0.000   0.000   4.524     0.953       -0.000
+                 11   dn:     1.172   3.352   0.000   0.000   4.524
+  Mg             12   up:     1.172   3.352   0.000   0.000   4.524     0.953        0.000
+                 12   dn:     1.172   3.352   0.000   0.000   4.524
+  Mg             13   up:     1.173   3.359   0.000   0.000   4.532     0.936       -0.000
+                 13   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg             14   up:     1.173   3.359   0.000   0.000   4.532     0.937       -0.000
+                 14   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg             15   up:     1.173   3.359   0.000   0.000   4.532     0.937        0.000
+                 15   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg             16   up:     1.173   3.359   0.000   0.000   4.532     0.936        0.000
+                 16   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg             17   up:     1.181   3.367   0.000   0.000   4.548     0.904       -0.000
+                 17   dn:     1.181   3.367   0.000   0.000   4.548
+  Mg             18   up:     1.172   3.355   0.000   0.000   4.527     0.947        0.000
+                 18   dn:     1.172   3.355   0.000   0.000   4.527
+  Mg             19   up:     1.172   3.352   0.000   0.000   4.524     0.952       -0.000
+                 19   dn:     1.172   3.352   0.000   0.000   4.524
+  Mg             20   up:     1.169   3.349   0.000   0.000   4.517     0.966       -0.000
+                 20   dn:     1.169   3.349   0.000   0.000   4.517
+  Mg             21   up:     1.172   3.355   0.000   0.000   4.527     0.947       -0.000
+                 21   dn:     1.172   3.355   0.000   0.000   4.527
+  Mg             22   up:     1.181   3.367   0.000   0.000   4.548     0.904        0.000
+                 22   dn:     1.181   3.367   0.000   0.000   4.548
+  Mg             23   up:     1.169   3.349   0.000   0.000   4.517     0.966       -0.000
+                 23   dn:     1.169   3.349   0.000   0.000   4.517
+  Mg             24   up:     1.172   3.352   0.000   0.000   4.524     0.952        0.000
+                 24   dn:     1.172   3.352   0.000   0.000   4.524
+  Mg             25   up:     1.173   3.359   0.000   0.000   4.532     0.936       -0.000
+                 25   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg             26   up:     1.173   3.359   0.000   0.000   4.532     0.937       -0.000
+                 26   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg             27   up:     1.173   3.359   0.000   0.000   4.532     0.937       -0.000
+                 27   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg             28   up:     1.173   3.359   0.000   0.000   4.532     0.936       -0.000
+                 28   dn:     1.173   3.359   0.000   0.000   4.532
+  Mg             29   up:     1.171   3.354   0.000   0.000   4.525     0.950       -0.000
+                 29   dn:     1.171   3.354   0.000   0.000   4.525
+  Mg             30   up:     1.171   3.354   0.000   0.000   4.525     0.951       -0.000
+                 30   dn:     1.171   3.354   0.000   0.000   4.525
+  Mg             31   up:     1.181   3.367   0.000   0.000   4.548     0.904        0.000
+                 31   dn:     1.181   3.367   0.000   0.000   4.548
+  Mg             32   up:     1.172   3.352   0.000   0.000   4.524     0.952       -0.000
+                 32   dn:     1.172   3.352   0.000   0.000   4.524
+  Mg             33   up:     1.172   3.352   0.000   0.000   4.524     0.952        0.000
+                 33   dn:     1.172   3.352   0.000   0.000   4.524
+  Mg             34   up:     1.181   3.367   0.000   0.000   4.548     0.904        0.000
+                 34   dn:     1.181   3.367   0.000   0.000   4.548
+  Mg             35   up:     1.171   3.354   0.000   0.000   4.525     0.950       -0.000
+                 35   dn:     1.171   3.354   0.000   0.000   4.525
+  Mg             36   up:     1.171   3.354   0.000   0.000   4.525     0.951        0.000
+                 36   dn:     1.171   3.354   0.000   0.000   4.525
+  Mg             37   up:     1.174   3.354   0.000   0.000   4.527     0.945       -0.000
+                 37   dn:     1.174   3.354   0.000   0.000   4.527
+  Mg             38   up:     1.174   3.354   0.000   0.000   4.527     0.945       -0.000
+                 38   dn:     1.174   3.354   0.000   0.000   4.527
+  Mg             39   up:     1.174   3.354   0.000   0.000   4.527     0.945        0.000
+                 39   dn:     1.174   3.354   0.000   0.000   4.527
+  Mg             40   up:     1.174   3.354   0.000   0.000   4.527     0.945        0.000
+                 40   dn:     1.174   3.354   0.000   0.000   4.527
+  Mg             41   up:     1.172   3.361   0.000   0.000   4.533     0.933        0.000
+                 41   dn:     1.172   3.361   0.000   0.000   4.533
+  Mg             42   up:     1.174   3.353   0.000   0.000   4.527     0.945       -0.000
+                 42   dn:     1.174   3.353   0.000   0.000   4.527
+  Mg             43   up:     1.175   3.357   0.000   0.000   4.532     0.936       -0.000
+                 43   dn:     1.175   3.357   0.000   0.000   4.532
+  Mg             44   up:     1.174   3.366   0.000   0.000   4.541     0.919        0.000
+                 44   dn:     1.174   3.366   0.000   0.000   4.541
+  Mg             45   up:     1.174   3.342   0.000   0.000   4.517     0.966        0.000
+                 45   dn:     1.174   3.342   0.000   0.000   4.517
+  Mg             46   up:     1.174   3.342   0.000   0.000   4.517     0.966        0.000
+                 46   dn:     1.174   3.342   0.000   0.000   4.517
+  Mg             47   up:     1.172   3.361   0.000   0.000   4.533     0.933       -0.000
+                 47   dn:     1.172   3.361   0.000   0.000   4.533
+  Mg             48   up:     1.175   3.357   0.000   0.000   4.532     0.936        0.000
+                 48   dn:     1.175   3.357   0.000   0.000   4.532
+  Mg             49   up:     1.194   3.345   0.000   0.000   4.539     0.922       -0.000
+                 49   dn:     1.194   3.345   0.000   0.000   4.539
+  Mg             50   up:     1.194   3.345   0.000   0.000   4.539     0.922       -0.000
+                 50   dn:     1.194   3.345   0.000   0.000   4.539
+  Mg             51   up:     1.172   3.362   0.000   0.000   4.534     0.931       -0.000
+                 51   dn:     1.172   3.362   0.000   0.000   4.534
+  Mg             52   up:     1.175   3.367   0.000   0.000   4.541     0.917       -0.000
+                 52   dn:     1.175   3.367   0.000   0.000   4.541
+  Mg             53   up:     1.172   3.362   0.000   0.000   4.534     0.931        0.000
+                 53   dn:     1.172   3.362   0.000   0.000   4.534
+  Fe              1   up:     0.033   0.052   3.569   0.000   3.654     0.693       -0.000
+                  1   dn:     0.033   0.052   3.569   0.000   3.654
+==============================================================================================
+ 
+                 Bond                   Population        Spin       Length (A)
+================================================================================
+             H 25  -- Fe 1                   0.26        -0.00          1.64909
+             H 30  -- Fe 1                   0.26        -0.00          1.64909
+             H 68  -- Fe 1                   0.31        -0.00          1.65230
+             H 65  -- Fe 1                   0.31        -0.00          1.65240
+             H 66  -- Fe 1                   0.31        -0.00          1.65255
+             H 67  -- Fe 1                   0.31         0.00          1.65258
+             H 31  -- Mg 34                  0.38         0.00          1.90308
+             H 28  -- Mg 31                  0.38         0.00          1.90308
+             H 15  -- Mg 17                  0.38         0.00          1.90313
+             H 18  -- Mg 22                  0.38        -0.00          1.90313
+             H 31  -- Mg 50                  0.32        -0.00          1.90679
+             H 28  -- Mg 50                  0.32         0.00          1.90679
+             H 15  -- Mg 49                  0.32        -0.00          1.90706
+             H 18  -- Mg 49                  0.32         0.00          1.90706
+             H 54  -- Mg 35                  0.34         0.00          1.91812
+             H 49  -- Mg 29                  0.34        -0.00          1.91813
+             H 69  -- Mg 36                  0.35         0.00          1.91918
+             H 71  -- Mg 30                  0.35         0.00          1.91918
+             H 54  -- Mg 41                  0.37        -0.00          1.92488
+             H 49  -- Mg 41                  0.37         0.00          1.92488
+             H 61  -- Mg 52                  0.42        -0.00          1.92490
+             H 54  -- Mg 47                  0.37         0.00          1.92518
+             H 49  -- Mg 47                  0.37        -0.00          1.92518
+             H 62  -- Mg 44                  0.42        -0.00          1.92543
+             H 69  -- Mg 51                  0.37         0.00          1.92585
+             H 71  -- Mg 51                  0.37        -0.00          1.92586
+             H 69  -- Mg 53                  0.37        -0.00          1.92637
+             H 71  -- Mg 53                  0.37        -0.00          1.92637
+             H 87  -- Mg 29                  0.35         0.00          1.93122
+             H 92  -- Mg 35                  0.35        -0.00          1.93122
+             H 9   -- Mg 30                  0.35        -0.00          1.93145
+             H 11  -- Mg 36                  0.35        -0.00          1.93145
+             H 76  -- Mg 13                  0.35        -0.00          1.93477
+             H 77  -- Mg 28                  0.35        -0.00          1.93477
+             H 86  -- Mg 16                  0.35         0.00          1.93489
+             H 89  -- Mg 25                  0.35        -0.00          1.93489
+             H 12  -- Mg 14                  0.35         0.00          1.93520
+             H 10  -- Mg 27                  0.35         0.00          1.93520
+             H 4   -- Mg 26                  0.35         0.00          1.93522
+             H 3   -- Mg 15                  0.35        -0.00          1.93522
+             H 7   -- Mg 3                   0.39         0.00          1.93754
+             H 6   -- Mg 2                   0.39         0.00          1.93761
+             H 108 -- Mg 4                   0.34        -0.00          1.93839
+             H 106 -- Mg 4                   0.34         0.00          1.93839
+             H 100 -- Mg 1                   0.34         0.00          1.93843
+             H 99  -- Mg 1                   0.34        -0.00          1.93843
+             H 8   -- Mg 4                   0.39         0.00          1.93851
+             H 5   -- Mg 1                   0.39         0.00          1.93865
+             H 29  -- Mg 2                   0.34        -0.00          1.93982
+             H 26  -- Mg 2                   0.34         0.00          1.93982
+             H 17  -- Mg 3                   0.34        -0.00          1.94002
+             H 16  -- Mg 3                   0.34         0.00          1.94002
+             H 84  -- Mg 32                  0.35         0.00          1.94012
+             H 93  -- Mg 33                  0.35        -0.00          1.94012
+             H 96  -- Mg 24                  0.35         0.00          1.94016
+             H 81  -- Mg 19                  0.35        -0.00          1.94016
+             H 95  -- Mg 11                  0.35        -0.00          1.94056
+             H 82  -- Mg 12                  0.35        -0.00          1.94056
+             H 83  -- Mg 7                   0.35        -0.00          1.94078
+             H 94  -- Mg 5                   0.35        -0.00          1.94078
+             H 88  -- Mg 23                  0.42        -0.00          1.94080
+             H 91  -- Mg 20                  0.42         0.00          1.94080
+             H 75  -- Mg 23                  0.42         0.00          1.94127
+             H 78  -- Mg 20                  0.42         0.00          1.94127
+             H 105 -- Mg 9                   0.34        -0.00          1.94153
+             H 107 -- Mg 9                   0.34        -0.00          1.94153
+             H 27  -- Mg 10                  0.34        -0.00          1.94287
+             H 32  -- Mg 10                  0.34        -0.00          1.94287
+             H 57  -- Mg 11                  0.35        -0.00          1.94330
+             H 48  -- Mg 12                  0.35        -0.00          1.94330
+             H 58  -- Mg 24                  0.35        -0.00          1.94339
+             H 47  -- Mg 19                  0.35        -0.00          1.94339
+             H 60  -- Mg 5                   0.35        -0.00          1.94356
+             H 45  -- Mg 7                   0.35        -0.00          1.94356
+             H 19  -- Mg 20                  0.34         0.00          1.94361
+             H 13  -- Mg 23                  0.34         0.00          1.94361
+             H 59  -- Mg 33                  0.35        -0.00          1.94365
+             H 46  -- Mg 32                  0.35        -0.00          1.94365
+             H 14  -- Mg 20                  0.34        -0.00          1.94369
+             H 20  -- Mg 23                  0.34        -0.00          1.94369
+             H 38  -- Mg 18                  0.35         0.00          1.94497
+             H 44  -- Mg 21                  0.35        -0.00          1.94497
+             H 37  -- Mg 6                   0.35        -0.00          1.94513
+             H 43  -- Mg 8                   0.35        -0.00          1.94513
+             H 59  -- Mg 45                  0.38         0.00          1.94558
+             H 46  -- Mg 46                  0.38         0.00          1.94558
+             H 34  -- Mg 22                  0.34        -0.00          1.94560
+             H 23  -- Mg 17                  0.34         0.00          1.94560
+             H 58  -- Mg 45                  0.38         0.00          1.94563
+             H 47  -- Mg 46                  0.38         0.00          1.94563
+             H 22  -- Mg 31                  0.34         0.00          1.94565
+             H 35  -- Mg 34                  0.34        -0.00          1.94565
+             H 57  -- Mg 46                  0.38         0.00          1.94567
+             H 48  -- Mg 45                  0.38         0.00          1.94567
+             H 60  -- Mg 46                  0.38         0.00          1.94574
+             H 28  -- Mg 20                  0.33        -0.00          1.94574
+             H 31  -- Mg 23                  0.33         0.00          1.94575
+             H 45  -- Mg 45                  0.38         0.00          1.94575
+             H 36  -- Mg 17                  0.34        -0.00          1.94584
+             H 21  -- Mg 22                  0.34         0.00          1.94584
+             H 18  -- Mg 23                  0.33        -0.00          1.94595
+             H 15  -- Mg 20                  0.33         0.00          1.94595
+             H 24  -- Mg 34                  0.34         0.00          1.94613
+             H 33  -- Mg 31                  0.34        -0.00          1.94613
+             H 39  -- Mg 13                  0.35        -0.00          1.94663
+             H 42  -- Mg 28                  0.35        -0.00          1.94663
+             H 55  -- Mg 25                  0.35        -0.00          1.94684
+             H 52  -- Mg 16                  0.35         0.00          1.94684
+             H 108 -- Mg 6                   0.38         0.00          1.94689
+             H 106 -- Mg 8                   0.38         0.00          1.94689
+             H 99  -- Mg 6                   0.38         0.00          1.94691
+             H 100 -- Mg 8                   0.38        -0.00          1.94691
+             H 104 -- Mg 48                  0.34         0.00          1.94711
+             H 101 -- Mg 43                  0.35         0.00          1.94713
+             H 103 -- Mg 43                  0.35        -0.00          1.94721
+             H 102 -- Mg 48                  0.35        -0.00          1.94747
+             H 75  -- Mg 37                  0.37         0.00          1.94749
+             H 78  -- Mg 39                  0.37         0.00          1.94749
+             H 17  -- Mg 21                  0.38         0.00          1.94749
+             H 16  -- Mg 18                  0.38         0.00          1.94749
+             H 26  -- Mg 18                  0.38         0.00          1.94757
+             H 29  -- Mg 21                  0.38         0.00          1.94757
+             H 88  -- Mg 40                  0.37         0.00          1.94768
+             H 91  -- Mg 38                  0.37         0.00          1.94768
+             H 64  -- Mg 15                  0.35         0.00          1.94769
+             H 63  -- Mg 26                  0.35        -0.00          1.94769
+             H 72  -- Mg 27                  0.35        -0.00          1.94782
+             H 70  -- Mg 14                  0.35        -0.00          1.94782
+             H 105 -- Mg 7                   0.38         0.00          1.94864
+             H 107 -- Mg 5                   0.38         0.00          1.94864
+             H 39  -- Mg 41                  0.39         0.00          1.94911
+             H 42  -- Mg 41                  0.39        -0.00          1.94911
+             H 107 -- Mg 11                  0.38         0.00          1.94917
+             H 105 -- Mg 12                  0.38         0.00          1.94917
+             H 32  -- Mg 33                  0.38         0.00          1.94917
+             H 27  -- Mg 32                  0.38        -0.00          1.94917
+             H 55  -- Mg 47                  0.39         0.00          1.94921
+             H 52  -- Mg 47                  0.39        -0.00          1.94921
+             H 13  -- Mg 13                  0.38         0.00          1.94925
+             H 19  -- Mg 28                  0.38         0.00          1.94925
+             H 20  -- Mg 26                  0.38         0.00          1.94935
+             H 14  -- Mg 15                  0.38         0.00          1.94935
+             H 27  -- Mg 19                  0.38        -0.00          1.94942
+             H 32  -- Mg 24                  0.38         0.00          1.94942
+             H 14  -- Mg 14                  0.38         0.00          1.94946
+             H 20  -- Mg 27                  0.38         0.00          1.94946
+             H 13  -- Mg 16                  0.38         0.00          1.94957
+             H 19  -- Mg 25                  0.38         0.00          1.94957
+             H 4   -- Mg 6                   0.37        -0.00          1.94960
+             H 3   -- Mg 8                   0.37         0.00          1.94960
+             H 10  -- Mg 6                   0.37        -0.00          1.94969
+             H 12  -- Mg 8                   0.37         0.00          1.94969
+             H 86  -- Mg 21                  0.37        -0.00          1.94995
+             H 89  -- Mg 18                  0.37         0.00          1.94995
+             H 96  -- Mg 15                  0.38         0.00          1.94996
+             H 81  -- Mg 26                  0.38        -0.00          1.94996
+             H 73  -- Mg 18                  0.35        -0.00          1.95000
+             H 79  -- Mg 21                  0.35        -0.00          1.95000
+             H 84  -- Mg 27                  0.38        -0.00          1.95009
+             H 93  -- Mg 14                  0.38         0.00          1.95009
+             H 76  -- Mg 21                  0.37         0.00          1.95010
+             H 77  -- Mg 18                  0.37         0.00          1.95010
+             H 72  -- Mg 53                  0.39         0.00          1.95013
+             H 70  -- Mg 53                  0.39         0.00          1.95013
+             H 63  -- Mg 51                  0.39         0.00          1.95019
+             H 64  -- Mg 51                  0.39        -0.00          1.95019
+             H 83  -- Mg 28                  0.38         0.00          1.95026
+             H 94  -- Mg 13                  0.38         0.00          1.95026
+             H 82  -- Mg 25                  0.38         0.00          1.95029
+             H 95  -- Mg 16                  0.38         0.00          1.95029
+             H 99  -- Mg 7                   0.37         0.00          1.95053
+             H 100 -- Mg 5                   0.37         0.00          1.95053
+             H 106 -- Mg 11                  0.37         0.00          1.95064
+             H 108 -- Mg 12                  0.37         0.00          1.95064
+             H 80  -- Mg 8                   0.35        -0.00          1.95068
+             H 74  -- Mg 6                   0.35         0.00          1.95068
+             H 97  -- Mg 3                   0.38         0.00          1.95074
+             H 29  -- Mg 33                  0.37         0.00          1.95079
+             H 26  -- Mg 32                  0.37        -0.00          1.95079
+             H 17  -- Mg 24                  0.37         0.00          1.95084
+             H 16  -- Mg 19                  0.37         0.00          1.95084
+             H 97  -- Mg 2                   0.38         0.00          1.95092
+             H 4   -- Mg 7                   0.37         0.00          1.95117
+             H 3   -- Mg 5                   0.37         0.00          1.95117
+             H 98  -- Mg 1                   0.38         0.00          1.95154
+             H 12  -- Mg 11                  0.37         0.00          1.95167
+             H 10  -- Mg 12                  0.37         0.00          1.95167
+             H 76  -- Mg 24                  0.37         0.00          1.95180
+             H 77  -- Mg 19                  0.37         0.00          1.95180
+             H 98  -- Mg 4                   0.38         0.00          1.95184
+             H 89  -- Mg 32                  0.37         0.00          1.95185
+             H 86  -- Mg 33                  0.37         0.00          1.95185
+             H 11  -- Mg 12                  0.37         0.00          1.95303
+             H 9   -- Mg 11                  0.37         0.00          1.95303
+             H 9   -- Mg 5                   0.37         0.00          1.95318
+             H 11  -- Mg 7                   0.37         0.00          1.95318
+             H 92  -- Mg 19                  0.37         0.00          1.95327
+             H 87  -- Mg 24                  0.37         0.00          1.95327
+             H 92  -- Mg 32                  0.37         0.00          1.95348
+             H 87  -- Mg 33                  0.37         0.00          1.95348
+             H 36  -- Mg 35                  0.37         0.00          1.95356
+             H 21  -- Mg 29                  0.37         0.00          1.95356
+             H 98  -- Mg 42                  0.34        -0.00          1.95359
+             H 23  -- Mg 30                  0.37         0.00          1.95362
+             H 34  -- Mg 36                  0.37         0.00          1.95362
+             H 97  -- Mg 42                  0.34         0.00          1.95364
+             H 33  -- Mg 35                  0.37         0.00          1.95368
+             H 24  -- Mg 29                  0.37        -0.00          1.95368
+             H 35  -- Mg 36                  0.37         0.00          1.95369
+             H 22  -- Mg 30                  0.37         0.00          1.95369
+             H 47  -- Mg 39                  0.36         0.00          1.95380
+             H 58  -- Mg 37                  0.36         0.00          1.95380
+             H 46  -- Mg 38                  0.36         0.00          1.95386
+             H 59  -- Mg 40                  0.36         0.00          1.95386
+             H 23  -- Mg 15                  0.38         0.00          1.95399
+             H 34  -- Mg 26                  0.38         0.00          1.95399
+             H 57  -- Mg 38                  0.36         0.00          1.95402
+             H 48  -- Mg 40                  0.36        -0.00          1.95402
+             H 22  -- Mg 14                  0.38        -0.00          1.95406
+             H 35  -- Mg 27                  0.38         0.00          1.95406
+             H 60  -- Mg 39                  0.36        -0.00          1.95407
+             H 45  -- Mg 37                  0.36        -0.00          1.95407
+             H 33  -- Mg 25                  0.38        -0.00          1.95441
+             H 24  -- Mg 16                  0.38         0.00          1.95441
+             H 21  -- Mg 13                  0.38        -0.00          1.95442
+             H 36  -- Mg 28                  0.38         0.00          1.95442
+             H 41  -- Mg 39                  0.35        -0.00          1.95445
+             H 40  -- Mg 37                  0.35        -0.00          1.95445
+             H 104 -- Mg 2                   0.38         0.00          1.95462
+             H 101 -- Mg 3                   0.38         0.00          1.95475
+             H 50  -- Mg 40                  0.35        -0.00          1.95482
+             H 53  -- Mg 38                  0.35        -0.00          1.95482
+             H 44  -- Mg 37                  0.37         0.00          1.95491
+             H 38  -- Mg 39                  0.37         0.00          1.95491
+             H 38  -- Mg 38                  0.37         0.00          1.95516
+             H 44  -- Mg 40                  0.37         0.00          1.95516
+             H 37  -- Mg 40                  0.37         0.00          1.95519
+             H 43  -- Mg 38                  0.37         0.00          1.95519
+             H 37  -- Mg 37                  0.37         0.00          1.95520
+             H 43  -- Mg 39                  0.37         0.00          1.95520
+             H 103 -- Mg 1                   0.38         0.00          1.95552
+             H 102 -- Mg 4                   0.38         0.00          1.95560
+             H 79  -- Mg 15                  0.37         0.00          1.95688
+             H 73  -- Mg 26                  0.37        -0.00          1.95688
+             H 73  -- Mg 27                  0.37         0.00          1.95690
+             H 79  -- Mg 14                  0.37         0.00          1.95690
+             H 96  -- Mg 30                  0.37         0.00          1.95693
+             H 81  -- Mg 36                  0.37         0.00          1.95693
+             H 84  -- Mg 36                  0.37         0.00          1.95694
+             H 93  -- Mg 30                  0.37         0.00          1.95695
+             H 95  -- Mg 29                  0.37         0.00          1.95716
+             H 82  -- Mg 35                  0.37         0.00          1.95716
+             H 80  -- Mg 16                  0.37         0.00          1.95722
+             H 74  -- Mg 25                  0.37         0.00          1.95722
+             H 74  -- Mg 28                  0.37         0.00          1.95724
+             H 80  -- Mg 13                  0.37         0.00          1.95724
+             H 83  -- Mg 35                  0.37         0.00          1.95730
+             H 94  -- Mg 29                  0.37         0.00          1.95730
+             H 2   -- Mg 52                  0.37        -0.00          1.95731
+             H 53  -- Mg 42                  0.38         0.00          1.95765
+             H 50  -- Mg 42                  0.38         0.00          1.95765
+             H 41  -- Mg 42                  0.38         0.00          1.95780
+             H 40  -- Mg 42                  0.38        -0.00          1.95780
+             H 104 -- Mg 10                  0.37        -0.00          1.95784
+             H 85  -- Mg 22                  0.40        -0.00          1.95808
+             H 90  -- Mg 17                  0.40         0.00          1.95808
+             H 101 -- Mg 10                  0.37        -0.00          1.95820
+             H 7   -- Mg 10                  0.38         0.00          1.95828
+             H 6   -- Mg 53                  0.34        -0.00          1.95844
+             H 56  -- Mg 43                  0.38         0.00          1.95849
+             H 51  -- Mg 43                  0.38         0.00          1.95849
+             H 6   -- Mg 10                  0.38         0.00          1.95850
+             H 7   -- Mg 51                  0.34        -0.00          1.95850
+             H 51  -- Mg 48                  0.38         0.00          1.95859
+             H 56  -- Mg 48                  0.38         0.00          1.95859
+             H 90  -- Mg 31                  0.40        -0.00          1.95871
+             H 85  -- Mg 34                  0.40         0.00          1.95871
+             H 102 -- Mg 9                   0.37         0.00          1.95874
+             H 1   -- Mg 44                  0.37         0.00          1.95881
+             H 103 -- Mg 9                   0.37         0.00          1.95883
+             H 8   -- Mg 9                   0.38         0.00          1.95885
+             H 5   -- Mg 9                   0.38         0.00          1.95906
+             H 5   -- Mg 41                  0.34        -0.00          1.96010
+             H 8   -- Mg 47                  0.34        -0.00          1.96014
+             H 40  -- Mg 43                  0.37         0.00          1.96173
+             H 41  -- Mg 43                  0.37         0.00          1.96173
+             H 50  -- Mg 48                  0.37        -0.00          1.96185
+             H 53  -- Mg 48                  0.37         0.00          1.96185
+             H 55  -- Mg 44                  0.35        -0.00          1.96554
+             H 52  -- Mg 44                  0.35         0.00          1.96554
+             H 39  -- Mg 44                  0.35         0.00          1.96587
+             H 42  -- Mg 44                  0.35         0.00          1.96587
+             H 72  -- Mg 52                  0.35         0.00          1.96619
+             H 70  -- Mg 52                  0.35        -0.00          1.96619
+             H 63  -- Mg 52                  0.35         0.00          1.96669
+             H 64  -- Mg 52                  0.35         0.00          1.96669
+             H 56  -- Mg 46                  0.34         0.00          1.97508
+             H 51  -- Mg 45                  0.34         0.00          1.97508
+             H 2   -- Mg 3                   0.36         0.00          1.97651
+             H 2   -- Mg 2                   0.36         0.00          1.97688
+             H 1   -- Mg 1                   0.37         0.00          1.97723
+             H 1   -- Mg 4                   0.37         0.00          1.97743
+             H 78  -- Mg 17                  0.33         0.00          2.00772
+             H 75  -- Mg 22                  0.33         0.00          2.00772
+             H 91  -- Mg 31                  0.33        -0.00          2.00836
+             H 88  -- Mg 34                  0.33         0.00          2.00836
+             H 61  -- Mg 50                  0.37         0.00          2.01155
+             H 61  -- Mg 49                  0.37         0.00          2.01221
+             H 62  -- Mg 49                  0.37         0.00          2.01234
+             H 62  -- Mg 50                  0.37         0.00          2.01240
+             H 85  -- Mg 45                  0.31        -0.00          2.02158
+             H 90  -- Mg 46                  0.31         0.00          2.02159
+             H 30  -- Mg 34                  0.31        -0.00          2.02381
+             H 25  -- Mg 31                  0.31         0.00          2.02382
+             H 30  -- Mg 22                  0.31         0.00          2.02398
+             H 25  -- Mg 17                  0.31        -0.00          2.02398
+             H 65  -- Mg 51                  0.28        -0.00          2.04138
+             H 68  -- Mg 53                  0.28         0.00          2.04165
+             H 67  -- Mg 41                  0.28         0.00          2.04486
+             H 66  -- Mg 47                  0.28        -0.00          2.04560
+             H 66  -- Mg 50                  0.32         0.00          2.05386
+             H 67  -- Mg 49                  0.32        -0.00          2.05406
+             H 65  -- Mg 49                  0.32         0.00          2.05430
+             H 68  -- Mg 50                  0.32        -0.00          2.05508
+             H 66  -- H 68                  -0.05        -0.00          2.29448
+             H 65  -- H 67                  -0.05        -0.00          2.29506
+             H 30  -- H 65                  -0.01         0.00          2.33407
+             H 25  -- H 65                  -0.01        -0.00          2.33407
+             H 30  -- H 67                  -0.01         0.00          2.33439
+             H 25  -- H 67                  -0.01        -0.00          2.33439
+             H 25  -- H 68                  -0.01        -0.00          2.33467
+             H 30  -- H 68                  -0.01        -0.00          2.33467
+             H 25  -- H 66                  -0.01        -0.00          2.33504
+             H 30  -- H 66                  -0.01        -0.00          2.33504
+             H 66  -- H 67                   0.01        -0.00          2.37760
+             H 65  -- H 68                   0.01        -0.00          2.37905
+             H 61  -- H 62                  -0.08         0.00          2.42142
+             H 39  -- H 42                  -0.10         0.00          2.45161
+             H 52  -- H 55                  -0.10         0.00          2.45219
+             H 70  -- H 72                  -0.10         0.00          2.45418
+             H 63  -- H 64                  -0.10         0.00          2.45485
+             H 31  -- H 88                  -0.09        -0.00          2.47919
+             H 28  -- H 91                  -0.09         0.00          2.47919
+             H 18  -- H 75                  -0.09        -0.00          2.47972
+             H 15  -- H 78                  -0.09         0.00          2.47972
+             H 4   -- H 99                  -0.09        -0.00          2.49142
+             H 3   -- H 100                 -0.09         0.00          2.49142
+             H 12  -- H 106                 -0.09         0.00          2.49167
+             H 10  -- H 108                 -0.09         0.00          2.49167
+             H 26  -- H 89                  -0.09         0.00          2.49270
+             H 29  -- H 86                  -0.09         0.00          2.49270
+             H 11  -- H 105                 -0.09        -0.00          2.49295
+             H 9   -- H 107                 -0.09         0.00          2.49295
+             H 17  -- H 76                  -0.09         0.00          2.49309
+             H 16  -- H 77                  -0.09         0.00          2.49309
+             H 14  -- H 79                  -0.09         0.00          2.49369
+             H 20  -- H 73                  -0.09         0.00          2.49369
+             H 27  -- H 92                  -0.09         0.00          2.49385
+             H 32  -- H 87                  -0.09         0.00          2.49385
+             H 13  -- H 80                  -0.09         0.00          2.49391
+             H 19  -- H 74                  -0.09         0.00          2.49391
+             H 48  -- H 59                  -0.09         0.00          2.49629
+             H 46  -- H 57                  -0.09         0.00          2.49629
+             H 47  -- H 60                  -0.09         0.00          2.49634
+             H 45  -- H 58                  -0.09         0.00          2.49634
+             H 38  -- H 43                  -0.09        -0.00          2.49646
+             H 37  -- H 44                  -0.09         0.00          2.49646
+             H 6   -- H 104                 -0.09        -0.00          2.49967
+             H 7   -- H 101                 -0.09         0.00          2.50004
+             H 8   -- H 102                 -0.09         0.00          2.50209
+             H 5   -- H 103                 -0.09         0.00          2.50250
+             H 23  -- H 96                  -0.09         0.00          2.50681
+             H 34  -- H 81                  -0.09         0.00          2.50681
+             H 35  -- H 84                  -0.09        -0.00          2.50688
+             H 22  -- H 93                  -0.09         0.00          2.50688
+             H 21  -- H 94                  -0.09         0.00          2.50763
+             H 36  -- H 83                  -0.09         0.00          2.50763
+             H 33  -- H 82                  -0.09         0.00          2.50770
+             H 24  -- H 95                  -0.09         0.00          2.50770
+             H 49  -- H 54                  -0.08         0.00          2.51294
+             H 40  -- H 41                  -0.09         0.00          2.51388
+             H 50  -- H 53                  -0.09        -0.00          2.51432
+             H 69  -- H 71                  -0.08         0.00          2.51579
+             H 2   -- H 97                  -0.08         0.00          2.53167
+             H 1   -- H 98                  -0.08         0.00          2.53412
+             H 51  -- H 56                  -0.08         0.00          2.53439
+             H 30  -- H 85                  -0.06        -0.00          2.62551
+             H 25  -- H 90                  -0.06         0.00          2.62551
+             H 7   -- H 71                  -0.04        -0.00          2.66732
+             H 7   -- H 69                  -0.04        -0.00          2.66732
+             H 6   -- H 71                  -0.04        -0.00          2.66744
+             H 6   -- H 69                  -0.04        -0.00          2.66744
+             H 5   -- H 49                  -0.04        -0.00          2.66948
+             H 5   -- H 54                  -0.04        -0.00          2.66948
+             H 8   -- H 49                  -0.04        -0.00          2.66973
+             H 8   -- H 54                  -0.04        -0.00          2.66973
+             H 33  -- H 55                  -0.04        -0.00          2.67177
+             H 24  -- H 52                  -0.04         0.00          2.67177
+             H 36  -- H 42                  -0.04        -0.00          2.67194
+             H 21  -- H 39                  -0.04        -0.00          2.67194
+             H 34  -- H 63                  -0.04        -0.00          2.67392
+             H 23  -- H 64                  -0.04         0.00          2.67392
+             H 35  -- H 72                  -0.04        -0.00          2.67416
+             H 22  -- H 70                  -0.04         0.00          2.67416
+             H 31  -- H 62                  -0.04         0.00          2.68369
+             H 28  -- H 62                  -0.04         0.00          2.68369
+             H 18  -- H 62                  -0.04         0.00          2.68437
+             H 15  -- H 62                  -0.04        -0.00          2.68437
+             H 18  -- H 61                  -0.04        -0.00          2.68473
+             H 15  -- H 61                  -0.04        -0.00          2.68473
+             H 31  -- H 61                  -0.04        -0.00          2.68488
+             H 28  -- H 61                  -0.04        -0.00          2.68488
+             H 69  -- H 84                  -0.04        -0.00          2.69859
+             H 71  -- H 93                  -0.04        -0.00          2.69859
+             H 69  -- H 81                  -0.04        -0.00          2.69884
+             H 71  -- H 96                  -0.04        -0.00          2.69884
+             H 49  -- H 94                  -0.04        -0.00          2.69898
+             H 54  -- H 83                  -0.04        -0.00          2.69898
+             H 49  -- H 95                  -0.04         0.00          2.69926
+             H 54  -- H 82                  -0.04         0.00          2.69926
+             H 34  -- H 85                  -0.04        -0.00          2.70317
+             H 23  -- H 90                  -0.04        -0.00          2.70317
+             H 35  -- H 85                  -0.04        -0.00          2.70341
+             H 22  -- H 90                  -0.04        -0.00          2.70341
+             H 24  -- H 85                  -0.04        -0.00          2.70385
+             H 33  -- H 90                  -0.04         0.00          2.70385
+             H 21  -- H 85                  -0.04        -0.00          2.70418
+             H 36  -- H 90                  -0.04        -0.00          2.70418
+             H 10  -- H 84                  -0.04        -0.00          2.73119
+             H 12  -- H 93                  -0.04        -0.00          2.73119
+             H 3   -- H 96                  -0.04        -0.00          2.73133
+             H 4   -- H 81                  -0.04        -0.00          2.73133
+             H 76  -- H 94                  -0.04         0.00          2.73202
+             H 77  -- H 83                  -0.04         0.00          2.73202
+             H 39  -- H 62                  -0.04        -0.00          2.73235
+             H 42  -- H 62                  -0.04         0.00          2.73235
+             H 86  -- H 95                  -0.04         0.00          2.73271
+             H 82  -- H 89                  -0.04        -0.00          2.73271
+             H 61  -- H 70                  -0.04        -0.00          2.73286
+             H 61  -- H 72                  -0.04         0.00          2.73286
+             H 11  -- H 48                  -0.04         0.00          2.73313
+             H 9   -- H 57                  -0.04         0.00          2.73313
+             H 11  -- H 45                  -0.04         0.00          2.73337
+             H 9   -- H 60                  -0.04        -0.00          2.73337
+             H 59  -- H 87                  -0.04        -0.00          2.73354
+             H 46  -- H 92                  -0.04        -0.00          2.73354
+             H 61  -- H 64                  -0.04        -0.00          2.73356
+             H 61  -- H 63                  -0.04        -0.00          2.73356
+             H 58  -- H 87                  -0.04        -0.00          2.73357
+             H 47  -- H 92                  -0.04        -0.00          2.73357
+             H 52  -- H 62                  -0.04        -0.00          2.73362
+             H 55  -- H 62                  -0.04        -0.00          2.73362
+             H 86  -- H 93                  -0.03         0.00          2.74049
+             H 84  -- H 89                  -0.03         0.00          2.74049
+             H 13  -- H 52                  -0.03        -0.00          2.74058
+             H 19  -- H 55                  -0.03         0.00          2.74058
+             H 13  -- H 39                  -0.03        -0.00          2.74060
+             H 19  -- H 42                  -0.03        -0.00          2.74060
+             H 76  -- H 96                  -0.03         0.00          2.74110
+             H 77  -- H 81                  -0.03         0.00          2.74111
+             H 58  -- H 75                  -0.03         0.00          2.74180
+             H 47  -- H 78                  -0.03         0.00          2.74180
+             H 14  -- H 15                  -0.03        -0.00          2.74201
+             H 18  -- H 20                  -0.03        -0.00          2.74201
+             H 20  -- H 63                  -0.03        -0.00          2.74231
+             H 14  -- H 64                  -0.03        -0.00          2.74231
+             H 14  -- H 70                  -0.03         0.00          2.74245
+             H 20  -- H 72                  -0.03         0.00          2.74245
+             H 46  -- H 91                  -0.03        -0.00          2.74247
+             H 59  -- H 88                  -0.03         0.00          2.74247
+             H 12  -- H 95                  -0.03        -0.00          2.74263
+             H 10  -- H 82                  -0.03        -0.00          2.74263
+             H 4   -- H 83                  -0.03        -0.00          2.74264
+             H 3   -- H 94                  -0.03        -0.00          2.74264
+             H 9   -- H 96                  -0.03        -0.00          2.74304
+             H 11  -- H 81                  -0.03        -0.00          2.74304
+             H 4   -- H 37                  -0.03         0.00          2.74307
+             H 3   -- H 43                  -0.03         0.00          2.74307
+             H 80  -- H 100                 -0.03        -0.00          2.74322
+             H 74  -- H 99                  -0.03        -0.00          2.74322
+             H 35  -- H 88                  -0.03        -0.00          2.74329
+             H 22  -- H 91                  -0.03         0.00          2.74329
+             H 20  -- H 31                  -0.03        -0.00          2.74332
+             H 14  -- H 28                  -0.03         0.00          2.74332
+             H 16  -- H 73                  -0.03         0.00          2.74332
+             H 17  -- H 79                  -0.03        -0.00          2.74332
+             H 45  -- H 75                  -0.03        -0.00          2.74339
+             H 60  -- H 78                  -0.03        -0.00          2.74339
+             H 74  -- H 108                 -0.03        -0.00          2.74341
+             H 80  -- H 106                 -0.03        -0.00          2.74341
+             H 19  -- H 28                  -0.03         0.00          2.74343
+             H 13  -- H 31                  -0.03        -0.00          2.74343
+             H 98  -- H 108                 -0.03         0.00          2.74343
+             H 98  -- H 106                 -0.03         0.00          2.74343
+             H 98  -- H 99                  -0.03        -0.00          2.74359
+             H 98  -- H 100                 -0.03         0.00          2.74359
+             H 21  -- H 75                  -0.03         0.00          2.74360
+             H 36  -- H 78                  -0.03        -0.00          2.74360
+             H 12  -- H 43                  -0.03         0.00          2.74372
+             H 10  -- H 37                  -0.03         0.00          2.74372
+             H 48  -- H 88                  -0.03        -0.00          2.74377
+             H 57  -- H 91                  -0.03        -0.00          2.74377
+             H 33  -- H 91                  -0.03        -0.00          2.74386
+             H 24  -- H 88                  -0.03         0.00          2.74386
+             H 11  -- H 84                  -0.03        -0.00          2.74393
+             H 9   -- H 93                  -0.03        -0.00          2.74393
+             H 38  -- H 89                  -0.03         0.00          2.74398
+             H 44  -- H 86                  -0.03        -0.00          2.74398
+             H 38  -- H 77                  -0.03        -0.00          2.74399
+             H 44  -- H 76                  -0.03         0.00          2.74399
+             H 13  -- H 76                  -0.03        -0.00          2.74415
+             H 19  -- H 77                  -0.03        -0.00          2.74415
+             H 34  -- H 75                  -0.03         0.00          2.74440
+             H 23  -- H 78                  -0.03        -0.00          2.74440
+             H 19  -- H 89                  -0.03        -0.00          2.74457
+             H 13  -- H 86                  -0.03        -0.00          2.74457
+             H 87  -- H 95                  -0.03         0.00          2.74462
+             H 82  -- H 92                  -0.03         0.00          2.74462
+             H 3   -- H 14                  -0.03        -0.00          2.74465
+             H 4   -- H 20                  -0.03         0.00          2.74465
+             H 29  -- H 97                  -0.03        -0.00          2.74485
+             H 26  -- H 97                  -0.03         0.00          2.74485
+             H 29  -- H 79                  -0.03         0.00          2.74497
+             H 26  -- H 73                  -0.03         0.00          2.74497
+             H 83  -- H 92                  -0.03        -0.00          2.74501
+             H 87  -- H 94                  -0.03         0.00          2.74501
+             H 15  -- H 19                  -0.03         0.00          2.74513
+             H 13  -- H 18                  -0.03         0.00          2.74513
+             H 12  -- H 14                  -0.03         0.00          2.74517
+             H 10  -- H 20                  -0.03         0.00          2.74517
+             H 16  -- H 97                  -0.03         0.00          2.74569
+             H 17  -- H 97                  -0.03        -0.00          2.74569
+             H 4   -- H 45                  -0.03         0.00          2.74726
+             H 3   -- H 60                  -0.03        -0.00          2.74726
+             H 12  -- H 57                  -0.03        -0.00          2.74730
+             H 10  -- H 48                  -0.03         0.00          2.74730
+             H 7   -- H 16                  -0.03         0.00          2.74734
+             H 7   -- H 17                  -0.03         0.00          2.74734
+             H 59  -- H 86                  -0.03         0.00          2.74791
+             H 46  -- H 89                  -0.03        -0.00          2.74791
+             H 58  -- H 76                  -0.03        -0.00          2.74797
+             H 47  -- H 77                  -0.03        -0.00          2.74797
+             H 6   -- H 29                  -0.03        -0.00          2.74808
+             H 6   -- H 26                  -0.03         0.00          2.74808
+             H 99  -- H 103                 -0.03         0.00          2.74842
+             H 100 -- H 103                 -0.03         0.00          2.74843
+             H 5   -- H 99                  -0.03        -0.00          2.74856
+             H 5   -- H 100                 -0.03        -0.00          2.74856
+             H 8   -- H 106                 -0.03        -0.00          2.74878
+             H 8   -- H 108                 -0.03        -0.00          2.74878
+             H 102 -- H 106                 -0.03        -0.00          2.74905
+             H 102 -- H 108                 -0.03        -0.00          2.74905
+             H 29  -- H 104                 -0.03        -0.00          2.75024
+             H 26  -- H 104                 -0.03        -0.00          2.75024
+             H 45  -- H 51                  -0.03        -0.00          2.75029
+             H 56  -- H 60                  -0.03        -0.00          2.75029
+             H 48  -- H 51                  -0.03         0.00          2.75058
+             H 56  -- H 57                  -0.03        -0.00          2.75058
+             H 83  -- H 99                  -0.03        -0.00          2.75083
+             H 94  -- H 100                 -0.03         0.00          2.75083
+             H 51  -- H 58                  -0.03         0.00          2.75084
+             H 47  -- H 56                  -0.03        -0.00          2.75084
+             H 95  -- H 106                 -0.03        -0.00          2.75085
+             H 82  -- H 108                 -0.03        -0.00          2.75085
+             H 16  -- H 101                 -0.03        -0.00          2.75096
+             H 17  -- H 101                 -0.03        -0.00          2.75096
+             H 17  -- H 96                  -0.03         0.00          2.75106
+             H 16  -- H 81                  -0.03         0.00          2.75106
+             H 103 -- H 105                 -0.03        -0.00          2.75124
+             H 103 -- H 107                 -0.03         0.00          2.75124
+             H 102 -- H 105                 -0.03         0.00          2.75129
+             H 102 -- H 107                 -0.03         0.00          2.75129
+             H 51  -- H 59                  -0.03        -0.00          2.75131
+             H 46  -- H 56                  -0.03         0.00          2.75131
+             H 26  -- H 84                  -0.03         0.00          2.75201
+             H 29  -- H 93                  -0.03        -0.00          2.75201
+             H 32  -- H 104                 -0.03        -0.00          2.75252
+             H 27  -- H 104                 -0.03         0.00          2.75252
+             H 32  -- H 101                 -0.03        -0.00          2.75272
+             H 27  -- H 101                 -0.03        -0.00          2.75272
+             H 20  -- H 88                  -0.03        -0.00          2.75283
+             H 14  -- H 91                  -0.03        -0.00          2.75283
+             H 13  -- H 88                  -0.03         0.00          2.75314
+             H 19  -- H 91                  -0.03        -0.00          2.75314
+             H 19  -- H 78                  -0.03         0.00          2.75316
+             H 13  -- H 75                  -0.03        -0.00          2.75317
+             H 20  -- H 75                  -0.03        -0.00          2.75359
+             H 14  -- H 78                  -0.03        -0.00          2.75359
+             H 37  -- H 40                  -0.03        -0.00          2.75605
+             H 41  -- H 43                  -0.03        -0.00          2.75605
+             H 37  -- H 50                  -0.03         0.00          2.75639
+             H 43  -- H 53                  -0.03        -0.00          2.75639
+             H 94  -- H 107                 -0.03         0.00          2.75689
+             H 83  -- H 105                 -0.03        -0.00          2.75689
+             H 44  -- H 50                  -0.03         0.00          2.75700
+             H 38  -- H 53                  -0.03         0.00          2.75700
+             H 82  -- H 105                 -0.03        -0.00          2.75709
+             H 95  -- H 107                 -0.03        -0.00          2.75709
+             H 40  -- H 44                  -0.03         0.00          2.75711
+             H 38  -- H 41                  -0.03        -0.00          2.75712
+             H 26  -- H 38                  -0.03        -0.00          2.75795
+             H 29  -- H 44                  -0.03        -0.00          2.75795
+             H 37  -- H 99                  -0.03        -0.00          2.75818
+             H 43  -- H 100                 -0.03         0.00          2.75818
+             H 32  -- H 96                  -0.03         0.00          2.75829
+             H 27  -- H 81                  -0.03         0.00          2.75829
+             H 32  -- H 93                  -0.03         0.00          2.75836
+             H 27  -- H 84                  -0.03         0.00          2.75836
+             H 43  -- H 106                 -0.03        -0.00          2.75862
+             H 37  -- H 108                 -0.03         0.00          2.75862
+             H 16  -- H 38                  -0.03        -0.00          2.75944
+             H 17  -- H 44                  -0.03        -0.00          2.75944
+             H 81  -- H 92                  -0.03        -0.00          2.75974
+             H 87  -- H 96                  -0.03         0.00          2.75974
+             H 87  -- H 93                  -0.03         0.00          2.76014
+             H 84  -- H 92                  -0.03         0.00          2.76014
+             H 41  -- H 101                 -0.03         0.00          2.76060
+             H 40  -- H 101                 -0.03         0.00          2.76060
+             H 53  -- H 104                 -0.03        -0.00          2.76086
+             H 50  -- H 104                 -0.03         0.00          2.76086
+             H 11  -- H 82                  -0.03        -0.00          2.76147
+             H 9   -- H 95                  -0.03        -0.00          2.76147
+             H 21  -- H 49                  -0.03        -0.00          2.76154
+             H 36  -- H 54                  -0.03        -0.00          2.76154
+             H 60  -- H 107                 -0.03         0.00          2.76164
+             H 45  -- H 105                 -0.03        -0.00          2.76164
+             H 3   -- H 79                  -0.03        -0.00          2.76168
+             H 4   -- H 73                  -0.03        -0.00          2.76168
+             H 41  -- H 103                 -0.03         0.00          2.76191
+             H 40  -- H 103                 -0.03         0.00          2.76191
+             H 12  -- H 79                  -0.03        -0.00          2.76193
+             H 10  -- H 73                  -0.03        -0.00          2.76193
+             H 9   -- H 94                  -0.03         0.00          2.76193
+             H 11  -- H 83                  -0.03        -0.00          2.76193
+             H 32  -- H 58                  -0.03         0.00          2.76194
+             H 27  -- H 47                  -0.03        -0.00          2.76194
+             H 57  -- H 107                 -0.03        -0.00          2.76218
+             H 48  -- H 105                 -0.03         0.00          2.76218
+             H 33  -- H 54                  -0.03        -0.00          2.76250
+             H 24  -- H 49                  -0.03        -0.00          2.76250
+             H 27  -- H 46                  -0.03         0.00          2.76254
+             H 32  -- H 59                  -0.03         0.00          2.76255
+             H 53  -- H 102                 -0.03        -0.00          2.76263
+             H 50  -- H 102                 -0.03        -0.00          2.76263
+             H 76  -- H 80                  -0.03         0.00          2.76298
+             H 74  -- H 77                  -0.03        -0.00          2.76298
+             H 74  -- H 89                  -0.03        -0.00          2.76333
+             H 80  -- H 86                  -0.03        -0.00          2.76333
+             H 56  -- H 101                 -0.03        -0.00          2.76343
+             H 51  -- H 101                 -0.03        -0.00          2.76343
+             H 56  -- H 104                 -0.03        -0.00          2.76363
+             H 51  -- H 104                 -0.03         0.00          2.76363
+             H 7   -- H 32                  -0.03        -0.00          2.76415
+             H 7   -- H 27                  -0.03        -0.00          2.76415
+             H 6   -- H 32                  -0.03         0.00          2.76437
+             H 6   -- H 27                  -0.03         0.00          2.76437
+             H 41  -- H 97                  -0.03         0.00          2.76463
+             H 40  -- H 97                  -0.03         0.00          2.76463
+             H 8   -- H 105                 -0.03        -0.00          2.76464
+             H 8   -- H 107                 -0.03        -0.00          2.76464
+             H 5   -- H 107                 -0.03        -0.00          2.76468
+             H 5   -- H 105                 -0.03        -0.00          2.76468
+             H 56  -- H 102                 -0.03        -0.00          2.76501
+             H 51  -- H 102                 -0.03        -0.00          2.76501
+             H 50  -- H 97                  -0.03         0.00          2.76516
+             H 53  -- H 97                  -0.03         0.00          2.76516
+             H 56  -- H 103                 -0.03        -0.00          2.76553
+             H 51  -- H 103                 -0.03        -0.00          2.76553
+             H 41  -- H 60                  -0.03        -0.00          2.76561
+             H 40  -- H 45                  -0.03        -0.00          2.76561
+             H 53  -- H 57                  -0.03        -0.00          2.76563
+             H 48  -- H 50                  -0.03        -0.00          2.76563
+             H 34  -- H 69                  -0.03        -0.00          2.76589
+             H 23  -- H 71                  -0.03        -0.00          2.76589
+             H 22  -- H 71                  -0.03        -0.00          2.76596
+             H 35  -- H 69                  -0.03         0.00          2.76596
+             H 46  -- H 53                  -0.03         0.00          2.76637
+             H 50  -- H 59                  -0.03         0.00          2.76637
+             H 41  -- H 98                  -0.03        -0.00          2.76654
+             H 40  -- H 98                  -0.03        -0.00          2.76654
+             H 50  -- H 98                  -0.03         0.00          2.76662
+             H 53  -- H 98                  -0.03        -0.00          2.76662
+             H 41  -- H 47                  -0.03         0.00          2.76673
+             H 40  -- H 58                  -0.03         0.00          2.76673
+             H 57  -- H 106                 -0.03         0.00          2.76766
+             H 48  -- H 108                 -0.03         0.00          2.76767
+             H 60  -- H 100                 -0.03        -0.00          2.76771
+             H 45  -- H 99                  -0.03         0.00          2.76771
+             H 26  -- H 46                  -0.03        -0.00          2.76812
+             H 29  -- H 59                  -0.03        -0.00          2.76812
+             H 9   -- H 23                  -0.03         0.00          2.76836
+             H 11  -- H 34                  -0.03         0.00          2.76836
+             H 17  -- H 58                  -0.03        -0.00          2.76892
+             H 16  -- H 47                  -0.03        -0.00          2.76893
+             H 9   -- H 22                  -0.03         0.00          2.76899
+             H 11  -- H 35                  -0.03         0.00          2.76899
+             H 24  -- H 87                  -0.03        -0.00          2.76904
+             H 33  -- H 92                  -0.03        -0.00          2.76904
+             H 36  -- H 92                  -0.03        -0.00          2.76973
+             H 21  -- H 87                  -0.03        -0.00          2.76973
+             H 15  -- H 23                  -0.03         0.00          2.77129
+             H 18  -- H 34                  -0.03         0.00          2.77130
+             H 22  -- H 28                  -0.03         0.00          2.77252
+             H 31  -- H 35                  -0.03         0.00          2.77252
+             H 28  -- H 33                  -0.03         0.00          2.77253
+             H 24  -- H 31                  -0.03         0.00          2.77253
+             H 2   -- H 16                  -0.03         0.00          2.77269
+             H 2   -- H 17                  -0.03        -0.00          2.77269
+             H 15  -- H 36                  -0.03         0.00          2.77277
+             H 18  -- H 21                  -0.03         0.00          2.77277
+             H 7   -- H 64                  -0.03        -0.00          2.77285
+             H 7   -- H 63                  -0.03        -0.00          2.77285
+             H 6   -- H 70                  -0.03        -0.00          2.77317
+             H 6   -- H 72                  -0.03        -0.00          2.77317
+             H 79  -- H 86                  -0.03        -0.00          2.77331
+             H 73  -- H 89                  -0.03         0.00          2.77331
+             H 2   -- H 29                  -0.03         0.00          2.77332
+             H 2   -- H 26                  -0.03         0.00          2.77332
+             H 73  -- H 77                  -0.03         0.00          2.77349
+             H 76  -- H 79                  -0.03         0.00          2.77349
+             H 5   -- H 39                  -0.03        -0.00          2.77353
+             H 5   -- H 42                  -0.03        -0.00          2.77353
+             H 1   -- H 108                 -0.03         0.00          2.77361
+             H 1   -- H 106                 -0.03         0.00          2.77361
+             H 1   -- H 100                 -0.03        -0.00          2.77408
+             H 1   -- H 99                  -0.03        -0.00          2.77408
+             H 8   -- H 55                  -0.03         0.00          2.77413
+             H 8   -- H 52                  -0.03        -0.00          2.77413
+             H 4   -- H 74                  -0.03        -0.00          2.77480
+             H 3   -- H 80                  -0.03        -0.00          2.77480
+             H 10  -- H 74                  -0.03        -0.00          2.77496
+             H 12  -- H 80                  -0.03        -0.00          2.77496
+             H 38  -- H 78                  -0.03         0.00          2.78008
+             H 44  -- H 75                  -0.03         0.00          2.78008
+             H 44  -- H 88                  -0.03         0.00          2.78084
+             H 38  -- H 91                  -0.03         0.00          2.78084
+             H 43  -- H 78                  -0.03        -0.00          2.78161
+             H 37  -- H 75                  -0.03        -0.00          2.78161
+             H 37  -- H 88                  -0.03        -0.00          2.78183
+             H 43  -- H 91                  -0.03         0.00          2.78183
+             H 49  -- H 67                  -0.03        -0.00          2.78615
+             H 54  -- H 67                  -0.03        -0.00          2.78615
+             H 65  -- H 69                  -0.03         0.00          2.78715
+             H 65  -- H 71                  -0.03        -0.00          2.78715
+             H 68  -- H 71                  -0.03        -0.00          2.78722
+             H 68  -- H 69                  -0.03        -0.00          2.78722
+             H 54  -- H 66                  -0.03         0.00          2.78729
+             H 49  -- H 66                  -0.03        -0.00          2.78729
+             H 55  -- H 82                  -0.03         0.00          2.78753
+             H 52  -- H 95                  -0.03        -0.00          2.78753
+             H 42  -- H 83                  -0.03         0.00          2.78768
+             H 39  -- H 94                  -0.03         0.00          2.78768
+             H 70  -- H 93                  -0.03        -0.00          2.78795
+             H 72  -- H 84                  -0.03        -0.00          2.78795
+             H 63  -- H 81                  -0.03        -0.00          2.78796
+             H 64  -- H 96                  -0.03        -0.00          2.78796
+             H 10  -- H 35                  -0.03         0.00          2.78913
+             H 12  -- H 22                  -0.03         0.00          2.78913
+             H 3   -- H 23                  -0.03         0.00          2.78940
+             H 4   -- H 34                  -0.03         0.00          2.78940
+             H 24  -- H 86                  -0.03        -0.00          2.78948
+             H 33  -- H 89                  -0.03        -0.00          2.78949
+             H 21  -- H 76                  -0.03        -0.00          2.78950
+             H 36  -- H 77                  -0.03        -0.00          2.78950
+             H 2   -- H 70                  -0.03        -0.00          2.79278
+             H 2   -- H 72                  -0.03         0.00          2.79278
+             H 2   -- H 64                  -0.03        -0.00          2.79340
+             H 2   -- H 63                  -0.03        -0.00          2.79340
+             H 1   -- H 55                  -0.03        -0.00          2.79365
+             H 1   -- H 52                  -0.03         0.00          2.79365
+             H 1   -- H 39                  -0.03         0.00          2.79376
+             H 1   -- H 42                  -0.03        -0.00          2.79376
+             H 39  -- H 80                  -0.03        -0.00          2.79492
+             H 42  -- H 74                  -0.03         0.00          2.79492
+             H 52  -- H 80                  -0.03         0.00          2.79516
+             H 55  -- H 74                  -0.03         0.00          2.79516
+             H 63  -- H 73                  -0.03        -0.00          2.79539
+             H 64  -- H 79                  -0.03        -0.00          2.79539
+             H 70  -- H 79                  -0.03        -0.00          2.79547
+             H 72  -- H 73                  -0.03        -0.00          2.79547
+             H 46  -- H 90                  -0.03         0.00          2.82678
+             H 59  -- H 85                  -0.03         0.00          2.82678
+             H 47  -- H 90                  -0.03         0.00          2.82724
+             H 58  -- H 85                  -0.03         0.00          2.82724
+             H 48  -- H 85                  -0.03         0.00          2.82795
+             H 57  -- H 90                  -0.03        -0.00          2.82795
+             H 60  -- H 90                  -0.03        -0.00          2.82825
+             H 45  -- H 85                  -0.03         0.00          2.82825
+             H 23  -- H 25                  -0.02         0.00          2.85572
+             H 30  -- H 34                  -0.02        -0.00          2.85572
+             H 30  -- H 35                  -0.02         0.00          2.85642
+             H 22  -- H 25                  -0.02         0.00          2.85642
+             H 25  -- H 36                  -0.02        -0.00          2.86027
+             H 21  -- H 30                  -0.02         0.00          2.86027
+             H 24  -- H 30                  -0.02         0.00          2.86135
+             H 25  -- H 33                  -0.02        -0.00          2.86135
+             H 28  -- H 66                  -0.03         0.00          2.89089
+             H 31  -- H 66                  -0.03        -0.00          2.89089
+             H 18  -- H 67                  -0.03         0.00          2.89188
+             H 15  -- H 67                  -0.03         0.00          2.89188
+             H 18  -- H 65                  -0.03         0.00          2.89244
+             H 15  -- H 65                  -0.03        -0.00          2.89244
+             Mg 49 -- Fe 1                   0.08         0.00          2.89284
+             H 28  -- H 68                  -0.03        -0.00          2.89331
+             H 31  -- H 68                  -0.03         0.00          2.89331
+             Mg 50 -- Fe 1                   0.08         0.00          2.89358
+             Mg 51 -- Mg 53                  0.19         0.00          2.89978
+             Mg 41 -- Mg 47                  0.19         0.00          2.90004
+             H 63  -- H 65                  -0.02         0.00          2.91487
+             H 64  -- H 65                  -0.02        -0.00          2.91487
+             H 68  -- H 70                  -0.02        -0.00          2.91527
+             H 68  -- H 72                  -0.02        -0.00          2.91527
+             H 18  -- H 31                  -0.02        -0.00          2.91624
+             H 15  -- H 28                  -0.02         0.00          2.91624
+             H 55  -- H 66                  -0.02         0.00          2.91719
+             H 52  -- H 66                  -0.02        -0.00          2.91719
+             H 39  -- H 67                  -0.02        -0.00          2.91751
+             H 42  -- H 67                  -0.02        -0.00          2.91751
+             H 90  -- H 91                  -0.02        -0.00          2.96850
+             H 85  -- H 88                  -0.02         0.00          2.96850
+             H 75  -- H 85                  -0.02         0.00          2.96863
+             H 78  -- H 90                  -0.02        -0.00          2.96863
+             H 42  -- H 54                  -0.02        -0.00          2.97222
+             H 39  -- H 49                  -0.02        -0.00          2.97222
+             H 64  -- H 71                  -0.02         0.00          2.97226
+             H 63  -- H 69                  -0.02        -0.00          2.97226
+             H 54  -- H 55                  -0.02        -0.00          2.97253
+             H 49  -- H 52                  -0.02         0.00          2.97253
+             H 69  -- H 72                  -0.02         0.00          2.97314
+             H 70  -- H 71                  -0.02        -0.00          2.97314
+             H 33  -- H 36                  -0.02         0.00          2.97777
+             H 21  -- H 24                  -0.02         0.00          2.97777
+             H 22  -- H 23                  -0.02        -0.00          2.97800
+             H 34  -- H 35                  -0.02         0.00          2.97801
+             H 2   -- H 6                   -0.02         0.00          2.98388
+             H 2   -- H 7                   -0.02         0.00          2.98396
+             H 46  -- H 47                  -0.02         0.00          2.98422
+             H 58  -- H 59                  -0.02         0.00          2.98422
+             H 1   -- H 5                   -0.02         0.00          2.98433
+             H 1   -- H 8                   -0.02        -0.00          2.98442
+             H 45  -- H 48                  -0.02        -0.00          2.98472
+             H 57  -- H 60                  -0.02        -0.00          2.98472
+             Mg 43 -- Mg 48                  0.12         0.00          2.98670
+             H 74  -- H 83                  -0.02         0.00          2.98829
+             H 80  -- H 94                  -0.02         0.00          2.98829
+             H 73  -- H 81                  -0.02         0.00          2.98837
+             H 79  -- H 96                  -0.02         0.00          2.98837
+             H 79  -- H 93                  -0.02         0.00          2.98854
+             H 73  -- H 84                  -0.02         0.00          2.98854
+             H 80  -- H 95                  -0.02         0.00          2.98914
+             H 74  -- H 82                  -0.02        -0.00          2.98914
+             Mg 17 -- Mg 31                  0.02        -0.00          2.99328
+             Mg 22 -- Mg 34                  0.02        -0.00          2.99328
+             H 4   -- H 10                  -0.02        -0.00          2.99390
+             H 3   -- H 12                  -0.02         0.00          2.99390
+             H 77  -- H 89                  -0.02         0.00          2.99436
+             H 76  -- H 86                  -0.02        -0.00          2.99436
+             Mg 38 -- Mg 46                  0.11         0.00          2.99570
+             Mg 40 -- Mg 45                  0.11         0.00          2.99570
+             Mg 39 -- Mg 46                  0.11         0.00          2.99573
+             Mg 37 -- Mg 45                  0.11         0.00          2.99573
+             H 101 -- H 104                 -0.02        -0.00          2.99613
+             H 102 -- H 103                 -0.02        -0.00          2.99646
+             Mg 25 -- Mg 35                  0.11        -0.00          2.99690
+             Mg 16 -- Mg 29                  0.11         0.00          2.99690
+             Mg 28 -- Mg 35                  0.11         0.00          2.99697
+             Mg 13 -- Mg 29                  0.11         0.00          2.99697
+             Mg 15 -- Mg 30                  0.11         0.00          2.99700
+             Mg 26 -- Mg 36                  0.11         0.00          2.99700
+             Mg 27 -- Mg 36                  0.11         0.00          2.99713
+             Mg 14 -- Mg 30                  0.11        -0.00          2.99713
+             H 17  -- H 29                  -0.02         0.00          2.99775
+             H 16  -- H 26                  -0.02        -0.00          2.99775
+             H 99  -- H 108                 -0.02         0.00          2.99783
+             H 100 -- H 106                 -0.02        -0.00          2.99783
+             Mg 3  -- Mg 10                  0.11         0.00          2.99899
+             Mg 1  -- Mg 9                   0.11         0.00          2.99907
+             Mg 2  -- Mg 10                  0.11         0.00          2.99916
+             Mg 4  -- Mg 9                   0.11         0.00          2.99918
+             Mg 21 -- Mg 24                  0.10         0.00          2.99923
+             Mg 18 -- Mg 19                  0.10         0.00          2.99923
+             Mg 6  -- Mg 7                   0.10         0.00          2.99930
+             Mg 5  -- Mg 8                   0.10         0.00          2.99930
+             H 41  -- H 56                  -0.02         0.00          2.99945
+             H 40  -- H 51                  -0.02        -0.00          2.99945
+             Mg 21 -- Mg 33                  0.10         0.00          2.99950
+             Mg 18 -- Mg 32                  0.10         0.00          2.99950
+             Mg 8  -- Mg 11                  0.10         0.00          2.99954
+             Mg 6  -- Mg 12                  0.10         0.00          2.99954
+             H 53  -- H 56                  -0.02         0.00          2.99956
+             H 50  -- H 51                  -0.02         0.00          2.99956
+================================================================================
+ 
+
+Writing analysis data to mgh2_Fe.castep_bin
+
+Writing model to mgh2_Fe.check
+ 
+ A BibTeX formatted list of references used in this run has been written to 
+ mgh2_Fe.bib
+ 
+Initialisation time =     35.12 s
+Calculation time    =  11997.65 s
+Finalisation time   =     35.82 s
+Total time          =  12068.59 s
+Peak Memory Use     = 14452484 kB
+ 
+Overall parallel efficiency rating: Good (71%)
+ 
+Data was distributed by:-
+G-vector (4-way); efficiency rating: Good (72%)
+k-point (16-way); efficiency rating: Excellent (99%)

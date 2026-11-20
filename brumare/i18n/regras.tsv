@@ -1,0 +1,34 @@
+^Cor de (.+)$ ¦ Color of {{$1}} ¦ Color de {{$1}} ¦ Couleur de {{$1}} ¦ Colore di {{$1}} ¦ Color {{$1}}
+^Mostrar (.+)$ ¦ Show {{$1}} ¦ Mostrar {{$1}} ¦ Afficher {{$1}} ¦ Mostra {{$1}} ¦ Ostendere {{$1}}
+^Nome de (.+)$ ¦ Name of {{$1}} ¦ Nombre de {{$1}} ¦ Nom de {{$1}} ¦ Nome di {{$1}} ¦ Nomen {{$1}}
+^Espessura de (.+)$ ¦ Width of {{$1}} ¦ Grosor de {{$1}} ¦ Épaisseur de {{$1}} ¦ Spessore di {{$1}} ¦ Crassitudo {{$1}}
+^Traço de (.+)$ ¦ Dash of {{$1}} ¦ Trazo de {{$1}} ¦ Trait de {{$1}} ¦ Tratteggio di {{$1}} ¦ Ductus {{$1}}
+^(.+) \(média de (\d+)\)$ ¦ $1 (mean of $2) ¦ $1 (media de $2) ¦ $1 (moyenne de $2) ¦ $1 (media di $2) ¦ $1 (media $2)
+^\((\d+) átomos\)$ ¦ ($1 atoms) ¦ ($1 átomos) ¦ ($1 atomes) ¦ ($1 atomi) ¦ ($1 atomi)
+^Tabela comparativa \((\d+) cálculos?\)$ ¦ Comparison table ($1 calculations) ¦ Tabla comparativa ($1 cálculos) ¦ Tableau comparatif ($1 calculs) ¦ Tabella comparativa ($1 calcoli) ¦ Tabula comparativa ($1 computationes)
+^versão (.+)$ ¦ version $1 ¦ versión $1 ¦ version $1 ¦ versione $1 ¦ versio $1
+^k-pontos \((\w+)\)$ ¦ k-points ($1) ¦ puntos k ($1) ¦ points k ($1) ¦ punti k ($1) ¦ puncta k ($1)
+^E_F \(Ha\), como no (\w+)$ ¦ E_F (Ha), as in $1 ¦ E_F (Ha), como en $1 ¦ E_F (Ha), comme dans $1 ¦ E_F (Ha), come in $1 ¦ E_F (Ha), ut in $1
+^E_F do (\w+) \(sem alteração\):?$ ¦ E_F from $1 (unchanged): ¦ E_F de $1 (sin alteración): ¦ E_F de $1 (inchangée) : ¦ E_F da $1 (invariata): ¦ E_F ex $1 (immutata):
+^Primeiros vizinhos do centro \((.+)\): (\d+)$ ¦ First neighbors of the center ($1): $2 ¦ Primeros vecinos del centro ($1): $2 ¦ Premiers voisins du centre ($1) : $2 ¦ Primi vicini del centro ($1): $2 ¦ Primi vicini centri ($1): $2
+^Referência:$ ¦ Reference: ¦ Referencia: ¦ Référence : ¦ Riferimento: ¦ Relatio:
+^DOS \(estados/eV\)$ ¦ DOS (states/eV) ¦ DOS (estados/eV) ¦ DOS (états/eV) ¦ DOS (stati/eV) ¦ DOS (status/eV)
+^E − E_F \(eV\)$ ¦ E − E_F (eV) ¦ E − E_F (eV) ¦ E − E_F (eV) ¦ E − E_F (eV) ¦ E − E_F (eV)
+^← down \| up →$ ¦ ← down | up → ¦ ← down | up → ¦ ← down | up → ¦ ← down | up → ¦ ← deorsum | sursum →
+^(\d+) k-pontos$ ¦ $1 k-points ¦ $1 puntos k ¦ $1 points k ¦ $1 punti k ¦ $1 puncta k
+^Lendo (.+)…$ ¦ Reading $1… ¦ Leyendo $1… ¦ Lecture de $1… ¦ Lettura di $1… ¦ Legitur $1…
+^brumare_citacao\.bib: (.+)$ ¦ brumare_citacao.bib: $1 ¦ brumare_citacao.bib: $1 ¦ brumare_citacao.bib : $1 ¦ brumare_citacao.bib: $1 ¦ brumare_citacao.bib: $1
+^A DOS usa (\d+) k-pontos\. Para valores quantitativos, rode SPECTRAL_TASK : DOS com malha MP densa e carregue esse seed em “DOS a partir de”\.$ ¦ The DOS uses $1 k-points. For quantitative values, run SPECTRAL_TASK : DOS with a dense MP mesh and load that seed in “DOS from”. ¦ La DOS usa $1 puntos k. Para valores cuantitativos, ejecute SPECTRAL_TASK : DOS con malla MP densa y cargue ese seed en “DOS a partir de”. ¦ La DOS utilise $1 points k. Pour des valeurs quantitatives, lancez SPECTRAL_TASK : DOS avec une grille MP dense et chargez ce seed dans « DOS à partir de ». ¦ La DOS usa $1 punti k. Per valori quantitativi, esegui SPECTRAL_TASK : DOS con griglia MP densa e carica quel seed in “DOS da”. ¦ DOS $1 punctis k utitur. Pro valoribus quantitativis, SPECTRAL_TASK : DOS cum reticulo MP denso exsequere et illud seed in “DOS ex” onera.
+^Átomos a ±([\d.]+) Å do plano$ ¦ Atoms within ±$1 Å of the plane ¦ Átomos a ±$1 Å del plano ¦ Atomes à ±$1 Å du plan ¦ Atomi a ±$1 Å dal piano ¦ Atomi intra ±$1 Å a plano
+^com o bulk da própria supercélula: átomos a mais de ([\d.]+) Å do centro$ ¦ with the bulk of the supercell itself: atoms farther than $1 Å from the center ¦ con el bulk de la propia supercelda: átomos a más de $1 Å del centro ¦ avec le massif de la supermaille elle-même : atomes à plus de $1 Å du centre ¦ con il bulk della supercella stessa: atomi a più di $1 Å dal centro ¦ cum massa ipsius supercellulae: atomi ultra $1 Å a centro
+^([A-Z][a-z]?\d+) no bulk$ ¦ $1 in the bulk ¦ $1 en el bulk ¦ $1 dans le massif ¦ $1 nel bulk ¦ $1 in massa
+^indireto (\S+) / indireto (\S+)$ ¦ indirect $1 / indirect $2 ¦ indirecto $1 / indirecto $2 ¦ indirect $1 / indirect $2 ¦ indiretto $1 / indiretto $2 ¦ indirectus $1 / indirectus $2
+^direto (\S+) / direto (\S+)$ ¦ direct $1 / direct $2 ¦ directo $1 / directo $2 ¦ direct $1 / direct $2 ¦ diretto $1 / diretto $2 ¦ directus $1 / directus $2
+^indireto (\S+)$ ¦ indirect $1 ¦ indirecto $1 ¦ indirect $1 ¦ indiretto $1 ¦ indirectus $1
+^direto (\S+)$ ¦ direct $1 ¦ directo $1 ¦ direct $1 ¦ diretto $1 ¦ directus $1
+^([\d.]+) indireto$ ¦ $1 indirect ¦ $1 indirecto ¦ $1 indirect ¦ $1 indiretto ¦ $1 indirectus
+^([\d.]+) direto$ ¦ $1 direct ¦ $1 directo ¦ $1 direct ¦ $1 diretto ¦ $1 directus
+^([\d.]+) % em massa$ ¦ $1 wt % ¦ $1 % en masa ¦ $1 % massique ¦ $1 % in massa ¦ $1 % massae
+^tesoura até o gap de referência ([\d.]+) eV$ ¦ scissor to the reference gap $1 eV ¦ tijera hasta el gap de referencia $1 eV ¦ ciseaux jusqu’au gap de référence $1 eV ¦ forbice fino al gap di riferimento $1 eV ¦ forfex usque ad hiatum relationis $1 eV
+^Caminho: (.+)$ ¦ Path: $1 ¦ Camino: $1 ¦ Chemin : $1 ¦ Percorso: $1 ¦ Via: $1
+^Pontos \((\d+)/Å⁻¹\)$ ¦ Points ($1/Å⁻¹) ¦ Puntos ($1/Å⁻¹) ¦ Points ($1/Å⁻¹) ¦ Punti ($1/Å⁻¹) ¦ Puncta ($1/Å⁻¹)

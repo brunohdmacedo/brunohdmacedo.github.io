@@ -1,0 +1,361 @@
+<!--meta title="BrUMaRe tutorial (Brillouin-zone Utilities for Materials Research): bands, DOS, density, defects and thermodynamics | Bruno H. D. Macedo" desc="Complete BrUMaRe tutorial: how to prepare CASTEP, VASP and SIESTA calculations and analyze bands, DOS, PDOS, charge density, defects and thermodynamics, with formulas and how to cite."-->
+<!--intro h1="Complete guide <span>to BrUMaRe</span>" p="Everything the tool does, step by step: from the CASTEP calculation to the figures and tables of your paper, bachelor thesis or dissertation. Includes the formulas used, good practices and how to cite." a1="Open the tool" a2="Tutorial (PDF)" a3="How to cite"-->
+<div class="w tut">
+<nav class="toc" aria-label="Contents">
+  <b>Contents</b>
+  <a href="#visao">1. Overview</a>
+  <a href="#formas">1b. Ways to use</a>
+  <a href="#programas">1c. CASTEP, VASP and SIESTA</a>
+  <a href="#castep">2. Prepare the calculation</a>
+  <a href="#abrir">3. Open the files</a>
+  <a href="#bandas">4. Bands</a>
+  <a href="#dos">5. DOS and PDOS</a>
+  <a href="#fat">6. Projected bands</a>
+  <a href="#analise">7. Electronic analysis</a>
+  <a href="#editor">8. Plot editor</a>
+  <a href="#defeito">9. Defect and distortion</a>
+  <a href="#termo">10. Thermodynamics</a>
+  <a href="#refs">11. Reference calculations</a>
+  <a href="#zb">12b. Brillouin zone and k-path</a>
+  <a href="#densidade">12. Charge density</a>
+  <a href="#planos">13. (h k l) planes</a>
+  <a href="#delta">14. Defect contribution (Δρ)</a>
+  <a href="#cmp">15. Comparison</a>
+  <a href="#export">16. Exports</a>
+  <a href="#python">17. Python script</a>
+  <a href="#formulas">18. Formulas</a>
+  <a href="#teoria">18b. Complete theory and examples</a>
+  <a href="#cuidados">19. Caveats</a>
+  <a href="#citar">20. How to cite</a>
+  <a href="#biblio">21. References</a>
+</nav>
+<article class="prose">
+<h2 id="visao">1. Overview</h2>
+<p><b>BrUMaRe</b> reads the outputs of CASTEP <a href="#r-clark">[1]</a>, VASP and SIESTA and produces, for any material and any atom:</p>
+<ul>
+  <li>the band structure, DOS and PDOS, with spin up and down;</li>
+  <li>orbital-projected bands;</li>
+  <li>the analysis of the local structure of defects (vacancy, substitutional or interstitial) and of the distortion they cause;</li>
+  <li>the thermodynamics of formation and of hydrogen desorption;</li>
+  <li>the total and spin-polarized charge density, in 3D, 2D and along profiles;</li>
+  <li>a side-by-side comparison of several calculations.</li>
+</ul>
+<p>There are two ways of using it, which perform the same analysis:</p>
+<div class="tw"><table>
+<tr><th></th><th>Website (browser)</th><th>Python script (cluster)</th></tr>
+<tr><td>How to use</td><td>drop the files; adjust everything on screen</td><td><code>python3 brumare.py seed</code></td></tr>
+<tr><td>Installation</td><td>none; the files never leave your computer</td><td>Python 3.8+, numpy and matplotlib</td></tr>
+<tr><td>Outputs</td><td>PNG/SVG figures, <code>.dat</code> for Origin, CHGCAR/XSF for VESTA, <code>.zip</code> of calculations, <code>.txt</code> reports</td><td>the same, in <code>seed_plots/</code></td></tr>
+</table></div>
+<p class="callout"><b>Core principle:</b> the Fermi energy is never recalculated. The value used is exactly the one the code wrote, for each spin. By default, bands and DOS keep their original energies and a dash-dot line marks E<sub>F</sub>; E − E<sub>F</sub> can also be chosen.</p>
+<h2 id="formas">Ways to use BrUMaRe</h2>
+<p>The name <b>BrUMaRe</b> joins <b>Bru</b>no <b>Ma</b>cedo and <b>Re</b>nata Benedet, and it is also the acronym of <b>Br</b>illouin-zone <b>U</b>tilities for <b>Ma</b>terials <b>Re</b>search. Inside it is <i>bruma</i>, Portuguese for mist: the electron cloud the program shows. The same analysis is available in four ways:</p>
+<div class="tw"><table>
+<tr><th>Form</th><th>For whom</th><th>How to start</th></tr>
+<tr><td>Web page</td><td>interactive analysis, nothing to install</td><td>open <a href="./">brunohdmacedo.tech/brumare</a> and drop the files</td></tr>
+<tr><td>Desktop application</td><td>the <b>same interface</b> as this page, in a window, offline</td><td><code>pip install "brumare[gui]"</code> and <code>brumare-gui</code></td></tr>
+<tr><td>Windows program</td><td>the same application, for those who do not use Python</td><td>installer <code>BrUMaRe-Setup.exe</code> on the <a href="https://github.com/brunohdmacedo/brumare/releases/latest" target="_blank" rel="noopener">releases page</a></td></tr>
+<tr><td>Command line</td><td>clusters and scripts</td><td><code>pip install brumare</code> or <code>brumare.py</code>; then <code>brumare mgh2_Fe</code></td></tr>
+</table></div>
+<p>The desktop application and the <code>.exe</code> open this same interface, with the same tabs and exports, using bundled libraries: they work offline. The command line also does the <b>comparison</b> (<code>brumare --comparar A,B,C</code>) and the <b>density-difference report</b> (<code>--field diff</code>). Every form has an <b>About</b> section with name, version, author, links and how to cite; on the command line, use <code>brumare --sobre</code>. The interface is available in Portuguese, English, Spanish, French, Italian and Latin (<code>--idioma</code> on the command line).</p>
+<h2 id="programas">Supported codes: CASTEP, VASP and SIESTA</h2>
+<p>BrUMaRe reads the outputs of the three codes and converts everything to the same internal format. Bands, DOS, PDOS, electronic analysis, defects, thermodynamics, density and comparison work the same way for all three, and calculations from different codes can be compared in the same table. The Fermi energy is always the one the code wrote.</p>
+<div class="tw"><table>
+<tr><th>Code</th><th>Files</th><th>How to generate</th></tr>
+<tr><td>CASTEP</td><td><code>seed.bands</code>, <code>.pdos_bin</code>, <code>.castep</code>, <code>.cell</code>, <code>.den_fmt</code></td><td>section 2 of this tutorial</td></tr>
+<tr><td>VASP</td><td>the calculation <b>folder</b>: <code>vasprun.xml</code>, <code>KPOINTS</code>, <code>CHGCAR</code> (and <code>POSCAR</code>/<code>CONTCAR</code>)</td><td><code>LORBIT = 11</code> (projections), <code>ISPIN = 2</code> (spin), <code>LCHARG = .TRUE.</code> (density); <code>KPOINTS</code> in line mode for bands</td></tr>
+<tr><td>SIESTA</td><td><code>SystemLabel.bands</code>, <code>.EIG</code>, <code>.KP</code>, <code>.PDOS</code>, <code>.STRUCT_OUT</code> or <code>.XV</code>, <code>.RHO</code> and the <code>.out</code> output</td><td><code>%block BandLines</code> (or <code>BandPoints</code>), <code>%block ProjectedDensityOfStates</code>, <code>SaveRho true</code>, <code>Spin polarized</code></td></tr>
+</table></div>
+<p><b>How to load:</b></p>
+<ul>
+  <li><b>In the browser:</b> drop the whole folder or use <b>Open folder</b>. In VASP, the folder name becomes the calculation name, because the files have fixed names. Without a folder, rename the files as <code>name.vasprun.xml</code>, <code>name.KPOINTS</code> and so on.</li>
+  <li><b>In Python:</b> <code>brumare vasp_folder/</code>, <code>brumare SystemLabel</code> (SIESTA) or simply <code>brumare</code> inside the folder. In the graphical interface, choose the folder and the calculation from the list.</li>
+</ul>
+<p><b>What changes with each code:</b></p>
+<ul>
+  <li><b>VASP:</b>
+    <ul>
+      <li>The projections only cover the PAW spheres around the atoms, so the sum of the PDOS stays below the total DOS. This is normal.</li>
+      <li>For a non-self-consistent band calculation, VASP itself recommends using E<sub>F</sub> from the self-consistent run: load both and choose the self-consistent one in <i>DOS from</i>.</li>
+      <li>In non-collinear calculations, only the total part of the projections is used.</li>
+    </ul></li>
+  <li><b>SIESTA:</b>
+    <ul>
+      <li>The <code>.PDOS</code> contains the PDOS already computed by SIESTA, with the <i>n</i>, <i>l</i> and <i>m</i> shells and the broadening chosen in the <code>.fdf</code>. It is used directly.</li>
+      <li>Since there are no band weights, there are no projected bands.</li>
+      <li>With <code>.bands</code> and <code>.EIG</code> together, the bands come from the path and the DOS from the self-consistent mesh, chosen automatically.</li>
+    </ul></li>
+  <li><b>CASTEP only:</b> the Mulliken population and the reference-calculation generator, which writes <code>.cell</code> and <code>.param</code>.</li>
+</ul>
+<h2 id="castep">2. Prepare the calculation in CASTEP</h2>
+<p><code>.param</code> keywords that produce everything the tool uses:</p>
+<pre><code>TASK                    : SPECTRAL           ! or GeometryOptimization, SinglePoint
+SPECTRAL_TASK           : BANDSTRUCTURE      ! DOS for a dense mesh
+SPIN_POLARIZED          : TRUE
+PDOS_CALCULATE_WEIGHTS  : TRUE               ! writes the .pdos_bin (PDOS and projected bands)
+POPN_CALCULATE          : TRUE               ! Mulliken and bonds in the .castep
+WRITE_FORMATTED_DENSITY : TRUE               ! writes the .den_fmt (charge and spin density)</code></pre>
+<p>The band path goes in the <code>.cell</code>, in <code>%BLOCK SPECTRAL_KPOINT_PATH</code> <a href="#r-setyawan">[5]</a>. For a quantitative DOS, run a second calculation with <code>SPECTRAL_TASK : DOS</code> and a dense Monkhorst–Pack mesh <a href="#r-mp">[3]</a>; then select that calculation in <i>DOS from</i>.</p>
+<div class="tw"><table>
+<tr><th>File</th><th>Used for</th></tr>
+<tr><td><code>seed.bands</code></td><td>eigenvalues, E<sub>F</sub> of each spin, k-point weights and cell: bands, DOS and gap</td></tr>
+<tr><td><code>seed.pdos_bin</code></td><td>weight of each orbital in each band and k-point: PDOS and projected bands</td></tr>
+<tr><td><code>seed.castep</code></td><td>shells (2p, 3d…), m orbitals, Mulliken <a href="#r-mulliken">[6]</a><a href="#r-segall">[7]</a>, bonds, energies, forces, valence Z</td></tr>
+<tr><td><code>seed.cell</code></td><td>species order, defect structure, basis to generate the references</td></tr>
+<tr><td><code>seed.den_fmt</code>, <code>.cube</code>, <code>CHGCAR</code></td><td>charge and spin density</td></tr>
+</table></div>
+<h2 id="abrir">3. Open the files</h2>
+<ol>
+  <li>Open the tool and drop the files on the dashed area, or click <b>Open files</b>.</li>
+  <li><b>Each seedname is a calculation.</b> You can load several at once: the defect, the pure structure, the elemental references and other dopants.</li>
+  <li>Use <b>×</b> next to a calculation to remove it, or <b>Clear data</b> to start over.</li>
+  <li>The ☀/☾ button switches the theme; the choice also applies to the portfolio. The language selector is next to it.</li>
+</ol>
+<h2 id="bandas">4. Bands</h2>
+<p>The <b>Bands</b> tab shows spin up and down overlaid, side by side or only one of them. The labels of the high-symmetry points are detected for cubic, tetragonal, orthorhombic and hexagonal lattices, or typed in <i>k-point labels</i> (for example <code>G,X,M,G,Z,R,A,Z</code>).</p>
+<p>By default the energy axis keeps the original energies, with a dash-dot line and the value of E<sub>F</sub>; the reference can also be the E<sub>F</sub> of each spin or a common E<sub>F</sub> (E − E<sub>F</sub>).</p>
+<h2 id="dos">5. DOS and PDOS</h2>
+<p>The DOS is the sum of Gaussians over bands and k-points, with the chosen broadening σ. The PDOS can be split into five levels:</p>
+<div class="tw"><table>
+<tr><th>Level</th><th>Example</th></tr>
+<tr><td>Element</td><td>Mg, H, Fe</td></tr>
+<tr><td>Orbital l</td><td>Fe-s, Fe-p, Fe-d</td></tr>
+<tr><td>Pseudopotential shell (n, l)</td><td>Mg 2p and Mg 3p</td></tr>
+<tr><td>m component</td><td>p<sub>x</sub>, p<sub>y</sub>, p<sub>z</sub>, d<sub>z²</sub>, d<sub>yz</sub>, d<sub>xz</sub>, d<sub>x²−y²</sub>, d<sub>xy</sub></td></tr>
+<tr><td>t<sub>2g</sub>/e<sub>g</sub> and individual atoms</td><td>Fe 3d t<sub>2g</sub>; Fe1, H25</td></tr>
+</table></div>
+<p>The <b>Bands + DOS</b> tab places both plots side by side, on the same energy axis.</p>
+<h2 id="fat">6. Projected bands</h2>
+<p>In projected bands, the size of each point is proportional to the orbital weight in that band and k-point. They use the projections chosen in the <i>Projection</i> section, in separate or overlaid panels.</p>
+<h2 id="analise">7. Electronic analysis</h2>
+<p>The <b>Analysis</b> tab gathers, for each spin:</p>
+<ul>
+  <li>E<sub>F</sub> in Ha and in eV;</li>
+  <li>VBM and CBM, defined by electron counting (bands N and N+1), and the direct or indirect gap with its k-points;</li>
+  <li>whether E<sub>F</sub> falls inside a band;</li>
+  <li>N(E<sub>F</sub>) and the spin polarization;</li>
+  <li>the integrated spin;</li>
+  <li>the integrated PDOS occupations and the d-band center;</li>
+  <li>Mulliken per species and per atom;</li>
+  <li>the dopant bonds.</li>
+</ul>
+<h2 id="editor">8. Plot editor</h2>
+<p>Right below each figure is the <b>Edit plot: title, legend and colors</b> panel:</p>
+<ul>
+  <li><b>Title and axes:</b> title, size, color, axis labels, font and background (white for publication or site colors).</li>
+  <li><b>Legend:</b> position, size, title and frame.</li>
+  <li><b>Curves:</b> for each curve, color, legend name, dash, width and visibility.</li>
+  <li><b>Directly on the plot:</b> click a legend name to edit it. Edits apply to all tabs.</li>
+</ul>
+<figure><picture><source srcset="img/site_editor.jxl" type="image/jxl"><img src="img/site_editor.png" alt="Plot editor" loading="lazy"></picture><figcaption>Plot editor.</figcaption></figure>
+<h2 id="defeito">9. Defect and distortion</h2>
+<p>The <b>Defect and thermodynamics</b> tab identifies the defect in two ways:</p>
+<ul>
+  <li><b>With the pure reference structure:</b> each atom is matched to its site, with periodic boundary conditions, and the type (vacancy, substitutional or interstitial) is found automatically.</li>
+  <li><b>Without a reference:</b> the defect is compared with the "bulk" of the supercell itself, that is, with the atoms far from it.</li>
+</ul>
+<p>It computes:</p>
+<ul>
+  <li><b>first neighbors:</b> each X–H bond, for example, against the reference and against Mg–H in the bulk;</li>
+  <li><b>neighbor bonds</b> (for example H–Mg);</li>
+  <li><b>polyhedron distortion indices:</b> Baur <a href="#r-baur">[9]</a>, ECoN <a href="#r-hoppe">[10]</a>, quadratic elongation ⟨λ⟩ and angle variance σ² <a href="#r-robinson">[8]</a>, volume and angles;</li>
+  <li><b>second shell;</b></li>
+  <li><b>with the reference:</b> the displacement field and the perturbation radius.</li>
+</ul>
+<figure><picture><source srcset="img/site_defeito.jxl" type="image/jxl"><img src="img/site_defeito.png" alt="Defect and thermodynamics tab" loading="lazy"></picture><figcaption>Automatic interpretation and tables of the Defect and thermodynamics tab.</figcaption></figure>
+<h2 id="termo">10. Thermodynamics</h2>
+<p>The chemical potentials μ<sub>i</sub> are the energies per atom of the elemental references, computed with the same parameters: hcp Mg, bcc Fe and \(\mu_\mathrm{H}=\tfrac12E(\mathrm{H_2})\). When the <code>.castep</code> of these references is loaded, they are filled in automatically.</p>
+<p>It computes:</p>
+<ul>
+  <li>the defect formation energy <a href="#r-freysoldt">[16]</a><a href="#r-vdw">[17]</a>;</li>
+  <li>the hydride formation enthalpy per mole of H₂, and the defect effect ΔΔH;</li>
+  <li>the desorption temperature from van ’t Hoff, with ΔS ≈ standard entropy of gaseous H₂ <a href="#r-janaf">[19]</a>;</li>
+  <li>the H removal energy;</li>
+  <li>the gravimetric capacity.</li>
+</ul>
+<p>The formulas are in <a href="#formulas">section 18</a>.</p>
+<h2 id="refs">11. Generate the reference calculations</h2>
+<p>With <b>Generate the reference calculations from this .cell</b>, the tool writes <code>.cell</code> and <code>.param</code> files with the same functional, cutoff, spin, tolerances and pseudopotentials as your calculation:</p>
+<div class="tw"><table>
+<tr><th>Calculation</th><th>Use</th></tr>
+<tr><td><code>seed_puro</code></td><td>pure structure (relax)</td></tr>
+<tr><td><code>seed_dif_puro_fixo</code></td><td>pure host <b>in the defect geometry</b> (single point): Δρ without relaxation dipoles</td></tr>
+<tr><td><code>seed_dif_sem_X</code>, <code>seed_dif_so_X</code></td><td>without the dopant and only the dopant, in the same cell (single point): bonding density</td></tr>
+<tr><td><code>seed_semH_perto</code>, <code>seed_semH_longe</code></td><td>H removal energy near and far from the defect</td></tr>
+<tr><td><code>Mg_hcp</code>, <code>Fe_bcc</code>, <code>H_H2</code>…</td><td>chemical potentials μ</td></tr>
+</table></div>
+<p>The supercells use exactly the same k mesh as the defect. The elemental references use the same k-point density.</p>
+<h2 id="zb">12b. Brillouin zone and k-path</h2>
+<p>The <b>Brillouin zone</b> tab computes the first zone (the Wigner–Seitz cell of the reciprocal lattice) of any crystal, finds the high-symmetry points, builds the band path and writes ready-to-use inputs for the calculation.</p>
+<ol>
+  <li><b>Choose the structure:</b> a loaded calculation, one of the examples (Si, Cu, Fe, Mg, rutile, MgH₂…) or a lattice typed by hand (a, b, c, α, β, γ or the three vectors).</li>
+  <li><b>Symmetry tolerance:</b> with “Symmetrize the lattice”, nearly equal angles and lengths are adjusted (default 0.5° and 0.5%), as SeeK-path does. A relaxed cell with γ = 89.75° is then treated as tetragonal; the adjustments are shown on screen.</li>
+  <li><b>Path density and Δk:</b> set the number of points per segment and the suggested Monkhorst–Pack meshes (nᵢ = ⌈|bᵢ|/Δk⌉).</li>
+  <li><b>Result:</b> 3D zone (volume, edges, points, path and b₁, b₂, b₃), lattice type, volumes, vectors, table of points (fractional and Cartesian), segment lengths and meshes.</li>
+  <li><b>Ready inputs:</b> CASTEP (<code>SPECTRAL_KPOINT_PATH</code> and <code>KPOINTS_MP_GRID</code>), VASP (line-mode <code>KPOINTS</code>), Quantum ESPRESSO (<code>K_POINTS crystal_b</code>), SIESTA (<code>BandLines</code>) and JSON, with Copy and Download buttons.</li>
+  <li><b>Command line:</b> <code>brumare --zona-brillouin "fcc 5.431"</code> or <code>brumare seed --zona-brillouin</code> write the report, the input files, the JSON and the figure.</li>
+</ol>
+<p><b>Symmetry and structures.</b> With atoms (a loaded calculation, a CIF/POSCAR/.cell/XSF/QE/XYZ file, a COD number or the <b>library of 51 literature materials</b>), the tab identifies the <b>space group</b> with moyo, the successor of spglib (used by SeeK-path): number, Hermann–Mauguin and Hall symbols, Pearson symbol, crystal system, Bravais lattice, point group, operations, inversion and the Wyckoff positions of every atom. The zone and points then use the <b>standardized primitive cell</b>, which can be exported (as can the conventional cell) as POSCAR, .cell, QE and CIF. With a structure, <b>all 14 Bravais lattices</b> (the 25 Setyawan–Curtarolo cases, from CUB to TRI) get their standard points and paths, checked against pymatgen; without atoms, low-symmetry lattices get an automatic path. Command line: <code>brumare --estrutura file.cif</code>.</p>
+<p class="callout">Fractional coordinates refer to the reciprocal basis of the <b>chosen cell</b>: use the same cell in the calculation. For supercells the zone is smaller and the bands are folded; for the standard path of the material, use the primitive cell. Cubic, FCC, BCC, hexagonal, tetragonal and orthorhombic lattices get the labels and paths of Setyawan and Curtarolo (2010); for low-symmetry lattices the path is automatic (Γ to each face centre) and SeeK-path (Hinuma et al., 2017) is recommended.</p>
+<h2 id="densidade">12. Charge density</h2>
+<p>In the <b>3D structure and density</b> tab, the available quantities are total ρ, ρ↑, ρ↓, ρ↑ − ρ↓, |ρ↑ − ρ↓|, ζ = (ρ↑ − ρ↓)/ρ and Δρ.</p>
+<ul>
+  <li><b>3D:</b> adjustable isosurface, with atoms, bonds and cell.</li>
+  <li><b>2D:</b> slices through a plane.</li>
+  <li><b>Profile:</b> density along a bond, with the minimum that approximates the bond critical point.</li>
+  <li><b>Charges and moments per atom:</b> Voronoi partition <a href="#r-voronoi">[12]</a>, standard or radical <a href="#r-gellatly">[13]</a>, and a sphere around the defect.</li>
+  <li><b>For VESTA</b> <a href="#r-vesta">[15]</a>: export CHGCAR (VASP 5 format with the elements, ρ·V) or XSF. The CHGCAR also works with the <code>bader</code> program <a href="#r-bader">[14]</a>.</li>
+</ul>
+<h2 id="planos">13. (h k l) planes, gallery and cell</h2>
+<ul>
+  <li><b>Base-cell indices:</b> the tool detects the supercell multiplicity (for example 3×3×3 of rutile MgH₂), and the indices are those of the material.</li>
+  <li><b>Natural axes:</b> the slice axes follow lattice directions; for (110), horizontal [1̄10] and vertical [001].</li>
+  <li><b>Whole section:</b> the slice covers the whole supercell section, with the cell outline.</li>
+  <li><b>Sweep:</b> a control shifts the plane along its normal.</li>
+  <li><b>Gallery:</b> shows (110), (1̄10), (001), (100), (010), (101), (011) and (111) side by side.</li>
+  <li><b>Cell panel:</b> density, H capacity, coordination, distances per pair and d<sub>hkl</sub> spacings.</li>
+</ul>
+<figure><picture><source srcset="img/site_galeria_planos.jxl" type="image/jxl"><img src="img/site_galeria_planos.png" alt="Plane gallery" loading="lazy"></picture><figcaption>Gallery of planes through the dopant, with the density of a real CHGCAR.</figcaption></figure>
+<h2 id="delta">14. Defect contribution: Δρ</h2>
+<p>To see only the effect of the defect, choose <b>Quantity → defect contribution</b> and, in <i>Subtract ρ(B)</i>, the density of the pure material (it is chosen automatically when its name contains "puro"). There are three ways, from the simplest to the cleanest:</p>
+<ol>
+  <li><b>ρ(defect) − ρ(relaxed pure):</b> includes the electronic effect and the relaxation. Dipoles appear around the atoms that moved.</li>
+  <li><b>ρ(defect) − ρ(pure in the defect geometry)</b>, with <code>seed_dif_puro_fixo</code>: same grid and same positions. It shows only the replacement of the host by the dopant.</li>
+  <li><b>ρ(defect) − ρ(without the dopant) − ρ(only the dopant)</b>, with B and C: the dopant <b>bonding density</b>, that is, the charge redistribution upon forming the bonds.</li>
+</ol>
+<p>If the grids differ, the subtracted density is resampled on the defect grid. The tool shows:</p>
+<ul>
+  <li>the electrons gained and lost and the balance;</li>
+  <li>∫Δρ in spheres around the dopant;</li>
+  <li>the <b>charge transfer per atom</b> (∫Δρ in the Voronoi cell of each atom).</li>
+</ul>
+<p><b>Components and sign.</b> The difference can be taken for the total (Δρ), for each spin (Δρ↑, Δρ↓) and for the magnetization, Δ(ρ↑ − ρ↓). In <i>Sign of the difference</i>, choose ρ(defect) − ρ(pure) or ρ(pure) − ρ(defect). Positive values are red and negative values blue. Use <i>Color scale limit ±</i> to highlight the weak redistribution on the neighbors.</p>
+<p><b>3D around the defect.</b> In <i>3D region</i>, a box of ±3 to ±6 Å centered on the dopant shows the Δρ lobes with the bonds.</p>
+<p><b>Comparison and VESTA.</b> In the Comparison tab, the difference of each defect against the reference appears in 3D, side by side, and in 2D on the same plane. The <b>Export to VESTA: all calculations</b> button creates a <code>.zip</code> with one folder per structure. Each folder has the CHGCARs of ρ, ρ↑, ρ↓, ρ↑ − ρ↓ and of the four differences, with the correct elements and positions, plus a guide with the value range and a step-by-step for VESTA.</p>
+<h3>Density difference tab</h3>
+<p>A report dedicated to the charge redistribution caused by the defect, with:</p>
+<ul>
+  <li><b>indicators:</b> ΔN, accumulation, depletion and redistributed charge ½∫|Δ|; 50% and 90% radii; points of maximum accumulation and depletion; redistribution dipole (\(\mathbf p=\int(\mathbf r-\mathbf r_c)\,\Delta\rho\,dV\), in e·Å and Debye); change of the moment;</li>
+  <li><b>bonds:</b> minimum ρ of each dopant–neighbor bond against the same host bond in the pure structure;</li>
+  <li><b>charge per atom</b> in both structures, with matched atoms;</li>
+  <li><b>triptychs</b> ρ(pure) | ρ(defect) | Δρ, in 2D and 3D;</li>
+  <li><b>radial profile</b> ⟨Δ⟩(r) with the accumulated charge \(\Delta Q(r)=\int_0^r\Delta\rho\,4\pi r'^2dr'\);</li>
+  <li><b>planar averages</b> along a, b and c;</li>
+  <li><b>profile along the bond.</b></li>
+</ul>
+<p>Everything can be exported to Origin and VESTA.</p>
+<h2 id="cmp">15. Comparison between calculations</h2>
+<p>In the <b>Comparison</b> tab, tick the calculations and, if available, the pure reference structure. You get:</p>
+<ul>
+  <li><b>a table with one column per calculation:</b> energies, E<sub>f</sub>, ΔH, ΔΔH, T<sub>d</sub>, E<sub>F</sub>, gaps, N(E<sub>F</sub>), polarization, d occupation and moment, Mulliken, Voronoi, ρ at the critical point, coordination, bonds, ⟨λ⟩, σ², displacements, ΔV/V, cell and residual force;</li>
+  <li><b>plots:</b> bars, overlaid DOS and PDOS, bands side by side, bonds, displacements, density (including Δρ against the reference) on the same plane and profiles.</li>
+</ul>
+<figure><picture><source srcset="img/site_comparacao.jxl" type="image/jxl"><img src="img/site_comparacao.png" alt="Comparison" loading="lazy"></picture><figcaption>Plots of the Comparison tab (illustrative example).</figcaption></figure>
+<h2 id="export">16. Exports</h2>
+<div class="tw"><table>
+<tr><th>Output</th><th>Format</th><th>Use</th></tr>
+<tr><td>Figures</td><td>PNG, JPG, JXL (JPEG XL), WEBP, SVG (scale 3 = 300 dpi at 8×6 in)</td><td>papers, theses, dissertations</td></tr>
+<tr><td>Bands, DOS/PDOS, weights, slices, profiles, comparison</td><td><code>.dat</code> with TAB and a header line</td><td>Origin, Excel, gnuplot</td></tr>
+<tr><td>Density</td><td>CHGCAR (VASP 5), XSF</td><td>VESTA, Bader, XCrySDen</td></tr>
+<tr><td>Reference calculations</td><td><code>.zip</code> with <code>.cell</code>, <code>.param</code>, README, script</td><td>cluster</td></tr>
+<tr><td><code>.bands</code> per spin</td><td><code>seed_up.bands</code>, <code>seed_down.bands</code></td><td>sumo <a href="#r-sumo">[18]</a> and others</td></tr>
+<tr><td>Reports</td><td><code>.txt</code></td><td>analysis, defect, comparison</td></tr>
+<tr><td>Citation</td><td><code>brumare_citacao.bib</code></td><td>BrUMaRe, the codes and the methods you used</td></tr>
+</table></div>
+<p><b>In Origin:</b> drag the <code>.dat</code>; the header line becomes the <i>Long Name</i> of each column. For bands, column 1 is X; plot the others as lines.</p>
+<h2 id="python">17. Python script</h2>
+<pre><code># everything: bands, DOS/PDOS, analysis, defect, density, structure
+python3 brumare.py mgh2_Fe -e Mg,H,Fe
+# defect with reference and thermodynamics
+python3 brumare.py mgh2_Fe --ref mgh2_puro --mu "Mg=@Mg_hcp,Fe=@Fe_bcc,H=@H_H2" --h-less mgh2_Fe_semH_perto
+# generate the reference calculations
+python3 brumare.py mgh2_Fe --gerar-referencias
+# density: plane gallery, spin, CHGCAR for VESTA
+python3 brumare.py mgh2_Fe --planes todos --field spin --chgcar
+# defect contribution and charge transfer per atom
+python3 brumare.py mgh2_Fe --field diff --subtract mgh2_Fe_dif_puro_fixo.den_fmt
+# VESTA package: ρ, ρ↑, ρ↓, spin and the differences (pure − defect)
+python3 brumare.py mgh2_Fe --vesta --subtract mgh2_puro.den_fmt --diff-sign puro-defeito
+# texts (--sobre, citation) in English
+python3 brumare.py mgh2_Fe --idioma en</code></pre>
+<p>Use <code>python3 brumare.py -h</code> for all options.</p>
+<h2 id="formulas">18. Formulas</h2>
+<p><b>DOS</b>, with weights \(w_k\) and Gaussian broadening \(\sigma\):</p>
+<p>\[ g_s(E)=\sum_{k}w_k\sum_n \frac{1}{\sigma\sqrt{2\pi}}\exp\!\left[-\frac{(E-\varepsilon_{nks})^2}{2\sigma^2}\right],\qquad g^{\mathrm{PDOS}}_{s,\alpha}(E)=\sum_k w_k\sum_n p^{\alpha}_{nks}\,\delta_\sigma(E-\varepsilon_{nks}) \]</p>
+<p><b>Gap</b>, with \(N\) the number of electrons per spin: \(E_g=\min_k\varepsilon_{N+1,k}-\max_k\varepsilon_{N,k}\). <b>Polarization:</b> \(P=\dfrac{N_\uparrow(E_F)-N_\downarrow(E_F)}{N_\uparrow(E_F)+N_\downarrow(E_F)}\).</p>
+<p><b>Polyhedron distortion</b> <a href="#r-baur">[9]</a><a href="#r-hoppe">[10]</a><a href="#r-robinson">[8]</a>:</p>
+<p>\[ D=\frac1n\sum_i\frac{|d_i-\bar d|}{\bar d},\qquad \langle\lambda\rangle=\frac1n\sum_i\left(\frac{d_i}{l_0}\right)^2,\qquad \sigma^2=\frac{1}{m-1}\sum_j(\theta_j-\theta_0)^2,\qquad \mathrm{ECoN}=\sum_i e^{\,1-(d_i/d_\mathrm{av})^6} \]</p>
+<p>Here \(l_0\) is the center–vertex distance of the regular polyhedron of the same volume and \(\theta_0\) is 90° (octahedron) or 109.47° (tetrahedron).</p>
+<p><b>Thermodynamics</b> <a href="#r-freysoldt">[16]</a>:</p>
+<p>\[ E_f=E_\mathrm{def}-E_\mathrm{pure}-\sum_i n_i\mu_i,\qquad \Delta H_f=\frac{E-\sum_i N_i\mu_i}{N_\mathrm{H}/2},\qquad T_d=\frac{\Delta H}{\Delta S},\qquad \mu_\mathrm{H}=\tfrac12E(\mathrm{H}_2) \]</p>
+<p>In E<sub>f</sub>, \(n_i>0\) indicates added atoms. ΔH is per mole of H₂ and the standard ΔS is 130.7 J/(mol·K).</p>
+<p><b>Density:</b> CASTEP and VASP write \(\rho V\). BrUMaRe uses \(\rho\) in e/Å³, with \(\int\rho\,dV=N_e\), \(\zeta=(\rho_\uparrow-\rho_\downarrow)/\rho\) and \(\Delta\rho=\rho_A-\rho_B-\rho_C\). In the radical Voronoi partition, each point goes to the atom that minimizes \(|\mathbf r-\mathbf R_a|^2-r_a^2\), with Cordero’s covalent radii <a href="#r-cordero">[11]</a>.</p>
+<h2 id="teoria">18b. Complete theory and examples</h2>
+<p>Every quantity BrUMaRe computes, with the equation used, and a real example for each code, so you can check that your result makes sense.</p>
+<h3>Units and reading of each code</h3>
+<div class="tw"><table>
+<tr><th>Code</th><th>What is read</th><th>Conversion</th></tr>
+<tr><td>CASTEP</td><td><code>.bands</code> (Ha), <code>.pdos_bin</code>, <code>.castep</code>, <code>.den_fmt</code> (ρV)</td><td>\(1\,\mathrm{Ha}=27.211386\,\mathrm{eV}\); \(1\,\mathrm{Bohr}=0.529177\,\text{Å}\)</td></tr>
+<tr><td>VASP</td><td><code>vasprun.xml</code> (eV), PAW projections, <code>CHGCAR</code> (ρV)</td><td>energies already in eV; \(\rho=\mathrm{CHGCAR}/V\)</td></tr>
+<tr><td>SIESTA</td><td><code>.bands</code>, <code>.EIG</code> (eV), <code>.PDOS</code> ready-made, <code>.RHO</code> (e/Bohr³)</td><td>\(\rho\,[\mathrm{e/\text{Å}^3}]=\rho\,[\mathrm{e/Bohr^3}]/0.529177^3\)</td></tr>
+<tr><td>Quantum ESPRESSO</td><td><code>data-file-schema.xml</code> (Ha; k em \(2\pi/a\))</td><td>\(\mathbf k_\mathrm{frac}=\mathbf k_\mathrm{cart}\cdot\mathbf A^{T}/(2\pi)\)</td></tr>
+<tr><td>ORCA</td><td><code>.out</code> output: orbitals, energy, geometry, charges</td><td>molecule: a single "k-point"; DOS from Gaussians on the levels</td></tr>
+</table></div>
+<h3>Bands, gap and effective mass</h3>
+<p>With \(N_s\) electrons in spin \(s\), the last occupied band is \(N_s\) and the first empty one is \(N_s+1\): \(E_\mathrm{VBM}=\max_k\varepsilon_{N_s,k}\), \(E_\mathrm{CBM}=\min_k\varepsilon_{N_s+1,k}\) e \(E_g=E_\mathrm{CBM}-E_\mathrm{VBM}\). For molecules (ORCA), the same criterion gives the <b>HOMO–LUMO gap</b>.</p>
+<p>The <b>effective mass</b> comes from a parabolic fit around the extremum, along the path:</p>
+<p>\[ E(k)\approx E_0+\frac{\hbar^2 (k-k_0)^2}{2m^*}\quad\Rightarrow\quad \frac{m^*}{m_e}=\frac{\hbar^2}{2m_e\,c_2},\qquad \frac{\hbar^2}{2m_e}=3.80998\ \mathrm{eV\,\text{Å}^2} \]</p>
+<p>At a vertex (such as Γ), one mass is given for each path direction. It is only computed when E<sub>F</sub> lies in the gap and the path is continuous.</p>
+<h3>DOS, PDOS and Fermi level</h3>
+<p>\[ g_s(E)=\sum_k w_k\sum_n \frac{e^{-(E-\varepsilon_{nks})^2/2\sigma^2}}{\sigma\sqrt{2\pi}},\qquad N_s(E_F)=g_s(E_F),\qquad P=\frac{N_\uparrow-N_\downarrow}{N_\uparrow+N_\downarrow} \]</p>
+<p>E<sub>F</sub> is always the value written by the code. By default, the axis shows the original energies and a dash-dot line marks E<sub>F</sub>; the E min/E max window is counted from E<sub>F</sub>. The polarization is only defined when \(N_\uparrow+N_\downarrow>0.05\) states/eV.</p>
+<p><b>d-band center:</b> \(\varepsilon_d=\int E\,g_d(E)\,dE\big/\int g_d(E)\,dE\), up to E<sub>F</sub> (occupied) or over the whole window.</p>
+<h3 id="teoria-zb">Brillouin zone</h3>
+<p>The zone is built from the Bragg planes k·G = |G|²/2 on a reduced (LLL) reciprocal basis; its geometric volume is checked against (2π)³/V, and the lattice type is recognised from the shape of the zone (number and shape of the faces).</p>
+<p>\[ \mathbf b_1=2\pi\frac{\mathbf a_2\times\mathbf a_3}{V},\quad \mathbf a_i\cdot\mathbf b_j=2\pi\delta_{ij},\quad V_\mathrm{ZB}=\frac{(2\pi)^3}{V},\quad \mathbf k\cdot\mathbf G\le\tfrac12|\mathbf G|^2\ \ \forall\,\mathbf G,\quad k_i^\mathrm{frac}=\frac{\mathbf a_i\cdot\mathbf k}{2\pi},\quad n_i=\left\lceil\frac{|\mathbf b_i|}{\Delta k}\right\rceil \]</p>
+<h3 id="gapcorr">Band-gap correction (scissor)</h3>
+<p>LDA and GGA functionals (such as PBE) underestimate the gap because the Kohn–Sham gap is not the fundamental gap: the derivative discontinuity of the exchange-correlation functional is missing and there is delocalisation error. BrUMaRe offers a post-processing correction: the <b>scissor</b> rigidly shifts the unoccupied bands (\(n>N_s\)) by \(\Delta\), leaving the occupied bands and E<sub>F</sub> unchanged. \(\Delta\) can be given, computed from a reference gap (experimental, HSE06 or GW) or estimated with the empirical PBE → G<sub>0</sub>W<sub>0</sub> model of Morales-García, Valero and Illas (2017), fitted on 66 solids.</p>
+<p>\[ E_g^\mathrm{DFT}=E_\mathrm{CBM}-E_\mathrm{VBM},\qquad \varepsilon^\mathrm{corr}_{n\mathbf k s}=\varepsilon_{n\mathbf k s}+\Delta\,\Theta(n-N_s),\qquad \Delta_\mathrm{ref}=E_g^\mathrm{ref}-E_g^\mathrm{DFT},\qquad E_g^{G_0W_0}\approx 1.358\,E_g^\mathrm{PBE}+0.904\ \mathrm{eV} \]</p>
+<p>Limits: the scissor does not correct band dispersion, effective masses or the position of empty defect levels in the gap; the empirical model applies to PBE (not LDA), requires a non-zero gap and errs by a few tenths of an eV (Si: 1.74 eV estimated versus 1.17 eV experimental). In defective supercells, prefer the Δ of the pure material. For a real correction, recompute with HSE06, rSCAN or DFT+U. Command line: <code>--gap-corr mvi</code>, <code>--gap-corr ref --gap-ref 1.17</code> or <code>--gap-corr tesoura --tesoura 0.5</code>.</p>
+<h3>Charges: Mulliken, Voronoi and Bader</h3>
+<ul>
+  <li><b>Mulliken</b> (CASTEP and ORCA): read from the code output; charge \(q_a=Z_a-N_a\).</li>
+  <li><b>Voronoi:</b> \(N_a=\int_{V_a}\rho\,dV\), with \(V_a\) the points closest to atom \(a\) (or, in the radical version, those minimizing \(|\mathbf r-\mathbf R_a|^2-r_a^2\)).</li>
+  <li><b>Bader</b> <a href="#r-bader">[14]</a>: each grid point follows the gradient of ρ up to a maximum (Henkelman’s on-grid algorithm); the basins ending at the same atom add up to \(N_a\). Magnetic moment: \(m_a=\int_{V_a}(\rho_\uparrow-\rho_\downarrow)\,dV\) in μ<sub>B</sub>. On the command line, basin boundaries are refined with the <i>near-grid</i> method (Tang, Sanville and Henkelman, 2009), which follows the true gradient of ρ and removes the lattice bias; the result differs from the reference implementation (pybader) by less than 0.001 e per atom on average.</li>
+</ul>
+<h3>Defect, distortion and thermodynamics</h3>
+<p>\[ E_f=E_\mathrm{def}-E_\mathrm{puro}-\sum_i n_i\mu_i,\qquad \Delta H=\frac{E-\sum_iN_i\mu_i}{N_\mathrm H/2},\qquad T_d=\frac{\Delta H}{\Delta S},\qquad \langle\lambda\rangle=\frac1n\sum_i\Big(\frac{d_i}{l_0}\Big)^2 \]</p>
+<h3>Density and density difference</h3>
+<p>\[ \Delta\rho=\rho_\mathrm{def}-\rho_\mathrm{ref}\ [-\rho_C],\qquad Q_\mathrm{red}=\tfrac12\!\int|\Delta\rho|\,dV,\qquad \mathbf p=\int(\mathbf r-\mathbf r_c)\Delta\rho\,dV,\qquad \Delta Q(r)=\int_0^r\overline{\Delta\rho}\,4\pi r'^2dr' \]</p>
+<h3>Real examples (one per code)</h3>
+<p>Results obtained with real output files; use them to check your installation.</p>
+<div class="tw"><table>
+<tr><th>Code and system</th><th>Command</th><th>Result</th></tr>
+<tr><td>CASTEP · MgH₂:Fe (162-atom supercell, spin)</td><td><code>brumare mgh2_Fe -e Mg,H,Fe</code></td><td>E<sub>F</sub> = 1.837 eV; total gap 1.394 eV, indirect M→R; Fe–H 1.649–1.653 Å</td></tr>
+<tr><td>VASP · Si (line-mode bands)</td><td><code>brumare Si_bands/</code></td><td>gap 0.614 eV indirect (Γ→near X); m*<sub>e</sub> = 0.94 m<sub>e</sub>; m*<sub>h</sub>(Γ) = 0.32 m<sub>e</sub></td></tr>
+<tr><td>VASP · Fe₂O₃ ferromagnetic (LDA+U)</td><td><code>brumare FeO_ldau/</code></td><td>56 electrons ↑ and 36 ↓: moment 20 μ<sub>B</sub> (4 high-spin Fe³⁺)</td></tr>
+<tr><td>SIESTA · SrTiO₃</td><td><code>brumare SrTiO3</code></td><td>gap 2.25 eV indirect R→Γ; O 2p in the valence band; Ti 3d t<sub>2g</sub>/e<sub>g</sub> in the conduction band; ∫ρ = 40.000 e</td></tr>
+<tr><td>Quantum ESPRESSO · Si</td><td><code>brumare folder_with_xml/</code></td><td>gap 1.32 eV between the 2 test k-points (coarse mesh)</td></tr>
+<tr><td>ORCA · divinylbenzene (molecule)</td><td><code>brumare dvb_sp.out</code></td><td>HOMO–LUMO gap 5.18 eV; Mulliken and Löwdin charges</td></tr>
+<tr><td>Comparison between codes</td><td><code>brumare --comparar mgh2_Fe,Si_bands/,SrTiO3</code></td><td><code>comparacao.dat</code> table, overlaid DOS, bands side by side and <code>comparacao_citacao.bib</code></td></tr>
+</table></div>
+
+<h2 id="cuidados">19. Caveats and limitations</h2>
+<ul>
+  <li><b>DOS from the band path</b> is only illustrative; for numbers, use a dense mesh.</li>
+  <li><b>Gap and edges</b> come only from the k-points of the path.</li>
+  <li><b>m components and t<sub>2g</sub>/e<sub>g</sub></b> are in the Cartesian axes of the cell.</li>
+  <li><b>0 K energies</b> have no zero-point energy; T<sub>d</sub> is an estimate for comparing trends.</li>
+  <li><b>Same parameters:</b> compare only calculations with the same functional, cutoff, pseudopotentials and U.</li>
+  <li><b>Voronoi charges</b> are estimates; for quantitative numbers, use Bader.</li>
+  <li><b>Δρ with different grids or volumes</b> is resampled. Identical grids, with <code>dif_puro_fixo</code>, are ideal.</li>
+</ul>
+<h2 id="citar">20. How to cite</h2>
+<p>If BrUMaRe helped your work, cite the software and, when relevant, the author’s bachelor thesis and dissertation. Also cite CASTEP <a href="#r-clark">[1]</a> (or VASP or SIESTA) and VESTA <a href="#r-vesta">[15]</a>, if you used it. The <b>Cite (.bib)</b> button in the tool downloads a <code>.bib</code> with exactly what you used. Downloads: <a href="brumare.bib" download>brumare.bib</a> · <a href="CITATION.cff" download>CITATION.cff</a> · <a href="brumare-tutorial.en.pdf" download>tutorial in PDF</a> · <a href="brumare-tutorial.tex" download>LaTeX source</a>.</p>
+<h3>ABNT (NBR 6023)</h3>
+<p class="hint">Citations are kept in their original language, as published.</p>
+<!--keep-citations-->
+<h2 id="biblio">21. References</h2>
+<!--keep-references-->
+</article>
+</div>

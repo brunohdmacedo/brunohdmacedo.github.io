@@ -1,0 +1,213 @@
+Cálculo ¦ Calculation ¦ Cálculo ¦ Calcul ¦ Calcolo ¦ Computatio
+Cálculos comparados ¦ Compared calculations ¦ Cálculos comparados ¦ Calculs comparés ¦ Calcoli confrontati ¦ Computationes comparatae
+Energia de Fermi e bordas de banda ¦ Fermi energy and band edges ¦ Energía de Fermi y bordes de banda ¦ Énergie de Fermi et bords de bande ¦ Energia di Fermi e bordi di banda ¦ Energia Fermi et margines fasciarum
+E_F spin ↑ (eV) ¦ E_F spin ↑ (eV) ¦ E_F espín ↑ (eV) ¦ E_F spin ↑ (eV) ¦ E_F spin ↑ (eV) ¦ E_F spin ↑ (eV)
+E_F spin ↓ (eV) ¦ E_F spin ↓ (eV) ¦ E_F espín ↓ (eV) ¦ E_F spin ↓ (eV) ¦ E_F spin ↓ (eV) ¦ E_F spin ↓ (eV)
+Diferença E_F↑ − E_F↓ (meV) ¦ Difference E_F↑ − E_F↓ (meV) ¦ Diferencia E_F↑ − E_F↓ (meV) ¦ Différence E_F↑ − E_F↓ (meV) ¦ Differenza E_F↑ − E_F↓ (meV) ¦ Differentia E_F↑ − E_F↓ (meV)
+Banda ocupada mais alta / vazia mais baixa ¦ Highest occupied / lowest empty band ¦ Banda ocupada más alta / vacía más baja ¦ Bande occupée la plus haute / vide la plus basse ¦ Banda occupata più alta / vuota più bassa ¦ Fascia occupata summa / vacua ima
+VBM − E_F (eV) ¦ VBM − E_F (eV) ¦ VBM − E_F (eV) ¦ VBM − E_F (eV) ¦ VBM − E_F (eV) ¦ VBM − E_F (eV)
+CBM − E_F (eV) ¦ CBM − E_F (eV) ¦ CBM − E_F (eV) ¦ CBM − E_F (eV) ¦ CBM − E_F (eV) ¦ CBM − E_F (eV)
+Gap banda N → N+1 no caminho (eV) ¦ Gap band N → N+1 along the path (eV) ¦ Gap banda N → N+1 en el camino (eV) ¦ Gap bande N → N+1 le long du chemin (eV) ¦ Gap banda N → N+1 lungo il percorso (eV) ¦ Hiatus fascia N → N+1 in via (eV)
+Gap total (eV) ¦ Total gap (eV) ¦ Gap total (eV) ¦ Gap total (eV) ¦ Gap totale (eV) ¦ Hiatus totus (eV)
+Gap total considerando os dois spins (eV) ¦ Total gap considering both spins (eV) ¦ Gap total considerando los dos espines (eV) ¦ Gap total en considérant les deux spins (eV) ¦ Gap totale considerando entrambi gli spin (eV) ¦ Hiatus totus utroque spin considerato (eV)
+Tipo de gap (↑ / ↓) ¦ Gap type (↑ / ↓) ¦ Tipo de gap (↑ / ↓) ¦ Type de gap (↑ / ↓) ¦ Tipo di gap (↑ / ↓) ¦ Genus hiatus (↑ / ↓)
+k do VBM → k do CBM ¦ k of VBM → k of CBM ¦ k del VBM → k del CBM ¦ k du VBM → k du CBM ¦ k del VBM → k del CBM ¦ k VBM → k CBM
+E_F dentro de banda ¦ E_F inside a band ¦ E_F dentro de una banda ¦ E_F dans une bande ¦ E_F dentro una banda ¦ E_F intra fasciam
+E_F dentro de banda? ¦ E_F inside a band? ¦ ¿E_F dentro de una banda? ¦ E_F dans une bande ? ¦ E_F dentro una banda? ¦ E_F intra fasciam?
+N(E_F) (estados/eV/spin) ¦ N(E_F) (states/eV/spin) ¦ N(E_F) (estados/eV/espín) ¦ N(E_F) (états/eV/spin) ¦ N(E_F) (stati/eV/spin) ¦ N(E_F) (status/eV/spin)
+N(E_F) total (estados/eV) ¦ Total N(E_F) (states/eV) ¦ N(E_F) total (estados/eV) ¦ N(E_F) total (états/eV) ¦ N(E_F) totale (stati/eV) ¦ N(E_F) tota (status/eV)
+Polarização em E_F (%) ¦ Polarization at E_F (%) ¦ Polarización en E_F (%) ¦ Polarisation à E_F (%) ¦ Polarizzazione a E_F (%) ¦ Polarizatio ad E_F (%)
+Polarização de spin em E_F, (N↑ − N↓)/(N↑ + N↓) ¦ Spin polarization at E_F, (N↑ − N↓)/(N↑ + N↓) ¦ Polarización de espín en E_F, (N↑ − N↓)/(N↑ + N↓) ¦ Polarisation de spin à E_F, (N↑ − N↓)/(N↑ + N↓) ¦ Polarizzazione di spin a E_F, (N↑ − N↓)/(N↑ + N↓) ¦ Polarizatio spin ad E_F, (N↑ − N↓)/(N↑ + N↓)
+não definida (E_F no gap) ¦ undefined (E_F in the gap) ¦ no definida (E_F en el gap) ¦ non définie (E_F dans le gap) ¦ non definita (E_F nel gap) ¦ non definita (E_F in hiatu)
+Ocupação integrada da PDOS até E_F (elétrons) ¦ PDOS occupation integrated up to E_F (electrons) ¦ Ocupación integrada de la PDOS hasta E_F (electrones) ¦ Occupation intégrée de la PDOS jusqu’à E_F (électrons) ¦ Occupazione integrata della PDOS fino a E_F (elettroni) ¦ Occupatio PDOS usque ad E_F integrata (electrones)
+Centro da banda d (eV, relativo a E_F de cada spin) ¦ d-band center (eV, relative to E_F of each spin) ¦ Centro de la banda d (eV, relativo a E_F de cada espín) ¦ Centre de la bande d (eV, relatif à E_F de chaque spin) ¦ Centro della banda d (eV, relativo a E_F di ogni spin) ¦ Centrum fasciae d (eV, ad E_F cuiusque spin)
+Mulliken por espécie (média) ¦ Mulliken per species (mean) ¦ Mulliken por especie (media) ¦ Mulliken par espèce (moyenne) ¦ Mulliken per specie (media) ¦ Mulliken per speciem (media)
+Ligações dos dopantes e átomos escolhidos ¦ Bonds of dopants and chosen atoms ¦ Enlaces de los dopantes y átomos elegidos ¦ Liaisons des dopants et des atomes choisis ¦ Legami dei droganti e degli atomi scelti ¦ Vincula dopantium et atomorum electorum
+Somatório sobre todos os átomos da espécie. Com poucos k-pontos é uma estimativa; compare com Mulliken. ¦ Sum over all atoms of the species. With few k-points it is an estimate; compare with Mulliken. ¦ Suma sobre todos los átomos de la especie. Con pocos puntos k es una estimación; compare con Mulliken. ¦ Somme sur tous les atomes de l’espèce. Avec peu de points k, c’est une estimation ; comparez avec Mulliken. ¦ Somma su tutti gli atomi della specie. Con pochi punti k è una stima; confronta con Mulliken. ¦ Summa per omnes atomos speciei. Paucis punctis k aestimatio est; cum Mulliken confer.
+Componentes de spin ¦ Spin components ¦ Componentes de espín ¦ Composantes de spin ¦ Componenti di spin ¦ Partes spin
+Autovalores ¦ Eigenvalues ¦ Autovalores ¦ Valeurs propres ¦ Autovalori ¦ Valores proprii
+Funcional ¦ Functional ¦ Funcional ¦ Fonctionnelle ¦ Funzionale ¦ Functionale
+Funcional / corte (eV) ¦ Functional / cutoff (eV) ¦ Funcional / corte (eV) ¦ Fonctionnelle / coupure (eV) ¦ Funzionale / cutoff (eV) ¦ Functionale / limes (eV)
+Corte de energia ¦ Energy cutoff ¦ Corte de energía ¦ Énergie de coupure ¦ Energia di cutoff ¦ Limes energiae
+Energia final ¦ Final energy ¦ Energía final ¦ Énergie finale ¦ Energia finale ¦ Energia finalis
+Energia total (eV) ¦ Total energy (eV) ¦ Energía total (eV) ¦ Énergie totale (eV) ¦ Energia totale (eV) ¦ Energia tota (eV)
+Energia por átomo (eV) ¦ Energy per atom (eV) ¦ Energía por átomo (eV) ¦ Énergie par atome (eV) ¦ Energia per atomo (eV) ¦ Energia per atomum (eV)
+Energia e termodinâmica ¦ Energy and thermodynamics ¦ Energía y termodinámica ¦ Énergie et thermodynamique ¦ Energia e termodinamica ¦ Energia et thermodynamica
+Energia total do defeito ¦ Total energy of the defect ¦ Energía total del defecto ¦ Énergie totale du défaut ¦ Energia totale del difetto ¦ Energia tota vitii
+Energia total usada ¦ Total energy used ¦ Energía total usada ¦ Énergie totale utilisée ¦ Energia totale usata ¦ Energia tota adhibita
+Termodinâmica ¦ Thermodynamics ¦ Termodinámica ¦ Thermodynamique ¦ Termodinamica ¦ Thermodynamica
+Força máxima residual (eV/Å) ¦ Maximum residual force (eV/Å) ¦ Fuerza máxima residual (eV/Å) ¦ Force résiduelle maximale (eV/Å) ¦ Forza residua massima (eV/Å) ¦ Vis residua maxima (eV/Å)
+Composição ¦ Composition ¦ Composición ¦ Composition ¦ Composizione ¦ Compositio
+Densidade (g/cm³) ¦ Density (g/cm³) ¦ Densidad (g/cm³) ¦ Masse volumique (g/cm³) ¦ Densità (g/cm³) ¦ Densitas (g/cm³)
+H (% em massa) ¦ H (wt %) ¦ H (% en masa) ¦ H (% massique) ¦ H (% in massa) ¦ H (% massae)
+H volumétrico (kg/m³) ¦ Volumetric H (kg/m³) ¦ H volumétrico (kg/m³) ¦ H volumique (kg/m³) ¦ H volumetrico (kg/m³) ¦ H voluminis (kg/m³)
+Capacidade gravimétrica de H ¦ Gravimetric H capacity ¦ Capacidad gravimétrica de H ¦ Capacité gravimétrique en H ¦ Capacità gravimetrica di H ¦ Capacitas gravimetrica H
+Hidrogênio ¦ Hydrogen ¦ Hidrógeno ¦ Hydrogène ¦ Idrogeno ¦ Hydrogenium
+Célula ¦ Cell ¦ Celda ¦ Maille ¦ Cella ¦ Cellula
+Célula base ¦ Base cell ¦ Celda base ¦ Maille de base ¦ Cella base ¦ Cellula basis
+Célula e supercélula ¦ Cell and supercell ¦ Celda y supercelda ¦ Maille et supermaille ¦ Cella e supercella ¦ Cellula et supercellula
+Supercélula ¦ Supercell ¦ Supercelda ¦ Supermaille ¦ Supercella ¦ Supercellula
+Supercélula detectada ¦ Detected supercell ¦ Supercelda detectada ¦ Supermaille détectée ¦ Supercella rilevata ¦ Supercellula detecta
+Multiplicidade detectada ¦ Detected multiplicity ¦ Multiplicidad detectada ¦ Multiplicité détectée ¦ Molteplicità rilevata ¦ Multiplicitas detecta
+Rede detectada ¦ Detected lattice ¦ Red detectada ¦ Réseau détecté ¦ Reticolo rilevato ¦ Reticulum detectum
+Volume da célula ¦ Cell volume ¦ Volumen de la celda ¦ Volume de la maille ¦ Volume della cella ¦ Volumen cellulae
+Átomos por célula base (média) ¦ Atoms per base cell (mean) ¦ Átomos por celda base (media) ¦ Atomes par maille de base (moyenne) ¦ Atomi per cella base (media) ¦ Atomi per cellulam basis (media)
+Estrutura ¦ Structure ¦ Estructura ¦ Structure ¦ Struttura ¦ Structura
+Estruturas ¦ Structures ¦ Estructuras ¦ Structures ¦ Strutture ¦ Structurae
+Estrutura eletrônica ¦ Electronic structure ¦ Estructura electrónica ¦ Structure électronique ¦ Struttura elettronica ¦ Structura electronica
+Estrutura e distorção ¦ Structure and distortion ¦ Estructura y distorsión ¦ Structure et distorsion ¦ Struttura e distorsione ¦ Structura et distortio
+Estrutura com defeito ¦ Defective structure ¦ Estructura con defecto ¦ Structure avec défaut ¦ Struttura con difetto ¦ Structura cum vitio
+Estrutura com o defeito ¦ Structure with the defect ¦ Estructura con el defecto ¦ Structure avec le défaut ¦ Struttura con il difetto ¦ Structura cum vitio
+Estrutura pura de referência ¦ Pure reference structure ¦ Estructura pura de referencia ¦ Structure pure de référence ¦ Struttura pura di riferimento ¦ Structura pura relationis
+Estrutura pura de referência (opcional) ¦ Pure reference structure (optional) ¦ Estructura pura de referencia (opcional) ¦ Structure pure de référence (facultatif) ¦ Struttura pura di riferimento (opzionale) ¦ Structura pura relationis (ad libitum)
+Estrutura com H a menos ¦ Structure with one H less ¦ Estructura con un H menos ¦ Structure avec un H en moins ¦ Struttura con un H in meno ¦ Structura uno H minus
+Defeito identificado ¦ Identified defect ¦ Defecto identificado ¦ Défaut identifié ¦ Difetto identificato ¦ Vitium agnitum
+Identificação ¦ Identification ¦ Identificación ¦ Identification ¦ Identificazione ¦ Agnitio
+Sítio provável ¦ Probable site ¦ Sitio probable ¦ Site probable ¦ Sito probabile ¦ Locus probabilis
+Tipo de sítio ¦ Site type ¦ Tipo de sitio ¦ Type de site ¦ Tipo di sito ¦ Genus loci
+Centro da análise ¦ Analysis center ¦ Centro del análisis ¦ Centre de l’analyse ¦ Centro dell’analisi ¦ Centrum analysis
+Interpretação ¦ Interpretation ¦ Interpretación ¦ Interprétation ¦ Interpretazione ¦ Interpretatio
+Texto gerado a partir dos números abaixo; confira antes de usar no texto do trabalho. ¦ Text generated from the numbers below; check it before using it in your manuscript. ¦ Texto generado a partir de los números de abajo; revíselo antes de usarlo en su trabajo. ¦ Texte généré à partir des nombres ci-dessous ; vérifiez-le avant de l’utiliser dans votre manuscrit. ¦ Testo generato dai numeri qui sotto; controllalo prima di usarlo nel tuo lavoro. ¦ Textus ex numeris infra generatus; recognosce antequam in opere tuo adhibeas.
+Número de coordenação ¦ Coordination number ¦ Número de coordinación ¦ Nombre de coordination ¦ Numero di coordinazione ¦ Numerus coordinationis
+Coordenação (1ª camada) ¦ Coordination (1st shell) ¦ Coordinación (1.ª capa) ¦ Coordination (1re couche) ¦ Coordinazione (1° strato) ¦ Coordinatio (strata prima)
+Coordenação efetiva ECoN ¦ Effective coordination ECoN ¦ Coordinación efectiva ECoN ¦ Coordination effective ECoN ¦ Coordinazione effettiva ECoN ¦ Coordinatio efficax ECoN
+Poliedro de coordenação e índices de distorção ¦ Coordination polyhedron and distortion indices ¦ Poliedro de coordinación e índices de distorsión ¦ Polyèdre de coordination et indices de distorsion ¦ Poliedro di coordinazione e indici di distorsione ¦ Polyedrum coordinationis et indices distortionis
+Elongação quadrática ⟨λ⟩ ¦ Quadratic elongation ⟨λ⟩ ¦ Elongación cuadrática ⟨λ⟩ ¦ Élongation quadratique ⟨λ⟩ ¦ Allungamento quadratico ⟨λ⟩ ¦ Elongatio quadratica ⟨λ⟩
+Variância angular σ² (grau²) ¦ Angle variance σ² (deg²) ¦ Varianza angular σ² (grado²) ¦ Variance angulaire σ² (degré²) ¦ Varianza angolare σ² (grado²) ¦ Variantia angularis σ² (gradus²)
+Índice de distorção de Baur D ¦ Baur distortion index D ¦ Índice de distorsión de Baur D ¦ Indice de distorsion de Baur D ¦ Indice di distorsione di Baur D ¦ Index distortionis Baur D
+Volume do poliedro (Å³) ¦ Polyhedron volume (Å³) ¦ Volumen del poliedro (Å³) ¦ Volume du polyèdre (Å³) ¦ Volume del poliedro (Å³) ¦ Volumen polyedri (Å³)
+Ligação ¦ Bond ¦ Enlace ¦ Liaison ¦ Legame ¦ Vinculum
+Ligações ¦ Bonds ¦ Enlaces ¦ Liaisons ¦ Legami ¦ Vincula
+Ligação centro–vizinho ¦ Center–neighbor bond ¦ Enlace centro–vecino ¦ Liaison centre–voisin ¦ Legame centro–vicino ¦ Vinculum centrum–vicinus
+Ligações dos primeiros vizinhos com os demais átomos ¦ Bonds of first neighbors with the other atoms ¦ Enlaces de los primeros vecinos con los demás átomos ¦ Liaisons des premiers voisins avec les autres atomes ¦ Legami dei primi vicini con gli altri atomi ¦ Vincula primorum vicinorum cum ceteris atomis
+Distâncias de 1ª camada por par ¦ First-shell distances per pair ¦ Distancias de 1.ª capa por par ¦ Distances de 1re couche par paire ¦ Distanze del 1° strato per coppia ¦ Distantiae stratae primae per par
+Vizinhos e ligações (.dat) ¦ Neighbors and bonds (.dat) ¦ Vecinos y enlaces (.dat) ¦ Voisins et liaisons (.dat) ¦ Vicini e legami (.dat) ¦ Vicini et vincula (.dat)
+Baixar análise do defeito (.txt) ¦ Download defect analysis (.txt) ¦ Descargar análisis del defecto (.txt) ¦ Télécharger l’analyse du défaut (.txt) ¦ Scarica l’analisi del difetto (.txt) ¦ Depromere analysin vitii (.txt)
+Baixar os cálculos de referência (.zip) ¦ Download the reference calculations (.zip) ¦ Descargar los cálculos de referencia (.zip) ¦ Télécharger les calculs de référence (.zip) ¦ Scarica i calcoli di riferimento (.zip) ¦ Depromere computationes relationis (.zip)
+Gerar os cálculos de referência a partir deste .cell ¦ Generate the reference calculations from this .cell ¦ Generar los cálculos de referencia a partir de este .cell ¦ Générer les calculs de référence à partir de ce .cell ¦ Genera i calcoli di riferimento da questo .cell ¦ Computationes relationis ex hoc .cell generare
+Potenciais químicos faltando ¦ Missing chemical potentials ¦ Faltan potenciales químicos ¦ Potentiels chimiques manquants ¦ Potenziali chimici mancanti ¦ Potentialia chimica desunt
+Cargas por átomo ¦ Charges per atom ¦ Cargas por átomo ¦ Charges par atome ¦ Cariche per atomo ¦ Onera per atomum
+Carga por átomo ¦ Charge per atom ¦ Carga por átomo ¦ Charge par atome ¦ Carica per atomo ¦ Onus per atomum
+Cargas e momentos por átomo ¦ Charges and moments per atom ¦ Cargas y momentos por átomo ¦ Charges et moments par atome ¦ Cariche e momenti per atomo ¦ Onera et momenta per atomum
+Magnetismo e cargas ¦ Magnetism and charges ¦ Magnetismo y cargas ¦ Magnétisme et charges ¦ Magnetismo e cariche ¦ Magnetismus et onera
+Densidade ¦ Density ¦ Densidad ¦ Densité ¦ Densità ¦ Densitas
+Densidades ¦ Densities ¦ Densidades ¦ Densités ¦ Densità ¦ Densitates
+Densidade (.den_fmt, .cube ou CHGCAR) ¦ Density (.den_fmt, .cube or CHGCAR) ¦ Densidad (.den_fmt, .cube o CHGCAR) ¦ Densité (.den_fmt, .cube ou CHGCAR) ¦ Densità (.den_fmt, .cube o CHGCAR) ¦ Densitas (.den_fmt, .cube vel CHGCAR)
+Grandeza ¦ Quantity ¦ Magnitud ¦ Grandeur ¦ Grandezza ¦ Quantitas
+Grandeza da densidade ¦ Density quantity ¦ Magnitud de la densidad ¦ Grandeur de densité ¦ Grandezza della densità ¦ Quantitas densitatis
+densidade de carga total ρ ¦ total charge density ρ ¦ densidad de carga total ρ ¦ densité de charge totale ρ ¦ densità di carica totale ρ ¦ densitas oneris tota ρ
+densidade de spin ρ↑ − ρ↓ ¦ spin density ρ↑ − ρ↓ ¦ densidad de espín ρ↑ − ρ↓ ¦ densité de spin ρ↑ − ρ↓ ¦ densità di spin ρ↑ − ρ↓ ¦ densitas spin ρ↑ − ρ↓
+densidade de spin ↑ (ρ↑) ¦ spin ↑ density (ρ↑) ¦ densidad de espín ↑ (ρ↑) ¦ densité de spin ↑ (ρ↑) ¦ densità di spin ↑ (ρ↑) ¦ densitas spin ↑ (ρ↑)
+densidade de spin ↓ (ρ↓) ¦ spin ↓ density (ρ↓) ¦ densidad de espín ↓ (ρ↓) ¦ densité de spin ↓ (ρ↓) ¦ densità di spin ↓ (ρ↓) ¦ densitas spin ↓ (ρ↓)
+magnetização |ρ↑ − ρ↓| ¦ magnetization |ρ↑ − ρ↓| ¦ magnetización |ρ↑ − ρ↓| ¦ aimantation |ρ↑ − ρ↓| ¦ magnetizzazione |ρ↑ − ρ↓| ¦ magnetizatio |ρ↑ − ρ↓|
+polarização local ζ = (ρ↑ − ρ↓)/ρ ¦ local polarization ζ = (ρ↑ − ρ↓)/ρ ¦ polarización local ζ = (ρ↑ − ρ↓)/ρ ¦ polarisation locale ζ = (ρ↑ − ρ↓)/ρ ¦ polarizzazione locale ζ = (ρ↑ − ρ↓)/ρ ¦ polarizatio localis ζ = (ρ↑ − ρ↓)/ρ
+Isosuperfície ¦ Isosurface ¦ Isosuperficie ¦ Isosurface ¦ Isosuperficie ¦ Isosuperficies
+Isovalor (e/Å³) ¦ Isovalue (e/Å³) ¦ Isovalor (e/Å³) ¦ Isovaleur (e/Å³) ¦ Isovalore (e/Å³) ¦ Isovalor (e/Å³)
+Vista 3D ¦ 3D view ¦ Vista 3D ¦ Vue 3D ¦ Vista 3D ¦ Aspectus 3D
+Vistas ¦ Views ¦ Vistas ¦ Vues ¦ Viste ¦ Aspectus
+Região 3D ¦ 3D region ¦ Región 3D ¦ Région 3D ¦ Regione 3D ¦ Regio 3D
+Resolução 3D ¦ 3D resolution ¦ Resolución 3D ¦ Résolution 3D ¦ Risoluzione 3D ¦ Resolutio 3D
+Caixa 3D ¦ 3D box ¦ Caja 3D ¦ Boîte 3D ¦ Scatola 3D ¦ Capsa 3D
+Plano ¦ Plane ¦ Plano ¦ Plan ¦ Piano ¦ Planum
+Plano 2D ¦ 2D plane ¦ Plano 2D ¦ Plan 2D ¦ Piano 2D ¦ Planum 2D
+Plano da densidade ¦ Density plane ¦ Plano de la densidad ¦ Plan de densité ¦ Piano della densità ¦ Planum densitatis
+Plano principal ¦ Main plane ¦ Plano principal ¦ Plan principal ¦ Piano principale ¦ Planum principale
+Planos e corte 2D ¦ Planes and 2D slice ¦ Planos y corte 2D ¦ Plans et coupe 2D ¦ Piani e sezione 2D ¦ Plana et sectio 2D
+Galeria ¦ Gallery ¦ Galería ¦ Galerie ¦ Galleria ¦ Pinacotheca
+Galeria com vários planos ¦ Gallery with several planes ¦ Galería con varios planos ¦ Galerie de plusieurs plans ¦ Galleria con vari piani ¦ Pinacotheca plurium planorum
+Planos da galeria (separados por ;) ¦ Gallery planes (separated by ;) ¦ Planos de la galería (separados por ;) ¦ Plans de la galerie (séparés par ;) ¦ Piani della galleria (separati da ;) ¦ Plana pinacothecae (per ; separata)
+Espaçamento interplanar ¦ Interplanar spacing ¦ Espaciado interplanar ¦ Distance interréticulaire ¦ Distanza interplanare ¦ Spatium inter plana
+Espaçamentos interplanares ¦ Interplanar spacings ¦ Espaciados interplanares ¦ Distances interréticulaires ¦ Distanze interplanari ¦ Spatia inter plana
+Perfil entre dois átomos ¦ Profile between two atoms ¦ Perfil entre dos átomos ¦ Profil entre deux atomes ¦ Profilo tra due atomi ¦ Profilum inter duos atomos
+Linhas de contorno ¦ Contour lines ¦ Líneas de contorno ¦ Lignes de contour ¦ Linee di contorno ¦ Lineae ambitus
+Rótulos dos átomos no corte ¦ Atom labels in the slice ¦ Etiquetas de los átomos en el corte ¦ Étiquettes des atomes dans la coupe ¦ Etichette degli atomi nella sezione ¦ Tituli atomorum in sectione
+Rótulos de todos os átomos ¦ Labels of all atoms ¦ Etiquetas de todos los átomos ¦ Étiquettes de tous les atomes ¦ Etichette di tutti gli atomi ¦ Tituli omnium atomorum
+Tamanho dos átomos ¦ Atom size ¦ Tamaño de los átomos ¦ Taille des atomes ¦ Dimensione degli atomi ¦ Magnitudo atomorum
+Átomo ¦ Atom ¦ Átomo ¦ Atome ¦ Atomo ¦ Atomus
+Átomos ¦ Atoms ¦ Átomos ¦ Atomes ¦ Atomi ¦ Atomi
+átomo ¦ atom ¦ átomo ¦ atome ¦ atomo ¦ atomus
+átomos ¦ atoms ¦ átomos ¦ atomes ¦ atomi ¦ atomi
+Espécie ¦ Species ¦ Especie ¦ Espèce ¦ Specie ¦ Species
+Elétrons ¦ Electrons ¦ Electrones ¦ Électrons ¦ Elettroni ¦ Electrones
+Elétrons integrados ¦ Integrated electrons ¦ Electrones integrados ¦ Électrons intégrés ¦ Elettroni integrati ¦ Electrones integrati
+Elétrons na densidade ¦ Electrons in the density ¦ Electrones en la densidad ¦ Électrons dans la densité ¦ Elettroni nella densità ¦ Electrones in densitate
+Z de valência ¦ Valence Z ¦ Z de valencia ¦ Z de valence ¦ Z di valenza ¦ Z valentiae
+Voronoi comum ¦ Standard Voronoi ¦ Voronoi común ¦ Voronoï classique ¦ Voronoi comune ¦ Voronoi communis
+Voronoi radical (raios covalentes) ¦ Radical Voronoi (covalent radii) ¦ Voronoi radical (radios covalentes) ¦ Voronoï radical (rayons covalents) ¦ Voronoi radicale (raggi covalenti) ¦ Voronoi radicalis (radii covalentes)
+Sentido da diferença ¦ Sign of the difference ¦ Sentido de la diferencia ¦ Sens de la différence ¦ Verso della differenza ¦ Sensus differentiae
+Diferença ¦ Difference ¦ Diferencia ¦ Différence ¦ Differenza ¦ Differentia
+Com defeito ¦ With defect ¦ Con defecto ¦ Avec défaut ¦ Con difetto ¦ Cum vitio
+Referência (puro) ¦ Reference (pure) ¦ Referencia (puro) ¦ Référence (pur) ¦ Riferimento (puro) ¦ Relatio (purum)
+Relatório da diferença (.txt) ¦ Difference report (.txt) ¦ Informe de la diferencia (.txt) ¦ Rapport de la différence (.txt) ¦ Rapporto della differenza (.txt) ¦ Relatio differentiae (.txt)
+Relatório comparativo (.txt) ¦ Comparative report (.txt) ¦ Informe comparativo (.txt) ¦ Rapport comparatif (.txt) ¦ Rapporto comparativo (.txt) ¦ Relatio comparativa (.txt)
+Tabela comparativa (.dat para o Origin) ¦ Comparison table (.dat for Origin) ¦ Tabla comparativa (.dat para Origin) ¦ Tableau comparatif (.dat pour Origin) ¦ Tabella comparativa (.dat per Origin) ¦ Tabula comparativa (.dat pro Origin)
+Grandeza do gráfico de barras ¦ Bar chart quantity ¦ Magnitud del gráfico de barras ¦ Grandeur du diagramme en barres ¦ Grandezza del grafico a barre ¦ Quantitas graphematis columnarum
+PDOS comparada ¦ Compared PDOS ¦ PDOS comparada ¦ PDOS comparée ¦ PDOS confrontata ¦ PDOS comparata
+Mostrar a comparação em 3D ¦ Show the comparison in 3D ¦ Mostrar la comparación en 3D ¦ Afficher la comparaison en 3D ¦ Mostra il confronto in 3D ¦ Comparationem in 3D ostendere
+Editar gráfico: título, legenda e cores ¦ Edit plot: title, legend and colors ¦ Editar gráfico: título, leyenda y colores ¦ Modifier le graphique : titre, légende et couleurs ¦ Modifica grafico: titolo, legenda e colori ¦ Graphema mutare: titulus, legenda et colores
+Título e eixos ¦ Title and axes ¦ Título y ejes ¦ Titre et axes ¦ Titolo e assi ¦ Titulus et axes
+Título desta figura ¦ Title of this figure ¦ Título de esta figura ¦ Titre de cette figure ¦ Titolo di questa figura ¦ Titulus huius figurae
+sem título ¦ no title ¦ sin título ¦ sans titre ¦ senza titolo ¦ sine titulo
+Tamanho do título ¦ Title size ¦ Tamaño del título ¦ Taille du titre ¦ Dimensione del titolo ¦ Magnitudo tituli
+Cor do título ¦ Title color ¦ Color del título ¦ Couleur du titre ¦ Colore del titolo ¦ Color tituli
+Rótulo do eixo de energia ¦ Energy axis label ¦ Etiqueta del eje de energía ¦ Étiquette de l’axe d’énergie ¦ Etichetta dell’asse dell’energia ¦ Titulus axis energiae
+Rótulo do eixo da DOS ¦ DOS axis label ¦ Etiqueta del eje de la DOS ¦ Étiquette de l’axe de la DOS ¦ Etichetta dell’asse della DOS ¦ Titulus axis DOS
+Legenda ¦ Legend ¦ Leyenda ¦ Légende ¦ Legenda ¦ Legenda
+Posição ¦ Position ¦ Posición ¦ Position ¦ Posizione ¦ Positio
+Fora, à direita ¦ Outside, right ¦ Fuera, a la derecha ¦ À l’extérieur, à droite ¦ Fuori, a destra ¦ Foris, dextrorsum
+Dentro, canto superior direito ¦ Inside, top right ¦ Dentro, esquina superior derecha ¦ À l’intérieur, en haut à droite ¦ Dentro, in alto a destra ¦ Intus, summo dextro
+Dentro, canto superior esquerdo ¦ Inside, top left ¦ Dentro, esquina superior izquierda ¦ À l’intérieur, en haut à gauche ¦ Dentro, in alto a sinistra ¦ Intus, summo sinistro
+Abaixo ¦ Below ¦ Abajo ¦ En dessous ¦ Sotto ¦ Infra
+Sem legenda ¦ No legend ¦ Sin leyenda ¦ Sans légende ¦ Senza legenda ¦ Sine legenda
+Tamanho do texto da legenda ¦ Legend text size ¦ Tamaño del texto de la leyenda ¦ Taille du texte de la légende ¦ Dimensione del testo della legenda ¦ Magnitudo textus legendae
+Título da legenda ¦ Legend title ¦ Título de la leyenda ¦ Titre de la légende ¦ Titolo della legenda ¦ Titulus legendae
+Moldura em volta da legenda ¦ Frame around the legend ¦ Marco alrededor de la leyenda ¦ Cadre autour de la légende ¦ Cornice attorno alla legenda ¦ Margo circa legendam
+Fonte ¦ Font ¦ Fuente ¦ Police ¦ Carattere ¦ Typus litterarum
+Tamanho do texto ¦ Text size ¦ Tamaño del texto ¦ Taille du texte ¦ Dimensione del testo ¦ Magnitudo textus
+Espessura da linha ¦ Line width ¦ Grosor de la línea ¦ Épaisseur de ligne ¦ Spessore della linea ¦ Crassitudo lineae
+Linhas de grade ¦ Grid lines ¦ Líneas de cuadrícula ¦ Lignes de grille ¦ Linee della griglia ¦ Lineae cancelli
+Fundo da figura ¦ Figure background ¦ Fondo de la figura ¦ Fond de la figure ¦ Sfondo della figura ¦ Fundus figurae
+Branco, para publicação ¦ White, for publication ¦ Blanco, para publicación ¦ Blanc, pour publication ¦ Bianco, per la pubblicazione ¦ Album, ad editionem
+Cores do tema do site ¦ Site theme colors ¦ Colores del tema del sitio ¦ Couleurs du thème du site ¦ Colori del tema del sito ¦ Colores thematis situs
+Curvas da figura atual ¦ Curves of the current figure ¦ Curvas de la figura actual ¦ Courbes de la figure actuelle ¦ Curve della figura attuale ¦ Curvae figurae praesentis
+Restaurar curvas ¦ Reset curves ¦ Restaurar curvas ¦ Réinitialiser les courbes ¦ Ripristina curve ¦ Curvas restituere
+Restaurar tudo ¦ Reset everything ¦ Restaurar todo ¦ Tout réinitialiser ¦ Ripristina tutto ¦ Omnia restituere
+nome na legenda ¦ name in legend ¦ nombre en la leyenda ¦ nom dans la légende ¦ nome nella legenda ¦ nomen in legenda
+cor ¦ color ¦ color ¦ couleur ¦ colore ¦ color
+espessura ¦ width ¦ grosor ¦ épaisseur ¦ spessore ¦ crassitudo
+traço ¦ dash ¦ trazo ¦ trait ¦ tratteggio ¦ ductus
+contínua ¦ solid ¦ continua ¦ continue ¦ continua ¦ continua
+tracejada ¦ dashed ¦ discontinua ¦ tiretée ¦ tratteggiata ¦ intermissa
+pontilhada ¦ dotted ¦ punteada ¦ pointillée ¦ punteggiata ¦ punctata
+traço longo ¦ long dash ¦ trazo largo ¦ tiret long ¦ tratto lungo ¦ ductus longus
+traço-ponto ¦ dash-dot ¦ trazo-punto ¦ tiret-point ¦ tratto-punto ¦ ductus-punctum
+visível ¦ visible ¦ visible ¦ visible ¦ visibile ¦ conspicuus
+linha de E_F ¦ E_F line ¦ línea de E_F ¦ ligne de E_F ¦ linea di E_F ¦ linea E_F
+Mostrar linha de E_F ¦ Show E_F line ¦ Mostrar línea de E_F ¦ Afficher la ligne de E_F ¦ Mostra la linea di E_F ¦ Lineam E_F ostendere
+spin ↑ up ¦ spin ↑ up ¦ espín ↑ up ¦ spin ↑ up ¦ spin ↑ up ¦ spin ↑ sursum
+spin ↓ down ¦ spin ↓ down ¦ espín ↓ down ¦ spin ↓ down ¦ spin ↓ down ¦ spin ↓ deorsum
+Spin up ¦ Spin up ¦ Espín up ¦ Spin up ¦ Spin up ¦ Spin sursum
+Spin down ¦ Spin down ¦ Espín down ¦ Spin down ¦ Spin down ¦ Spin deorsum
+Total ¦ Total ¦ Total ¦ Total ¦ Totale ¦ Totum
+média ¦ mean ¦ media ¦ moyenne ¦ media ¦ media
+valor ¦ value ¦ valor ¦ valeur ¦ valore ¦ valor
+não ¦ no ¦ no ¦ non ¦ no ¦ non
+nenhuma ¦ none ¦ ninguna ¦ aucune ¦ nessuna ¦ nulla
+automático ¦ automatic ¦ automático ¦ automatique ¦ automatico ¦ automaticum
+outro… ¦ other… ¦ otro… ¦ autre… ¦ altro… ¦ aliud…
+linear ¦ linear ¦ lineal ¦ linéaire ¦ lineare ¦ linearis
+logarítmica ¦ logarithmic ¦ logarítmica ¦ logarithmique ¦ logaritmica ¦ logarithmica
+Opacidade ¦ Opacity ¦ Opacidad ¦ Opacité ¦ Opacità ¦ Opacitas
+Grade ¦ Grid ¦ Malla ¦ Grille ¦ Griglia ¦ Cancelli
+Arranjo ¦ Layout ¦ Disposición ¦ Disposition ¦ Disposizione ¦ Dispositio
+Forma ¦ Shape ¦ Forma ¦ Forme ¦ Forma ¦ Figura
+Componente ¦ Component ¦ Componente ¦ Composante ¦ Componente ¦ Pars
+Lado (Å) ¦ Side (Å) ¦ Lado (Å) ¦ Côté (Å) ¦ Lato (Å) ¦ Latus (Å)
+Área ¦ Area ¦ Área ¦ Aire ¦ Area ¦ Area
+Área 2D ¦ 2D area ¦ Área 2D ¦ Zone 2D ¦ Area 2D ¦ Area 2D
+vizinho ¦ neighbor ¦ vecino ¦ voisin ¦ vicino ¦ vicinus
+vizinhos ¦ neighbors ¦ vecinos ¦ voisins ¦ vicini ¦ vicini
+defeito ¦ defect ¦ defecto ¦ défaut ¦ difetto ¦ vitium
+dopante ¦ dopant ¦ dopante ¦ dopant ¦ drogante ¦ dopans
+octaedro ¦ octahedron ¦ octaedro ¦ octaèdre ¦ ottaedro ¦ octaedrum
+Seus arquivos são lidos aqui mesmo, no seu computador, e não são enviados para nenhum servidor. Ajuste título, legenda, cores e níveis de orbital, e baixe a figura em PNG, SVG ou PDF e os dados em .dat. ¦ Your files are read right here, on your computer, and are not sent to any server. Adjust title, legend, colors and orbital levels, and download the figure as PNG, SVG or PDF and the data as .dat. ¦ Sus archivos se leen aquí mismo, en su computadora, y no se envían a ningún servidor. Ajuste título, leyenda, colores y niveles de orbital, y descargue la figura en PNG, SVG o PDF y los datos en .dat. ¦ Vos fichiers sont lus ici même, sur votre ordinateur, et ne sont envoyés à aucun serveur. Ajustez titre, légende, couleurs et niveaux d’orbitales, et téléchargez la figure en PNG, SVG ou PDF et les données en .dat. ¦ I tuoi file vengono letti qui, sul tuo computer, e non vengono inviati a nessun server. Regola titolo, legenda, colori e livelli orbitali, e scarica la figura in PNG, SVG o PDF e i dati in .dat. ¦ Fasciculi tui hic, in computatro tuo, leguntur neque ad ullum servitorem mittuntur. Titulum, legendam, colores et gradus orbitalium accommoda, figuramque PNG, SVG vel PDF et data .dat depromere.
