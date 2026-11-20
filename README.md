@@ -62,9 +62,9 @@ Its functionalities include:
 
 **Project links:**
 
-- [Official website](https://brunohdmacedo.tech/bruma/)
-- [Tutorial and documentation](https://brunohdmacedo.tech/bruma/tutorial.html)
-- [Source code — GitHub](https://github.com/brunohdmacedo/bruma-dft)
+- [Official website](https://brunohdmacedo.tech/brumare/)
+- [Tutorial and documentation](https://brunohdmacedo.tech/brumare/tutorial.html)
+- [Source code — GitHub](https://github.com/brunohdmacedo/brumare)
 
 ## 💻 Technologies & Tools
 
@@ -146,7 +146,7 @@ Its functionalities include:
 <a href="https://www.instagram.com/brunohdmacedo/">
   <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/>
 </a>
-<a href="https://www.youtube.com/@CanaldoBHS">
+<a href="https://www.youtube.com/@brunohdmacedo">
   <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"/>
 </a>
 <a href="http://lattes.cnpq.br/7842985016416991">
