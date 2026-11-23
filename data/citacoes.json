@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
   "orcid": "0000-0002-8152-0950",
-  "updated_at": "2026-11-20T18:42:56+00:00",
+  "updated_at": "2026-11-23T20:52:40+00:00",
   "sources": {
     "openalex": {
       "works_found": 2,
       "orcid": "0000-0002-8152-0950",
       "status": "ok",
-      "updated_at": "2026-11-20T18:42:56+00:00",
+      "updated_at": "2026-11-23T20:52:39+00:00",
       "total_citations": 0,
       "h_index": 0
     },
     "google_scholar": {
       "status": "ok",
       "works_found": 14,
-      "updated_at": "2026-11-20T18:42:56+00:00",
+      "updated_at": "2026-11-23T20:52:40+00:00",
       "matched_publications": 2,
       "total_citations_matched": 2,
       "h_index_matched": 1
